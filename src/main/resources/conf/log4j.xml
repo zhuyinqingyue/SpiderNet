@@ -11,7 +11,7 @@
 			<param name="LevelMax" value="ERROR" />
 			<param name="LevelMin" value="DEBUG" />
 		</filter>
-	</appender>
+	</appender>     
 
 	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="D:/spidernet/log4j.log" />
