@@ -13,7 +13,7 @@ import com.spidernet.dashboard.service.EmployeeService;
 
 @Controller
 @RequestMapping(value="/employee")
-public class EmployeeController {
+public class EmployeeController {          
 	@Resource 
 	EmployeeService userService;       
 }
