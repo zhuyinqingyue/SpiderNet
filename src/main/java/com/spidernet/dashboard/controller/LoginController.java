@@ -34,7 +34,6 @@ public class LoginController
             final HttpServletResponse response, Employee employee)
     {
         employee.setHrNumber(employee.getName());
-        ;
         boolean emp = userService.accountValid(employee);
         if (emp)
         {
