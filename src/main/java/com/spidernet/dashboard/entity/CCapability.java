@@ -1,8 +1,8 @@
 package com.spidernet.dashboard.entity;
 
 /**
- * 能力公有区块
- * 
+ * 鑳藉姏鍏湁鍖哄潡
+ *
  * @author Hurricane
  *
  */
