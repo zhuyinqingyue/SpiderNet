@@ -162,7 +162,7 @@
 				
 				 <div class="form-group has-success col-md-4">
                     <label class="control-label" for="inputSuccess1">项目</label>
-                    <input type="text" class="form-control" id="project">
+                    <a href="#" class="btn btn-setting btn-default">展示</a>
                 </div>
 				
 				<br><br><br><br>
@@ -181,7 +181,119 @@
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 
-   
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-user"></i> 能力地图</h2>
+
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-minimize btn-round btn-default" ><i
+                                class="glyphicon glyphicon-chevron-up" ></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default" data-dismiss="modal"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table class="table table-striped table-bordered responsive">
+                        <thead>
+                        <tr>
+                            <th>领域</th>
+                            <th>区块</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr>
+                            <td>Muhammad Usman</td>
+
+                            <td class="center">
+								<label>
+									<input type="checkbox" value="">
+									Option one is this and that
+								</label>
+													<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+													<label>
+									<input type="checkbox" value="">
+									be sure to include why it's great
+								</label>
+													<label>
+									<input type="checkbox" value="">
+									Option&mdash;be sure to include why it's great
+								</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Abraham</td>
+
+                            <td class="center">
+                                													<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+													<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Brown Blue</td>
+
+                            <td class="center">
+                                													<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+													<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Worth Name</td>
+
+                            <td class="center">
+                                													<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+													<label>
+									<input type="checkbox" value="">
+									Option one is this and that&mdash;be sure to include why it's great
+								</label>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+					<div class="center">
+						<a class="btn btn-success" href="#">
+							<i class="glyphicon glyphicon-ok icon-white"></i>
+							保存
+						</a>
+						<a class="btn btn-info" href="#" data-dismiss="modal">
+							<i class="glyphicon glyphicon-remove icon-white"></i>
+							取消
+						</a>
+						<a class="btn btn-danger" href="#">
+							<i class="glyphicon glyphicon-repeat icon-white"></i>
+							重置
+						</a>
+					</div>
+                </div>
+			</div>
+        </div>
+        <!--/span-->
+    </div>  
 
 
 </div><!--/.fluid-container-->
