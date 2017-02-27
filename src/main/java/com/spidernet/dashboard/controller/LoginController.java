@@ -29,6 +29,27 @@ public class LoginController
         return "login";
     }
 
+    @RequestMapping("/top")
+    public String top(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "top";
+    }
+
+    @RequestMapping("/left")
+    public String left(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "left";
+    }
+
+    @RequestMapping("/footer")
+    public String footer(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "footer";
+    }
+
     @RequestMapping("/checkUser")
     public String checkUser(final HttpServletRequest request,
             final HttpServletResponse response, Employee employee)

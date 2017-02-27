@@ -48,54 +48,13 @@
 
 <body>
     <!-- topbar starts -->
-    <div class="navbar navbar-default" role="navigation">
-
-        <div class="navbar-inner">
-            
-            <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="<%=path %>/img/title_logo.png" class="hidden-xs"/>
-                <span>SpiderNet</span></a>
-
-            <!-- user dropdown starts -->
-            <div class="btn-group pull-right">
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                     <li><a href="#">个人信息</a></li>
-					 <li><a href="#">密码修改</a></li>
-                    <li class="divider"></li>
-                    <li><a href="login.html">注销</a></li>
-                </ul>
-            </div>
-            <!-- user dropdown ends -->
-
-           
-
-        </div>
-    </div>
+   <c:import url="/service/top"/>
     <!-- topbar ends -->
 <div class="ch-container">
     <div class="row">
         
         <!-- left menu starts -->
-        <div class="col-sm-2 col-lg-2">
-            <div class="sidebar-nav">
-                <div class="nav-canvas">
-                    <div class="nav-sm nav nav-stacked">
-
-                    </div>
-                    <ul class="nav nav-pills nav-stacked main-menu">
-                        <li class="nav-header">Main</li>
-                        <li><a class="ajax-link" href="index.html"><i class="glyphicon glyphicon-home"></i><span>&nbsp;&nbsp;个人主页</span></a>
-                        </li>
-                        <li><a class="ajax-link" href="ui.html"><i class="glyphicon glyphicon-user"></i><span> 用户注册</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--/span-->
+       <c:import url="/service/left"/>
         <!-- left menu ends -->
 
 
@@ -104,17 +63,11 @@
             <div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a>
-					</li>
-					<li>
-						<a href="#">主页</a>
+						<a href="#">个人主页</a>
 					</li>
 				</ul>
 			</div>
-
-
-
-			<!-- content ends -->
+	<!-- content ends -->
 		</div><!--/#content.col-md-0-->
 	</div>
 
@@ -139,11 +92,7 @@
         </div>
     </div>
 
-    <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">©2017-2017 中软国际汇丰业务线能力中心</p>
-
-        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by : SpiderNet </p>
-    </footer>
+   <c:import url="/service/footer"/>
 
 </div><!--/.fluid-container-->
 
