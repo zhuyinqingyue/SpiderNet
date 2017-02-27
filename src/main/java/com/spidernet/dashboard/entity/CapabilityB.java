@@ -1,8 +1,8 @@
 package com.spidernet.dashboard.entity;
 
 /**
- * ÄÜÁ¦ÁìÓò±í
- * 
+ * èƒ½åŠ›é¢†åŸŸè¡¨
+ *
  * @author Hurricane
  *
  */
