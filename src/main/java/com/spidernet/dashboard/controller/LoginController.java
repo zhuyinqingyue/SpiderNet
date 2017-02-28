@@ -66,18 +66,21 @@ public class LoginController
         Pattern patternHr = Pattern.compile(Constants.HR_PATTERN);
         Pattern patternWechat = Pattern.compile(Constants.WECHAT_PATTERN);
         ModelAndView mv = new ModelAndView();
+        Employee employeeTemp = null;
 
         if (patternEr.matcher(userName).matches()) {
+            employeeTemp = new Employee();
             employee.setErNumber(userName);
-            employee = userService.accountValidByErNumber(employee);
+            employeeTemp = userService.accountValidByErNumber(employee);
         } else if (patternHr.matcher(userName).matches()) {
+            employeeTemp = new Employee();
             employee.setHrNumber(userName);
-            employee = userService.accountValidByHrNumber(employee);
+            employeeTemp = userService.accountValidByHrNumber(employee);
         } else if (patternWechat.matcher(userName).matches()) {
             //employee.setWechatOpenId(userName);
         }
 
-        if (employee != null)
+        if (employeeTemp != null)
         {
             logger.info("Find the Employee correctly, enter the index page");
             mv.setViewName("index");
