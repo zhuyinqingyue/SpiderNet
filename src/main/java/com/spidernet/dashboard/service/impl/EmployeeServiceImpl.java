@@ -16,7 +16,21 @@ public class EmployeeServiceImpl implements EmployeeService
     private EmployeeMapper userMapper;
 
     @Override
-    public boolean accountValid(Employee employee)
+    public Employee accountValidByErNumber(Employee employee)
+    {
+        Employee employeeDb = userMapper.accountValidByErNumber(employee);
+        return employeeDb;
+    }
+
+    @Override
+    public Employee accountValidByHrNumber(Employee employee)
+    {
+        Employee employeeDb = userMapper.accountValidByHrNumber(employee);
+        return employeeDb;
+    }
+
+    @Override
+    public Boolean accountValid(Employee employee)
     {
         if (userMapper.accountValid(employee) > 0)
         {
@@ -26,5 +40,20 @@ public class EmployeeServiceImpl implements EmployeeService
         {
             return false;
         }
+
+    }
+
+    @Override
+    public Employee fetchByErNumber(String erNumber)
+    {
+        Employee employee = userMapper.fetchByErNumber(erNumber);
+        return employee;
+    }
+
+    @Override
+    public Employee fetchByHrNumber(String hrNumber)
+    {
+        Employee employee = userMapper.fetchByHrNumber(hrNumber);
+        return employee;
     }
 }

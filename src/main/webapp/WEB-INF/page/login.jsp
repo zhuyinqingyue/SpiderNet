@@ -66,7 +66,7 @@
 											
 						                    <div type="text" class="username">用户名</div>
 						                    <div class="input-group input-group-lg" >
-						                        <input type="text" class="form-control" placeholder="" id="name" name="name">
+						                        <input type="text" class="form-control" placeholder="" id="userName" name="userName">
 						                    </div>
 						                    <div class="clearfix"></div><br>
 						
