@@ -1,8 +1,8 @@
 package com.spidernet.dashboard.entity;
 
 /**
- * 能力领域表
- *
+ * Capability Area
+ * 
  * @author Hurricane
  *
  */

@@ -1,7 +1,7 @@
 package com.spidernet.dashboard.entity;
 
 /**
- * 能力私有区块
+ * Private Capability Area
  * 
  * @author Hurricane
  *

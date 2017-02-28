@@ -21,7 +21,7 @@
                         <li class="nav-header">功能模块</li>
                         <li><a class="ajax-link" href="index.html"><i class="glyphicon glyphicon-home"></i><span>&nbsp;&nbsp;个人主页</span></a>
                         </li>
-                        <li><a class="ajax-link" href="<%=path%>/service/employee/register"><i class="glyphicon glyphicon-user"></i><span> 用户注册</span></a>
+                        <li><a class="ajax-link" href="ui.html"><i class="glyphicon glyphicon-user"></i><span> 用户注册</span></a>
                         </li>
                     </ul>
                 </div>
