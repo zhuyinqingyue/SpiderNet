@@ -9,9 +9,9 @@
 	<url>http://maven.apache.org</url>
 	
 	<properties>
-		<!-- spring版本号 -->
+		<!-- spring version -->
 		<spring.version>4.2.4.RELEASE</spring.version>
-		<!-- mybatis版本号 -->
+		<!-- mybatis version -->
 		<mybatis.version>3.4.1</mybatis.version>
 
 	</properties>
@@ -44,7 +44,7 @@
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- Spring 在 3.2.13版本后，要单独引用 -->
+		<!-- Spring should single use after the version  3.2.13 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -85,7 +85,7 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- java ee (注解什么的都要用到它) -->
+		<!-- java ee -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -99,19 +99,19 @@
 			<version>3.1.0</version>
 		</dependency>
 
-		<!-- dbcp用来在applicationContext.xml中配置数据库 -->
+		<!-- dbcp  -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-		<!-- Mysql数据库链接 -->
+		<!-- Mysql connect -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.0.2</version>
 		</dependency>
-		<!-- Spring 4.x 依赖的相关 json jar -->
+		<!-- Spring 4.x depend json jar -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -127,7 +127,7 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.5.4</version>
 		</dependency>
-		<!-- 用于将java对象封装成JSON格式或构造JSON数据 -->
+		<!-- convert java object to json object -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
@@ -173,6 +173,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.2</version>
         </dependency>
+        
 	</dependencies>
 	<build>
 		<finalName>SpiderNet</finalName>

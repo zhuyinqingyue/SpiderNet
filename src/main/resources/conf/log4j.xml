@@ -6,7 +6,7 @@
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"
 				value="%d{yyyy-MM-dd HH:mm:ss:SSS} %l %m%n" />
-		</layout><!--限制输出级别 -->
+		</layout>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
 			<param name="LevelMax" value="ERROR" />
 			<param name="LevelMin" value="DEBUG" />
