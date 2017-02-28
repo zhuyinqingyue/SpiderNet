@@ -18,7 +18,7 @@ import com.spidernet.dashboard.service.EmployeeService;
 import com.spidernet.util.Constants;
 
 @Controller
-@SessionAttributes("employee")
+@SessionAttributes("employeeTemp")
 public class LoginController
 {
     @Resource
@@ -84,7 +84,7 @@ public class LoginController
         {
             logger.info("Find the Employee correctly, enter the index page");
             mv.setViewName("index");
-            mv.addObject("employee", employee);
+            mv.addObject("employee", employeeTemp);
             return mv;
         }
         else
