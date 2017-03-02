@@ -191,7 +191,7 @@
                     <table id="capabilityMap" class="table table-striped table-bordered responsive">
                         <thead>
                         <tr>
-                            <th>领域</th>
+                            <th style="width:20%;">领域</th>
                             <th>区块</th>
                         </tr>
                         </thead>
