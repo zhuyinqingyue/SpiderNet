@@ -65,13 +65,13 @@
 						                <fieldset>
 											
 						                    <div type="text" class="username">用户名</div>
-						                    <div class="input-group input-group-lg" >
+						                    <div  >
 						                        <input type="text" class="form-control" placeholder="" id="userName" name="userName">
 						                    </div>
 						                    <div class="clearfix"></div><br>
 						
 						                    <div type="text" class="username">密码</div>                        
-						                    <div class="input-group input-group-lg" style="">
+						                    <div  style="">
 						                        <input type="password" class="form-control" id="password" name="password" placeholder="">
 						                    </div>
 						                    <div class="clearfix"></div>
