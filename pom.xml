@@ -44,7 +44,7 @@
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- Spring should single use after the version  3.2.13 -->
+		<!-- Spring should single use after the version 3.2.13 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -99,7 +99,7 @@
 			<version>3.1.0</version>
 		</dependency>
 
-		<!-- dbcp  -->
+		<!-- dbcp -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -179,6 +179,11 @@
 			<artifactId>json-lib</artifactId>
 			<version>2.4</version>
 			<classifier>jdk15</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
 		</dependency>
 	</dependencies>
 	<build>
