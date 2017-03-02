@@ -52,42 +52,311 @@
     <!-- topbar ends -->
 <div class="ch-container">
     <div class="row">
-        
         <!-- left menu starts -->
        <c:import url="/service/left"/>
         <!-- left menu ends -->
-
-
         <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
-            <div>
-				<ul class="breadcrumb">
-					<li>
-						<a href="#">个人主页</a>
-					</li>
-				</ul>
-			</div>
+            <div class="row">
+			    <div class="box col-md-12">
+			    	<div class="box-inner">
+					    <div class="box-header well" data-original-title="">
+					        <h2><i class="glyphicon glyphicon-user"></i> 个人能力地图</h2>
+					    </div>
+					    <div class="box-content">
+					    	<div class="alert alert-info">用户名：毛贵锋 职别：高级 种类：开发 项目名称：Etax Payment</div>
+						    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+						    <thead>
+						    <tr>
+								<th ></th>
+						        <th >知识库</th>
+						        <th >培训</th>
+						        <th >技能鉴定</th>
+						        <th >状态</th>
+						       
+							</tr>
+						    </thead>
+						    <tbody>
+						    <tr>
+							<td rowspan="3">行业知识</td>
+						        <td>java</td>
+						        <td class="center"><a href="#" data-toggle="modal" data-target="#myModalClass">我的课程</a></td>
+						        <td class="center"><a href="#" data-toggle="modal" data-target="#myModalExam">我的考试</a></td>
+						        <td class="center">
+						            <span class="label-success label label-default">Pass</span>
+						        </td>
+						       
+								
+						    </tr>
+						    <tr>
+						        <td>dojo</td>
+						        <td class="center">2017/03/21 dojo技能培训</td>
+						        <td class="center">2017/04/21 dojo考试</td>
+						        <td class="center">
+						            <span class="label-success label label-default">Pass</span>
+						        </td>
+						       
+						    </tr>
+						    <tr>
+						        <td>html5</td>
+						         <td class="center">2017/03/21 dojo技能培训</td>
+						        <td class="center">2017/04/21 dojo考试</td>
+						        <td class="center">
+						            
+						        </td>
+						        
+						    </tr>
+						    <tr>
+								<td rowspan="3">英语国际化</td>
+						        <td>write email</td>
+						         <td class="center">2017/03/21 dojo技能培训</td>
+						        <td class="center">2017/04/21 dojo考试</td>
+						        <td class="center">
+						            <span class="label-success label label-default">Pass</span>
+						        </td>
+						       
+						    </tr>
+						    <tr>
+						        <td>chat with english</td>
+						        <td class="center">2017/03/21 dojo技能培训</td>
+						        <td class="center">2017/04/21 dojo考试</td>
+						        <td class="center">
+						            <span class="label-default label label-danger">Fail</span>
+						        </td>
+						        
+						    </tr>
+						    <tr>
+						        <td>write english document</td>
+						         <td class="center">2017/03/21 dojo技能培训技能培</td>
+						        <td class="center">2017/04/21 dojo考试</td>
+						        <td class="center">
+						            <span class="label-default label label-danger">Fail</span>
+						        </td>
+						       
+						    </tr>
+						 
+						    </tbody>
+						    </table>
+					    </div>
+    				</div>
+   				 </div>
+    <!--/span-->
+
+    </div><!--/row-->
 	<!-- content ends -->
 		</div><!--/#content.col-md-0-->
 	</div>
 
     <hr>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-		<div class="modal-dialog">
+    <!--my cource by ken 2017.2.27-->
+    <div class="modal fade" id="myModalClass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h3>Settings</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">我的课程</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Here settings can be configured...</p>
+                    <div class="box">
+                        <div class="box-inner">
+
+                            <div class="box-content">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox">全选</th>
+
+                                        <th>课程名称</th>
+                                        <th>知识点</th>
+                                        <th>课程日期</th>
+                                        <th>地点</th>
+                                        <th>培训讲师</th>
+                                        <th>课程资料</th>
+                                        <th>状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                        <td class="center">Java基础</td>
+                                        <td class="center">语法;关键字.</td>
+                                        <td class="center">2012/02/01</td>
+                                        <td class="center">巨安大厦7楼会议室</td>
+                                        <td class="center">隔壁老王</td>
+                                        <td class="center">www.baidu.com</td>
+                                        <td class="center">
+                                            <span class="label-success label label-default">Active</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                        <td class="center">HTML5</td>
+                                        <td class="center">语法;关键字.</td>
+                                        <td class="center">2017/02/18</td>
+                                        <td class="center">巨安大厦16.2</td>
+                                        <td class="center">王尼玛</td>
+                                        <td class="center">www.baidu.com</td>
+                                        <td class="center">
+                                            <span class="label-default label label-danger">Banned</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                        <td class="center">JS</td>
+                                        <td class="center">语法;关键字..</td>
+                                        <td class="center">2017/03/01</td>
+                                        <td class="center">巨安大厦12.2</td>
+                                        <td class="center">李春梅</td>
+                                        <td class="center">www.sohu.com</td>
+                                        <td class="center">
+                                            <span class="label-default label">Inactive</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                    <td class="center">CSS</td>
+                                        <td class="center">语法;关键字.</td>
+                                    <td class="center">2017/02/28</td>
+                                    <td class="center">巨安大厦7层大会议室</td>
+                                    <td class="center">贾君鹏</td>
+                                    <td class="center">www.sohu.com</td>
+                                    <td class="center">
+                                        <span class="label-default label">Inactive</span>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                    </view>
+
+                                </view>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="row">
+
+                        <div style = "text-align:right;" class="col-md-4 col-md-offset-4 pull-right"><button type="button" class="btn btn-primary">提交</button>
+                            <button type="button" class="btn btn-warning">重置</button></div>
+                    </div>
+                </div><!--/row-->
                 </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                
+            </div>
+        </div>
+  
+    <!--my exam by ken 2017.2.27-->
+    <div class="modal fade" id="myModalExam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabelExam">我的考试</h4>
                 </div>
+                <div class="modal-body">
+                    <div class="box">
+                        <div class="box-inner">
+
+                            <div class="box-content">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox">全选</th>
+
+                                        <th>交付部门</th>
+                                        <th>项目名称</th>
+                                        <th>考试名称</th>
+                                        <th>开始时间</th>
+                                        <th>结束时间</th>
+                                        <th>考试时间</th>
+                                        <th>有效期限</th>
+                                        <th>知识列表</th>
+                                        <th>状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                        <td class="center">部门一</td>
+                                        <td class="center">项目A.</td>
+                                        <td class="center">Agil</td>
+                                        <td class="center">20170203</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">90</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">1,2,3</td>
+                                        <td class="center">
+                                            <span class="label-success label label-default">Active</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                        <td class="center">部门一</td>
+                                        <td class="center">项目A.</td>
+                                        <td class="center">Agil</td>
+                                        <td class="center">20170203</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">90</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">1,2,3</td>
+                                        <td class="center">
+                                            <span class="label-success label label-default">Active</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                        <td class="center">部门一</td>
+                                        <td class="center">项目A.</td>
+                                        <td class="center">Agil</td>
+                                        <td class="center">20170203</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">90</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">1,2,3</td>
+                                        <td class="center">
+                                            <span class="label-success label label-default">Active</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+
+                                        <td class="center">部门一</td>
+                                        <td class="center">项目A.</td>
+                                        <td class="center">Agil</td>
+                                        <td class="center">20170203</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">90</td>
+                                        <td class="center">20170303</td>
+                                        <td class="center">1,2,3</td>
+                                        <td class="center">
+                                            <span class="label-success label label-default">Active</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </view>
+
+                                </view>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="row">
+
+                        <div style = "text-align:right;" class="col-md-4 col-md-offset-4 pull-right"><button type="button" class="btn btn-primary">提交</button>
+                            <button type="button" class="btn btn-warning">重置</button></div>
+                    </div>
+                </div><!--/row-->
+            </div>
+            <div class="modal-footer">
+
             </div>
         </div>
     </div>

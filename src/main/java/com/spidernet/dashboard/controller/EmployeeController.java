@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.spidernet.dashboard.service.EmployeeService;
 
 @Controller
-@RequestMapping(value="/employee")
-public class EmployeeController {
-	@Resource
-	EmployeeService userService;
+@RequestMapping(value = "/employee")
+public class EmployeeController
+{
+    @Resource
+    EmployeeService userService;
 
-	private static Logger logger = LoggerFactory
+    private static Logger logger = LoggerFactory
             .getLogger(EmployeeController.class);
 
     @RequestMapping("/register")
@@ -26,5 +27,13 @@ public class EmployeeController {
     {
         logger.info("debug------test----");
         return "employee/register";
+    }
+
+    @RequestMapping("/index")
+    public String index(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        logger.info("debug------test----");
+        return "index";
     }
 }

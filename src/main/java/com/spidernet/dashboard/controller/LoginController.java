@@ -68,21 +68,27 @@ public class LoginController
         ModelAndView mv = new ModelAndView();
         Employee employeeTemp = null;
 
-        if (patternEr.matcher(userName).matches()) {
+        if (patternEr.matcher(userName).matches())
+        {
             employeeTemp = new Employee();
             employee.setErNumber(userName);
             employeeTemp = userService.accountValidByErNumber(employee);
-        } else if (patternHr.matcher(userName).matches()) {
+        }
+        else if (patternHr.matcher(userName).matches())
+        {
             employeeTemp = new Employee();
             employee.setHrNumber(userName);
             employeeTemp = userService.accountValidByHrNumber(employee);
-        } else if (patternWechat.matcher(userName).matches()) {
-            //employee.setWechatOpenId(userName);
+        }
+        else if (patternWechat.matcher(userName).matches())
+        {
+            // employee.setWechatOpenId(userName);
         }
 
         if (employeeTemp != null)
         {
             logger.info("Find the Employee correctly, enter the index page");
+            request.getSession().setAttribute("employee", employeeTemp);
             mv.setViewName("index");
             mv.addObject("employee", employeeTemp);
             return mv;
