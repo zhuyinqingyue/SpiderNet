@@ -3,6 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="com.spidernet.dashboard.dao.TypeMapper">
-	
+	<resultMap id="typeMap" type="com.spidernet.dashboard.entity.Type">
+		<id property="empTypeId" column="EMP_TYPE_ID" javaType="String"/>
+		<result property="typeName" column="TYPE_NAME" javaType="String"/>
+		<result property="sort" column="SORT" javaType="String"/>
+		<result property="description" column="DESCRIPTION" javaType="String"/>
+	</resultMap>
+	<select id="queryType" resultMap="typeMap">
+		select * from t_emp_type order by SORT asc;
+	</select>
 
 </mapper>

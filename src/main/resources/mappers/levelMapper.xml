@@ -3,6 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="com.spidernet.dashboard.dao.LevelMapper">
-	
+	<resultMap id="levelMap" type="com.spidernet.dashboard.entity.Level">
+		<id property="empLevelId" column="EMP_LEVEL_ID" javaType="String"/>
+		<result property="levelName" column="LEVEL_NAME" javaType="String"/>
+		<result property="sort" column="SORT" javaType="String"/>
+		<result property="description" column="DESCRIPTION" javaType="String"/>
+	</resultMap>
+	<select id="queryLevel"  resultMap="levelMap">
+		select * from t_emp_level order by SORT asc;
+	</select>
 
 </mapper>

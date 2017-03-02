@@ -43,6 +43,10 @@
 
     <!-- The fav icon -->
     <link rel="shortcut icon" href="img/favicon.ico">
+    
+    <!-- default loading -->
+    <script type="text/javascript" src="<%=path %>/js/register.js"></script>
+    
 
 </head>
 
@@ -82,14 +86,6 @@
             <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-edit"></i> 新员工注册</h2>
 
-                <div class="box-icon">
-                    <a href="#" class="btn btn-setting btn-round btn-default"><i
-                            class="glyphicon glyphicon-cog"></i></a>
-                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
-                            class="glyphicon glyphicon-chevron-up"></i></a>
-                    <a href="#" class="btn btn-close btn-round btn-default"><i
-                            class="glyphicon glyphicon-remove"></i></a>
-                </div>
             </div>
 			
 			
@@ -131,37 +127,21 @@
                     <input type="text" class="form-control" id="deliverdepartment">
                 </div>
 				<br><br><br><br>
-                <div class="control-group" style="float:left">
-                    <label class="control-label" for="selectError">类型</label>
-
-                    <div class="controls">
-                        <select id="type" data-rel="chosen">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                        </select>
-                    </div>
-                </div>
 				
-				
-				<div class="control-group">
-                    <label class="control-label" for="selectError">级别</label>
-
-                    <div class="controls">
-                        <select id="level" data-rel="chosen">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                        </select>
-                    </div>
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">角色</label>
+                    <select id="emp_type" class="form-control">
+                    </select>
                 </div>
-               
+                
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">级别</label>
+                    <select id="emp_level" class="form-control">
+                            
+                    </select>
+                </div>
 
-               <br><br>
+               <br><br><br><br>
           
                
 				
