@@ -1,5 +1,8 @@
 package com.spidernet.dashboard.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Capability Area
  * 
@@ -13,6 +16,8 @@ public class CapabilityB
     private String descipion;
     private int sort;
     private int blockType;
+    private List<CCapability> cCapabilityL = new ArrayList<CCapability>();
+    private List<ProCapability> proCapabilityL = new ArrayList<ProCapability>();
 
     public String getBlockId()
     {
@@ -63,4 +68,25 @@ public class CapabilityB
     {
         this.blockType = blockType;
     }
+
+    public List<CCapability> getcCapabilityL()
+    {
+        return cCapabilityL;
+    }
+
+    public void setcCapabilityL(List<CCapability> cCapabilityL)
+    {
+        this.cCapabilityL = cCapabilityL;
+    }
+
+    public List<ProCapability> getProCapabilityL()
+    {
+        return proCapabilityL;
+    }
+
+    public void setProCapabilityL(List<ProCapability> proCapabilityL)
+    {
+        this.proCapabilityL = proCapabilityL;
+    }
+
 }

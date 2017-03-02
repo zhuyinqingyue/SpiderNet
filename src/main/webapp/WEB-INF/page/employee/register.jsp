@@ -147,7 +147,7 @@
 				
 				 <div class="form-group has-success col-md-4">
                     <label class="control-label" for="inputSuccess1">项目</label>
-                    <a href="#" class="btn btn-setting btn-default">展示</a>
+                    <a href="#" class="btn btn-setting btn-default" onclick="ViewCapability();">展示</a>
                 </div>
 				
 				<br><br><br><br>
@@ -187,8 +187,8 @@
                                 class="glyphicon glyphicon-remove"></i></a>
                     </div>
                 </div>
-                <div class="box-content">
-                    <table class="table table-striped table-bordered responsive">
+                <div id="capabilityMapAll" class="box-content">
+                    <table id="capabilityMap" class="table table-striped table-bordered responsive">
                         <thead>
                         <tr>
                             <th>领域</th>
@@ -197,70 +197,16 @@
                         </thead>
                         <tbody>
 
-
                         <tr>
-                            <td>Muhammad Usman</td>
-
-                            <td class="center">
-								<label>
-									<input type="checkbox" value="">
-									Option one is this and that
-								</label>
-													<label>
-									<input type="checkbox" value="">
-									Option one is this and that&mdash;be sure to include why it's great
-								</label>
-													<label>
-									<input type="checkbox" value="">
-									be sure to include why it's great
-								</label>
-													<label>
-									<input type="checkbox" value="">
-									Option&mdash;be sure to include why it's great
-								</label>
-                            </td>
+                            
                         </tr>
                         <tr>
-                            <td>Abraham</td>
-
-                            <td class="center">
-                                													<label>
-									<input type="checkbox" value="">
-									Option one is this and that&mdash;be sure to include why it's great
-								</label>
-													<label>
-									<input type="checkbox" value="">
-									Option one is this and that&mdash;be sure to include why it's great
-								</label>
-                            </td>
+                            
                         </tr>
                         <tr>
-                            <td>Brown Blue</td>
-
-                            <td class="center">
-                                													<label>
-									<input type="checkbox" value="">
-									Option one is this and that&mdash;be sure to include why it's great
-								</label>
-													<label>
-									<input type="checkbox" value="">
-									Option one is this and that&mdash;be sure to include why it's great
-								</label>
-                            </td>
+                            
                         </tr>
                         <tr>
-                            <td>Worth Name</td>
-
-                            <td class="center">
-                                													<label>
-									<input type="checkbox" value="">
-									Option one is this and that&mdash;be sure to include why it's great
-								</label>
-													<label>
-									<input type="checkbox" value="">
-									Option one is this and that&mdash;be sure to include why it's great
-								</label>
-                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -329,7 +275,7 @@
 <!-- application script for Charisma demo -->
 <script src="<%=path %>/js/charisma.js"></script>
 
-
+<script src="<%=path %>/js/spidernet/capabilityMap.js"></script>
 </body>
 </html>
 
