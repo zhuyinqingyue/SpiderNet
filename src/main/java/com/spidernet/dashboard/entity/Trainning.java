@@ -1,0 +1,69 @@
+package com.spidernet.dashboard.entity;
+
+public class Trainning
+{
+    private String trainningId;
+    private String courseName;
+    private String time;
+    private String location;
+    private String teacher;
+    private String url;
+    private String status;
+
+    public String getTrainningId()
+    {
+        return trainningId;
+    }
+    public void setTrainningId(String trainningId)
+    {
+        this.trainningId = trainningId;
+    }
+    public String getCourseName()
+    {
+        return courseName;
+    }
+    public void setCourseName(String courseName)
+    {
+        this.courseName = courseName;
+    }
+    public String getTime()
+    {
+        return time;
+    }
+    public void setTime(String time)
+    {
+        this.time = time;
+    }
+    public String getLocation()
+    {
+        return location;
+    }
+    public void setLocation(String location)
+    {
+        this.location = location;
+    }
+    public String getTeacher()
+    {
+        return teacher;
+    }
+    public void setTeacher(String teacher)
+    {
+        this.teacher = teacher;
+    }
+    public String getUrl()
+    {
+        return url;
+    }
+    public void setUrl(String url)
+    {
+        this.url = url;
+    }
+    public String getStatus()
+    {
+        return status;
+    }
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+}
