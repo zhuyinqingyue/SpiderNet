@@ -3,6 +3,17 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="com.spidernet.dashboard.dao.ProjectMapper">
-	
+	<resultMap id="projectMap" type="com.spidernet.dashboard.entity.Project">
+		<id property="projectId" column="PROJECT_ID" javaType="String"/>
+		<result property="buId" column="BU_ID" javaType="String"/>
+		<result property="projectName" column="NAME" javaType="String"/>
+		<result property="description" column="DESCRIPTION" javaType="String"/>
+		<result property="contactNumber" column="CONTACT_NUMBER" javaType="String"/>
+		<result property="mangerName" column="MANAGER_NAME" javaType="String"/>
+		<result property="projectStatus" column="PROJECT_STATUS" javaType="String"/>
+	</resultMap>
+	<select id="findProjectName"  parameterType="String" resultType="com.spidernet.dashboard.entity.Project">
+		select PROJECT_ID as projectId,BU_ID as buId,NAME as projectName,DESCRIPTION as description,CONTACT_NUMBER as contactNumber,MANAGER_NAME as mangerName,PROJECT_STATUS as projectStatus from t_project  WHERE PROJECT_ID = #{projectId}  
+	</select>
 
 </mapper>
