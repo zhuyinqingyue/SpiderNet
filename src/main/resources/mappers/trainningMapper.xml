@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spidernet.dashboard.dao.TrainningMapper">
+	<resultMap id="trainningMap" type="com.spidernet.dashboard.entity.Trainning">
+		<id property="trainningId" column="TRAINING_ID" javaType="String" />
+		<result property="courseName" column="COURSE_NAME" javaType="String" />
+		<result property="time" column="TIME" javaType="String" />
+		<result property="location" column="LOCATION" javaType="String" />
+		<result property="teacher" column="TEACHER" javaType="String" />
+		<result property="url" column="URL" javaType="String" />
+		<result property="status" column="STATUS" javaType="String" />
+	</resultMap>
+
+	<select id="fetchAllTrainning" parameterType="String" resultMap="trainningMap">
+		select TRAINING_ID, COURSE_NAME, DATE_FORMAT(TIME,'%Y-%m-%d %H:%i') as time, LOCATION, TEACHER, URL, STATUS
+		from t_training where TRAINING_ID in (select TRAINING_ID FROM
+		t_training_knowledge_list where CAPABILITY_ID =
+		#{capabilityId});
+	</select>
+
+</mapper>
