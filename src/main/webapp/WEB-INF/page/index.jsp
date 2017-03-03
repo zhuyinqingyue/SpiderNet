@@ -55,7 +55,9 @@
 <link rel="shortcut icon" href="img/favicon.ico">
 
 </head>
-
+<script>
+var path='<%=path%>';
+</script>
 <body>
 	<!-- topbar starts -->
 	<c:import url="/service/top" />

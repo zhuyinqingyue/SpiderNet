@@ -3,7 +3,7 @@ $("#myCourse").click(
 		e.preventDefault();
 
 		$.ajax({
-				url : "../../SpiderNet/service/trainningList",
+				url : path + "/service/trainningList",
 				type : "post",
 				async : true,
 				cache : false,
