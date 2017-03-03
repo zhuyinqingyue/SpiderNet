@@ -32,7 +32,9 @@
     <link href='<%=path %>/css/jquery.iphone.toggle.css' rel='stylesheet'>
     <link href='<%=path %>/css/uploadify.css' rel='stylesheet'>
     <link href='<%=path %>/css/animate.min.css' rel='stylesheet'>
-
+	<script type="text/javascript">
+		var path = "<%=path%>";
+	</script>
     <!-- jQuery -->
     <script src="<%=path %>/bower_components/jquery/jquery.min.js"></script>
 
@@ -122,11 +124,7 @@
                 </div>
 				<br><br><br><br>
 				
-				 <div class="form-group has-success col-md-4">
-                    <label class="control-label" for="inputSuccess1">交付部</label>
-                    <input type="text" class="form-control" id="deliverdepartment">
-                </div>
-				<br><br><br><br>
+				 
 				
                 <div class="form-group has-success col-md-4">
                     <label class="control-label" for="inputSuccess1">角色</label>
@@ -142,11 +140,21 @@
                 </div>
 
                <br><br><br><br>
-          
                
+               <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">交付部</label>
+                    <input type="text" class="form-control" id="deliverDepartment">
+                </div>
+                &nbsp&nbsp&nbsp&nbsp
+                
+                <div class="form-group has-success col-md-4">
+                    <label class="control-label" for="inputSuccess1">项目</label>
+                    <input type="text" class="form-control" id=projectName>
+                </div>
+				<br><br><br><br>
 				
 				 <div class="form-group has-success col-md-4">
-                    <label class="control-label" for="inputSuccess1">项目</label>
+                    <label class="control-label" for="inputSuccess1">能力地图</label>
                     <a href="#" class="btn btn-setting btn-default" onclick="ViewCapability();">展示</a>
                 </div>
 				

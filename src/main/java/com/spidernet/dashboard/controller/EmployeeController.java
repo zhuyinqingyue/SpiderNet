@@ -38,17 +38,21 @@ public class EmployeeController {
     {
         logger.info("debug------test----");
         
-        System.out.println("######");
-        
         HttpSession session = request.getSession();
         
         Employee employee = new Employee();
         
         employee = (Employee) session.getAttribute("employee");
         
-        System.out.println(employee.getBuId());
-        
         return employee;
+    }
+    
+    @RequestMapping("/index")
+    public String index(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        logger.info("debug------test----");
+        return "index";
     }
 
 

@@ -6,12 +6,16 @@ $(function(){
 	
 	loadempinfo();
 	
+	loadProjectName();
+	
+	loadDepartmentName();
+	
 });
 
 
 function loadlevel(){
 	$.ajax({
-		url:'http://localhost:8085/SpiderNet/service/level/queryAll',
+		url:path+"/service/level/queryAll",
 		dataType:"json",
 		async:true,
 		//data:"",
@@ -27,7 +31,7 @@ function loadlevel(){
 
 function loadtype(){
 	$.ajax({
-		url:'http://localhost:8085/SpiderNet/service/type/queryAll',
+		url:path+'/service/type/queryAll',
 		dataType:"json",
 		async:true,
 		//data:"",
@@ -44,7 +48,7 @@ function loadtype(){
 
 function loadempinfo(){
 	$.ajax({
-		url:'http://localhost:8085/SpiderNet/service/employee/queryEmpInfo',
+		url:path+'/service/employee/queryEmpInfo',
 		dataType:"json",
 		async:true,
 		//data:"",
@@ -53,6 +57,32 @@ function loadempinfo(){
 		success:function(employee){
 			$("#BU_id").val(employee.buId);
 			$("#project_id").val(employee.projectId);
+		}
+	})
+}
+
+function loadProjectName(){
+	$.ajax({
+		url:path+'/service/project/queryProjectName',
+		dataType:"json",
+		async:true,
+		cache:false,
+		type:"post",
+		success:function(project){
+			$("#projectName").val(project.projectName);
+		}
+	})
+}
+
+function loadDepartmentName(){
+	$.ajax({
+		url:path+'/service/bu/queryBuName',
+		dataType:"json",
+		async:true,
+		cache:false,
+		type:"post",
+		success:function(bu){
+			$("#deliverDepartment").val(bu.buName);
 		}
 	})
 }
