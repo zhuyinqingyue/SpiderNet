@@ -48,7 +48,6 @@
     
     <!-- default loading -->
     <script type="text/javascript" src="<%=path %>/js/register.js"></script>
-    
 
 </head>
 
@@ -219,7 +218,7 @@
                         </tbody>
                     </table>
 					<div class="center">
-						<a class="btn btn-success" href="#">
+						<a class="btn btn-success" href="#" onclick="SaveCapabilityMap();">
 							<i class="glyphicon glyphicon-ok icon-white"></i>
 							保存
 						</a>
@@ -227,7 +226,7 @@
 							<i class="glyphicon glyphicon-remove icon-white"></i>
 							取消
 						</a>
-						<a class="btn btn-danger" href="#">
+						<a class="btn btn-danger" href="#" onclick="CanelCheckBox();">
 							<i class="glyphicon glyphicon-repeat icon-white"></i>
 							重置
 						</a>
