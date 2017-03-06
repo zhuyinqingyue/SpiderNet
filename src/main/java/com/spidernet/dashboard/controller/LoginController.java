@@ -19,6 +19,7 @@ import com.spidernet.util.Constants;
 
 @Controller
 @SessionAttributes("employeeTemp")
+@RequestMapping("/manage")
 public class LoginController
 {
     @Resource
@@ -55,7 +56,7 @@ public class LoginController
         return "footer";
     }
 
-    @RequestMapping("/checkUser")
+    @RequestMapping("/login")
     public ModelAndView checkUser(final HttpServletRequest request,
             final HttpServletResponse response, Employee employee)
     {
@@ -101,4 +102,12 @@ public class LoginController
         }
     }
 
+    @RequestMapping("/logout")
+    public String logout(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        request.getSession().removeAttribute("employee");
+        request.getSession().removeAttribute("SystemName");
+        return "login";
+    }
 }

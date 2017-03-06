@@ -61,7 +61,7 @@
 						            <div class="title" style="font-family:segoesc;font-size:35px;color:#FFFFFF">
 						               SpiderNet
 						            </div>
-						            <form class="form-horizontal" action="<%=path %>/service/checkUser" method="post">
+						            <form class="form-horizontal" action="<%=path %>/service/manage/login" method="post">
 						                <fieldset>
 											
 						                    <div type="text" class="username">用户名</div>

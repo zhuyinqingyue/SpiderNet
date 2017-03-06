@@ -53,13 +53,13 @@
 
 <body>
     <!-- topbar starts -->
-   <c:import url="/service/top"/>
+   <c:import url="/service/manage/top"/>
     <!-- topbar ends -->
 <div class="ch-container">
     <div class="row">
         
         <!-- left menu starts -->
-       <c:import url="/service/left"/>
+       <c:import url="/service/manage/left"/>
         <!-- left menu ends -->
 
 
@@ -243,7 +243,7 @@
 
     
 
-   <c:import url="/service/footer"/>
+   <c:import url="/service/manage/footer"/>
 
 </div><!--/.fluid-container-->
 

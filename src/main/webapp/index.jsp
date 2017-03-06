@@ -4,5 +4,5 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <script type="text/javascript">
- window.location.href="<%=path%>/service/loginPage"; 
+ window.location.href="<%=path%>/service/manage/loginPage"; 
 </script>

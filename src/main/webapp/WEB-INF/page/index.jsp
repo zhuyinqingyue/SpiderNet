@@ -60,12 +60,12 @@ var path='<%=path%>';
 </script>
 <body>
 	<!-- topbar starts -->
-	<c:import url="/service/top" />
+	<c:import url="/service/manage/top" />
 	<!-- topbar ends -->
 	<div class="ch-container">
 		<div class="row">
 			<!-- left menu starts -->
-			<c:import url="/service/left" />
+			<c:import url="/service/manage/left" />
 			<!-- left menu ends -->
 			<div id="content" class="col-lg-10 col-sm-10">
 				<!-- content starts -->
@@ -265,7 +265,7 @@ var path='<%=path%>';
 			</div>
 		</div>
 
-		<c:import url="/service/footer" />
+		<c:import url="/service/manage/footer" />
 
 	</div>
 	<!--/.fluid-container-->
