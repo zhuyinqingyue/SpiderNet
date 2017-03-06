@@ -3,7 +3,7 @@ $("#myCourse").click(
 		e.preventDefault();
 
 		$.ajax({
-				url : path + "/service/trainningList",
+				url : path + "/service/trainning/personalTrainningList",
 				type : "post",
 				async : true,
 				cache : false,
@@ -54,7 +54,7 @@ $("#myCourse").click(
 			});
 })
 
-$("#selectAll").click(function() {
+/*$("#selectAll").click(function() {
 	if ($("#selectAll").prop("checked")) {
 		$(":checkbox").prop("checked", true);
 	} else {
@@ -77,4 +77,4 @@ function setSelectAll() {
 
 $("#resetButton").click(function(){
 	$(":checkbox").prop("checked", false);
-})
+})*/
