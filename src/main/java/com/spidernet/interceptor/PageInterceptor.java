@@ -20,12 +20,19 @@ public class PageInterceptor extends HandlerInterceptorAdapter
             HttpServletResponse response, Object handler) throws Exception
     {
         String requestUri = request.getRequestURI();
+
+        final Employee emp = (Employee) request.getSession()
+                .getAttribute("employee");
+        if (emp != null && requestUri.indexOf("service/manage/login") > 0)
+        {
+            request.getRequestDispatcher("/service/employee/index")
+                    .forward(request, response);
+            return false;
+        }
         if (noFilter(requestUri))
         {
             return true;
         }
-        final Employee emp = (Employee) request.getSession()
-                .getAttribute("employee");
 
         if (emp == null && requestUri.indexOf("/service/") >= 0)
         {
