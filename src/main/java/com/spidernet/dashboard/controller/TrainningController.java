@@ -16,6 +16,7 @@ import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.service.TrainningService;
 
 @Controller
+@RequestMapping("/trainning")
 public class TrainningController
 {
     @Resource
@@ -24,7 +25,7 @@ public class TrainningController
     private static Logger logger = LoggerFactory
             .getLogger(TrainningController.class);
 
-    @RequestMapping("/trainningList")
+    @RequestMapping("/personalTrainningList")
     @ResponseBody
     public Object trainningList(final HttpServletRequest request,
             final HttpServletResponse response)
