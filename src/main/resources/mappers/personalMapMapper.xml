@@ -13,11 +13,12 @@
 		<result property="projectId" column="PROJECT_ID" javaType="String" />
 		<result property="detail" column="DETAIL" javaType="String" />
 		<result property="status" column="STATUS" javaType="String" />
+		<result property="statusFlag" column="STATUSFLAG" javaType="int" />
 	</resultMap>
 
 	<insert id="addPersonalMap" parameterType="com.spidernet.dashboard.entity.PersonalMap">
-		insert into t_personal_map (PERSONAL_MAP_ID,PRO_CAPABILITY_ID,COMM_CAPABILITY_ID,EMP_TYPE_ID,EMP_LEVEL_ID,EMPLOYEE_ID,BU_ID,PROJECT_ID,DETAIL,STATUS)
+		insert into t_personal_map (PERSONAL_MAP_ID,PRO_CAPABILITY_ID,COMM_CAPABILITY_ID,EMP_TYPE_ID,EMP_LEVEL_ID,EMPLOYEE_ID,BU_ID,PROJECT_ID,DETAIL,STATUS,STATUSFLAG)
 		values
-		(#{personalMapId},'','',#{empTypeId},#{empLevelId},#{employeeId},#{buId},#{projectId},#{detail},#{status})
+		(#{personalMapId},'','',#{empTypeId},#{empLevelId},#{employeeId},#{buId},#{projectId},#{detail},#{status},#{statusFlag})
 	</insert>
 </mapper>

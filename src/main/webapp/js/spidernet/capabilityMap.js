@@ -86,7 +86,7 @@ function SaveCapabilityMap()
 			{
 				if (cL.eq(k).is(':checked'))
 				{
-					saveHtml+="{'proCapabilityId':'"+cL.eq(k).attr("proCapabilityId")+"', 'blockId':'"+cMtr.eq(j).find("td").eq(0).attr("blockId")+"', 'name':'"+cL.eq(k).attr("name")+"','url':'"+cL.eq(k).attr("url")+"'},";
+					saveHtml+="{'proCapabilityId':'"+cL.eq(k).attr("proCapabilityId")+"', 'blockId':'"+cMtr.eq(j).find("td").eq(0).attr("blockId")+"', 'name':'"+cL.eq(k).attr("name")+"','url':'"+cL.eq(k).attr("url")+"','status':''},";
 				}
 			}
 			saveHtml+="]},";
@@ -99,7 +99,7 @@ function SaveCapabilityMap()
 			{
 				if (cL.eq(k).is(':checked'))
 				{
-				saveHtml+="{'commCapabilityId':'"+cL.eq(k).attr("commCapabilityId")+"', 'blockId':'"+cMtr.eq(j).find("td").eq(0).attr("blockId")+"', 'name':'"+cL.eq(k).attr("name")+"','url':'"+cL.eq(k).attr("url")+"'},";
+				saveHtml+="{'commCapabilityId':'"+cL.eq(k).attr("commCapabilityId")+"', 'blockId':'"+cMtr.eq(j).find("td").eq(0).attr("blockId")+"', 'name':'"+cL.eq(k).attr("name")+"','url':'"+cL.eq(k).attr("url")+"','status':''},";
 				}
 			}
 			saveHtml+="]},";
