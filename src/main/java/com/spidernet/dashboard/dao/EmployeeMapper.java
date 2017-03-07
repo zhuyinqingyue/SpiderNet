@@ -9,4 +9,5 @@ public interface EmployeeMapper
     Employee fetchByHrNumber(String hrNumber);
     Employee accountValidByErNumber(Employee employee);
     Employee accountValidByHrNumber(Employee employee);
+    int addEmployee(Employee employee);
 }

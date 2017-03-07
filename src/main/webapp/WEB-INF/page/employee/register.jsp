@@ -159,7 +159,7 @@
 				
 				<br><br><br><br>
 				
-				<button type="submit" class="btn btn-default">提交</button>
+				<button type="submit" class="btn btn-default" onclick="RegCapabilityMap()">提交</button>
             
              </form>  
             </div>
@@ -203,32 +203,16 @@
                         </tr>
                         </thead>
                         <tbody>
-
-                        <tr>
-                            
-                        </tr>
-                        <tr>
-                            
-                        </tr>
-                        <tr>
-                            
-                        </tr>
-                        <tr>
-                        </tr>
                         </tbody>
                     </table>
 					<div class="center">
-						<a class="btn btn-success" href="#" onclick="SaveCapabilityMap();">
+						<a class="btn btn-success" href="#" data-dismiss="modal">
 							<i class="glyphicon glyphicon-ok icon-white"></i>
-							保存
+							确定
 						</a>
 						<a class="btn btn-info" href="#" data-dismiss="modal">
 							<i class="glyphicon glyphicon-remove icon-white"></i>
 							取消
-						</a>
-						<a class="btn btn-danger" href="#" onclick="CanelCheckBox();">
-							<i class="glyphicon glyphicon-repeat icon-white"></i>
-							重置
 						</a>
 					</div>
                 </div>

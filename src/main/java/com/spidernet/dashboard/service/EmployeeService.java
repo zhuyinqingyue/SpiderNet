@@ -9,4 +9,5 @@ public interface EmployeeService
     Employee accountValidByHrNumber(Employee employee);
     Employee fetchByErNumber(String erNumber);
     Employee fetchByHrNumber(String hrNumber);
+    Boolean addEmployee(Employee employee);
 }

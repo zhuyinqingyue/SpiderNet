@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spidernet.dashboard.dao.PersonalMapMapper">
+	<resultMap id="userMap" type="com.spidernet.dashboard.entity.PersonalMap">
+		<id property="personalMapId" column="PERSONAL_MAP_ID" javaType="String" />
+		<result property="proCapabilityId" column="PRO_CAPABILITY_ID" javaType="String" />
+		<result property="commCapabilityId" column="COMM_CAPABILITY_ID" javaType="String" />
+		<result property="empTypeId" column="EMP_TYPE_ID" javaType="String" />
+		<result property="empLevelId" column="EMP_LEVEL_ID" javaType="String" />
+		<result property="employeeId" column="EMPLOYEE_ID" javaType="String" />
+		<result property="buId" column="BU_ID" javaType="String" />
+		<result property="projectId" column="PROJECT_ID" javaType="String" />
+		<result property="detail" column="DETAIL" javaType="String" />
+		<result property="status" column="STATUS" javaType="String" />
+	</resultMap>
+
+	<insert id="addPersonalMap" parameterType="com.spidernet.dashboard.entity.PersonalMap">
+		insert into t_personal_map (PERSONAL_MAP_ID,PRO_CAPABILITY_ID,COMM_CAPABILITY_ID,EMP_TYPE_ID,EMP_LEVEL_ID,EMPLOYEE_ID,BU_ID,PROJECT_ID,DETAIL,STATUS)
+		values
+		(#{personalMapId},'','',#{empTypeId},#{empLevelId},#{employeeId},#{buId},#{projectId},#{detail},#{status})
+	</insert>
+</mapper>

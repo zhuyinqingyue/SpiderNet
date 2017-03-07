@@ -56,4 +56,17 @@ public class EmployeeServiceImpl implements EmployeeService
         Employee employee = userMapper.fetchByHrNumber(hrNumber);
         return employee;
     }
+    
+    @Override
+    public Boolean addEmployee(Employee employee)
+    {
+        if (userMapper.addEmployee(employee) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
