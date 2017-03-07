@@ -268,10 +268,14 @@ $(document).ready(function() {
 						</h2>
 
 						<div class="box-icon">
-							<a href="#" class="btn btn-minimize btn-round btn-default"><i
-								class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+							<a href="#" class="btn btn-round btn-default  btn-minimize "><i
+								class="glyphicon glyphicon-chevron-up"></i></a> 
+								<a class="btn btn-round btn-default" href="#" data-dismiss="modal"> <i
+								class="glyphicon glyphicon-remove"></i> 
+							</a>
+								<!-- <a href="#"
 								class="btn btn-close btn-round btn-default" data-dismiss="modal"><i
-								class="glyphicon glyphicon-remove"></i></a>
+								class="glyphicon glyphicon-remove"></i></a> -->
 						</div>
 					</div>
 					<div id="capabilityMapAll" class="box-content">
