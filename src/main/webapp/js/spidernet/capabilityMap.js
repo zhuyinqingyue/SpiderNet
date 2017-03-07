@@ -1,8 +1,9 @@
-function ViewCapability()
+function ViewCapability(projectId)
 {
+	$('#myModal').modal('show');
 var url = path+"/service/capability/viewCCapability";
 var buId = $("#BU_id").val();
-var projectId = $("#project_id").val();
+var projectId = projectId;
 var empLevelId = $("#emp_level").val();
 var empTypeId = $("#emp_type").val();
 // var data = JSON.stringify(obj);
@@ -109,11 +110,11 @@ function SaveCapabilityMap()
 	return saveHtml;
 }
 
-function RegCapabilityMap()
+function RegCapabilityMap(obj)
 {
 	var saveC = SaveCapabilityMap();
 	var buId = $("#BU_id").val();
-	var projectId = $("#project_id").val();
+	var projectId = $("#projectName").val();
 	var empLevelId = $("#emp_level").val();
 	var empTypeId = $("#emp_type").val();
 	var erId = $("#er").val();
@@ -134,7 +135,9 @@ function RegCapabilityMap()
         {
         	if (data)
     		{
-        		alert("注册成功!");
+        		var $form     = $(obj);
+        		$form.find('.alert').html('注册成功，用户 ' +name+'可登录').show();
+        		//alert("注册成功!");
     		}
         	else
     		{

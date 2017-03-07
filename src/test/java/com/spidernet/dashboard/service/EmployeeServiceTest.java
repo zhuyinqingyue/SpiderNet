@@ -15,7 +15,8 @@ public class EmployeeServiceTest
 {
     @Resource
     EmployeeService empService;
-
+    @Resource
+    ProjectService projectService;
     @Test
     public void seachUserByHRNum()
     {
@@ -24,4 +25,5 @@ public class EmployeeServiceTest
         employee.setPassword("admin");
         empService.accountValidByErNumber(employee);
     }
+   
 }

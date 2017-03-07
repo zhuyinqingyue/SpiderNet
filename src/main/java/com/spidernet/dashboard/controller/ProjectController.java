@@ -1,5 +1,7 @@
 package com.spidernet.dashboard.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +35,7 @@ public class ProjectController
 
     @RequestMapping("/queryProjectName")
     @ResponseBody
-    public Object queryAll(final HttpServletRequest request,
+    public Object queryProjectName(final HttpServletRequest request,
             final HttpServletResponse response)
     {
         logger.info("debug------test----");
@@ -49,6 +51,21 @@ public class ProjectController
         Project project = projectService.findProjectName(projectId);
         
         return project;
+    }
+    
+    
+    @RequestMapping("/queryAll")
+    @ResponseBody
+    public Object queryAll(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        logger.info("debug------test----");
+        
+        String buId = request.getParameter("buId");
+        
+        List<Project> listP = projectService.queryProject(buId);
+        
+        return listP;
     }
 
 }

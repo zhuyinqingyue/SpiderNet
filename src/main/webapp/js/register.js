@@ -6,11 +6,12 @@ $(function(){
 	
 	loadempinfo();
 	
-	loadProjectName();
+	//loadProject();
 	
 	loadDepartmentName();
 	
 });
+
 
 
 function loadlevel(){
@@ -56,20 +57,25 @@ function loadempinfo(){
 		type:"post",
 		success:function(employee){
 			$("#BU_id").val(employee.buId);
-			$("#project_id").val(employee.projectId);
+			//$("#project_id").val(employee.projectId);
+			loadProject();
 		}
 	})
 }
 
-function loadProjectName(){
+function loadProject(){
+	var buId = $("#BU_id").val();
 	$.ajax({
-		url:path+'/service/project/queryProjectName',
+		url:path+'/service/project/queryAll',
 		dataType:"json",
 		async:true,
+		data:{buId},
 		cache:false,
 		type:"post",
-		success:function(project){
-			$("#projectName").val(project.projectName);
+		success:function(listP){
+			for(var i = 0;i<listP.length;i++){
+				$("#projectName").append("<option value='"+listP[i].projectId+"'>"+listP[i].projectName+"</option>");
+			}
 		}
 	})
 }
@@ -86,3 +92,4 @@ function loadDepartmentName(){
 		}
 	})
 }
+

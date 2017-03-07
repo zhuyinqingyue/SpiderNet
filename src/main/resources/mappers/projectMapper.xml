@@ -15,5 +15,9 @@
 	<select id="findProjectName"  parameterType="String" resultType="com.spidernet.dashboard.entity.Project">
 		select PROJECT_ID as projectId,BU_ID as buId,NAME as projectName,DESCRIPTION as description,CONTACT_NUMBER as contactNumber,MANAGER_NAME as mangerName,PROJECT_STATUS as projectStatus from t_project  WHERE PROJECT_ID = #{projectId}  
 	</select>
+	
+	<select id="queryProject" parameterType="String" resultMap="projectMap">
+		SELECT * FROM t_project WHERE BU_ID = #{buId} 
+	</select>
 
 </mapper>
