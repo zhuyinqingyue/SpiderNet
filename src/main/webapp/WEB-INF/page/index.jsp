@@ -34,7 +34,7 @@
 	href='<%=path %>/bower_components/responsive-tables/responsive-tables.css'
 	rel='stylesheet'>
 <link
-	href='<%=path %>/bower_components/bootstrap-tour/build/<%=path %>/css/bootstrap-tour.min.css'
+	href='<%=path %>/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css'
 	rel='stylesheet'>
 <link href='<%=path %>/css/jquery.noty.css' rel='stylesheet'>
 <link href='<%=path %>/css/noty_theme_default.css' rel='stylesheet'>

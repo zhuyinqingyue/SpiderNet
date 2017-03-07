@@ -1,5 +1,8 @@
 package com.spidernet.dashboard.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +28,16 @@ public class ProjectServiceImpl implements ProjectService
         Project project = projectMapper.findProjectName(projectId);
         
         return project;
+    }
+
+    @Override
+    public List<Project> queryProject(String buId)
+    {
+        List<Project> listP = new ArrayList();
+        
+        listP = projectMapper.queryProject(buId);
+        
+        return listP;
     }
 
 }

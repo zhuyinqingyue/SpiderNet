@@ -1,5 +1,7 @@
 package com.spidernet.dashboard.service;
 
+import java.util.List;
+
 import com.spidernet.dashboard.entity.Project;
 
 /**
@@ -10,4 +12,6 @@ import com.spidernet.dashboard.entity.Project;
 public interface ProjectService
 {
     Project findProjectName(String projectId);
+    
+    List<Project> queryProject(String buId);
 }
