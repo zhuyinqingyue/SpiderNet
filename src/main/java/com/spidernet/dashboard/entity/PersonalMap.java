@@ -26,6 +26,8 @@ public class PersonalMap
     private String detail;
     
     private String status;
+    
+    private int statusFlag;
 
     public String getPersonalMapId()
     {
@@ -125,6 +127,16 @@ public class PersonalMap
     public void setStatus(String status)
     {
         this.status = status;
+    }
+
+    public int getStatusFlag()
+    {
+        return statusFlag;
+    }
+
+    public void setStatusFlag(int statusFlag)
+    {
+        this.statusFlag = statusFlag;
     }
 
 

@@ -193,6 +193,7 @@ public class CapabilityBController
         personalMapTemp.setEmpTypeId(empTypeId);
         personalMapTemp.setEmpLevelId(empLevelId);
         personalMapTemp.setDetail(capabilityStr);
+        personalMapTemp.setStatusFlag(1);
         personalMapTemp.setStatus("");
         
         saveC = personalMapService.addPersonalMap(personalMapTemp);
