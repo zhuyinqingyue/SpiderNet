@@ -1,11 +1,17 @@
 package com.spidernet.dashboard.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Public Capability Area
  * 
  * @author Hurricane
  *
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "commCapabilityId", "blockId", "name", "description", "sort", "url", "parentId", "buList" })
 public class CCapability
 {
 

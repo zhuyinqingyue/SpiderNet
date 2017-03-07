@@ -3,12 +3,20 @@ package com.spidernet.dashboard.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Capability Area
  * 
  * @author Hurricane
  *
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "blockId", "name", "descipion", "sort", "blockType", "cCapabilityL", "proCapabilityL" })
 public class CapabilityB
 {
     private String blockId;
@@ -16,7 +24,11 @@ public class CapabilityB
     private String descipion;
     private int sort;
     private int blockType;
+    @XmlElementWrapper(name = "cCapabilityL")
+    @XmlElement(name = "cCapability")
     private List<CCapability> cCapabilityL = new ArrayList<CCapability>();
+    @XmlElementWrapper(name = "proCapabilityL")
+    @XmlElement(name = "proCapability")
     private List<ProCapability> proCapabilityL = new ArrayList<ProCapability>();
 
     public String getBlockId()

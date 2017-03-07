@@ -11,6 +11,7 @@
 		<result property="erNumber" column="ER_NUMBER" javaType="String" />
 		<result property="hrNumber" column="HR_NUMBER" javaType="String" />
 		<result property="name" column="NAME" javaType="String" />
+		<result property="eName" column="ENAME" javaType="String" />
 		<result property="password" column="PASSWORD" javaType="String" />
 		<result property="wechatOpenId" column="WECHAT_OPEN_ID"
 			javaType="String" />
@@ -18,7 +19,7 @@
 	<sql id="Base_Column_List">
 		EMPLOYEE_ID AS employeeId, BU_ID AS buId, PROJECT_ID AS
 		projectId, EMP_TYPE_ID AS empTypeId, EMP_LEVEL_ID AS empLevelId,
-		ER_NUMBER AS erNumber, HR_NUMBER AS hrNumber, NAME, PASSWORD,
+		ER_NUMBER AS erNumber, HR_NUMBER AS hrNumber, NAME, ENAME AS eName, PASSWORD,
 		WECHAT_OPEN_ID AS wechatOpenId
 	</sql>
 	<select id="accountValid" parameterType="com.spidernet.dashboard.entity.Employee"
@@ -67,4 +68,9 @@
 		from t_employee where HR_NUMBER = #{hrNumber}
 	</select>
 
+	<insert id="addEmployee" parameterType="com.spidernet.dashboard.entity.Employee">
+		insert into t_employee (EMPLOYEE_ID,BU_ID,PROJECT_ID,EMP_TYPE_ID,EMP_LEVEL_ID,ER_NUMBER,HR_NUMBER,NAME,ENAME,PASSWORD,WECHAT_OPEN_ID)
+		values
+		(#{employeeId},#{buId},#{projectId},#{empTypeId},#{empLevelId},#{erNumber},#{hrNumber},#{name},#{eName},'123456','')
+	</insert>
 </mapper>

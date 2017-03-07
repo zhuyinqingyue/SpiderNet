@@ -1,11 +1,17 @@
 package com.spidernet.dashboard.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Private Capability Area
  * 
  * @author Hurricane
  *
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = { "proCapabilityId", "blockId", "buId", "projectId", "empLevelId", "name", "description", "sort", "url", "empTypeId" })
 public class ProCapability
 {
 
