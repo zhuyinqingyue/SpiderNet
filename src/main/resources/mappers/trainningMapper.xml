@@ -15,7 +15,7 @@
 	<select id="fetchAllTrainning" parameterType="String" resultMap="trainningMap">
 		select TRAINING_ID, COURSE_NAME, DATE_FORMAT(TIME,'%Y-%m-%d %H:%i') as time, LOCATION, TEACHER, URL, STATUS
 		from t_training where TRAINING_ID in (select TRAINING_ID FROM
-		t_training_knowledge_list where CAPABILITY_ID =
+		t_capability_training where CAPABILITY_ID =
 		#{capabilityId});
 	</select>
 
