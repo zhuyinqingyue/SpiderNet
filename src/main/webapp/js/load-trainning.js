@@ -1,3 +1,5 @@
+var personalTrainningList = null;
+
 $("#myCourse").click(
 	function(e) {
 		e.preventDefault();
@@ -12,7 +14,11 @@ $("#myCourse").click(
 						+ "5721b3b036f74b6c9441724e9f2bc063",
 				timeout : 20000,
 				success : function(trainningList) {
+					personalTrainningList = trainningList;
+
 					$("#trainningListTable tbody").remove();
+					$("#myModalClass").find('.alert').html('Your trainning have submitted successfully').hide();
+
 					var tbody = $("<tbody>");
 					tbody.appendTo($("#trainningListTable"));
 
@@ -20,7 +26,7 @@ $("#myCourse").click(
 						var tr = $("<tr></tr>");
 						tr.appendTo(tbody);
 
-						var td1 = $("<td> <input type='checkbox' id='subCheck' onclick='setSelectAll()'> </td>");
+						var td1 = $("<td> <input type='checkbox' id='subCheck' > </td>");
 						var td2 = $("<td>"
 								+ trainningList[i].courseName
 								+ "</td>");
@@ -33,9 +39,9 @@ $("#myCourse").click(
 						var td5 = $("<td>"
 								+ trainningList[i].teacher
 								+ "</td>");
-						var td6 = $("<td>"
+						var td6 = $("<td><a href='#'>"
 								+ trainningList[i].url
-								+ "</td>");
+								+ "</a></td>");
 						var td7 = $("<td>"
 								+ trainningList[i].status
 								+ "</td>");
@@ -54,6 +60,38 @@ $("#myCourse").click(
 			});
 })
 
+$("#trainningSubmitBtn").click(function(e){
+	var selectedHtmlArray = [];
+	var cMtr = $("#trainningListTable tbody tr");
+	var selectedHtml = "";
+
+	for (var i = 0; i < cMtr.length; i++) {
+		var tempNode = cMtr.eq(i).find("td").find("input");
+
+		if (tempNode.is(':checked')) {
+			selectedHtml = "{'trainningId':'"+personalTrainningList[i].trainningId+"','status':'"+personalTrainningList[i].status+"'}";
+			selectedHtmlArray.push(selectedHtml);
+		}
+	}
+
+	$.ajax({
+		url : path + "/service/trainning/addPersonalTrainningDetl",
+		type : "post",
+		async : true,
+		cache : false,
+		dataType : "json",
+		data : {'selectedTrainningArray' : JSON.stringify(selectedHtmlArray)},
+		timeout : 20000,
+		success : function(data) {
+			if (data) {
+				$("#myModalClass").find('.alert').html('Your trainning have submitted successfully').show();
+				//alert("Success");
+			} else {
+				$("#myModalClass").find('.alert').html('Please select your trainning').show();
+			}
+		}
+	});
+})
 /*$("#selectAll").click(function() {
 	if ($("#selectAll").prop("checked")) {
 		$(":checkbox").prop("checked", true);
