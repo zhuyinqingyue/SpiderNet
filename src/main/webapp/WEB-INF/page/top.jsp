@@ -23,9 +23,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                     <li><a href="#">个人信息</a></li>
+<!--                      <li><a href="#">个人信息</a></li>
 					 <li><a href="#">密码修改</a></li>
-                    <li class="divider"></li>
+ -->                    <li class="divider"></li>
                     <li><a href="<%=path %>/service/manage/logout.html">注销</a></li>
                 </ul>
             </div>

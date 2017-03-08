@@ -96,7 +96,7 @@ var path='<%=path%>';
 										<tr>
 											<td rowspan="3">行业知识</td>
 											<td>java</td>
-											<td class="center"><a href="#" id="myCourse">我的课程</a></td>
+											<td class="center"><a href="#" id="myCourse">培训课程</a></td>
 											<td class="center"><a href="#" id="myExam">我的考试</a></td>
 											<td class="center"><span
 												class="label-success label label-default">Pass</span></td>
@@ -170,13 +170,14 @@ var path='<%=path%>';
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">我的课程</h4>
+						<h4 class="modal-title" id="myModalLabel">培训课程</h4>
 					</div>
 					<div class="modal-body">
 						<div class="box">
 							<div class="box-inner">
 
 								<div class="box-content">
+									<div class="alert alert-success" style="display: none;"></div>
 									<table class="table" id="trainningListTable">
 										<thead>
 											<tr>
@@ -201,7 +202,7 @@ var path='<%=path%>';
 
 							<div style="text-align: right;"
 								class="col-md-4 col-md-offset-4 pull-right">
-								<button type="button" class="btn btn-primary">提交</button>
+								<button type="button" class="btn btn-primary" id="trainningSubmitBtn">提交</button>
 							</div>
 						</div>
 					</div>
@@ -255,7 +256,7 @@ var path='<%=path%>';
 
 							<div style="text-align: right;"
 								class="col-md-4 col-md-offset-4 pull-right">
-								<button type="button" class="btn btn-primary">提交</button>
+								<button type="button" class="btn btn-primary" id="examSubmitBtn">提交</button>
 							</div>
 						</div>
 					</div>
