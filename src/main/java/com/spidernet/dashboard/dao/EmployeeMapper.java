@@ -10,4 +10,6 @@ public interface EmployeeMapper
     Employee accountValidByErNumber(Employee employee);
     Employee accountValidByHrNumber(Employee employee);
     int addEmployee(Employee employee);
+    int checkErExists(String erNumber);
+    int checkHrExists(String hrNumber);
 }

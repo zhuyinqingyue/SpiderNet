@@ -73,4 +73,12 @@
 		values
 		(#{employeeId},#{buId},#{projectId},#{empTypeId},#{empLevelId},#{erNumber},#{hrNumber},#{name},#{eName},'123456','')
 	</insert>
+	
+	<select id="checkErExists" parameterType="String" resultType="int">
+	    select count(0) from t_employee where ER_NUMBER = #{erNumber}
+	</select>
+	
+	<select id="checkHrExists" parameterType="String" resultType="int">
+	    select count(0) from t_employee where HR_NUMBER = #{hrNumber}
+	</select>
 </mapper>

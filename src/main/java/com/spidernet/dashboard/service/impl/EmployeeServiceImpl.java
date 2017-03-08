@@ -69,4 +69,24 @@ public class EmployeeServiceImpl implements EmployeeService
             return false;
         }
     }
+
+    @Override
+    public Boolean checkErExists(String erNumber)
+    {
+        if(userMapper.checkErExists(erNumber)>0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    @Override
+    public Boolean checkHrExists(String hrNumber)
+    {
+        if(userMapper.checkHrExists(hrNumber)>0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

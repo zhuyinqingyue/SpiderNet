@@ -153,7 +153,7 @@
 									<br />
 
 									<div class="form-group">
-										
+
 
 										<label class="col-lg-2 control-label">项目</label>
 										<div class="col-lg-3">
@@ -164,27 +164,28 @@
 												<option value="">-- 请选择项目 --</option>
 											</select>
 										</div>
-										
+
 										<div class="group">
 											<label class="col-sm-3 control-label">交付部</label>
 											<div class="col-sm-4">
 												<input type="text" class="form-control" name="firstName"
-													id="deliverDepartment" disabled="disabled"/>
+													id="deliverDepartment" disabled="disabled" />
 											</div>
 										</div>
 									</div>
-									<br /> <input type="submit" value="注&nbsp;&nbsp;册" name="subscribe"
-										id="sub_bt" href="#" class="button btn btn-primary" data-dismiss="modal"
-										style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin-left: 80%;"
-										>
-										<br>
-										
+									<br /> <input type="submit" value="注&nbsp;&nbsp;册"
+										name="subscribe" id="sub_bt" href="#"
+										class="button btn btn-primary" data-dismiss="modal"
+										style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin-left: 80%;">
+									<br>
+
 
 								</form>
 
 
 								<script type="text/javascript">
 $(document).ready(function() {
+	var paths = "<%=path%>";
     $('#paymentForm').bootstrapValidator({
 		message: 'This value is not valid',
         
@@ -198,6 +199,25 @@ $(document).ready(function() {
 				validators: {
                     notEmpty: {
                         message: '请输入ER号'
+                    },
+                    /* regexp: {
+                        regexp: /E[0-9]{9}/,
+                        message: '需要以E开头的9位数字编码'
+                    }, */
+                    regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    },
+                    stringLength: {  
+                        min: 1,  
+                        max: 12,  
+                        message: '请输入长度在1到12位之间的ER号'  
+                    },
+                    remote: {//ajax  server result:{"valid",true or false}   json
+                        url: paths+'/service/employee/checkErExists',
+                        message: 'ER号已存在',
+                        delay :  2000,//per 2s send a request
+                        type: 'POST'
                     }
                 }
             },
@@ -206,6 +226,25 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: '请输入HR号'
+                    },
+                    /* regexp: {
+                        regexp: /^\d{5,12}$/,
+                        message: '需要5-12位数字编码'
+                    }, */
+                    regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    },
+                    stringLength: {  
+                        min: 1,  
+                        max: 12,  
+                        message: '请输入长度在1到12位之间的HR号'  
+                    },
+                    remote: {//ajax  server result:{"valid",true or false}   json
+                        url: paths+'/service/employee/checkHrExists',
+                        message: 'HR号已存在',
+                        delay :  2000,//per 2s send a request
+                        type: 'POST'
                     }
                 }
             },
@@ -215,7 +254,15 @@ $(document).ready(function() {
 				validators: {
                     notEmpty: {
                         message: '请输入中文名'
-                    }
+                    },
+                    regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    },
+                    stringLength: {  
+                        max: 50,  
+                        message: '请输入50字符以内的中文名'  
+                    } 
                 }
             },
             eName: {
@@ -223,6 +270,14 @@ $(document).ready(function() {
 				validators: {
                     notEmpty: {
                         message: '请输入英文名'
+                    },
+                    regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    },
+                    stringLength: {  
+                        max: 50,  
+                        message: '请输入50字符以内的英文名'  
                     }
                 }
             }
@@ -253,7 +308,7 @@ $(document).ready(function() {
 			<!--/#content.col-md-0-->
 		</div>
 		<!--/fluid-row-->
-	<hr>
+		<hr>
 
 
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -302,13 +357,13 @@ $(document).ready(function() {
 			</div>
 			<!--/span-->
 		</div>
-	<!--/#content.col-md-0-->
-
-	
+		<!--/#content.col-md-0-->
 
 
 
-	<c:import url="/service/manage/footer" />
+
+
+		<c:import url="/service/manage/footer" />
 
 	</div>
 	<!--/.fluid-container-->

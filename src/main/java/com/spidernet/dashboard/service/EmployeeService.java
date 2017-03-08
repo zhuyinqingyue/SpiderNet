@@ -10,4 +10,6 @@ public interface EmployeeService
     Employee fetchByErNumber(String erNumber);
     Employee fetchByHrNumber(String hrNumber);
     Boolean addEmployee(Employee employee);
+    Boolean checkErExists(String erNumber);
+    Boolean checkHrExists(String hrNumber);
 }
