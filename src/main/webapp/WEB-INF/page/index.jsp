@@ -94,59 +94,7 @@ var path='<%=path%>';
 										</tr>
 									</thead>
 									<tbody>
-<<<<<<< Updated upstream
-										<tr>
-											<td rowspan="3">行业知识</td>
-											<td>java</td>
-											<td class="center"><a href="#" id="myCourse">培训课程</a></td>
-											<td class="center"><a href="#" id="myExam">我的考试</a></td>
-											<td class="center"><span
-												class="label-success label label-default">Pass</span></td>
 
-
-										</tr>
-										<tr>
-											<td>dojo</td>
-											<td class="center">2017/03/21 dojo技能培训</td>
-											<td class="center">2017/04/21 dojo考试</td>
-											<td class="center"><span
-												class="label-success label label-default">Pass</span></td>
-
-										</tr>
-										<tr>
-											<td>html5</td>
-											<td class="center">2017/03/21 dojo技能培训</td>
-											<td class="center">2017/04/21 dojo考试</td>
-											<td class="center"></td>
-
-										</tr>
-										<tr>
-											<td rowspan="3">英语国际化</td>
-											<td>write email</td>
-											<td class="center">2017/03/21 dojo技能培训</td>
-											<td class="center">2017/04/21 dojo考试</td>
-											<td class="center"><span
-												class="label-success label label-default">Pass</span></td>
-
-										</tr>
-										<tr>
-											<td>chat with english</td>
-											<td class="center">2017/03/21 dojo技能培训</td>
-											<td class="center">2017/04/21 dojo考试</td>
-											<td class="center"><span
-												class="label-default label label-danger">Fail</span></td>
-
-										</tr>
-										<tr>
-											<td>write english document</td>
-											<td class="center">2017/03/21 dojo技能培训技能培</td>
-											<td class="center">2017/04/21 dojo考试</td>
-											<td class="center"><span
-												class="label-default label label-danger">Fail</span></td>
-
-										</tr>
-=======
->>>>>>> Stashed changes
 
 									</tbody>
 								</table>
