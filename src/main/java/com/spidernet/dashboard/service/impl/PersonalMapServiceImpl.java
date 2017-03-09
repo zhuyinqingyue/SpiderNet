@@ -28,4 +28,11 @@ public class PersonalMapServiceImpl implements PersonalMapService
         }
 
     }
+    
+    @Override
+    public PersonalMap fetchByEmpId(String employeeId)
+    {
+        PersonalMap personalMapDb = personalMapMapper.fetchByEmpId(employeeId);
+        return personalMapDb;
+    }
 }
