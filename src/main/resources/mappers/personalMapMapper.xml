@@ -4,8 +4,10 @@
 <mapper namespace="com.spidernet.dashboard.dao.PersonalMapMapper">
 	<resultMap id="userMap" type="com.spidernet.dashboard.entity.PersonalMap">
 		<id property="personalMapId" column="PERSONAL_MAP_ID" javaType="String" />
-		<result property="proCapabilityId" column="PRO_CAPABILITY_ID" javaType="String" />
-		<result property="commCapabilityId" column="COMM_CAPABILITY_ID" javaType="String" />
+		<result property="proCapabilityId" column="PRO_CAPABILITY_ID"
+			javaType="String" />
+		<result property="commCapabilityId" column="COMM_CAPABILITY_ID"
+			javaType="String" />
 		<result property="empTypeId" column="EMP_TYPE_ID" javaType="String" />
 		<result property="empLevelId" column="EMP_LEVEL_ID" javaType="String" />
 		<result property="employeeId" column="EMPLOYEE_ID" javaType="String" />
@@ -16,8 +18,24 @@
 		<result property="statusFlag" column="STATUSFLAG" javaType="int" />
 	</resultMap>
 
+	<sql id="Base_Column_List">
+		PERSONAL_MAP_ID AS personalMapId, PRO_CAPABILITY_ID AS proCapabilityId, COMM_CAPABILITY_ID AS
+		commCapabilityId, EMP_TYPE_ID AS empTypeId, EMP_LEVEL_ID AS empLevelId,
+		EMPLOYEE_ID AS employeeId, BU_ID AS buId, PROJECT_ID AS projectId,
+		DETAIL AS detail,STATUS AS status,STATUSFLAG AS statusFlag
+	</sql>
+	
+	<select id="fetchByEmpId" parameterType="String"
+		resultType="com.spidernet.dashboard.entity.PersonalMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_personal_map where EMPLOYEE_ID = #{employeeId}
+	</select>
+	
 	<insert id="addPersonalMap" parameterType="com.spidernet.dashboard.entity.PersonalMap">
-		insert into t_personal_map (PERSONAL_MAP_ID,PRO_CAPABILITY_ID,COMM_CAPABILITY_ID,EMP_TYPE_ID,EMP_LEVEL_ID,EMPLOYEE_ID,BU_ID,PROJECT_ID,DETAIL,STATUS,STATUSFLAG)
+		insert into
+		t_personal_map
+		(PERSONAL_MAP_ID,PRO_CAPABILITY_ID,COMM_CAPABILITY_ID,EMP_TYPE_ID,EMP_LEVEL_ID,EMPLOYEE_ID,BU_ID,PROJECT_ID,DETAIL,STATUS,STATUSFLAG)
 		values
 		(#{personalMapId},'','',#{empTypeId},#{empLevelId},#{employeeId},#{buId},#{projectId},#{detail},#{status},#{statusFlag})
 	</insert>

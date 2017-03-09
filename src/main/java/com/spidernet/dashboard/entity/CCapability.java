@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "commCapabilityId", "blockId", "name", "description", "sort", "url", "parentId", "buList" })
+@XmlType(propOrder = { "commCapabilityId", "blockId", "name", "description", "sort", "url", "parentId", "buList", "isExam", "isTraining" })
 public class CCapability
 {
 
@@ -23,6 +23,8 @@ public class CCapability
     private String url;
     private String parentId;
     private String buList;
+    private Boolean isExam;   
+    private Boolean isTraining;
 
     public String getCommCapabilityId()
     {
@@ -102,6 +104,26 @@ public class CCapability
     public void setDescription(String description)
     {
         this.description = description;
+    }
+
+    public Boolean getIsExam()
+    {
+        return isExam;
+    }
+
+    public void setIsExam(Boolean isExam)
+    {
+        this.isExam = isExam;
+    }
+
+    public Boolean getIsTraining()
+    {
+        return isTraining;
+    }
+
+    public void setIsTraining(Boolean isTraining)
+    {
+        this.isTraining = isTraining;
     }
 
 }

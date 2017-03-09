@@ -6,4 +6,6 @@ public interface PersonalMapService
 {
 
     Boolean addPersonalMap(PersonalMap personalMap);
+    
+    PersonalMap fetchByEmpId(String employeeId);
 }

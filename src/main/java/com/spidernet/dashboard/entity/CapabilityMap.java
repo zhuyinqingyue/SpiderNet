@@ -24,7 +24,7 @@ public class CapabilityMap
     @XmlElementWrapper(name = "capabilityMap")
     @XmlElement(name = "capability")
     private List<CapabilityB> capabilityMap = new ArrayList<CapabilityB>();
-
+    
     public List<CapabilityB> getCapabilityMap()
     {
         return capabilityMap;
@@ -34,6 +34,4 @@ public class CapabilityMap
     {
         this.capabilityMap = capabilityMap;
     }
-
-    
 }

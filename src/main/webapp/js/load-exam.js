@@ -1,7 +1,7 @@
 $("#myExam").click(
 	function(e) {
 		e.preventDefault();
-
+		var capabilityId = e.currentTarget.attributes.capabilityId.value;
 		$.ajax({
 				url : path + "/service/exam/personalExamList",
 				type : "post",
@@ -9,7 +9,7 @@ $("#myExam").click(
 				cache : false,
 				dataType : "json",
 				data : "capabilityId="
-						+ "5721b3b036f74b6c9441724e9f2bc063",
+						+ capabilityId,
 				timeout : 20000,
 				success : function(examList) {
 					$("#examListTable tbody").remove();

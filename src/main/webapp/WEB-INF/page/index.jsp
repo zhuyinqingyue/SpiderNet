@@ -46,6 +46,7 @@
 
 <!-- jQuery -->
 <script src="<%=path %>/bower_components/jquery/jquery.min.js"></script>
+
 <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -77,10 +78,11 @@ var path='<%=path%>';
 									<i class="glyphicon glyphicon-user"></i> 个人能力地图
 								</h2>
 							</div>
-							<div class="box-content">
-								<div class="alert alert-info">用户名：毛贵锋 职别：高级 种类：开发
-									项目名称：Etax Payment</div>
-								<table
+							<div id="showEmp" class="box-content">
+							<input type="hidden" id="empId"  value="${sessionScope.employee.getEmployeeId()}"/>
+								<div class="alert alert-info">用户名：${sessionScope.employee.getName()}   职别：${sessionScope.employee.getEmpLevelId()} 种类：${sessionScope.employee.getEmpTypeId()}
+									项目名称：${sessionScope.employee.getProjectId()} </div>
+								<table id="personalMap"
 									class="table table-striped table-bordered bootstrap-datatable datatable responsive">
 									<thead>
 										<tr>
@@ -89,10 +91,10 @@ var path='<%=path%>';
 											<th>培训</th>
 											<th>技能鉴定</th>
 											<th>状态</th>
-
 										</tr>
 									</thead>
 									<tbody>
+<<<<<<< Updated upstream
 										<tr>
 											<td rowspan="3">行业知识</td>
 											<td>java</td>
@@ -143,6 +145,8 @@ var path='<%=path%>';
 												class="label-default label label-danger">Fail</span></td>
 
 										</tr>
+=======
+>>>>>>> Stashed changes
 
 									</tbody>
 								</table>
@@ -311,6 +315,7 @@ var path='<%=path%>';
 	<!-- application script for Charisma demo -->
 	<script src="<%=path %>/js/charisma.js"></script>
 
+	<script type="text/javascript" src="<%=path %>/js/spidernet/personalMap.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/load-trainning.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/load-exam.js"></script>
 </body>
