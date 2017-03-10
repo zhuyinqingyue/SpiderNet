@@ -11,7 +11,7 @@
     width: 140px;
     height: 40px;
 	font-weight:bold;
-    font-size: 14px;
+    font-size: 18px;
 	border-color: #d0e0e0;
 }
 
@@ -20,13 +20,12 @@
     width: 350px;
 }
 .login-box .btn {
-    margin-top: 15px;
+    margin-top: 40px;
 }
 
 .username {
     color: white;
-	font-weight:bold;
-    font-size: 14px;
+    font-size: 18px;
     width: 390px;
     display: inline-flex;
     margin-top: 10px;
