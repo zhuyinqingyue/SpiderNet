@@ -20,9 +20,11 @@
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">功能模块</li>
                         <li><a class="ajax-link" href="<%=path %>/service/employee/index.html"><i class="glyphicon glyphicon-home"></i><span>&nbsp;&nbsp;个人主页</span></a>
-                        </li>
+                        </li><c:if test="${sessionScope.employee.empTypeId eq 'a6b8fd9eb5e547da907c7a004810d022'}">
                         <li><a class="ajax-link" href="<%=path %>/service/employee/register.html"><i class="glyphicon glyphicon-user"></i><span> 用户注册</span></a>
                         </li>
+                        </c:if>
+                        
                     </ul>
                 </div>
             </div>

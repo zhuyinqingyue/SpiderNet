@@ -34,7 +34,7 @@ public class TypeController
     public Object querytype(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        logger.info("debug------test----");
+        logger.debug("query type list begin");;
         
         List<Type> listT = typeService.queryType();
 
