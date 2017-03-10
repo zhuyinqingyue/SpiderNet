@@ -16,6 +16,10 @@
     <meta name="author" content="Muhammad Usman">
 
     <!-- The styles -->
+    <link
+		href='<%=path %>/bower_components/bootstrap-val/bootstrapValidator.css'
+		rel='stylesheet'>
+
     <link href="<%=path %>/css/bootstrap-cerulean.min.css" rel="stylesheet">
 
     <link href="<%=path %>/css/charisma-app.css" rel="stylesheet">
@@ -47,7 +51,7 @@
 	</style>
 </head>
 
-<body  class="login-back">
+<body class="login-back">
 			<div class="frame-box">
 				<div class="frame1">
 					<div class="frame1div" >
@@ -55,43 +59,55 @@
 				</div>
 				
 				<div class="frame2">
-					<!--<div class="line"></div>-->
+
 					<div class="frame2-concent">
 						<div class="login-box" style="width:80%;padding-left:100px;">
 						            <div class="title" style="font-family:segoesc;font-size:35px;color:#FFFFFF">
 						               SpiderNet
 						            </div>
-						            <form class="form-horizontal" action="<%=path %>/service/manage/login" method="post">
+						            <div class="alert alert-success" style="display: none;"></div>
+						            <form id="loginForm" class="form-horizontal" method="post">
 						                <fieldset>
 											
-						                    <div type="text" class="username">用户名</div>
-						                    <div  >
-						                        <input type="text" class="form-control" placeholder="" id="userName" name="userName">
-						                    </div>
+											<div class="form-group">
+												
+								              <div type="text" class="username">用户名</div>
+								                <div class="group">
+								                    <div class="col-sm-12">
+								                        <input type="text" class="form-control " style="height:46px" placeholder="" id="userName" name="userName">
+								                    </div>
+								                </div>
 						                    <div class="clearfix"></div><br>
 						
-						                    <div type="text" class="username">密码</div>                        
-						                    <div  style="">
-						                        <input type="password" class="form-control" id="password" name="password" placeholder="">
+						                    <div type="text" class="username">密码</div>
+											<div class = "group">                       
+						                    <div class="col-sm-12">
+						                        <input type="password" class="form-control" id="password" style="height:46px" name="password" placeholder="">
+						                    </div>
+						                    </div>
 						                    </div>
 						                    <div class="clearfix"></div>
 																<p class="center col-md-5">
-						                        <button type="submit" class="btn btn-primary btn-primary-one" style="">登录</button>
+						                        <button type="submit" id="submitBtn" class="btn btn-primary btn-primary-one" style="">登录</button>
 						                    </p>
 						                </fieldset>
 						            </form>
-						            
-						         
-						            
-						            
+
 						</div>
 					</div>
 				</div>
 		  </div>		
 	</div>	
+	
+<script type="text/javascript">
+var path = "<%=path%>";
+
+</script>
+	
 <!-- external javascript -->
 
 <script src="<%=path %>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<%=path %>/bower_components/bootstrap-val/bootstrapValidator.min.js"></script>
 
 <!-- library for cookie management -->
 <script src="<%=path %>/js/jquery.cookie.js"></script>
@@ -123,5 +139,7 @@
 <script src="<%=path %>/js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
 <script src="<%=path %>/js/charisma.js"></script>
+<script src="<%=path %>/js/login.js"></script>
+
 </body>
 </html>

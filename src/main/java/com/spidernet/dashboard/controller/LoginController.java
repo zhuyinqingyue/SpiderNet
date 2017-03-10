@@ -8,14 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spidernet.dashboard.entity.Employee;
 import com.spidernet.dashboard.service.EmployeeService;
-import com.spidernet.util.Constants;
 
 @Controller
 @SessionAttributes("employeeTemp")
@@ -27,6 +28,12 @@ public class LoginController
 
     private static Logger logger = LoggerFactory
             .getLogger(LoginController.class);
+
+    @Value("${ER_PATTERN}")
+    private String erPattern;
+
+    @Value("${HR_PATTERN}")
+    private String hrPattern;
 
     @RequestMapping("/loginPage")
     public String loginPage(final HttpServletRequest request,
@@ -57,48 +64,52 @@ public class LoginController
     }
 
     @RequestMapping("/login")
-    public ModelAndView checkUser(final HttpServletRequest request,
+    @ResponseBody
+    public Boolean checkUser(final HttpServletRequest request,
             final HttpServletResponse response, Employee employee)
     {
         String userName = request.getParameter("userName");
         request.getSession().setAttribute("SystemName", "SpiderNet");
 
-        Pattern patternEr = Pattern.compile(Constants.ER_PATTERN);
-        Pattern patternHr = Pattern.compile(Constants.HR_PATTERN);
-        Pattern patternWechat = Pattern.compile(Constants.WECHAT_PATTERN);
-        ModelAndView mv = new ModelAndView();
+        Pattern patternEr = Pattern.compile(erPattern);
+        Pattern patternHr = Pattern.compile(hrPattern);
+        new ModelAndView();
         Employee employeeTemp = null;
 
         if (patternEr.matcher(userName).matches())
         {
+            logger.debug("You are using ER_NUMBER to login the System");
             employeeTemp = new Employee();
             employee.setErNumber(userName);
             employeeTemp = userService.accountValidByErNumber(employee);
         }
-        else if (patternHr.matcher(userName).matches())
+
+        if (patternHr.matcher(userName).matches())
         {
+            logger.debug("You are using HR_NUMBER to login the System");
             employeeTemp = new Employee();
             employee.setHrNumber(userName);
             employeeTemp = userService.accountValidByHrNumber(employee);
         }
-        else if (patternWechat.matcher(userName).matches())
+
+        /*      if (patternWechat.matcher(userName).matches())
         {
             // employee.setWechatOpenId(userName);
         }
-
+*/
         if (employeeTemp != null)
         {
             logger.info("Find the Employee correctly, enter the index page");
             request.getSession().setAttribute("employee", employeeTemp);
-            mv.setViewName("index");
-            mv.addObject("employee", employeeTemp);
-            return mv;
+//            mv.setViewName("index");
+//            mv.addObject("employee", employeeTemp);
+            return true;
         }
         else
         {
             logger.info("Can not find the Employee in the DB");
-            mv.setViewName("login");
-            return mv;
+//            mv.setViewName("login");
+            return false;
         }
     }
 

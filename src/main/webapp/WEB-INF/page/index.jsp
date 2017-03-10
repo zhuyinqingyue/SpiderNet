@@ -36,6 +36,9 @@
 <link
 	href='<%=path %>/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css'
 	rel='stylesheet'>
+<link
+	href='<%=path %>/bower_components/bootstrap-val/bootstrapValidator.css'
+	rel='stylesheet'>
 <link href='<%=path %>/css/jquery.noty.css' rel='stylesheet'>
 <link href='<%=path %>/css/noty_theme_default.css' rel='stylesheet'>
 <link href='<%=path %>/css/elfinder.min.css' rel='stylesheet'>
@@ -228,6 +231,8 @@ var path='<%=path%>';
 
 	<script
 		src="<%=path %>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script
+		src="<%=path %>/bower_components/bootstrap-val/bootstrapValidator.min.js"></script>
 
 	<!-- library for cookie management -->
 	<script src="<%=path %>/js/jquery.cookie.js"></script>
