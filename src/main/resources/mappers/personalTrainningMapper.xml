@@ -4,9 +4,7 @@
 <mapper namespace="com.spidernet.dashboard.dao.PersonalTrainningMapper">
 	<resultMap id="personalTrainningMap"
 		type="com.spidernet.dashboard.entity.PersonalTrainning">
-		<id property="personalTrainningId" column="PERSONAL_TRAINING_ID"
-			javaType="String" />
-		<result property="trainningId" column="TRAINNING_ID" javaType="String" />
+		<id property="trainningId" column="TRAINNING_ID" javaType="String" />
 		<result property="employeeId" column="EMPLOYEE_ID" javaType="String" />
 		<result property="status" column="STATUS" javaType="String" />
 	</resultMap>
@@ -16,7 +14,11 @@
 		values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{item.personalTrainningId,jdbcType=VARCHAR}, #{item.trainningId,jdbcType=INTEGER},#{item.employeeId,jdbcType=LONGVARCHAR},#{item.status,jdbcType=LONGVARCHAR})
+			(#{item.trainningId,jdbcType=VARCHAR},#{item.employeeId,jdbcType=VARCHAR},#{item.status,jdbcType=VARCHAR})
 		</foreach>
 	</insert>
+	
+	<select id="checkPersonalTrainningExists" parameterType="com.spidernet.dashboard.entity.PersonalTrainning" resultType="int">
+	    select count(0) from t_personal_training where TRAINING_ID = #{trainningId} and EMPLOYEE_ID = #{employeeId}
+	</select>
 </mapper>

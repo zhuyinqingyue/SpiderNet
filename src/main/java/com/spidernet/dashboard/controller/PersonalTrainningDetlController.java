@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spidernet.dashboard.entity.Employee;
 import com.spidernet.dashboard.entity.PersonalTrainning;
 import com.spidernet.dashboard.service.PersonalTrainningService;
-import com.spidernet.util.Utils;
 
 import net.sf.json.JSONArray;
 
@@ -34,41 +33,47 @@ public class PersonalTrainningDetlController
     @RequestMapping("/addPersonalTrainningDetl")
     @ResponseBody
     public Boolean addPersonalTrainningDetl(final HttpServletRequest request,
-            final HttpServletResponse response) {
+            final HttpServletResponse response)
+    {
 
         logger.debug("Add the personal trainning detail begin");
         Boolean addResultFlag = false;
 
-        String employeeId = ((Employee)request.getSession().getAttribute("employee")).getEmployeeId();
-        String selectedTrainning = request.getParameter("selectedTrainningArray");
+        String employeeId = ((Employee) request.getSession()
+                .getAttribute("employee")).getEmployeeId();
+        String selectedTrainning = request
+                .getParameter("selectedTrainningArray");
 
-        JSONArray selectedTrainningArray = JSONArray.fromObject(selectedTrainning);
+        JSONArray selectedTrainningArray = JSONArray
+                .fromObject(selectedTrainning);
 
         List<PersonalTrainning> personalTrainningList = new ArrayList<PersonalTrainning>();
 
         PersonalTrainning personalTrainning = null;
 
-        if (selectedTrainningArray.size() > 0) {
-            for (int i = 0; i < selectedTrainningArray.size(); i++) {
-                personalTrainning = new PersonalTrainning();
+        for (int i = 0; i < selectedTrainningArray.size(); i++)
+        {
+            personalTrainning = new PersonalTrainning();
 
-                String uuid = Utils.getUUID();
-                personalTrainning.setPersonalTrainningId(uuid);
-                personalTrainning.setEmployeeId(employeeId);
-                personalTrainning.setTrainningId(new JSONObject(selectedTrainningArray.get(i).toString()).get("trainningId").toString());
-                personalTrainning.setStatus(new JSONObject(selectedTrainningArray.get(i).toString()).get("status").toString());
-                personalTrainningList.add(personalTrainning);
+            personalTrainning.setEmployeeId(employeeId);
+            personalTrainning.setTrainningId(
+                    new JSONObject(selectedTrainningArray.get(i).toString())
+                            .get("trainningId").toString());
+            personalTrainning.setStatus(
+                    new JSONObject(selectedTrainningArray.get(i).toString())
+                            .get("status").toString());
+            
+            if(personalTrainningService.checkPersonalTrainningExists(personalTrainning)){
+                return false;
             }
-
-
-            addResultFlag = personalTrainningService.addPersonalTrainning(personalTrainningList);
-
-            return addResultFlag;
-
+            personalTrainningList.add(personalTrainning);
         }
-        else {
-            return false;
-        }
+
+        addResultFlag = personalTrainningService
+                .addPersonalTrainning(personalTrainningList);
+
+        return addResultFlag;
+
     }
 
 }

@@ -17,7 +17,7 @@
 	</resultMap>
 
 	<select id="fetchAllExam" parameterType="String" resultType="com.spidernet.dashboard.entity.ExamCapability">
-		select b.NAME as buName, p.NAME as projectName, e.Name as examName, DATE_FORMAT(e.START_TIME,'%Y-%m-%d %H:%i') as startTime,
+		select e.EXAM_ID as examId, b.NAME as buName, p.NAME as projectName, e.Name as examName, DATE_FORMAT(e.START_TIME,'%Y-%m-%d %H:%i') as startTime,
 		DATE_FORMAT(e.END_TIME,'%Y-%m-%d %H:%i') as endTime, e.EXAM_TIME as examTime, e.VALID_PERIOD as validPeriod, e.STATUS
 		from t_exam as e, t_bu as b, t_project as p where e.EXAM_ID in (select EXAM_ID FROM
 		t_capability_exam where CAPABILITY_ID =

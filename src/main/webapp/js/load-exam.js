@@ -1,3 +1,5 @@
+var personalExamList = null;
+
 $("#myExam").click(
 	function(e) {
 		e.preventDefault();
@@ -12,7 +14,11 @@ $("#myExam").click(
 						+ capabilityId,
 				timeout : 20000,
 				success : function(examList) {
+					personalExamList = examList;
+					
 					$("#examListTable tbody").remove();
+					$("#myModalExam").find('.alert').html('Your exam have submitted successfully').hide();
+					
 					var tbody = $("<tbody>");
 					tbody.appendTo($("#examListTable"));
 
@@ -60,4 +66,45 @@ $("#myExam").click(
 					$('#myModalExam').modal('show');
 				}
 			});
+})
+
+
+$("#examSubmitBtn").click(function(e){
+	var selectedHtmlArray = [];
+	var cMtr = $("#examListTable tbody tr");
+	var selectedHtml = "";
+
+	for (var i = 0; i < cMtr.length; i++) {
+		var tempNode = cMtr.eq(i).find("td").find("input");
+
+		if (tempNode.is(':checked')) {
+			selectedHtml = "{'examId':'"+personalExamList[i].examId+"','examName':'"+personalExamList[i].examName+"','startTime':'"+personalExamList[i].startTime+"','endTime':'"+personalExamList[i].endTime+"','status':'"+personalExamList[i].status+"'}";
+			selectedHtmlArray.push(selectedHtml);
+		}
+	}
+	
+	if(selectedHtmlArray.length==0){
+		
+		$("#myModalExam").find('.alert').html('Please select your exam').show();
+		
+	}else{
+
+	$.ajax({
+		url : path + "/service/exam/addPersonalExamDetl",
+		type : "post",
+		async : true,
+		cache : false,
+		dataType : "json",
+		data : {'selectedExamArray' : JSON.stringify(selectedHtmlArray)},
+		timeout : 20000,
+		success : function(data) {
+			if (data) {
+				$("#myModalExam").find('.alert').html('Your exam have submitted successfully').show();
+			} else {
+				$("#myModalExam").find('.alert').html('Your exam is exist').show();
+			}
+		}
+	});
+	
+	}
 })

@@ -200,19 +200,19 @@ $(document).ready(function() {
                     notEmpty: {
                         message: '请输入ER号'
                     },
-                    /* regexp: {
+                    regexp: {
                         regexp: /E[0-9]{9}/,
                         message: '需要以E开头的9位数字编码'
-                    }, */
-                    regexp: {
+                    }, 
+                    /* regexp: {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
                         message: '请勿包含特殊字符'
-                    },
-                    stringLength: {  
+                    }, */
+                    /* stringLength: {  
                         min: 1,  
                         max: 12,  
                         message: '请输入长度在1到12位之间的ER号'  
-                    },
+                    }, */
                     remote: {//ajax  server result:{"valid",true or false}   json
                         url: paths+'/service/employee/checkErExists',
                         message: 'ER号已存在',
@@ -227,19 +227,19 @@ $(document).ready(function() {
                     notEmpty: {
                         message: '请输入HR号'
                     },
-                    /* regexp: {
+                    regexp: {
                         regexp: /^\d{5,12}$/,
                         message: '需要5-12位数字编码'
-                    }, */
-                    regexp: {
+                    },
+                    /* regexp: {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
                         message: '请勿包含特殊字符'
-                    },
-                    stringLength: {  
+                    }, */
+                    /* stringLength: {  
                         min: 1,  
                         max: 12,  
                         message: '请输入长度在1到12位之间的HR号'  
-                    },
+                    }, */
                     remote: {//ajax  server result:{"valid",true or false}   json
                         url: paths+'/service/employee/checkHrExists',
                         message: 'HR号已存在',
@@ -260,7 +260,7 @@ $(document).ready(function() {
                         message: '请勿包含特殊字符'
                     },
                     stringLength: {  
-                        max: 50,  
+                        max: 25,  
                         message: '请输入50字符以内的中文名'  
                     } 
                 }

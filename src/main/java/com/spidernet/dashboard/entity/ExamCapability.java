@@ -2,6 +2,7 @@ package com.spidernet.dashboard.entity;
 
 public class ExamCapability
 {
+    private String examId;
     private String buName;
     private String projectName;
     private String examName;
@@ -11,6 +12,15 @@ public class ExamCapability
     private String validPeriod;
     private String status;
 
+    
+    public String getExamId()
+    {
+        return examId;
+    }
+    public void setExamId(String examId)
+    {
+        this.examId = examId;
+    }
     public String getBuName()
     {
         return buName;

@@ -73,6 +73,12 @@ $("#trainningSubmitBtn").click(function(e){
 			selectedHtmlArray.push(selectedHtml);
 		}
 	}
+	
+    if(selectedHtmlArray.length==0){
+		
+		$("#myModalClass").find('.alert').html('Please select your exam').show();
+		
+	}else{
 
 	$.ajax({
 		url : path + "/service/trainning/addPersonalTrainningDetl",
@@ -87,10 +93,11 @@ $("#trainningSubmitBtn").click(function(e){
 				$("#myModalClass").find('.alert').html('Your trainning have submitted successfully').show();
 				//alert("Success");
 			} else {
-				$("#myModalClass").find('.alert').html('Please select your trainning').show();
+				$("#myModalClass").find('.alert').html('Your trainning is exist').show();
 			}
 		}
 	});
+	}
 })
 /*$("#selectAll").click(function() {
 	if ($("#selectAll").prop("checked")) {

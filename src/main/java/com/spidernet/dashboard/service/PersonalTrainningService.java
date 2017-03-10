@@ -7,4 +7,5 @@ import com.spidernet.dashboard.entity.PersonalTrainning;
 public interface PersonalTrainningService
 {
     Boolean addPersonalTrainning(List<PersonalTrainning> personalTrainning);
+    Boolean checkPersonalTrainningExists(PersonalTrainning personalTrainning);
 }

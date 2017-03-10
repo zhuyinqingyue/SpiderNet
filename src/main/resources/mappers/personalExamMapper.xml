@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spidernet.dashboard.dao.PersonalExamMapper">
+	<resultMap id="personalExamMap" type="com.spidernet.dashboard.entity.PersonalExam">
+		<id property="examId" column="EXAM_ID" javaType="String" />
+		<result property="employeeId" column="EMPLOYEE_ID" javaType="String" />
+		<result property="personalExam" column="PERSONAL_EXAM"
+			javaType="String" />
+		<result property="status" column="STATUS" javaType="String" />
+		<result property="registerTime" column="RIGISTER_TIME"
+			javaType="String" />
+		<result property="updateTime" column="UPDATE_TIME" javaType="String" />
+	</resultMap>
+
+	<insert id="addPersonalExam" parameterType="java.util.List">
+		insert into t_personal_exam
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.examId,jdbcType=VARCHAR},#{item.employeeId,jdbcType=VARCHAR},#{item.personalExam,jdbcType=VARCHAR},#{item.status,jdbcType=VARCHAR},#{item.registerTime,jdbcType=VARCHAR},#{item.updateTime,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+	
+	<select id="checkPersonalExamExists" parameterType="com.spidernet.dashboard.entity.PersonalExam" resultType="int">
+	    select count(0) from t_personal_exam where EXAM_ID = #{examId} and EMPLOYEE_ID = #{employeeId}
+	</select>
+</mapper>

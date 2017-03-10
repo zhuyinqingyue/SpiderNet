@@ -29,4 +29,15 @@ public class PersonalTrainningServiceImpl implements PersonalTrainningService
         }
 
     }
+
+    @Override
+    public Boolean checkPersonalTrainningExists(
+            PersonalTrainning personalTrainning)
+    {
+        if(personalTrainningMapper.checkPersonalTrainningExists(personalTrainning) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
