@@ -181,6 +181,7 @@ var path='<%=path%>';
 							<div class="box-inner">
 
 								<div class="box-content">
+								<div class="alert alert-success" style="display: none;"></div>
 									<table class="table" id="examListTable">
 										<thead>
 											<tr>

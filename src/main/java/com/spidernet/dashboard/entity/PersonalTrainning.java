@@ -2,19 +2,10 @@ package com.spidernet.dashboard.entity;
 
 public class PersonalTrainning
 {
-    private String personalTrainningId;
     private String trainningId;
     private String employeeId;
     private String status;
 
-    public String getPersonalTrainningId()
-    {
-        return personalTrainningId;
-    }
-    public void setPersonalTrainningId(String personalTrainningId)
-    {
-        this.personalTrainningId = personalTrainningId;
-    }
     public String getTrainningId()
     {
         return trainningId;
