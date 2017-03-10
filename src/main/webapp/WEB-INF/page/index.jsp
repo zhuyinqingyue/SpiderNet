@@ -73,8 +73,8 @@ var path='<%=path%>';
 			<!-- left menu ends -->
 			<div id="content" class="col-lg-10 col-sm-10">
 				<!-- content starts -->
-				<div class="row">
-					<div class="box col-md-12">
+				<div class="row" <c:if test="${sessionScope.employee.empTypeId eq 'a6b8fd9eb5e547da907c7a004810d022' }"> style="display:none"</c:if>>					
+				<div class="box col-md-12">
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>

@@ -34,7 +34,7 @@ public class LevelController
     public Object queryAll(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        logger.info("debug------test----");
+        logger.debug("query level list begin");
 
         List<Level> listL = levelService.queryLevel();
 
