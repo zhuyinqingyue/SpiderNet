@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spidernet.dashboard.entity.Employee;
 import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.service.TrainningService;
 
@@ -31,8 +32,9 @@ public class TrainningController
             final HttpServletResponse response)
     {
         String capabilityId = request.getParameter("capabilityId");
+        String employeeId = ((Employee)request.getSession().getAttribute("employee")).getEmployeeId();
 
-        List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId);
+        List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
 /*      Trainning trainning1 = new Trainning();
         Trainning trainning2 = new Trainning();
 

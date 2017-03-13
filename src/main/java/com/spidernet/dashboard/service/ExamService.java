@@ -6,5 +6,5 @@ import com.spidernet.dashboard.entity.ExamCapability;
 
 public interface ExamService
 {
-    List<ExamCapability> fetchAllExam(String capabilityId);
+    List<ExamCapability> fetchAllExam(String capabilityId, String employeeId);
 }

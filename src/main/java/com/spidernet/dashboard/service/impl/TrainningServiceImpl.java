@@ -19,12 +19,12 @@ public class TrainningServiceImpl implements TrainningService
     private TrainningMapper trainningMapper;
 
     @Override
-    public List<Trainning> fetchAllTrainning(String capabilityId)
+    public List<Trainning> fetchAllTrainning(String capabilityId, String employeeId)
     {
         // TODO Auto-generated method stub
         List<Trainning> trainningList = new ArrayList<Trainning>();
 
-        trainningList = trainningMapper.fetchAllTrainning(capabilityId);
+        trainningList = trainningMapper.fetchAllTrainning(capabilityId, employeeId);
         return trainningList;
     }
 
