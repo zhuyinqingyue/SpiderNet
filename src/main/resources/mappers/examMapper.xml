@@ -21,7 +21,9 @@
 		DATE_FORMAT(e.END_TIME,'%Y-%m-%d %H:%i') as endTime, e.EXAM_TIME as examTime, e.VALID_PERIOD as validPeriod, e.STATUS
 		from t_exam as e, t_bu as b, t_project as p where e.EXAM_ID in (select EXAM_ID FROM
 		t_capability_exam where CAPABILITY_ID =
-		#{capabilityId}) and e.BU_ID=b.BU_ID and e.PROJECT_ID=p.PROJECT_ID;
+		#{capabilityId}) and e.BU_ID=b.BU_ID and e.PROJECT_ID=p.PROJECT_ID and
+		NOW() &lt; e.START_TIME and
+		e.EXAM_ID not in (select EXAM_ID FROM t_personal_exam where EMPLOYEE_ID=#{employeeId});
 	</select>
 
 </mapper>

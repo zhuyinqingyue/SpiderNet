@@ -12,11 +12,11 @@
 		<result property="status" column="STATUS" javaType="String" />
 	</resultMap>
 
-	<select id="fetchAllTrainning" parameterType="String" resultMap="trainningMap">
+	<select id="fetchAllTrainning" resultMap="trainningMap">
 		select TRAINING_ID, COURSE_NAME, DATE_FORMAT(TIME,'%Y-%m-%d %H:%i') as time, LOCATION, TEACHER, URL, STATUS
-		from t_training where TRAINING_ID in (select TRAINING_ID FROM
+		from t_training where NOW() &lt; date_sub(TIME,interval 1 day) AND TRAINING_ID in (select TRAINING_ID FROM
 		t_capability_training where CAPABILITY_ID =
-		#{capabilityId});
+		#{capabilityId}) AND TRAINING_ID NOT IN (select TRAINING_ID FROM t_personal_training WHERE EMPLOYEE_ID = #{employeeId});
 	</select>
 
 </mapper>
