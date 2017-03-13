@@ -147,20 +147,3 @@ function RegCapabilityMap(obj)
      });
 }
 
-
-function ViewProC()
-{
-	
-    $.ajax({
-        type: "post",
-        url: path+"/service/getProCapability",
-        data: '',
-        cache: false,
-        async : false,
-        dataType: "json",
-        success: function (data)
-        {
-        	
-        }
-     });
-}

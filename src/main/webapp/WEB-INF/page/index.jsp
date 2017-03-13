@@ -86,14 +86,14 @@ var path='<%=path%>';
 								<div class="alert alert-info">用户名：${sessionScope.employee.getName()}   职别：${sessionScope.employee.getEmpLevelId()} 种类：${sessionScope.employee.getEmpTypeId()}
 									项目名称：${sessionScope.employee.getProjectId()} </div>
 								<table id="personalMap"
-									class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+									class="table table-striped table-bordered">
 									<thead>
 										<tr>
 											<th></th>
 											<th>知识库</th>
 											<th>培训</th>
 											<th>技能鉴定</th>
-											<th>状态</th>
+											<th>鉴定结果</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -131,9 +131,9 @@ var path='<%=path%>';
 						<div class="box">
 							<div class="box-inner">
 
-								<div class="box-content">
+								<div class="box-content" style="overflow: auto;">
 									<div class="alert alert-success" style="display: none;"></div>
-									<table class="table" id="trainningListTable">
+									<table class="table table-striped table-bordered" id="trainningListTable">
 										<thead>
 											<tr>
 												<th></th>
@@ -183,9 +183,9 @@ var path='<%=path%>';
 						<div class="box">
 							<div class="box-inner">
 
-								<div class="box-content">
+								<div class="box-content" style="overflow: auto;">
 								<div class="alert alert-success" style="display: none;"></div>
-									<table class="table" id="examListTable">
+									<table class="table table-striped table-bordered" id="examListTable">
 										<thead>
 											<tr>
 												<th></th>

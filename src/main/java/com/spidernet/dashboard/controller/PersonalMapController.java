@@ -39,7 +39,7 @@ public class PersonalMapController
     public CapabilityMap viewPersonalMap(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        logger.debug("---------viewCapabilityB is begin!----------");
+        logger.debug("---------viewPersonalMap is begin!----------");
         
         String employeeId = request.getParameter("empId");
         
