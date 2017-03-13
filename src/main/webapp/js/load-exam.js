@@ -1,6 +1,6 @@
 var personalExamList = null;
 
-$("#myExam").click(
+$("a[id='myExam']").click(
 	function(e) {
 		e.preventDefault();
 		var capabilityId = e.currentTarget.attributes.capabilityId.value;
@@ -15,10 +15,10 @@ $("#myExam").click(
 				timeout : 20000,
 				success : function(examList) {
 					personalExamList = examList;
-					
+
 					$("#examListTable tbody").remove();
 					$("#myModalExam").find('.alert').html('Your exam have submitted successfully').hide();
-					
+
 					var tbody = $("<tbody>");
 					tbody.appendTo($("#examListTable"));
 
@@ -82,11 +82,11 @@ $("#examSubmitBtn").click(function(e){
 			selectedHtmlArray.push(selectedHtml);
 		}
 	}
-	
+
 	if(selectedHtmlArray.length==0){
-		
+
 		$("#myModalExam").find('.alert').html('Please select your exam').show();
-		
+
 	}else{
 
 	$.ajax({
@@ -105,6 +105,6 @@ $("#examSubmitBtn").click(function(e){
 			}
 		}
 	});
-	
+
 	}
 })

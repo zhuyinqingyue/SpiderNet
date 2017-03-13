@@ -1,6 +1,6 @@
 var personalTrainningList = null;
 
-$("#myCourse").click(
+$("a[id='myCourse']").click(
 	function(e) {
 		e.preventDefault();
 		var capabilityId = e.currentTarget.attributes.capabilityId.value;
@@ -73,11 +73,11 @@ $("#trainningSubmitBtn").click(function(e){
 			selectedHtmlArray.push(selectedHtml);
 		}
 	}
-	
+
     if(selectedHtmlArray.length==0){
-		
+
 		$("#myModalClass").find('.alert').html('Please select your exam').show();
-		
+
 	}else{
 
 	$.ajax({
