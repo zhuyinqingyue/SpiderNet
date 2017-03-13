@@ -29,7 +29,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td rowspan="'+data_info.proCapabilityL.length+'">'+data_info.name+'</td>';
         						}
-            					htmlInner+= '<td>'+data_info.proCapabilityL[j].name+'</td>';
+            					htmlInner+= '<td><a href='+data_info.proCapabilityL[j].url+'>'+data_info.proCapabilityL[j].name+'</a></td>';
             					if (data_info.proCapabilityL[j].isTraining == true)
         						{
             						htmlInner+= '<td class="center"><a href="#" id="myCourse" capabilityId="'+data_info.proCapabilityL[j].proCapabilityId+'">参加培训</a></td>';
@@ -48,7 +48,14 @@ $("#showEmp").show(function(){
             						htmlInner+= '<td class="center"></td>';
         						}
             					
-            					htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.proCapabilityL[j].status+'"</span></td>';
+            					if (data_info.proCapabilityL[j].status != "")
+        						{
+            						htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.proCapabilityL[j].status+'"</span></td>';
+        						}
+            					else
+        						{
+            						htmlInner+= '<td class="center"><span class="label-success label label-default"></span></td>';
+        						}
             					htmlInner+="</tr>";
             				}
         				}
@@ -74,7 +81,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td rowspan="'+data_info.cCapabilityL.length+'">'+data_info.name+'</td>';
         						}
-            					htmlInner+= '<td>'+data_info.cCapabilityL[j].name+'</td>';
+            					htmlInner+= '<td><a href='+data_info.cCapabilityL[j].url+'>'+data_info.cCapabilityL[j].name+'</a></td>';
             					if (data_info.cCapabilityL[j].isTraining == true)
         						{
             						htmlInner+= '<td class="center"><a href="#" id="myCourse" capabilityId="'+data_info.cCapabilityL[j].commCapabilityId+'">参加培训</a></td>';
@@ -93,7 +100,15 @@ $("#showEmp").show(function(){
             						htmlInner+= '<td class="center"></td>';
         						}
             					
-            					htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.cCapabilityL[j].status+'"</span></td>';
+            					
+            					if (data_info.proCapabilityL[j].status != "")
+        						{
+            						htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.cCapabilityL[j].status+'"</span></td>';
+        						}
+            					else
+        						{
+            						htmlInner+= '<td class="center"><span class="label-success label label-default"></span></td>';
+        						}
             					htmlInner+="</tr>";
             				}
         				}
