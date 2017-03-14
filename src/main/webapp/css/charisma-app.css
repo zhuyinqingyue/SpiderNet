@@ -4,87 +4,7 @@
 		  font-family: segoesc; 
 		  src: url('../fonts/segoe script.ttf'); 
 		} 
-.btn-primary-one {
-    background: #0c85be;
-    border-radius: 120px;
-    border-color: #eff2f3;
-    width: 140px;
-    height: 40px;
-	font-weight:bold;
-    font-size: 18px;
-	border-color: #d0e0e0;
-}
 
-.input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn {
-    height: 40px;
-    width: 350px;
-}
-.login-box .btn {
-    margin-top: 40px;
-}
-
-.username {
-    color: white;
-    font-size: 18px;
-    width: 390px;
-    display: inline-flex;
-    margin-top: 10px;
-}
-form.form-horizontal {
-    width: 390px;
-}
-.title {
-    font-family: segoesc;
-    font-size: 45px;
-    color: #FFFFFF;
-    width: 390px;
-    display: -webkit-box;
-    margin-bottom: 20px;
-}
-
-.frame-box{
-	position:relative;
-	top:120px;
-}
-.frame1 {
-    width: 100%;
-    height: 500px;
-}
-.frame2 {
-    width: 50%;
-    float: right;
-    height: 500px;
-}
-.line {
-    width: 1px;
-    height: 499px;
-    background-color: aquamarine;
-    float: left;
-    background-image: url(../img/line.img);
-}
-.frame2-concent{
-    text-align: center;
-    margin: auto;
-}
-.input-group{
-	margin-top:8px;
-}
-.login-back{
-	background-image:url(../img/background.png); 
-	no-repeat left top; 
-	background-size:100%;
-	margin:0;
-	padding:0;
-}
-.frame1div{
-	float:left;
-	width:50%;
-	text-align:right;
-	padding-right:100px;
-	border-style: solid; 
-	border-width: 0px 1px 0px 0px;
-	border-image: linear-gradient( rgba(251, 247, 247, 0) , #fdfdff, rgba(251, 247, 247, 0)) 30 30;	
-}
 select {
     background-color: #fff;
 }
@@ -195,7 +115,7 @@ select {
 }
 
 .box {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     margin-bottom: 10px;
 }
 

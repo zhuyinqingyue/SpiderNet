@@ -1,4 +1,5 @@
 var personalExamList = null;
+var status;
 
 $("a[id='myExam']").click(
 	function(e) {
@@ -17,7 +18,14 @@ $("a[id='myExam']").click(
 					personalExamList = examList;
 
 					$("#examListTable tbody").remove();
-					$("#myModalExam").find('.alert').html('Your exam have submitted successfully').hide();
+					$("#myModalExam").find('.alert-success').hide();
+					$("#myModalExam").find('.alert-warning').hide();
+
+					if (examList.length == 0) {
+						$("#examSubmitBtn").prop('disabled',true);
+					} else {
+						$("#examSubmitBtn").prop('disabled',false);
+					}
 
 					var tbody = $("<tbody>");
 					tbody.appendTo($("#examListTable"));
@@ -26,7 +34,7 @@ $("a[id='myExam']").click(
 						var tr = $("<tr></tr>");
 						tr.appendTo(tbody);
 
-						var td1 = $("<td> <input type='checkbox' id='subCheck' onclick='setSelectAll()'> </td>");
+						var td1 = $("<td> <input type='checkbox' id='subCheck'> </td>");
 						var td2 = $("<td>"
 								+ examList[i].buName
 								+ "</td>");
@@ -48,8 +56,12 @@ $("a[id='myExam']").click(
 						var td8 = $("<td>"
 								+ examList[i].validPeriod + "Day"
 								+ "</td>");
-						var td9 = $("<td>"
-								+ examList[i].status
+
+						if (examList[i].status == 0) {
+							status = "报名中";
+						}
+						var td9 = $("<td>" + "<span class='label-success label label-default'>"
+								+ status + "</span>"
 								+ "</td>");
 
 						td1.appendTo(tr);
@@ -84,8 +96,8 @@ $("#examSubmitBtn").click(function(e){
 	}
 
 	if(selectedHtmlArray.length==0){
-
-		$("#myModalExam").find('.alert').html('Please select your exam').show();
+		$("#myModalExam").find('.alert').hide();
+		$("#myModalExam").find('.alert-warning').html('请选择您要参加的考试').show();
 
 	}else{
 
@@ -99,9 +111,11 @@ $("#examSubmitBtn").click(function(e){
 		timeout : 20000,
 		success : function(data) {
 			if (data) {
-				$("#myModalExam").find('.alert').html('Your exam have submitted successfully').show();
+				$("#myModalExam").find('.alert').hide();
+				$("#myModalExam").find('.alert-success').html('恭喜您注册考试成功').show();
 			} else {
-				$("#myModalExam").find('.alert').html('Your exam is exist').show();
+				$("#myModalExam").find('.alert').hide();
+				$("#myModalExam").find('.alert-warning').html('您已经注册过该课程考试').show();
 			}
 		}
 	});
