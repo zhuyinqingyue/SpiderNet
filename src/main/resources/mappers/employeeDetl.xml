@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spidernet.dashboard.dao.EmployeeDetlMapper">
+	<resultMap id="empDetlMap" type="com.spidernet.dashboard.entity.EmployeeDetl">
+		<id property="empId" column="EMPLOYEE_ID" javaType="String" />
+		<result property="empName" column="NAME" javaType="String" />
+		<result property="buName" column="NAME" javaType="String" />
+		<result property="projectName" column="NAME" javaType="String" />
+		<result property="levelName" column="LEVEL_NAME" javaType="String" />
+		<result property="typeName" column="TYPE_NAME" javaType="String" />
+	</resultMap>
+
+	<select id="queryDetail" parameterType="String"
+		resultType="com.spidernet.dashboard.entity.EmployeeDetl">
+		SELECT e.EMPLOYEE_ID AS 'empId',e.`NAME` AS
+		'empName',b.`NAME` AS 'buName',p.`NAME` AS 'projectName',l.LEVEL_NAME
+		AS 'levelName',t.TYPE_NAME AS 'typeName'
+		FROM t_employee AS e
+		LEFT JOIN t_project AS p
+		ON e.PROJECT_ID = p.PROJECT_ID
+		LEFT JOIN t_emp_level AS l
+		ON e.EMP_LEVEL_ID = l.EMP_LEVEL_ID
+		LEFT JOIN t_emp_type AS t
+		ON e.EMP_TYPE_ID = t.EMP_TYPE_ID
+		LEFT JOIN t_bu AS b
+		ON e.BU_ID = b.BU_ID
+		WHERE e.EMPLOYEE_ID = #{empId}
+	</select>
+
+</mapper>
