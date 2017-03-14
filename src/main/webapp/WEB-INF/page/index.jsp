@@ -133,6 +133,7 @@ var path='<%=path%>';
 
 								<div class="box-content" style="overflow: auto;">
 									<div class="alert alert-success" style="display: none;"></div>
+									<div class="alert alert-warning" style="display: none;"></div>
 									<table class="table table-striped table-bordered" id="trainningListTable">
 										<thead>
 											<tr>
@@ -185,6 +186,7 @@ var path='<%=path%>';
 
 								<div class="box-content" style="overflow: auto;">
 								<div class="alert alert-success" style="display: none;"></div>
+								<div class="alert alert-warning" style="display: none;"></div>
 									<table class="table table-striped table-bordered" id="examListTable">
 										<thead>
 											<tr>

@@ -1,4 +1,5 @@
 var personalTrainningList = null;
+var status;
 
 $("a[id='myCourse']").click(
 	function(e) {
@@ -17,16 +18,39 @@ $("a[id='myCourse']").click(
 					personalTrainningList = trainningList;
 
 					$("#trainningListTable tbody").remove();
-					$("#myModalClass").find('.alert').html('Your trainning have submitted successfully').hide();
+					$("#myModalClass").find('.alert-success').hide();
+					$("#myModalClass").find('.alert-warning').hide();
 
 					var tbody = $("<tbody>");
 					tbody.appendTo($("#trainningListTable"));
+
+					if (trainningList.length == 0) {
+						$("#trainningSubmitBtn").prop('disabled',true);
+					} else {
+						$("#trainningSubmitBtn").prop('disabled',false);
+					}
 
 					for (var i = 0; i < trainningList.length; i++) {
 						var tr = $("<tr></tr>");
 						tr.appendTo(tbody);
 
-						var td1 = $("<td> <input type='checkbox' id='subCheck' > </td>");
+						var td1;
+						var td7;
+
+						if (trainningList[i].status==0) {
+							status = '报名中';
+							td1 = $("<td> <input type='checkbox' id='subCheck'> </td>");
+							td7 = $("<td>" + "<span class='label-success label label-default'>"
+									+ status + "</span>"
+									+ "</td>");
+						} else if (trainningList[i].status==1){
+							status = '满员';
+							td1 = $("<td> <input type='checkbox' id='subCheck' disabled> </td>");
+							td7 = $("<td>" + "<span class='label-warning label label-default'>"
+									+ status + "</span>"
+									+ "</td>");
+						}
+
 						var td2 = $("<td>"
 								+ trainningList[i].courseName
 								+ "</td>");
@@ -42,9 +66,6 @@ $("a[id='myCourse']").click(
 						var td6 = $("<td><a href='#'>"
 								+ trainningList[i].url
 								+ "</a></td>");
-						var td7 = $("<td>"
-								+ trainningList[i].status
-								+ "</td>");
 
 						td1.appendTo(tr);
 						td2.appendTo(tr);
@@ -75,8 +96,9 @@ $("#trainningSubmitBtn").click(function(e){
 	}
 
     if(selectedHtmlArray.length==0){
-
-		$("#myModalClass").find('.alert').html('Please select your exam').show();
+    	$("#myModalClass").find('.alert').hide();
+		$("#myModalClass").find('.alert-warning').html('请选择您要参加的培训').show();
+		//$("#myModalClass").find('.alert').css({color:"red"});
 
 	}else{
 
@@ -90,10 +112,12 @@ $("#trainningSubmitBtn").click(function(e){
 		timeout : 20000,
 		success : function(data) {
 			if (data) {
-				$("#myModalClass").find('.alert').html('Your trainning have submitted successfully').show();
+				$("#myModalClass").find('.alert').hide();
+				$("#myModalClass").find('.alert-success').html('恭喜您成功注册该培训').show();
 				//alert("Success");
 			} else {
-				$("#myModalClass").find('.alert').html('Your trainning is exist').show();
+				$("#myModalClass").find('.alert').hide();
+				$("#myModalClass").find('.alert-warning').html('对不起，您已经注册过该培训').show();
 			}
 		}
 	});

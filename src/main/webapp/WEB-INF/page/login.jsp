@@ -36,6 +36,7 @@
     <link href='<%=path %>/css/jquery.iphone.toggle.css' rel='stylesheet'>
     <link href='<%=path %>/css/uploadify.css' rel='stylesheet'>
     <link href='<%=path %>/css/animate.min.css' rel='stylesheet'>
+    <link href="<%=path %>/css/login.css" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="<%=path %>/bower_components/jquery/jquery.min.js"></script>
@@ -51,53 +52,64 @@
 	</style>
 </head>
 
-<body class="login-back">
-			<div class="frame-box">
-				<div class="frame1">
-					<div class="frame1div" >
-					<img src="<%=path %>/img/log_login.png" ></img>
-				</div>
-				
-				<div class="frame2">
+<body class="login-background">
+<div class="ch-container">
+        
+    <div class="row">
+        <div class="col-md-12 center login-header login-header" >
+        		 
+        		 		 <div class="login-header-img">
+        		 		 		<img src="<%=path %>/img/img-logo1.png" /><!--<span> SpiderNet1111111111111111111</span>-->
+        		 		</div>
+        		 	
+        </div>
+        		
+           
+        <!--/span-->
+    </div><!--/row-->
 
-					<div class="frame2-concent">
-						<div class="login-box" style="width:80%;padding-left:100px;">
-						            <div class="title" style="font-family:segoesc;font-size:35px;color:#FFFFFF">
-						               SpiderNet
-						            </div>
-						            <div class="alert alert-success" style="display: none;"></div>
-						            <form id="loginForm" class="form-horizontal" method="post">
-						                <fieldset>
-											
-											<div class="form-group">
-												
-								              <div type="text" class="username">用户名</div>
-								                <div class="group">
-								                    <div class="col-sm-12">
-								                        <input type="text" class="form-control " style="height:46px" placeholder="" id="userName" name="userName">
-								                    </div>
-								                </div>
-						                    <div class="clearfix"></div><br>
-						
-						                    <div type="text" class="username">密码</div>
-											<div class = "group">                       
-						                    <div class="col-sm-12">
-						                        <input type="password" class="form-control" id="password" style="height:46px" name="password" placeholder="">
-						                    </div>
-						                    </div>
-						                    </div>
-						                    <div class="clearfix"></div>
-																<p class="center col-md-5">
-						                        <button type="submit" id="submitBtn" class="btn btn-primary btn-primary-one" style="">登录</button>
-						                    </p>
-						                </fieldset>
-						            </form>
+    <div class="row">
+        <div  class="well col-md-5 center login-box new-login-box">
+    
+            <div class="alert alert-info new-login-box-header" id="loginAlert">
+                Welcome to SpiderNet
+            </div>
+            <form id="loginForm" class="form-horizontal" method="post">
+                <fieldset>
+              		<div class="form-group">
+	              		<div class="group">
+		                    <div class="input-group input-group-lg">
+		                      	<span  class="input-group-addon input-area-span"><i class="glyphicon glyphicon-user green-1"></i></span>
 
-						</div>
+								<input type="text" id="userName" name="userName" class="form-control input-area" placeholder="用户名">
+		                    </div>
+		                </div>
+	                    <div class="clearfix"></div><br>
 					</div>
-				</div>
-		  </div>		
-	</div>	
+					<div class="form-group">
+						<div class="group">
+		                    <div class="input-group input-group-lg">
+		                        <span  class="input-group-addon input-area-span"><i class="glyphicon glyphicon-user green-1"></i></span>
+
+		                        <input type="password" id="password" name="password" class="form-control input-area" placeholder="密码">
+		                    </div>
+	                    </div>
+	                    <div class="clearfix"></div>
+					</div>
+                   <!-- <div class="input-prepend">
+                        <label class="remember" for="remember"><input type="checkbox" id="remember">  记住用户名</label>
+                    </div>-->
+                    <div class="clearfix"></div>
+
+                    <p class="center col-md-5 p-style">
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-primary-new">登录</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+        <!--/span-->
+    </div><!--/row-->
+</div><!--/fluid-row-->
 	
 <script type="text/javascript">
 var path = "<%=path%>";
