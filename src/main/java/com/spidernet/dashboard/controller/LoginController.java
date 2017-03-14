@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spidernet.dashboard.entity.Employee;
+import com.spidernet.dashboard.entity.EmployeeDetl;
+import com.spidernet.dashboard.service.EmployeeDetlService;
 import com.spidernet.dashboard.service.EmployeeService;
 
 @Controller
@@ -25,6 +27,9 @@ public class LoginController
 {
     @Resource
     EmployeeService userService;
+    
+    @Resource
+    EmployeeDetlService employeeDetlService;
 
     private static Logger logger = LoggerFactory
             .getLogger(LoginController.class);
@@ -101,6 +106,9 @@ public class LoginController
         {
             logger.info("Find the Employee correctly, enter the index page");
             request.getSession().setAttribute("employee", employeeTemp);
+            String empId = employeeTemp.getEmployeeId();
+            EmployeeDetl employeeDetl = employeeDetlService.queryDetail(empId);
+            request.getSession().setAttribute("employeeDetl", employeeDetl);
 //            mv.setViewName("index");
 //            mv.addObject("employee", employeeTemp);
             return true;
