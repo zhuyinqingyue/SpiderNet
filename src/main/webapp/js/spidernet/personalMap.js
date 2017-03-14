@@ -29,7 +29,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td rowspan="'+data_info.proCapabilityL.length+'">'+data_info.name+'</td>';
         						}
-            					htmlInner+= '<td><a href='+data_info.proCapabilityL[j].url+'>'+data_info.proCapabilityL[j].name+'</a></td>';
+            					htmlInner+= '<td><a href='+data_info.proCapabilityL[j].url+' target="_blank">'+data_info.proCapabilityL[j].name+'</a></td>';
             					if (data_info.proCapabilityL[j].isTraining == true)
         						{
             						htmlInner+= '<td class="center"><a href="#" id="myCourse" capabilityId="'+data_info.proCapabilityL[j].proCapabilityId+'">参加培训</a></td>';
@@ -48,13 +48,20 @@ $("#showEmp").show(function(){
             						htmlInner+= '<td class="center"></td>';
         						}
             					
-            					if (data_info.proCapabilityL[j].status != ""&&data_info.proCapabilityL[j].status !=null)
+            					if (data_info.proCapabilityL[j].status != "" && null != data_info.proCapabilityL[j].status)
         						{
-            						htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.proCapabilityL[j].status+'"</span></td>';
+            						if (data_info.proCapabilityL[j].status == "0")
+        							{
+            							htmlInner+= '<td class="center"><span class="label-success label label-default">Sucess</span></td>';
+        							}
+            						if (data_info.proCapabilityL[j].status == "1")
+        							{
+            							htmlInner+= '<td class="center"><span class="label-default label label-danger">Fail</span></td>';
+        							}
         						}
             					else
         						{
-            						htmlInner+= '<td class="center"><span class="label-success label label-default"></span></td>';
+            						htmlInner+= '<td class="center"></td>';
         						}
             					htmlInner+="</tr>";
             				}
@@ -81,7 +88,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td rowspan="'+data_info.cCapabilityL.length+'">'+data_info.name+'</td>';
         						}
-            					htmlInner+= '<td><a href='+data_info.cCapabilityL[j].url+'>'+data_info.cCapabilityL[j].name+'</a></td>';
+            					htmlInner+= '<td><a href='+data_info.cCapabilityL[j].url+' target="_blank">'+data_info.cCapabilityL[j].name+'</a></td>';
             					if (data_info.cCapabilityL[j].isTraining == true)
         						{
             						htmlInner+= '<td class="center"><a href="#" id="myCourse" capabilityId="'+data_info.cCapabilityL[j].commCapabilityId+'">参加培训</a></td>';
@@ -101,13 +108,20 @@ $("#showEmp").show(function(){
         						}
             					
             					
-            					if (data_info.proCapabilityL[j].status != ""&&data_info.proCapabilityL[j].status !=null)
+            					if (data_info.cCapabilityL[j].status != "" && null != data_info.cCapabilityL[j].status)
         						{
-            						htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.cCapabilityL[j].status+'"</span></td>';
+            						if (data_info.cCapabilityL[j].status == "0")
+        							{
+            							htmlInner+= '<td class="center"><span class="label-success label label-default">Sucess</span></td>';
+        							}
+            						if (data_info.cCapabilityL[j].status == "1")
+        							{
+            							htmlInner+= '<td class="center"><span class="label-default label label-danger">Fail</span></td>';
+        							}
         						}
             					else
         						{
-            						htmlInner+= '<td class="center"><span class="label-success label label-default"></span></td>';
+            						htmlInner+= '<td class="center"></td>';
         						}
             					htmlInner+="</tr>";
             				}
