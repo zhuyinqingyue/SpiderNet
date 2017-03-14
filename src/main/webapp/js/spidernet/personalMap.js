@@ -48,7 +48,7 @@ $("#showEmp").show(function(){
             						htmlInner+= '<td class="center"></td>';
         						}
             					
-            					if (data_info.proCapabilityL[j].status != "")
+            					if (data_info.proCapabilityL[j].status != ""&&data_info.proCapabilityL[j].status !=null)
         						{
             						htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.proCapabilityL[j].status+'"</span></td>';
         						}
@@ -101,7 +101,7 @@ $("#showEmp").show(function(){
         						}
             					
             					
-            					if (data_info.proCapabilityL[j].status != "")
+            					if (data_info.proCapabilityL[j].status != ""&&data_info.proCapabilityL[j].status !=null)
         						{
             						htmlInner+= '<td class="center"><span class="label-success label label-default">"'+data_info.cCapabilityL[j].status+'"</span></td>';
         						}

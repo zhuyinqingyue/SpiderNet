@@ -60,7 +60,7 @@
     <![endif]-->
 
 <!-- The fav icon -->
-<link rel="shortcut icon" href="img/favicon.ico">
+<link rel="shortcut icon" href="<%=path %>/img/favicon.ico">
 
 </head>
 

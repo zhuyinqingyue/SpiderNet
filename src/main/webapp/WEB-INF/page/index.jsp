@@ -56,7 +56,7 @@
     <![endif]-->
 
 <!-- The fav icon -->
-<link rel="shortcut icon" href="img/favicon.ico">
+<link rel="shortcut icon" href="<%=path %>/img/favicon.ico">
 
 </head>
 <script>
@@ -83,8 +83,8 @@ var path='<%=path%>';
 							</div>
 							<div id="showEmp" class="box-content">
 							<input type="hidden" id="empId"  value="${sessionScope.employee.getEmployeeId()}"/>
-								<div class="alert alert-info">用户名：${sessionScope.employee.getName()}   职别：${sessionScope.employee.getEmpLevelId()} 种类：${sessionScope.employee.getEmpTypeId()}
-									项目名称：${sessionScope.employee.getProjectId()} </div>
+								<div class="alert alert-info">用户名：${sessionScope.employee.getName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目名称：${sessionScope.employeeDetl.getProjectName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;角色：${sessionScope.employeeDetl.getTypeName()}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级别：${sessionScope.employeeDetl.getLevelName()} </div>
 								<table id="personalMap"
 									class="table table-striped table-bordered">
 									<thead>
