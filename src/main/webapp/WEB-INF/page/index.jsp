@@ -92,8 +92,9 @@ var path='<%=path%>';
 											<th></th>
 											<th>知识库</th>
 											<th>培训</th>
+											<th>注册状态</th>
 											<th>技能鉴定</th>
-											<th>鉴定结果</th>
+											<th>鉴定状态</th>
 										</tr>
 									</thead>
 									<tbody>
