@@ -96,7 +96,6 @@
 										type="hidden" name="project_id" id="project_id" value="" />
 
 									<div class="alert alert-success" style="display: none;"></div>
-									<br />
 									<div class="form-group">
 										<div class="group">
 											<label class="col-sm-2 control-label">ER</label>
@@ -111,9 +110,8 @@
 											</div>
 										</div>
 									</div>
+									
 									<br />
-
-
 									<div class="form-group">
 										<div class="group">
 											<label class="col-sm-2 control-label">中文名</label>
@@ -133,169 +131,65 @@
 									<br />
 
 									<div class="form-group">
+										<div class="group">
 										<label class="col-lg-2 control-label">角色</label>
 										<div class="col-lg-3">
 											<select class="form-control" name="emp_type" data-bv-notempty
-												data-bv-notempty-message="请选择角色" id="emp_type">
+												data-bv-notempty-message="请选择角色" id="emp_type" data-bv-group=".group">
 												<option value="">-- 请选择角色 --</option>
 											</select>
 										</div>
+										</div>
 
+										<div class="group">
 										<label class="col-lg-3 control-label">级别</label>
 										<div class="col-lg-3">
 											<select class="form-control" name="emp_level"
 												data-bv-notempty data-bv-notempty-message="请选择级别"
-												id="emp_level">
+												id="emp_level" data-bv-group=".group">
 												<option value="">-- 请选择级别 --</option>
 											</select>
+										</div>
 										</div>
 									</div>
 									<br />
 
 									<div class="form-group">
-
-
-										<label class="col-lg-2 control-label">项目</label>
-										<div class="col-lg-3">
-											<select href="#" class="form-control " name="projectName"
-												data-bv-notempty data-bv-notempty-message="请选择项目"
-												id="projectName"
-												onchange="ViewCapability(this.options[this.options.selectedIndex].value);">
-												<option value="">-- 请选择项目 --</option>
-											</select>
+										<div class="group">
+											<label class="col-lg-2 control-label">项目</label>
+											<div class="col-lg-3">
+												<select href="#" class="form-control " name="projectName"
+													data-bv-notempty data-bv-notempty-message="请选择项目"
+													id="projectName" data-bv-group=".group"
+													onchange="ViewCapability(this.options[this.options.selectedIndex].value);">
+													<option value="">-- 请选择项目 --</option>
+												</select>
+											</div>
 										</div>
 
 										<div class="group">
 											<label class="col-sm-3 control-label">交付部</label>
 											<div class="col-sm-4">
 												<input type="text" class="form-control" name="firstName"
-													id="deliverDepartment" disabled="disabled" />
+													id="deliverDepartment" disabled="disabled" data-bv-group=".group"/>
 											</div>
 										</div>
 									</div>
-									<br /> <input type="submit" value="注&nbsp;&nbsp;册"
+									<br /> 
+									
+									<div style="text-align:center;width=100%">
+									<input type="submit" value="注&nbsp;&nbsp;册"
 										name="subscribe" id="sub_bt" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
-										style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin-left: 80%;">
+										style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
+									</div>
 									<br>
 
 
 								</form>
 
 
-								<script type="text/javascript">
-$(document).ready(function() {
-	var paths = "<%=path%>";
-    $('#paymentForm').bootstrapValidator({
-		message: 'This value is not valid',
-        
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-			er: {
-				validators: {
-                    notEmpty: {
-                        message: '请输入ER号'
-                    },
-                    regexp: {
-                        regexp: /E[0-9]{9}/,
-                        message: '需要以E开头的9位数字编码'
-                    }, 
-                    /* regexp: {
-                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
-                        message: '请勿包含特殊字符'
-                    }, */
-                    /* stringLength: {  
-                        min: 1,  
-                        max: 12,  
-                        message: '请输入长度在1到12位之间的ER号'  
-                    }, */
-                    remote: {//ajax  server result:{"valid",true or false}   json
-                        url: paths+'/service/employee/checkErExists',
-                        message: 'ER号已存在',
-                        delay :  2000,//per 2s send a request
-                        type: 'POST'
-                    }
-                }
-            },
-            
-            hr: {
-                validators: {
-                    notEmpty: {
-                        message: '请输入HR号'
-                    },
-                    regexp: {
-                        regexp: /^\d{5,12}$/,
-                        message: '需要5-12位数字编码'
-                    },
-                    /* regexp: {
-                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
-                        message: '请勿包含特殊字符'
-                    }, */
-                    /* stringLength: {  
-                        min: 1,  
-                        max: 12,  
-                        message: '请输入长度在1到12位之间的HR号'  
-                    }, */
-                    remote: {//ajax  server result:{"valid",true or false}   json
-                        url: paths+'/service/employee/checkHrExists',
-                        message: 'HR号已存在',
-                        delay :  2000,//per 2s send a request
-                        type: 'POST'
-                    }
-                }
-            },
-            
-            name: {
-                group: '.group',
-				validators: {
-                    notEmpty: {
-                        message: '请输入中文名'
-                    },
-                    regexp: {
-                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
-                        message: '请勿包含特殊字符'
-                    },
-                    stringLength: {  
-                        max: 25,  
-                        message: '请输入50字符以内的中文名'  
-                    } 
-                }
-            },
-            eName: {
-                group: '.group',
-				validators: {
-                    notEmpty: {
-                        message: '请输入英文名'
-                    },
-                    regexp: {
-                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
-                        message: '请勿包含特殊字符'
-                    },
-                    stringLength: {  
-                        max: 50,  
-                        message: '请输入50字符以内的英文名'  
-                    }
-                }
-            }
-            
-        }
-    }).on('success.form.bv', function(e) {
-            // Prevent submit form
-            e.preventDefault();
 
-            var $form     = $(e.target);
-                validator = $form.data('bootstrapValidator');
-            if(validator){
-            	RegCapabilityMap(e.target);
-            }
-            
-        });
-});
-</script>
 
 							</div>
 						</div>
@@ -324,11 +218,11 @@ $(document).ready(function() {
 
 						<div class="box-icon">
 							<a href="#" class="btn btn-round btn-default  btn-minimize "><i
-								class="glyphicon glyphicon-chevron-up"></i></a> 
-								<a class="btn btn-round btn-default" href="#" data-dismiss="modal"> <i
-								class="glyphicon glyphicon-remove"></i> 
+								class="glyphicon glyphicon-chevron-up"></i></a> <a
+								class="btn btn-round btn-default" href="#" data-dismiss="modal">
+								<i class="glyphicon glyphicon-remove"></i>
 							</a>
-								<!-- <a href="#"
+							<!-- <a href="#"
 								class="btn btn-close btn-round btn-default" data-dismiss="modal"><i
 								class="glyphicon glyphicon-remove"></i></a> -->
 						</div>
