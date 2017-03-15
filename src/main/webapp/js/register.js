@@ -1,3 +1,117 @@
+$(document).ready(function() {
+	
+    $('#paymentForm').bootstrapValidator({
+		message: 'This value is not valid',
+        
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        	er: {
+        		group: '.group',
+        		validators: {
+                    notEmpty: {
+                        message: '请输入ER号'
+                    },
+                    regexp: {
+                        regexp: /E[0-9]{9}/,
+                        message: '需要以E开头的9位数字编码'
+                    }, 
+                    /* regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    }, */
+                    /* stringLength: {  
+                        min: 1,  
+                        max: 12,  
+                        message: '请输入长度在1到12位之间的ER号'  
+                    }, */
+                    remote: {//ajax  server result:{"valid",true or false}   json
+                        url: path+'/service/employee/checkErExists',
+                        message: 'ER号已存在',
+                        delay :  2000,//per 2s send a request
+                        type: 'POST'
+                    }
+                }
+            },
+            
+            hr: {
+            	group: '.group',
+            	validators: {
+                    notEmpty: {
+                        message: '请输入HR号'
+                    },
+                    regexp: {
+                        regexp: /^\d{5,12}$/,
+                        message: '需要5-12位数字编码'
+                    },
+                    /* regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    }, */
+                    /* stringLength: {  
+                        min: 1,  
+                        max: 12,  
+                        message: '请输入长度在1到12位之间的HR号'  
+                    }, */
+                    remote: {//ajax  server result:{"valid",true or false}   json
+                        url: path+'/service/employee/checkHrExists',
+                        message: 'HR号已存在',
+                        delay :  2000,//per 2s send a request
+                        type: 'POST'
+                    }
+                }
+            },
+            
+            name: {
+                group: '.group',
+				validators: {
+                    notEmpty: {
+                        message: '请输入中文名'
+                    },
+                    regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    },
+                    stringLength: {  
+                        max: 25,  
+                        message: '请输入50字符以内的中文名'  
+                    } 
+                }
+            },
+            eName: {
+                group: '.group',
+				validators: {
+                    notEmpty: {
+                        message: '请输入英文名'
+                    },
+                    regexp: {
+                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        message: '请勿包含特殊字符'
+                    },
+                    stringLength: {  
+                        max: 50,  
+                        message: '请输入50字符以内的英文名'  
+                    }
+                }
+            }
+            
+        }
+    }).on('success.form.bv', function(e) {
+            // Prevent submit form
+            e.preventDefault();
+
+            var $form     = $(e.target);
+                validator = $form.data('bootstrapValidator');
+            if(validator){
+            	RegCapabilityMap(e.target);
+            }
+            
+        });
+});
+
 $(function(){
 	
 	loadlevel();
