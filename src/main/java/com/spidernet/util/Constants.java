@@ -7,5 +7,6 @@ public class Constants
     public final static String WECHAT_PATTERN = "";
     public final static int ONE = 1;
     public final static int TWO = 2;
+    public final static int ZERO = 0;
 
 }

@@ -16,8 +16,8 @@ $(document).ready(function() {
                         message: '请输入ER号'
                     },
                     regexp: {
-                        regexp: /E[0-9]{9}/,
-                        message: '需要以E开头的9位数字编码'
+                        regexp: /^E[0-9]{9}$/,
+                        message: '需要以E开头加9位数字编码'
                     }, 
                     /* regexp: {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,

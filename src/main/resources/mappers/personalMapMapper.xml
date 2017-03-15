@@ -29,7 +29,7 @@
 		resultType="com.spidernet.dashboard.entity.PersonalMap">
 		select
 		<include refid="Base_Column_List" />
-		from t_personal_map where EMPLOYEE_ID = #{employeeId}
+		from t_personal_map where EMPLOYEE_ID = #{employeeId} and STATUSFLAG =1
 	</select>
 	
 	<insert id="addPersonalMap" parameterType="com.spidernet.dashboard.entity.PersonalMap">

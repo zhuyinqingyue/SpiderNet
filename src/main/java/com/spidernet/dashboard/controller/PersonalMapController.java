@@ -1,5 +1,7 @@
 package com.spidernet.dashboard.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spidernet.dashboard.entity.CapabilityMap;
+import com.spidernet.dashboard.entity.ExamCapability;
 import com.spidernet.dashboard.entity.PersonalMap;
+import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.service.CapabilityExamService;
 import com.spidernet.dashboard.service.CapabilityTrainingService;
+import com.spidernet.dashboard.service.ExamService;
 import com.spidernet.dashboard.service.PersonalMapService;
+import com.spidernet.dashboard.service.TrainningService;
 import com.spidernet.util.Constants;
 import com.spidernet.util.XmlUtil;
 
@@ -34,6 +40,12 @@ public class PersonalMapController
     @Resource
     CapabilityTrainingService capabilityTrainingService;
     
+    @Resource
+    TrainningService trainningService;
+    
+    @Resource
+    ExamService examService;
+    
     @RequestMapping("/viewPersonalMap")
     @ResponseBody
     public CapabilityMap viewPersonalMap(final HttpServletRequest request,
@@ -48,9 +60,7 @@ public class PersonalMapController
         
         CapabilityMap cBBean = (CapabilityMap) XmlUtil.convertXmlStrToObject(CapabilityMap.class,
                 personalMap.getDetail());
-        
-        Boolean capabilityExam = false;
-        Boolean capabilityTraining = false;
+
         String capabilityId = "";
         
         for (int i=0;i<cBBean.getCapabilityMap().size();i++)
@@ -59,16 +69,30 @@ public class PersonalMapController
             {
                 for(int j=0;j<cBBean.getCapabilityMap().get(i).getProCapabilityL().size();j++)
                 {
+                    Boolean capabilityExam = false;
+                    Boolean capabilityTraining = false;
                     capabilityId = cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).getProCapabilityId();
-                    capabilityExam = capabilityExamService.accountCapabilityExam(capabilityId);
-                    capabilityTraining = capabilityTrainingService.accountCapabilityTraining(capabilityId);
-                    if (capabilityExam)
+                    List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
+                    List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
+                    
+                    if (examList.size() <= Constants.ZERO)
                     {
                         cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsExam(capabilityExam);
                     }
-                    if (capabilityTraining)
+                    else
+                    {
+                        capabilityExam = true;
+                        cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsExam(capabilityExam);
+                    }
+                    
+                    if (trainningList.size() <= Constants.ZERO)
                     {
                         cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsTraining(capabilityTraining);       
+                    }
+                    else
+                    {
+                        capabilityTraining = true;
+                        cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsTraining(capabilityTraining);
                     }
                 }
             }
