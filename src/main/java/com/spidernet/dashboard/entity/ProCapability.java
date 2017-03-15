@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "proCapabilityId", "blockId", "buId", "projectId", "empLevelId", "name", "description", "sort", "url", "empTypeId", "isExam", "isTraining", "status" })
+@XmlType(propOrder = { "proCapabilityId", "blockId", "buId", "projectId", "empLevelId", "name", "description", "sort", "url", "empTypeId", "isExam", "isTraining", "status", "trainingStatus" })
 public class ProCapability
 {
 
@@ -28,6 +28,7 @@ public class ProCapability
     private Boolean isExam;   
     private Boolean isTraining;
     private String status;
+    private String trainingStatus;
     
     public String getProCapabilityId()
     {
@@ -157,6 +158,16 @@ public class ProCapability
     public void setStatus(String status)
     {
         this.status = status;
+    }
+
+    public String getTrainingStatus()
+    {
+        return trainingStatus;
+    }
+
+    public void setTrainingStatus(String trainingStatus)
+    {
+        this.trainingStatus = trainingStatus;
     }
 
 }
