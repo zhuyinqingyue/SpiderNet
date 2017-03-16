@@ -19,7 +19,7 @@ $("#showEmp").show(function(){
             		
             		if (data_info.blockType == 1)
         			{
-            			if (null != data_info.proCapabilityL[i])
+            			if (data_info.proCapabilityL.length > 0)
         				{
             				for (var j=0;j<data_info.proCapabilityL.length;j++)
             				{
@@ -93,7 +93,7 @@ $("#showEmp").show(function(){
         			}
             		if (data_info.blockType == 2)
         			{
-            			if (null != data_info.cCapabilityL[i])
+            			if (data_info.cCapabilityL.length > 0)
         				{
             				for (var j=0;j<data_info.cCapabilityL.length;j++)
             				{

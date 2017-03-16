@@ -96,6 +96,38 @@ public class PersonalMapController
                     }
                 }
             }
+            
+            if (Constants.TWO == cBBean.getCapabilityMap().get(i).getBlockType())
+            {
+                for(int j=0;j<cBBean.getCapabilityMap().get(i).getcCapabilityL().size();j++)
+                {
+                    Boolean capabilityExam = false;
+                    Boolean capabilityTraining = false;
+                    capabilityId = cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).getCommCapabilityId();
+                    List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
+                    List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
+                    
+                    if (examList.size() <= Constants.ZERO)
+                    {
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsExam(capabilityExam);
+                    }
+                    else
+                    {
+                        capabilityExam = true;
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsExam(capabilityExam);
+                    }
+                    
+                    if (trainningList.size() <= Constants.ZERO)
+                    {
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsTraining(capabilityTraining);       
+                    }
+                    else
+                    {
+                        capabilityTraining = true;
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsTraining(capabilityTraining);
+                    }
+                }
+            }
         }
         
         
