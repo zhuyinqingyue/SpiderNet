@@ -1,5 +1,5 @@
 $("#showEmp").show(function(){
-    
+
     var url = path+"/service/capability/viewPersonalMap";
     var empId = $("#empId").val();
 
@@ -16,7 +16,7 @@ $("#showEmp").show(function(){
             	var htmlInner="";
             	for(var i=0;i<capabilityMapList.length;i++){
             		var data_info = capabilityMapList[i];
-            		
+
             		if (data_info.blockType == 1)
         			{
             			if (data_info.proCapabilityL.length > 0)
@@ -24,7 +24,7 @@ $("#showEmp").show(function(){
             				for (var j=0;j<data_info.proCapabilityL.length;j++)
             				{
             					htmlInner+="<tr>";
-            					
+
             					if (j==0)
         						{
             						htmlInner+= '<td rowspan="'+data_info.proCapabilityL.length+'">'+data_info.name+'</td>';
@@ -38,7 +38,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td class="center"></td>';
         						}
-            					
+
             					if (data_info.proCapabilityL[j].trainingStatus == "0")
         						{
             						htmlInner+= '<td class="center" id="traning_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-success label label-default">已注册</span></td>';
@@ -47,8 +47,8 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td class="center" id="traning_'+data_info.proCapabilityL[j].proCapabilityId+'"></td>';
         						}
-            					
-            					
+
+
             					if (data_info.proCapabilityL[j].isExam == true)
         						{
             						htmlInner+= '<td class="center"><a href="#" id="myExam" capabilityId="'+data_info.proCapabilityL[j].proCapabilityId+'">注册</a></td>';
@@ -57,7 +57,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td class="center"></td>';
         						}
-            					
+
             					if (data_info.proCapabilityL[j].status != "" && null != data_info.proCapabilityL[j].status)
         						{
             						if (data_info.proCapabilityL[j].status == "0")
@@ -98,7 +98,7 @@ $("#showEmp").show(function(){
             				for (var j=0;j<data_info.cCapabilityL.length;j++)
             				{
             					htmlInner+="<tr>";
-            					
+
             					if (j==0)
         						{
             						htmlInner+= '<td rowspan="'+data_info.cCapabilityL.length+'">'+data_info.name+'</td>';
@@ -112,7 +112,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td class="center"></td>';
         						}
-            					
+
             					if (data_info.cCapabilityL[j].trainingStatus == "0")
         						{
             						htmlInner+= '<td class="center" id="traning_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-success label label-default">已注册</span></td>';
@@ -121,7 +121,7 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td class="center" id="traning_'+data_info.cCapabilityL[j].commCapabilityId+'"></td>';
         						}
-            					
+
             					if (data_info.cCapabilityL[j].isExam == true)
         						{
             						htmlInner+= '<td class="center"><a href="#" id="myExam" capabilityId="'+data_info.cCapabilityL[j].commCapabilityId+'">注册</a></td>';
@@ -130,17 +130,17 @@ $("#showEmp").show(function(){
         						{
             						htmlInner+= '<td class="center"></td>';
         						}
-            					
-            					
+
+
             					if (data_info.cCapabilityL[j].status != "" && null != data_info.cCapabilityL[j].status)
         						{
             						if (data_info.cCapabilityL[j].status == "0")
         							{
-            							htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-success label label-default">Sucess</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-success label label-default">已通过</span></td>';
         							}
             						if (data_info.cCapabilityL[j].status == "1")
         							{
-            							htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-default label label-danger">Fail</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-default label label-danger">失败</span></td>';
         							}
             						if (data_info.cCapabilityL[j].status == "2")
         							{
@@ -164,7 +164,7 @@ $("#showEmp").show(function(){
         					htmlInner+= '<td class="center"></td>';
         					htmlInner+="</tr>";
         				}
-            		
+
         			}
             		$("#personalMap tbody").html(htmlInner);
                 }
