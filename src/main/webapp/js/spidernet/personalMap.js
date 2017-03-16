@@ -6,7 +6,7 @@ $("#showEmp").show(function(){
         $.ajax({
             type: "post",
             url: url,
-            data: {empId},
+            data: {'empId':empId},
             cache: false,
             async : false,
             dataType: "json",
@@ -39,7 +39,7 @@ $("#showEmp").show(function(){
             						htmlInner+= '<td class="center"></td>';
         						}
             					
-            					if (data_info.proCapabilityL[j].trainingStatus == 0)
+            					if (data_info.proCapabilityL[j].trainingStatus == "0")
         						{
             						htmlInner+= '<td class="center" id="traning_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-success label label-default">已注册</span></td>';
         						}
@@ -113,7 +113,7 @@ $("#showEmp").show(function(){
             						htmlInner+= '<td class="center"></td>';
         						}
             					
-            					if (data_info.cCapabilityL[j].trainingStatus == 0)
+            					if (data_info.cCapabilityL[j].trainingStatus == "0")
         						{
             						htmlInner+= '<td class="center" id="traning_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-success label label-default">已注册</span></td>';
         						}
