@@ -25,4 +25,12 @@
 		 from t_common_capability where BLOCK_ID = #{blockId} and BU_LIST in (#{buList}) order by sort
 	</select>
 
+	<select id="fetchCommonCapabilty" parameterType="String"
+		resultType="com.spidernet.dashboard.entity.CCapability">
+
+		select
+		<include refid="Base_Column_List" />
+		 from t_common_capability where COMM_CAPABILITY_ID = #{capabilityId}
+	</select>
+
 </mapper>

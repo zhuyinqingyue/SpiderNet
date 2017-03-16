@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Public Capability Area
- * 
+ *
  * @author Hurricane
  *
  */
@@ -23,7 +23,7 @@ public class CCapability
     private String url;
     private String parentId;
     private String buList;
-    private Boolean isExam;   
+    private Boolean isExam;
     private Boolean isTraining;
     private String status;
     private String trainingStatus;

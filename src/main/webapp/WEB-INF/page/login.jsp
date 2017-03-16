@@ -76,26 +76,28 @@
             </div>
             <form id="loginForm" class="form-horizontal" method="post">
                 <fieldset>
-              		<div class="form-group">
-	              		<div class="group">
+              		<div class="form-group" style="border-color:none ">
+	              		
 		                    <div class="input-group input-group-lg">
 		                      	<span  class="input-group-addon input-area-span"><i class="glyphicon glyphicon-user green-1"></i></span>
 
 								<input type="text" id="userName" name="userName" class="form-control input-area" placeholder="用户名">
 		                    </div>
-		                </div>
-	                    <div class="clearfix"></div><br>
+		                
+	                    
 					</div>
-					<div class="form-group">
-						<div class="group">
+					<div class="clearfix"></div><br>
+					<div class="form-group" style="border-color:">
+						
 		                    <div class="input-group input-group-lg">
 		                        <span  class="input-group-addon input-area-span"><i class="glyphicon glyphicon-user green-1"></i></span>
 
 		                        <input type="password" id="password" name="password" class="form-control input-area" placeholder="密码">
 		                    </div>
-	                    </div>
-	                    <div class="clearfix"></div>
+	                   
+	                    
 					</div>
+					<div class="clearfix"></div>
                    <!-- <div class="input-prepend">
                         <label class="remember" for="remember"><input type="checkbox" id="remember">  记住用户名</label>
                     </div>-->

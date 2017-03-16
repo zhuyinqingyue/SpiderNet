@@ -6,4 +6,6 @@ public interface PersonalMapMapper
 {
     int addPersonalMap(PersonalMap personalMap);
     PersonalMap fetchByEmpId(String employeeId);
+    void viewPersonalMap(PersonalMap personalMap);
+    void updatePersonalMap(PersonalMap personalMap);
 }

@@ -26,4 +26,22 @@ public class ProCapabilityServiceImpl implements ProCapabilityService
                         empTypeId);
         return proCapabilityDb;
     }
+
+    @Override
+    public ProCapability fetchProCapabilityByCapabilityId(String capabilityId)
+    {
+        // TODO Auto-generated method stub
+        ProCapability proCapability = proCapabilityMapper.fetchProCapabilityByCapabilityId(capabilityId);
+
+        return proCapability;
+    }
+
+    @Override
+    public int updateProCapability(ProCapability proCapability)
+    {
+        // TODO Auto-generated method stub
+        int result = proCapabilityMapper.updateProCapability(proCapability);
+
+        return result;
+    }
 }

@@ -14,9 +14,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spidernet.dashboard.entity.CCapability;
+import com.spidernet.dashboard.entity.CapabilityMap;
 import com.spidernet.dashboard.entity.Employee;
 import com.spidernet.dashboard.entity.PersonalExam;
+import com.spidernet.dashboard.entity.PersonalMap;
+import com.spidernet.dashboard.entity.ProCapability;
+import com.spidernet.dashboard.service.CCapabilityService;
+import com.spidernet.dashboard.service.CapabilityExamService;
 import com.spidernet.dashboard.service.PersonalExamService;
+import com.spidernet.dashboard.service.PersonalMapService;
+import com.spidernet.dashboard.service.ProCapabilityService;
+import com.spidernet.util.Constants;
+import com.spidernet.util.XmlUtil;
 
 import net.sf.json.JSONArray;
 
@@ -28,6 +38,18 @@ public class PersonalExamDetlController
     @Resource
     PersonalExamService personalExamService;
 
+    @Resource
+    CapabilityExamService capabilityExamService;
+
+    @Resource
+    CCapabilityService ccapabilityService;
+
+    @Resource
+    ProCapabilityService proCapabilityService;
+
+    @Resource
+    PersonalMapService personalMapService;
+
     private static Logger logger = LoggerFactory
             .getLogger(PersonalTrainningDetlController.class);
 
@@ -38,6 +60,11 @@ public class PersonalExamDetlController
     {
 
         logger.debug("Add the personal exam detail begin");
+
+        ProCapability proCapability = null;
+        CCapability commonCapability = null;
+        PersonalMap personalMap = null;
+        String capabilityId = null;
         Boolean addResultFlag = false;
 
         String employeeId = ((Employee) request.getSession()
@@ -49,6 +76,15 @@ public class PersonalExamDetlController
         List<PersonalExam> personalExamList = new ArrayList<PersonalExam>();
 
         PersonalExam personalExam = null;
+
+        personalMap = personalMapService.fetchByEmpId(employeeId);
+
+        String personalDetail = personalMap.getDetail();
+
+        CapabilityMap capabilityMap = (CapabilityMap) XmlUtil
+                .convertXmlStrToObject(CapabilityMap.class,
+                        personalMap.getDetail());
+
 
         for (int i = 0; i < selectedExamArray.size(); i++)
         {
@@ -68,15 +104,70 @@ public class PersonalExamDetlController
                     new JSONObject(selectedExamArray.get(i).toString())
                             .get("endTime").toString());
             personalExam.setStatus(
-                    new JSONObject(selectedExamArray.get(i).toString())
-                            .get("status").toString());
-            
+                    Constants.EXAM_STATUS_REGISTED);
+
             if(personalExamService.checkPersonalExamExists(personalExam)){
                 return false;
             }
 
             personalExamList.add(personalExam);
         }
+
+        if (personalExamList.size() > 0)
+        {
+            capabilityId = capabilityExamService
+                    .fetchCapabilityIdByExamId(
+                            personalExamList.get(0).getExamId());
+        }
+
+        commonCapability = ccapabilityService
+                .fetchCommonCapabilty(capabilityId);
+
+        proCapability = proCapabilityService
+                .fetchProCapabilityByCapabilityId(capabilityId);
+
+        for (int i = 0; i < capabilityMap.getCapabilityMap().size(); i++)
+        {
+            if (Constants.ONE == capabilityMap.getCapabilityMap().get(i)
+                    .getBlockType())
+            {
+                for (int j = 0; j < capabilityMap.getCapabilityMap().get(i)
+                        .getProCapabilityL().size(); j++)
+                {
+                    if (proCapability.getProCapabilityId()
+                            .equals(capabilityMap.getCapabilityMap().get(i)
+                                    .getProCapabilityL().get(j)
+                                    .getProCapabilityId()))
+                    {
+                        capabilityMap.getCapabilityMap().get(i)
+                                .getProCapabilityL().get(j).setStatus(
+                                        Constants.EXAM_STATUS_REGISTED);
+                    }
+                }
+            }
+            else
+            {
+                for (int j = 0; j < capabilityMap.getCapabilityMap().get(i)
+                        .getcCapabilityL().size(); j++)
+                {
+                    if (commonCapability.getCommCapabilityId()
+                            .equals(capabilityMap.getCapabilityMap().get(i)
+                                    .getcCapabilityL().get(j)
+                                    .getCommCapabilityId()))
+                    {
+                        capabilityMap.getCapabilityMap().get(i)
+                                .getcCapabilityL().get(j).setStatus(
+                                        Constants.EXAM_STATUS_REGISTED);
+                    }
+                }
+
+            }
+        }
+
+        personalDetail = XmlUtil.convertToXml(capabilityMap);
+
+        personalMap.setDetail(personalDetail);
+        personalMapService.updatePersonalMap(personalMap);
 
         addResultFlag = personalExamService.addPersonalExam(personalExamList);
 

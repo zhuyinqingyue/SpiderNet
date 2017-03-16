@@ -111,11 +111,11 @@ $("#examSubmitBtn").click(function(e){
 		timeout : 20000,
 		success : function(data) {
 			if (data) {
-				$("#myModalExam").find('.alert').hide();
-				$("#myModalExam").find('.alert-success').html('恭喜您注册考试成功').show();
+				$('#myModalExam').modal('hide');
+				$('#exam_' + capabilityId).html("<span class='label-success label label-default'>已注册</span>");
 			} else {
 				$("#myModalExam").find('.alert').hide();
-				$("#myModalExam").find('.alert-warning').html('您已经注册过该课程考试').show();
+				$("#myModalExam").find('.alert-warning').html('注册失败，请联系管理员').show();
 			}
 		}
 	});

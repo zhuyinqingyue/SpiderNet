@@ -22,4 +22,13 @@ public class CCapabilityServiceImpl implements CCapabilityService
         List<CCapability> cCapabilityDb = cCapabilityMapper.viewCCapability(blockId, buList);
         return cCapabilityDb;
     }
+
+    @Override
+    public CCapability fetchCommonCapabilty(String capabilityId)
+    {
+        // TODO Auto-generated method stub
+        CCapability commonCapability = cCapabilityMapper.fetchCommonCapabilty(capabilityId);
+
+        return commonCapability;
+    }
 }
