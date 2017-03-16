@@ -31,6 +31,6 @@
 		select tpe.`STATUS` from t_capability_exam tce, t_personal_exam tpe
 		WHERE tce.CAPABILITY_ID=#{capabilityId} and
 		tpe.EMPLOYEE_ID=#{employeeId} and tce.EXAM_ID =
-		tpe.EXAM_ID
+		tpe.EXAM_ID limit 1
 	</select>
 </mapper>

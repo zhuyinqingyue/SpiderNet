@@ -28,10 +28,10 @@
 
 	<select id="capabilityTrainingStatus" parameterType="String"
 		resultType="String">
-		select tpt.`STATUS` from t_capability_training tct, t_personal_training
+		select  tpt.`STATUS` from t_capability_training tct, t_personal_training
 		tpt WHERE tct.CAPABILITY_ID=#{capabilityId} and
 		tpt.EMPLOYEE_ID=#{employeeId} and tct.TRAINING_ID
-		= tpt.TRAINING_ID
+		= tpt.TRAINING_ID limit 1
 	</select>
 
 </mapper>
