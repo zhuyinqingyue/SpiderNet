@@ -41,11 +41,11 @@ $("#showEmp").show(function(){
             					
             					if (data_info.proCapabilityL[j].trainingStatus == 0)
         						{
-            						htmlInner+= '<td class="center" id="traning_"'+data_info.proCapabilityL[j].proCapabilityId+'""><span class="label-success label label-default">已注册</span></td>';
+            						htmlInner+= '<td class="center" id="traning_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-success label label-default">已注册</span></td>';
         						}
             					else
         						{
-            						htmlInner+= '<td class="center" id="traning_"'+data_info.proCapabilityL[j].proCapabilityId+'""></td>';
+            						htmlInner+= '<td class="center" id="traning_'+data_info.proCapabilityL[j].proCapabilityId+'"></td>';
         						}
             					
             					
@@ -62,20 +62,20 @@ $("#showEmp").show(function(){
         						{
             						if (data_info.proCapabilityL[j].status == "0")
         							{
-            							htmlInner+= '<td class="center" id="exam_"'+data_info.proCapabilityL[j].proCapabilityId+'""><span class="label-success label label-default">Sucess</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-success label label-default">Sucess</span></td>';
         							}
             						if (data_info.proCapabilityL[j].status == "1")
         							{
-            							htmlInner+= '<td class="center" id="exam_"'+data_info.proCapabilityL[j].proCapabilityId+'""><span class="label-default label label-danger">Fail</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-default label label-danger">Fail</span></td>';
         							}
             						if (data_info.proCapabilityL[j].status == "2")
         							{
-            							htmlInner+= '<td class="center" id="exam_"'+data_info.proCapabilityL[j].proCapabilityId+'""><span class="label-success label label-default">已报名</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-success label label-default">已报名</span></td>';
         							}
         						}
             					else
         						{
-            						htmlInner+= '<td class="center" id="exam_"'+data_info.proCapabilityL[j].proCapabilityId+'""></td>';
+            						htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"></td>';
         						}
             					htmlInner+="</tr>";
             				}
@@ -115,11 +115,11 @@ $("#showEmp").show(function(){
             					
             					if (data_info.cCapabilityL[j].trainingStatus == 0)
         						{
-            						htmlInner+= '<td class="center" id="traning_"'+data_info.cCapabilityL[j].commCapabilityId+'""><span class="label-success label label-default">已注册</span></td>';
+            						htmlInner+= '<td class="center" id="traning_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-success label label-default">已注册</span></td>';
         						}
             					else
         						{
-            						htmlInner+= '<td class="center" id="traning_"'+data_info.cCapabilityL[j].commCapabilityId+'""></td>';
+            						htmlInner+= '<td class="center" id="traning_'+data_info.cCapabilityL[j].commCapabilityId+'"></td>';
         						}
             					
             					if (data_info.cCapabilityL[j].isExam == true)
@@ -136,20 +136,20 @@ $("#showEmp").show(function(){
         						{
             						if (data_info.cCapabilityL[j].status == "0")
         							{
-            							htmlInner+= '<td class="center" id="exam_"'+data_info.cCapabilityL[j].commCapabilityId+'""><span class="label-success label label-default">Sucess</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-success label label-default">Sucess</span></td>';
         							}
             						if (data_info.cCapabilityL[j].status == "1")
         							{
-            							htmlInner+= '<td class="center" id="exam_"'+data_info.cCapabilityL[j].commCapabilityId+'""><span class="label-default label label-danger">Fail</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-default label label-danger">Fail</span></td>';
         							}
             						if (data_info.cCapabilityL[j].status == "2")
         							{
-            							htmlInner+= '<td class="center" id="exam_"'+data_info.cCapabilityL[j].commCapabilityId+'""><span class="label-success label label-default">已报名</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"><span class="label-success label label-default">已报名</span></td>';
         							}
         						}
             					else
         						{
-            						htmlInner+= '<td class="center" id="exam_"'+data_info.cCapabilityL[j].commCapabilityId+'""></td>';
+            						htmlInner+= '<td class="center" id="exam_'+data_info.cCapabilityL[j].commCapabilityId+'"></td>';
         						}
             					htmlInner+="</tr>";
             				}
