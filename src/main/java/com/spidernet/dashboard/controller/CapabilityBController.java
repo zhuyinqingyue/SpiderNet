@@ -116,10 +116,7 @@ public class CapabilityBController
         ProCapability pCBean = new ProCapability();
         CapabilityMap cMBean = new CapabilityMap();
         List<CapabilityB> capabilityMap = new ArrayList<CapabilityB>();
-        List<CCapability> cCapabilityL = new ArrayList<CCapability>();
-        List<ProCapability> proCapabilityL = new ArrayList<ProCapability>();
-        // 将 json转成 json数组
-
+        
         JSONArray capabilityMapJ = JSONArray.fromObject(saveHtml);
 
         // 将数组的 每个元素 转成 json对象
@@ -136,6 +133,7 @@ public class CapabilityBController
             {
                 JSONArray proCapabilityLJ = JSONArray
                         .fromObject(cBBean.getProCapabilityL());
+                List<ProCapability> proCapabilityL = new ArrayList<ProCapability>();
                 for (Object proCapability : proCapabilityLJ)
                 {
                     JSONObject proCapabilityJ = JSONObject
@@ -155,6 +153,7 @@ public class CapabilityBController
             {
                 JSONArray cCapabilityLJ = JSONArray
                         .fromObject(cBBean.getcCapabilityL());
+                List<CCapability> cCapabilityL = new ArrayList<CCapability>();
                 for (Object cCapability : cCapabilityLJ)
                 {
                     JSONObject cCapabilityJ = JSONObject
