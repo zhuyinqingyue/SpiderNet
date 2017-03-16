@@ -6,16 +6,26 @@
 		<id property="examId" column="EXAM_ID" javaType="String" />
 		<result property="capabilityId" column="CAPABILITY_ID"
 			javaType="String" />
+		<association property="capabilityExam"
+			javaType="com.spidernet.dashboard.entity.CapabilityExam" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		EXAM_ID AS examId, CAPABILITY_ID AS capabilityId capabilityId
+		EXAM_ID AS examId, CAPABILITY_ID AS capabilityId
+		capabilityId
 	</sql>
-	
+
 	<select id="accountCapabilityExam" parameterType="String"
 		resultType="int">
 		select count(0) from t_capability_exam where
 		CAPABILITY_ID=#{capabilityId}
 	</select>
-	
+
+	<select id="capabilityExamStatus" parameterType="String"
+		resultType="String">
+		select tpe.`STATUS` from t_capability_exam tce, t_personal_exam tpe
+		WHERE tce.CAPABILITY_ID=#{capabilityId} and
+		tpe.EMPLOYEE_ID=#{employeeId} and tce.EXAM_ID =
+		tpe.EXAM_ID
+	</select>
 </mapper>

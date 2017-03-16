@@ -24,39 +24,31 @@ var empTypeId = $("#emp_type").val();
         		htmlInner+="<tr>";
         		if (data_info.blockType == 1)
     			{
-        			if (null != data_info.proCapabilityL[i])
-    				{
         				htmlInner+= '<td blockId="'+data_info.blockId+'" blockType="'+data_info.blockType+'" name="'+data_info.name+'">'+data_info.name+'</td><td>';
-        				for (var j=0;j<data_info.proCapabilityL.length;j++)
-        				{
-        					htmlInner+='  <input type="checkbox" proCapabilityId="'
-        						+data_info.proCapabilityL[j].proCapabilityId+
-        						'" url="'+data_info.proCapabilityL[j].url+'" name="'+data_info.proCapabilityL[j].name+'"/>'+data_info.proCapabilityL[j].name;
-        				}
+        				if (data_info.proCapabilityL.length > 0)
+    					{
+        					for (var j=0;j<data_info.proCapabilityL.length;j++)
+        					{
+        						htmlInner+='  <input type="checkbox" proCapabilityId="'
+        							+data_info.proCapabilityL[j].proCapabilityId+
+        							'" url="'+data_info.proCapabilityL[j].url+'" name="'+data_info.proCapabilityL[j].name+'"/>'+data_info.proCapabilityL[j].name;
+        					}
+    					}
         				htmlInner+= '</td>';
-    				}
-        			else
-        			{
-        				htmlInner+= '<td blockId="'+data_info.blockId+'" blockType="'+data_info.blockType+'" name="'+data_info.name+'">'+data_info.name+'</td><td>'+''+'</td>';
-        			}
     			}
         		if (data_info.blockType == 2)
     			{
-        			if (null != data_info.cCapabilityL[i])
-    				{
         				htmlInner+= '<td blockId="'+data_info.blockId+'" blockType="'+data_info.blockType+'" name="'+data_info.name+'">'+data_info.name+'</td><td>'
-        				for (var j=0;j<data_info.cCapabilityL.length;j++)
-        				{
-        					htmlInner+='  <input type="checkbox" commCapabilityId="'
-        						+data_info.cCapabilityL[j].commCapabilityId+
-        						'" url="'+data_info.cCapabilityL[j].url+'" name="'+data_info.cCapabilityL[j].name+'"/>'+data_info.cCapabilityL[j].name;
-        				}
+        				if (data_info.cCapabilityL.length > 0)
+    					{
+        					for (var j=0;j<data_info.cCapabilityL.length;j++)
+        					{
+        						htmlInner+='  <input type="checkbox" commCapabilityId="'
+        							+data_info.cCapabilityL[j].commCapabilityId+
+        							'" url="'+data_info.cCapabilityL[j].url+'" name="'+data_info.cCapabilityL[j].name+'"/>'+data_info.cCapabilityL[j].name;
+        					}
+    					}
         				htmlInner+= '</td>';
-    				}
-        			else
-    				{
-    					htmlInner+= '<td blockId="'+data_info.blockId+'" blockType="'+data_info.blockType+'" name="'+data_info.name+'">'+data_info.name+'</td><td>'+''+'</td>';
-    				}
     			}
         		htmlInner+="</tr>";
         		$("#capabilityMap tbody").html(htmlInner);
@@ -122,7 +114,6 @@ function RegCapabilityMap(obj)
 	var name = $("#name").val();
 	var ename = $("#ename").val();
 	var cMtr = $("#capabilityMap tbody tr");
-	var saveHtml="";
 		
     $.ajax({
         type: "post",

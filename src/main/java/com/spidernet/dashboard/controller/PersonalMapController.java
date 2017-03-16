@@ -75,6 +75,12 @@ public class PersonalMapController
                     List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
                     List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
                     
+                    String capabilityTrainingStatus = capabilityTrainingService.capabilityTrainingStatus(capabilityId, employeeId);
+                    String capabilityExamStatus = capabilityExamService.capabilityExamStatus(capabilityId, employeeId);
+                    
+                    cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setTrainingStatus(capabilityTrainingStatus);
+                    cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setStatus(capabilityExamStatus);
+                    
                     if (examList.size() <= Constants.ZERO)
                     {
                         cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsExam(capabilityExam);
@@ -93,6 +99,38 @@ public class PersonalMapController
                     {
                         capabilityTraining = true;
                         cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsTraining(capabilityTraining);
+                    }
+                }
+            }
+            
+            if (Constants.TWO == cBBean.getCapabilityMap().get(i).getBlockType())
+            {
+                for(int j=0;j<cBBean.getCapabilityMap().get(i).getcCapabilityL().size();j++)
+                {
+                    Boolean capabilityExam = false;
+                    Boolean capabilityTraining = false;
+                    capabilityId = cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).getCommCapabilityId();
+                    List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
+                    List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
+                    
+                    if (examList.size() <= Constants.ZERO)
+                    {
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsExam(capabilityExam);
+                    }
+                    else
+                    {
+                        capabilityExam = true;
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsExam(capabilityExam);
+                    }
+                    
+                    if (trainningList.size() <= Constants.ZERO)
+                    {
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsTraining(capabilityTraining);       
+                    }
+                    else
+                    {
+                        capabilityTraining = true;
+                        cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).setIsTraining(capabilityTraining);
                     }
                 }
             }

@@ -31,4 +31,11 @@ public class CapabilityExamServiceImpl implements CapabilityExamService
         }
 
     }
+    
+    @Override
+    public String capabilityExamStatus(String capabilityId,String employeeId)
+    {
+        String capabilityExamStatus = capabilityExamMapper.capabilityExamStatus(capabilityId, employeeId);
+        return capabilityExamStatus;
+    }
 }
