@@ -1,10 +1,11 @@
 var personalTrainningList = null;
 var status;
+var capabilityId;
 
 $("a[id='myCourse']").click(
 	function(e) {
 		e.preventDefault();
-		var capabilityId = e.currentTarget.attributes.capabilityId.value;
+		capabilityId = e.currentTarget.attributes.capabilityId.value;
 		$.ajax({
 				url : path + "/service/trainning/personalTrainningList",
 				type : "post",
@@ -112,38 +113,15 @@ $("#trainningSubmitBtn").click(function(e){
 		timeout : 20000,
 		success : function(data) {
 			if (data) {
-				$("#myModalClass").find('.alert').hide();
-				$("#myModalClass").find('.alert-success').html('恭喜您成功注册该培训').show();
-				//alert("Success");
+				$('#myModalClass').modal('hide');
+				$('#traning_' + capabilityId).html("<span class='label-success label label-default'>已注册</span>");
+				//$('#traning_' + capabilityId)
+				//alert("Success");trainning_.apped("<span >sdsad</span>")
 			} else {
 				$("#myModalClass").find('.alert').hide();
-				$("#myModalClass").find('.alert-warning').html('对不起，您已经注册过该培训').show();
+				$("#myModalClass").find('.alert-warning').html('注册失败，请联系管理员').show();
 			}
 		}
 	});
 	}
 })
-/*$("#selectAll").click(function() {
-	if ($("#selectAll").prop("checked")) {
-		$(":checkbox").prop("checked", true);
-	} else {
-		$(":checkbox").prop("checked", false);
-	}
-})
-
-function setSelectAll() {
-	if (!$("#subCheck").checked) {
-		$("#selectAll").prop("checked", false);
-	}
-
-	var chsub = $("input[type='checkbox'][id='subCheck']").length;
-	var checkedsub = $("input[type='checkbox'][id='subCheck']:checked").length;
-
-	if (checkedsub == chsub) {
-		$("#selectAll").prop("checked", true);
-	}
-}
-
-$("#resetButton").click(function(){
-	$(":checkbox").prop("checked", false);
-})*/

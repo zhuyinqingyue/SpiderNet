@@ -20,6 +20,12 @@
 		CAPABILITY_ID=#{capabilityId}
 	</select>
 
+	<select id="fetchCapabilityIdByTrainningId" parameterType="String"
+		resultType="String">
+		select CAPABILITY_ID from t_capability_training where
+		TRAINING_ID=#{trainningId}
+	</select>
+
 	<select id="capabilityTrainingStatus" parameterType="String"
 		resultType="String">
 		select tpt.`STATUS` from t_capability_training tct, t_personal_training

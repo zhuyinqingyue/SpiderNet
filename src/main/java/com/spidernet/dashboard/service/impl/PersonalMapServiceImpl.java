@@ -14,7 +14,7 @@ public class PersonalMapServiceImpl implements PersonalMapService
 
     @Resource
     private PersonalMapMapper personalMapMapper;
-    
+
     @Override
     public Boolean addPersonalMap(PersonalMap personalMap)
     {
@@ -28,11 +28,18 @@ public class PersonalMapServiceImpl implements PersonalMapService
         }
 
     }
-    
+
     @Override
     public PersonalMap fetchByEmpId(String employeeId)
     {
         PersonalMap personalMapDb = personalMapMapper.fetchByEmpId(employeeId);
         return personalMapDb;
+    }
+
+    @Override
+    public void updatePersonalMap(PersonalMap personalMap)
+    {
+        // TODO Auto-generated method stub
+        personalMapMapper.updatePersonalMap(personalMap);
     }
 }

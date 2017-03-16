@@ -8,4 +8,8 @@ public interface ProCapabilityService
 {
     List<ProCapability> viewProCapability(String blockId, String buId,
             String projectId, String empLevelId, String empTypeId);
+
+    ProCapability fetchProCapabilityByCapabilityId(String capabilityId);
+
+    int updateProCapability(ProCapability proCapability) ;
 }

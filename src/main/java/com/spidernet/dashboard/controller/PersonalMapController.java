@@ -39,30 +39,30 @@ public class PersonalMapController
 
     @Resource
     CapabilityTrainingService capabilityTrainingService;
-    
+
     @Resource
     TrainningService trainningService;
-    
+
     @Resource
     ExamService examService;
-    
+
     @RequestMapping("/viewPersonalMap")
     @ResponseBody
     public CapabilityMap viewPersonalMap(final HttpServletRequest request,
             final HttpServletResponse response)
     {
         logger.debug("---------viewPersonalMap is begin!----------");
-        
+
         String employeeId = request.getParameter("empId");
-        
+
         PersonalMap personalMap = new PersonalMap();
         personalMap = personalMapService.fetchByEmpId(employeeId);
-        
+
         CapabilityMap cBBean = (CapabilityMap) XmlUtil.convertXmlStrToObject(CapabilityMap.class,
                 personalMap.getDetail());
 
         String capabilityId = "";
-        
+
         for (int i=0;i<cBBean.getCapabilityMap().size();i++)
         {
             if (Constants.ONE == cBBean.getCapabilityMap().get(i).getBlockType())
@@ -90,10 +90,10 @@ public class PersonalMapController
                         capabilityExam = true;
                         cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsExam(capabilityExam);
                     }
-                    
+
                     if (trainningList.size() <= Constants.ZERO)
                     {
-                        cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsTraining(capabilityTraining);       
+                        cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsTraining(capabilityTraining);
                     }
                     else
                     {
@@ -135,8 +135,8 @@ public class PersonalMapController
                 }
             }
         }
-        
-        
+
+
         return cBBean;
     }
 }

@@ -20,7 +20,12 @@
 		select count(0) from t_capability_exam where
 		CAPABILITY_ID=#{capabilityId}
 	</select>
-
+	
+	<select id="fetchCapabilityIdByExamId" parameterType="String"
+		resultType="String">
+		select CAPABILITY_ID from t_capability_exam where
+		EXAM_ID=#{examId}
+	</select>
 	<select id="capabilityExamStatus" parameterType="String"
 		resultType="String">
 		select tpe.`STATUS` from t_capability_exam tce, t_personal_exam tpe

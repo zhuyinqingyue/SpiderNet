@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.spidernet.dashboard.dao.CapabilityTrainingMapper;
 import com.spidernet.dashboard.service.CapabilityTrainingService;
 /**
- * 
+ *
  * @author Hurricane
  *
  */
@@ -17,7 +17,7 @@ public class CapabilityTrainingServiceImpl implements CapabilityTrainingService
 
     @Resource
     private CapabilityTrainingMapper capabilityTrainingMapper;
-    
+
     @Override
     public Boolean accountCapabilityTraining(String capabilityId)
     {
@@ -31,7 +31,15 @@ public class CapabilityTrainingServiceImpl implements CapabilityTrainingService
         }
 
     }
-    
+
+    @Override
+    public String fetchCapabilityIdByTrainningId(String trainningId)
+    {
+        String capabilityId = capabilityTrainingMapper.fetchCapabilityIdByTrainningId(trainningId);
+
+        return capabilityId;
+    }
+
     @Override
     public String capabilityTrainingStatus(String capabilityId,String employeeId)
     {

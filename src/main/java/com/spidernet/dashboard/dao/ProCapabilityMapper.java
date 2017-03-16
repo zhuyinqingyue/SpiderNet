@@ -10,4 +10,8 @@ public interface ProCapabilityMapper
 {
     List<ProCapability> viewProCapability(@Param("blockId")String blockId, @Param("buId")String buId,
             @Param("projectId")String projectId, @Param("empLevelId")String empLevelId, @Param("empTypeId")String empTypeId);
+
+    ProCapability fetchProCapabilityByCapabilityId(String capabilityId);
+
+    int updateProCapability(ProCapability proCapability);
 }

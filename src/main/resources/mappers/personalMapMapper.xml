@@ -39,4 +39,12 @@
 		values
 		(#{personalMapId},'','',#{empTypeId},#{empLevelId},#{employeeId},#{buId},#{projectId},#{detail},#{status},#{statusFlag})
 	</insert>
+
+	<update id="updatePersonalMap" parameterType="com.spidernet.dashboard.entity.PersonalMap">
+		update t_personal_map SET
+		PRO_CAPABILITY_ID = #{proCapabilityId}, COMM_CAPABILITY_ID = #{commCapabilityId}, EMP_TYPE_ID = #{empTypeId},
+		EMP_LEVEL_ID = #{empLevelId}, EMPLOYEE_ID = #{employeeId}, BU_ID = #{buId},
+		PROJECT_ID = #{projectId}, DETAIL = #{detail}, STATUS = #{status},STATUSFLAG = #{statusFlag}
+		where PERSONAL_MAP_ID=#{personalMapId}
+	</update>
 </mapper>

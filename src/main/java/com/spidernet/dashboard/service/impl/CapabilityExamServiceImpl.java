@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.spidernet.dashboard.dao.CapabilityExamMapper;
 import com.spidernet.dashboard.service.CapabilityExamService;
 /**
- * 
+ *
  * @author Hurricane
  *
  */
@@ -17,7 +17,7 @@ public class CapabilityExamServiceImpl implements CapabilityExamService
 
     @Resource
     private CapabilityExamMapper capabilityExamMapper;
-    
+
     @Override
     public Boolean accountCapabilityExam(String capabilityId)
     {
@@ -31,7 +31,16 @@ public class CapabilityExamServiceImpl implements CapabilityExamService
         }
 
     }
-    
+
+    @Override
+    public String fetchCapabilityIdByExamId(String examId)
+    {
+        // TODO Auto-generated method stub
+        String capabilityId = capabilityExamMapper.fetchCapabilityIdByExamId(examId);
+
+        return capabilityId;
+    }
+
     @Override
     public String capabilityExamStatus(String capabilityId,String employeeId)
     {
