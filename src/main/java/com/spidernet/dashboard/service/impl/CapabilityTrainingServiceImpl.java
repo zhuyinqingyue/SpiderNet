@@ -31,4 +31,11 @@ public class CapabilityTrainingServiceImpl implements CapabilityTrainingService
         }
 
     }
+    
+    @Override
+    public String capabilityTrainingStatus(String capabilityId,String employeeId)
+    {
+        String capabilityTrainingStatus = capabilityTrainingMapper.capabilityTrainingStatus(capabilityId, employeeId);
+        return capabilityTrainingStatus;
+    }
 }

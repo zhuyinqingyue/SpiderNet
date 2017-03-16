@@ -75,6 +75,12 @@ public class PersonalMapController
                     List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
                     List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
                     
+                    String capabilityTrainingStatus = capabilityTrainingService.capabilityTrainingStatus(capabilityId, employeeId);
+                    String capabilityExamStatus = capabilityExamService.capabilityExamStatus(capabilityId, employeeId);
+                    
+                    cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setTrainingStatus(capabilityTrainingStatus);
+                    cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setStatus(capabilityExamStatus);
+                    
                     if (examList.size() <= Constants.ZERO)
                     {
                         cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).setIsExam(capabilityExam);

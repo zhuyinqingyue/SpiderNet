@@ -2,20 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spidernet.dashboard.dao.CapabilityTrainingMapper">
-	<resultMap id="userMap" type="com.spidernet.dashboard.entity.CapabilityTraining">
+	<resultMap id="userMap"
+		type="com.spidernet.dashboard.entity.CapabilityTraining">
 		<id property="trainingId" column="TRAINING_ID" javaType="String" />
 		<result property="capabilityId" column="CAPABILITY_ID"
 			javaType="String" />
+		<association property="personalTrainning" javaType="com.spidernet.dashboard.entity.PersonalTrainning"/>
 	</resultMap>
 
 	<sql id="Base_Column_List">
 		EXAM_ID AS examId, TRAINING_ID AS trainingId
 	</sql>
-	
+
 	<select id="accountCapabilityTraining" parameterType="String"
 		resultType="int">
 		select count(0) from t_capability_training where
 		CAPABILITY_ID=#{capabilityId}
 	</select>
-	
+
+	<select id="capabilityTrainingStatus" parameterType="String"
+		resultType="String">
+		select tpt.`STATUS` from t_capability_training tct, t_personal_training
+		tpt WHERE tct.CAPABILITY_ID=#{capabilityId} and
+		tpt.EMPLOYEE_ID=#{employeeId} and tct.TRAINING_ID
+		= tpt.TRAINING_ID
+	</select>
+
 </mapper>
