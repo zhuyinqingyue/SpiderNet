@@ -304,8 +304,8 @@
 	<script src="<%=path %>/js/charisma.js"></script>
 
 	<!-- default loading -->
-	<script type="text/javascript" src="<%=path %>/js/register.js"></script>
 	<script src="<%=path %>/js/spidernet/capabilityMap.js"></script>
+	<script type="text/javascript" src="<%=path %>/js/register.js"></script>
 
 </body>
 </html>

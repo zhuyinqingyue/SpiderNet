@@ -56,9 +56,9 @@
 <div class="ch-container">
         
     <div class="row">
-        <div class="col-md-12 center login-header login-header" >
+        <div style="min-width:319px" class="col-md-12 center login-header login-header" >
         		 
-        		 		 <div class="login-header-img">
+        		 		 <div style="min-width:319px" class="login-header-img">
         		 		 		<img src="<%=path %>/img/img-logo1.png" /><!--<span> SpiderNet1111111111111111111</span>-->
         		 		</div>
         		 	
@@ -69,7 +69,7 @@
     </div><!--/row-->
 
     <div class="row">
-        <div  class="well col-md-5 center login-box new-login-box">
+        <div style="min-width: 320px;" class="well col-md-5 center login-box new-login-box">
     
             <div class="alert alert-info new-login-box-header" id="loginAlert">
                 Welcome to SpiderNet
