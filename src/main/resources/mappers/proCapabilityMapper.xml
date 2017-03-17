@@ -13,14 +13,13 @@
 		<result property="sort" column="SORT" javaType="Int" />
 		<result property="url" column="URL" javaType="String" />
 		<result property="empTypeId" column="EMP_TYPE_ID" javaType="String" />
-		<result property="trainingStatus" column="TRAINNING_STATUS" javaType="String" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		PRO_CAPABILITY_ID AS proCapabilityId, BLOCK_ID AS blockId,
 		BU_ID AS buId, PROJECT_ID AS projectId, EMP_LEVEL_ID AS empLevelId,
 		NAME AS name, DESCRIPTION AS
 		description, SORT AS sort, URL AS url,
-		EMP_TYPE_ID AS empTypeId,TRAINNING_STATUS AS trainingStatus
+		EMP_TYPE_ID AS empTypeId
 	</sql>
 	<select id="viewProCapability" parameterType="com.spidernet.dashboard.entity.ProCapability"
 		resultType="com.spidernet.dashboard.entity.ProCapability">
@@ -45,7 +44,7 @@
 		update t_pro_capability_map SET
 		BLOCK_ID = #{blockId}, BU_ID = #{buId}, PROJECT_ID = #{projectId}, EMP_LEVEL_ID = #{empLevelId},
 		NAME = #{name}, DESCRIPTION = #{description}, SORT = #{sort},
-		URL = #{url}, EMP_TYPE_ID = #{empTypeId}, TRAINNING_STATUS = #{trainingStatus}
+		URL = #{url}, EMP_TYPE_ID = #{empTypeId}
 		where PRO_CAPABILITY_ID=#{proCapabilityId}
 	</update>
 </mapper>
