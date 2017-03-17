@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Shojumaru);
 .login-header{
 		padding:30px 0 20px 0;
-		height:160px;
+		height:150px;
 	}
 	.login-header-img{
 		margin-left: auto !important;
@@ -10,10 +10,10 @@
 		display: block;
 		text-align: center;
 	}	
-	.login-header-img img {
+	<!--login-header-img img {
 		height:110px;
 		background:url(../img/img-logo1.png) no-repeat;
-	}
+	}-->
 	.login-background{
 		background-image: url(../img/background.png);
 	}
