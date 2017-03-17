@@ -229,7 +229,7 @@
 					</div>
 					<div id="capabilityMapAll" class="box-content">
 						<table id="capabilityMap"
-							class="table table-striped table-bordered responsive">
+							class="table table-striped table-bordered">
 							<thead>
 								<tr>
 									<th style="width: 20%;">领域</th>
