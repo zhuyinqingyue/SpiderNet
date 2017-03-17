@@ -119,12 +119,12 @@ public class CapabilityBController
         
         JSONArray capabilityMapJ = JSONArray.fromObject(saveHtml);
 
-        // ½«Êý×éµÄ Ã¿¸öÔªËØ ×ª³É json¶ÔÏó
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¿ï¿½ï¿½Ôªï¿½ï¿½ ×ªï¿½ï¿½ jsonï¿½ï¿½ï¿½ï¿½
 
         for (Object capabilityB : capabilityMapJ)
         {
             JSONObject capabilityBJ = JSONObject.fromObject(capabilityB);
-            // µ÷ÓÃ json¶ÔÏóµÄtoBean·½·¨½«Êý¾Ý ·´Éäµ½ÊµÌåbeanÖÐ
+            // ï¿½ï¿½ï¿½ï¿½ jsonï¿½ï¿½ï¿½ï¿½ï¿½toBeanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½äµ½Êµï¿½ï¿½beanï¿½ï¿½
 
             cBBean = (CapabilityB) JSONObject.toBean(capabilityBJ,
                     CapabilityB.class);
@@ -183,6 +183,9 @@ public class CapabilityBController
         employeeTemp.setBuId(buId);
         employeeTemp.setProjectId(projectId);
         
+        if(!(userService.checkErExists(erId)||userService.checkHrExists(hrId))){
+            return false;
+        }
         reg = userService.addEmployee(employeeTemp);
         
         personalMapTemp.setPersonalMapId(uuid);

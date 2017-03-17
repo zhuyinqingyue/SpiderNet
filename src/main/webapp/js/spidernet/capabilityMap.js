@@ -2,7 +2,10 @@ var saveCapability;
 
 function ViewCapability(projectId)
 {
-	$('#myModal').modal('show');
+	if(projectId!=""){
+		$('#myModal').modal('show');
+	}
+	
 var url = path+"/service/capability/viewCCapability";
 var buId = $("#BU_id").val();
 var projectId = projectId;
@@ -125,16 +128,17 @@ function RegCapabilityMap(obj)
         dataType: "json",
         success: function (data)
         {
+        	var $form = $(obj);
         	if (data)
     		{
-        		var $form     = $(obj);
+        		
         		$form.find('.alert').html('注册成功，用户 ' +name+'可登录').show();
         		$("#sub_bt").prop("disabled", true);
         		//alert("注册成功!");
     		}
         	else
     		{
-        		alert("注册失败!");
+        		$form.find('.alert').html('请勿重复提交');
     		}
         }
      });
