@@ -129,6 +129,7 @@ function RegCapabilityMap(obj)
     		{
         		var $form     = $(obj);
         		$form.find('.alert').html('注册成功，用户 ' +name+'可登录').show();
+        		$("#sub_bt").prop("disabled", true);
         		//alert("注册成功!");
     		}
         	else
