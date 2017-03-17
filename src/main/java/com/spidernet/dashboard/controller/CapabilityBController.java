@@ -119,12 +119,10 @@ public class CapabilityBController
         
         JSONArray capabilityMapJ = JSONArray.fromObject(saveHtml);
 
-        // ������� ÿ��Ԫ�� ת�� json����
 
         for (Object capabilityB : capabilityMapJ)
         {
             JSONObject capabilityBJ = JSONObject.fromObject(capabilityB);
-            // ���� json�����toBean���������� ���䵽ʵ��bean��
 
             cBBean = (CapabilityB) JSONObject.toBean(capabilityBJ,
                     CapabilityB.class);
