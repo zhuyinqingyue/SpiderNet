@@ -1,3 +1,5 @@
+var saveCapability;
+
 function ViewCapability(projectId)
 {
 	$('#myModal').modal('show');
@@ -67,9 +69,8 @@ function SaveCapabilityMap()
 {
 	var cMtr = $("#capabilityMap tbody tr");
 	var saveHtml="";
-	
-	saveHtml+="["
-	for (var j=0;j<cMtr.length/2;j++)
+	saveHtml+="[";
+	for (var j=0;j<cMtr.length;j++)
 	{
 		var cL = cMtr.eq(j).find("td").find("input");
 		if (cMtr.eq(j).find("td").eq(0).attr("blockType") == 1)
@@ -84,7 +85,7 @@ function SaveCapabilityMap()
 			}
 			saveHtml+="]},";
 		}
-		
+
 		if (cMtr.eq(j).find("td").eq(0).attr("blockType") == 2)
 		{
 			saveHtml+="{'blockId':'"+cMtr.eq(j).find("td").eq(0).attr("blockId")+"','name':'"+cMtr.eq(j).find("td").eq(0).attr("name")+"','blockType':"+cMtr.eq(j).find("td").eq(0).attr("blockType")+",'cCapabilityL':[";
@@ -98,13 +99,14 @@ function SaveCapabilityMap()
 			saveHtml+="]},";
 		}
 	}
-	saveHtml+="]"
-	return saveHtml;
+	saveHtml+="]";
+	saveCapability = saveHtml;
+	$('#myModal').modal('hide');
 }
 
 function RegCapabilityMap(obj)
 {
-	var saveC = SaveCapabilityMap();
+//	var saveC = SaveCapabilityMap();
 	var buId = $("#BU_id").val();
 	var projectId = $("#projectName").val();
 	var empLevelId = $("#emp_level").val();
@@ -114,13 +116,12 @@ function RegCapabilityMap(obj)
 	var name = $("#name").val();
 	var ename = $("#ename").val();
 	var cMtr = $("#capabilityMap tbody tr");
-		
     $.ajax({
         type: "post",
         url: path+"/service/capability/regCapability",
-        data: {'CapabilityMap': saveC,buId,projectId,empLevelId,empTypeId,erId,hrId,name,ename},
+        data: {'CapabilityMap': saveCapability,buId,projectId,empLevelId,empTypeId,erId,hrId,name,ename},
         cache: false,
-        async : false,
+        async : true,
         dataType: "json",
         success: function (data)
         {
