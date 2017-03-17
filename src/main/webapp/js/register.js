@@ -106,7 +106,11 @@ $(document).ready(function() {
             var $form     = $(e.target);
                 validator = $form.data('bootstrapValidator');
             if(validator){
-            	RegCapabilityMap(e.target);
+            	if(saveCapability==null){
+            		$form.find('.alert').html('请在能力地图选择技能').show();
+            	}else{
+            		RegCapabilityMap(e.target);
+            	}
             }
             
         });
