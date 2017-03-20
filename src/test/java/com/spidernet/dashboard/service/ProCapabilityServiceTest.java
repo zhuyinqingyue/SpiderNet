@@ -13,4 +13,16 @@ public class ProCapabilityServiceTest
         fail("Not yet implemented");
     }
 
+    @Test
+    public void testFetchProCapabilityByCapabilityId()
+    {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testUpdateProCapability()
+    {
+        fail("Not yet implemented");
+    }
+
 }
