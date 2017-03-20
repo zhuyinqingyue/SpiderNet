@@ -24,7 +24,7 @@ import com.spidernet.dashboard.service.EmployeeService;
 @RequestMapping(value="/employee")
 public class EmployeeController {
 	@Resource
-	EmployeeService userService;
+	private EmployeeService userService;
 	
 	private static Logger logger = LoggerFactory
             .getLogger(EmployeeController.class);
@@ -33,7 +33,6 @@ public class EmployeeController {
     public String register(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        logger.info("debug------test----");
         return "employee/register";
     }
 
@@ -46,9 +45,7 @@ public class EmployeeController {
         
         HttpSession session = request.getSession();
         
-        Employee employee = new Employee();
-        
-        employee = (Employee) session.getAttribute("employee");
+        Employee employee = (Employee) session.getAttribute("employee");
         
         return employee;
     }
@@ -57,7 +54,6 @@ public class EmployeeController {
     public String index(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        logger.info("debug------test----");
         return "index";
     }
     
@@ -66,7 +62,6 @@ public class EmployeeController {
     public String checkErExists(final HttpServletRequest request,
             final HttpServletResponse response,@RequestParam String er)
     {
-        logger.info("debug------test----");
         
         boolean result = userService.checkErExists(er);
         
@@ -84,7 +79,7 @@ public class EmployeeController {
         }
         catch (JsonProcessingException e)
         {
-            e.printStackTrace();
+            logger.error("[EmployeeController.checkErExists] exception",e);
         }
         
         return resultString;
@@ -96,7 +91,6 @@ public class EmployeeController {
     public String checkHrExists(final HttpServletRequest request,
             final HttpServletResponse response,@RequestParam String hr)
     {
-        logger.info("debug------test----");
         
         boolean result = userService.checkHrExists(hr);
         
@@ -114,7 +108,7 @@ public class EmployeeController {
         }
         catch (JsonProcessingException e)
         {
-            e.printStackTrace();
+            logger.error("[EmployeeController.checkHrExists] exception",e);
         }
         
         return resultString;

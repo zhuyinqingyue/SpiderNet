@@ -6,17 +6,17 @@ package com.spidernet.dashboard.entity;
  */
 public class EmployeeDetl
 {
-    public String empId;
+    private String empId;
     
-    public String empName;
+    private String empName;
     
-    public String buName;
+    private String buName;
     
-    public String projectName;
+    private String projectName;
     
-    public String levelName;
+    private String levelName;
     
-    public String typeName;
+    private String typeName;
 
     public String getEmpId()
     {

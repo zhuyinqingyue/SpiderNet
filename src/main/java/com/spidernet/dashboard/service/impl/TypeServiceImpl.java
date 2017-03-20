@@ -1,6 +1,5 @@
 package com.spidernet.dashboard.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,9 +21,7 @@ public class TypeServiceImpl implements TypeService
     public List<Type> queryType()
     {
 
-        List<Type> listT = new ArrayList();
-
-        listT = typeMapper.queryType();
+        List<Type> listT = typeMapper.queryType();
 
         return listT;
     }

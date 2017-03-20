@@ -34,9 +34,7 @@ public class BuController
 
         HttpSession session = request.getSession();
 
-        Employee employee = new Employee();
-
-        employee = (Employee) session.getAttribute("employee");
+        Employee employee = (Employee) session.getAttribute("employee");
 
         String buId = employee.getBuId();
 
