@@ -1,29 +1,63 @@
 package com.spidernet.dashboard.service;
 
-import javax.annotation.Resource;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.spidernet.dashboard.entity.Employee;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:conf/spring-mybatis.xml" })
 public class EmployeeServiceTest
 {
-    @Resource
-    EmployeeService empService;
-    @Resource
-    ProjectService projectService;
+
     @Test
-    public void seachUserByHRNum()
+    public void testAccountValid()
     {
-        Employee employee = new Employee();
-        employee.setHrNumber("123456");
-        employee.setPassword("admin");
-        empService.accountValidByErNumber(employee);
+        fail("Not yet implemented");
     }
-   
+
+    @Test
+    public void testAccountValidByErNumber()
+    {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testAccountValidByHrNumber()
+    {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testFetchByErNumber()
+    {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testFetchByHrNumber()
+    {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testAddEmployee()
+    {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testCheckErExists()
+    {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testCheckHrExists()
+    {
+        fail("Not yet implemented");
+    }
+
 }
