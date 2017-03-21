@@ -1,8 +1,8 @@
 $(document).ready(function() {
-	
+
     $('#paymentForm').bootstrapValidator({
 		message: 'This value is not valid',
-        
+
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -18,15 +18,15 @@ $(document).ready(function() {
                     regexp: {
                         regexp: /^E[0-9]{9}$/,
                         message: '需要以E开头加9位数字编码'
-                    }, 
+                    },
                     /* regexp: {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
                         message: '请勿包含特殊字符'
                     }, */
-                    /* stringLength: {  
-                        min: 1,  
-                        max: 12,  
-                        message: '请输入长度在1到12位之间的ER号'  
+                    /* stringLength: {
+                        min: 1,
+                        max: 12,
+                        message: '请输入长度在1到12位之间的ER号'
                     }, */
                     remote: {//ajax  server result:{"valid",true or false}   json
                         url: path+'/service/employee/checkErExists',
@@ -36,7 +36,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            
+
             hr: {
             	group: '.group',
             	validators: {
@@ -51,10 +51,10 @@ $(document).ready(function() {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
                         message: '请勿包含特殊字符'
                     }, */
-                    /* stringLength: {  
-                        min: 1,  
-                        max: 12,  
-                        message: '请输入长度在1到12位之间的HR号'  
+                    /* stringLength: {
+                        min: 1,
+                        max: 12,
+                        message: '请输入长度在1到12位之间的HR号'
                     }, */
                     remote: {//ajax  server result:{"valid",true or false}   json
                         url: path+'/service/employee/checkHrExists',
@@ -64,7 +64,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            
+
             name: {
                 group: '.group',
 				validators: {
@@ -75,10 +75,10 @@ $(document).ready(function() {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
                         message: '请勿包含特殊字符'
                     },
-                    stringLength: {  
-                        max: 25,  
-                        message: '请输入50字符以内的中文名'  
-                    } 
+                    stringLength: {
+                        max: 25,
+                        message: '请输入50字符以内的中文名'
+                    }
                 }
             },
             eName: {
@@ -91,13 +91,13 @@ $(document).ready(function() {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
                         message: '请勿包含特殊字符'
                     },
-                    stringLength: {  
-                        max: 50,  
-                        message: '请输入50字符以内的英文名'  
+                    stringLength: {
+                        max: 50,
+                        message: '请输入50字符以内的英文名'
                     }
                 }
             }
-            
+
         }
     }).on('success.form.bv', function(e) {
             // Prevent submit form
@@ -112,22 +112,22 @@ $(document).ready(function() {
             		RegCapabilityMap(e.target);
             	}
             }
-            
+
         });
 });
 
 $(function(){
-	
+
 	loadlevel();
-	
+
 	loadtype();
-	
+
 	loadempinfo();
-	
+
 	//loadProject();
-	
+
 	loadDepartmentName();
-	
+
 });
 
 
