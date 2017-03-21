@@ -187,7 +187,7 @@ function loadProject(){
 		url:path+'/service/project/queryAll',
 		dataType:"json",
 		async:true,
-		data:{buId},
+		data:{"buId":buId},
 		cache:false,
 		type:"post",
 		success:function(listP){

@@ -1,10 +1,13 @@
 package com.spidernet.dashboard.entity;
+
+import java.io.Serializable;
+
 /**
  * employee details
  * @author nick
  *
  */
-public class EmployeeDetl
+public class EmployeeDetl implements Serializable
 {
     private String empId;
     
