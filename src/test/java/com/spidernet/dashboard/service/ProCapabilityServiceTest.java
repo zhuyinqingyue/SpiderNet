@@ -1,6 +1,8 @@
 package com.spidernet.dashboard.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ import com.spidernet.dashboard.entity.ProCapability;
 @ContextConfiguration(locations = { "classpath:conf/spring-mybatis.xml" })
 public class ProCapabilityServiceTest
 {
-    
+
     @Resource
     ProCapabilityService proCapabilityService;
 
@@ -31,19 +33,20 @@ public class ProCapabilityServiceTest
         String empLevelId = "e5b4d2d0792f4b88950c4fe2383b8068";
         String empTypeId = "a6b8fd9eb5e547da907c7a004810d0a1";
         List<ProCapability> proList = proCapabilityService.viewProCapability(blockId, buId, projectId, empLevelId, empTypeId);
-        
+
         if (proList.size() > 0)
         {
             proValue = true;
         }
-        
+
         assertTrue(proValue);
     }
 
     @Test
     public void testFetchProCapabilityByCapabilityId()
     {
-        fail("Not yet implemented");
+        String capabilityId = "0db87337c495498bbcea32eaebf9922f";
+        assertNotNull(proCapabilityService.fetchProCapabilityByCapabilityId(capabilityId));
     }
 
     @Test
