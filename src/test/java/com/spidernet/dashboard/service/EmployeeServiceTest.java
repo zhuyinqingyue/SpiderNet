@@ -1,6 +1,9 @@
 package com.spidernet.dashboard.service;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
+
+import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class EmployeeServiceTest
 {
 
+    @Resource
+    EmployeeService employeeService;
+    
     @Test
     public void testAccountValid()
     {
@@ -51,13 +57,15 @@ public class EmployeeServiceTest
     @Test
     public void testCheckErExists()
     {
-        fail("Not yet implemented");
+        String erNum = "E100033556";
+        assertFalse(employeeService.checkErExists(erNum));
     }
 
     @Test
     public void testCheckHrExists()
     {
-        fail("Not yet implemented");
+        String hrNum = "123456";
+        assertFalse(employeeService.checkHrExists(hrNum));
     }
 
 }
