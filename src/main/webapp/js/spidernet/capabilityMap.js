@@ -16,7 +16,7 @@ var empTypeId = $("#emp_type").val();
     $.ajax({
         type: "post",
         url: url,
-        data: {buId,projectId,empLevelId,empTypeId},
+        data: {'buId':buId, 'projectId':projectId, 'empLevelId':empLevelId,'empTypeId':empTypeId},
         cache: false,
         async : false,
         dataType: "json",
@@ -122,7 +122,7 @@ function RegCapabilityMap(obj)
     $.ajax({
         type: "post",
         url: path+"/service/capability/regCapability",
-        data: {'CapabilityMap': saveCapability,buId,projectId,empLevelId,empTypeId,erId,hrId,name,ename},
+        data: {'CapabilityMap': saveCapability,'buId':buId,'projectId':projectId,'empLevelId':empLevelId,'empTypeId':empTypeId,'erId':erId,'hrId':hrId,'name':name,'ename':ename},
         cache: false,
         async : true,
         dataType: "json",
