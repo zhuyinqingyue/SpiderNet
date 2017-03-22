@@ -1,6 +1,5 @@
 package com.spidernet.dashboard.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,9 +21,7 @@ public class LevelServiceImpl implements LevelService
     public List<Level> queryLevel()
     {
 
-        List<Level> listL = new ArrayList();
-
-        listL = levelMapper.queryLevel();
+        List<Level> listL = levelMapper.queryLevel();
 
         return listL;
     }

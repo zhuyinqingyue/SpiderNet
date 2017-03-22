@@ -10,16 +10,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:conf/spring-mvc.xml", "classpath:conf/spring-mybatis.xml" })
-public class TypeServiceTest
+@ContextConfiguration(locations = { "classpath:conf/spring-mybatis.xml" })
+public class CapabilityBServiceTest
 {
-
     @Resource
-    TypeService typeService;
-    @Test
-    public void testTypeList(){
+    CapabilityBService capabilityBService;
 
-        assertNotNull(typeService.queryType());
+    @Test
+    public void testViewCapabilityB()
+    {
+        assertNotNull(capabilityBService.viewCapabilityB());
     }
 
 }

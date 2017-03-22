@@ -36,9 +36,7 @@
 <link
 	href='<%=path %>/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css'
 	rel='stylesheet'>
-<link
-	href='<%=path %>/bower_components/bootstrap-val/bootstrapValidator.css'
-	rel='stylesheet'>
+
 <link href='<%=path %>/css/jquery.noty.css' rel='stylesheet'>
 <link href='<%=path %>/css/noty_theme_default.css' rel='stylesheet'>
 <link href='<%=path %>/css/elfinder.min.css' rel='stylesheet'>
@@ -46,7 +44,9 @@
 <link href='<%=path %>/css/jquery.iphone.toggle.css' rel='stylesheet'>
 <link href='<%=path %>/css/uploadify.css' rel='stylesheet'>
 <link href='<%=path %>/css/animate.min.css' rel='stylesheet'>
-
+<link
+	href='<%=path %>/bower_components/bootstrap-val/bootstrapValidator.css'
+	rel='stylesheet'>
 
 <script type="text/javascript">
 		var path = "<%=path%>";
@@ -267,7 +267,7 @@
 	<script
 		src="<%=path %>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script
-		src="<%=path %>/bower_components/bootstrap-val/bootstrapValidator.min.js"></script>
+		src="<%=path %>/bower_components/bootstrap-val/bootstrapValidator.js"></script>
 	<!-- library for cookie management -->
 	<script src="<%=path %>/js/jquery.cookie.js"></script>
 	<!-- calender plugin -->

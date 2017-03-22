@@ -42,9 +42,7 @@ public class ProjectController
 
         HttpSession session = request.getSession();
 
-        Employee employee = new Employee();
-
-        employee = (Employee) session.getAttribute("employee");
+        Employee employee = (Employee) session.getAttribute("employee");
 
         String projectId = employee.getProjectId();
 
