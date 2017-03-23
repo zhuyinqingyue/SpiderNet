@@ -64,10 +64,11 @@ $("a[id='myCourse']").click(
 						var td5 = $("<td>"
 								+ trainningList[i].teacher
 								+ "</td>");
-						var td6 = $("<td><a href='#'>"
-								+ trainningList[i].url
-								+ "</a></td>");
-
+						var td6 =$("<td></td>");
+						if( null!= trainningList[i].url && trainningList[i].url !=''){
+							td6 = $("<td><a href='"+trainningList[i].url+"'>查看"
+									+ "</a></td>");
+						}
 						td1.appendTo(tr);
 						td2.appendTo(tr);
 						td3.appendTo(tr);
