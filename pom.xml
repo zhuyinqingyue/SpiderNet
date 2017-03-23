@@ -2,7 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.spidernet</groupId>
-	<artifactId>SpiderNetTest</artifactId>
+	<artifactId>SpiderNet</artifactId>
+	<artifactId>SpiderNet</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpiderNet Maven Webapp</name>
@@ -186,7 +187,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>SpiderNetTest</finalName>
+		<finalName>SpiderNet</finalName>
 		<plugins>
 			<plugin>
 					<groupId>org.codehaus.mojo</groupId>
