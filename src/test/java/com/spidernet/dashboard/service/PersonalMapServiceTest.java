@@ -1,6 +1,6 @@
 package com.spidernet.dashboard.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import javax.annotation.Resource;
 
@@ -8,23 +8,24 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.spidernet.dashboard.entity.PersonalMap;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:conf/spring-mybatis.xml" })
+@Transactional
 public class PersonalMapServiceTest
 {
 
     @Resource
     PersonalMapService personalMapService;
     
-    @Test
+  /*  @Test
+    @Rollback(true)
     public void testAddPersonalMap()
     {
         PersonalMap personalMap = new PersonalMap();
         assertTrue(personalMapService.addPersonalMap(personalMap));
-    }
+    }*/
 
     @Test
     public void testFetchByEmpId()
@@ -33,9 +34,9 @@ public class PersonalMapServiceTest
         assertNotNull(personalMapService.fetchByEmpId(employeeId));
     }
 
-    @Test
+    /*@Test
     public void testUpdatePersonalMap()
     {
         
-    }
+    }*/
 }

@@ -17,7 +17,7 @@ $(document).ready(function() {
                     },
                     regexp: {
                         regexp: /^E[0-9]{9}$/,
-                        message: '需要以E开头加9位数字编码'
+                        message: '请输入以E开头加9位数字编码'
                     },
                     /* regexp: {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
@@ -45,7 +45,7 @@ $(document).ready(function() {
                     },
                     regexp: {
                         regexp: /^\d{5,12}$/,
-                        message: '需要5-12位数字编码'
+                        message: '请输入5-12位数字编码'
                     },
                     /* regexp: {
                         regexp: /^([\u4E00-\u9FA5]|\w)*$/,
@@ -72,12 +72,12 @@ $(document).ready(function() {
                         message: '请输入中文名'
                     },
                     regexp: {
-                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        regexp: /^([\u4E00-\u9FA5])*$/,
                         message: '请勿包含特殊字符'
                     },
                     stringLength: {
                         max: 25,
-                        message: '请输入50字符以内的中文名'
+                        message: '请输入25字以内的中文名'
                     }
                 }
             },
@@ -88,7 +88,7 @@ $(document).ready(function() {
                         message: '请输入英文名'
                     },
                     regexp: {
-                        regexp: /^([\u4E00-\u9FA5]|\w)*$/,
+                        regexp: /^([a-zA-Z]|\s)*$/,
                         message: '请勿包含特殊字符'
                     },
                     stringLength: {

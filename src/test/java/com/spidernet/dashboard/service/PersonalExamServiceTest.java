@@ -1,7 +1,6 @@
 package com.spidernet.dashboard.service;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +13,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spidernet.dashboard.entity.PersonalExam;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:conf/spring-mybatis.xml" })
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public class PersonalExamServiceTest
 {
@@ -56,7 +53,10 @@ public class PersonalExamServiceTest
     @Test
     public void testCheckPersonalExamExists()
     {
-        fail("Not yet implemented");
+        PersonalExam personalExam  = new PersonalExam();
+        personalExam.setEmployeeId("b831465b1b594c44927a8c5845e8daad");
+        personalExam.setExamId("5721b3b030a71b6d9441724e9f2bc074");
+        assertTrue(personalExamService.checkPersonalExamExists(personalExam));
     }
 
 }
