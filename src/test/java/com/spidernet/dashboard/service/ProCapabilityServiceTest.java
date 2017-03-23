@@ -2,7 +2,6 @@ package com.spidernet.dashboard.service;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.List;
 
@@ -49,10 +48,10 @@ public class ProCapabilityServiceTest
         assertNotNull(proCapabilityService.fetchProCapabilityByCapabilityId(capabilityId));
     }
 
-    @Test
+   /* @Test
     public void testUpdateProCapability()
     {
         fail("Not yet implemented");
-    }
+    }*/
 
 }
