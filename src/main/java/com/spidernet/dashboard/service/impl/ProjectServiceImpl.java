@@ -1,6 +1,5 @@
 package com.spidernet.dashboard.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -33,9 +32,7 @@ public class ProjectServiceImpl implements ProjectService
     @Override
     public List<Project> queryProject(String buId)
     {
-        List<Project> listP = new ArrayList();
-        
-        listP = projectMapper.queryProject(buId);
+        List<Project> listP = projectMapper.queryProject(buId);
         
         return listP;
     }

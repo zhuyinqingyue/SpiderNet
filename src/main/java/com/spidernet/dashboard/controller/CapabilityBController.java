@@ -119,12 +119,10 @@ public class CapabilityBController
         
         JSONArray capabilityMapJ = JSONArray.fromObject(saveHtml);
 
-        // 将数组的 每个元素 转成 json对象
 
         for (Object capabilityB : capabilityMapJ)
         {
             JSONObject capabilityBJ = JSONObject.fromObject(capabilityB);
-            // 调用 json对象的toBean方法将数据 反射到实体bean中
 
             cBBean = (CapabilityB) JSONObject.toBean(capabilityBJ,
                     CapabilityB.class);
@@ -183,6 +181,9 @@ public class CapabilityBController
         employeeTemp.setBuId(buId);
         employeeTemp.setProjectId(projectId);
         
+        if(!(userService.checkErExists(erId)||userService.checkHrExists(hrId))){
+            return false;
+        }
         reg = userService.addEmployee(employeeTemp);
         
         personalMapTemp.setPersonalMapId(uuid);

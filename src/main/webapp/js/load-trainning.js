@@ -115,8 +115,7 @@ $("#trainningSubmitBtn").click(function(e){
 			if (data) {
 				$('#myModalClass').modal('hide');
 				$('#traning_' + capabilityId).html("<span class='label-success label label-default'>已注册</span>");
-				//$('#traning_' + capabilityId)
-				//alert("Success");trainning_.apped("<span >sdsad</span>")
+				window.location.reload();
 			} else {
 				$("#myModalClass").find('.alert').hide();
 				$("#myModalClass").find('.alert-warning').html('注册失败，请联系管理员').show();

@@ -36,9 +36,7 @@
 <link
 	href='<%=path %>/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css'
 	rel='stylesheet'>
-<link
-	href='<%=path %>/bower_components/bootstrap-val/bootstrapValidator.css'
-	rel='stylesheet'>
+
 <link href='<%=path %>/css/jquery.noty.css' rel='stylesheet'>
 <link href='<%=path %>/css/noty_theme_default.css' rel='stylesheet'>
 <link href='<%=path %>/css/elfinder.min.css' rel='stylesheet'>
@@ -46,7 +44,9 @@
 <link href='<%=path %>/css/jquery.iphone.toggle.css' rel='stylesheet'>
 <link href='<%=path %>/css/uploadify.css' rel='stylesheet'>
 <link href='<%=path %>/css/animate.min.css' rel='stylesheet'>
-
+<link
+	href='<%=path %>/bower_components/bootstrap-val/bootstrapValidator.css'
+	rel='stylesheet'>
 
 <script type="text/javascript">
 		var path = "<%=path%>";
@@ -229,7 +229,7 @@
 					</div>
 					<div id="capabilityMapAll" class="box-content">
 						<table id="capabilityMap"
-							class="table table-striped table-bordered responsive">
+							class="table table-striped table-bordered">
 							<thead>
 								<tr>
 									<th style="width: 20%;">领域</th>
@@ -240,8 +240,8 @@
 							</tbody>
 						</table>
 						<div class="center">
-							<a class="btn btn-success" href="#" data-dismiss="modal"> <i
-								class="glyphicon glyphicon-ok icon-white"></i> 确定
+							<a class="btn btn-success" href="#" onClick="SaveCapabilityMap()"> <i
+								class="glyphicon glyphicon-ok icon-white" ></i> 确定
 							</a> <a class="btn btn-info" href="#" data-dismiss="modal"> <i
 								class="glyphicon glyphicon-remove icon-white"></i> 取消
 							</a>
@@ -267,7 +267,7 @@
 	<script
 		src="<%=path %>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script
-		src="<%=path %>/bower_components/bootstrap-val/bootstrapValidator.min.js"></script>
+		src="<%=path %>/bower_components/bootstrap-val/bootstrapValidator.js"></script>
 	<!-- library for cookie management -->
 	<script src="<%=path %>/js/jquery.cookie.js"></script>
 	<!-- calender plugin -->
@@ -304,8 +304,8 @@
 	<script src="<%=path %>/js/charisma.js"></script>
 
 	<!-- default loading -->
-	<script type="text/javascript" src="<%=path %>/js/register.js"></script>
 	<script src="<%=path %>/js/spidernet/capabilityMap.js"></script>
+	<script type="text/javascript" src="<%=path %>/js/register.js"></script>
 
 </body>
 </html>

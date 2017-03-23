@@ -10,16 +10,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:conf/spring-mvc.xml", "classpath:conf/spring-mybatis.xml" })
-public class TypeServiceTest
+@ContextConfiguration(locations = { "classpath:conf/spring-mybatis.xml" })
+public class EmployeeDetlServiceTest
 {
 
     @Resource
-    TypeService typeService;
+    EmployeeDetlService employeeDetlService;
+    
     @Test
-    public void testTypeList(){
-
-        assertNotNull(typeService.queryType());
+    public void testQueryDetail()
+    {
+        String empId = "14f014a655e04b88b10fc5a502fc4986";
+        assertNotNull(employeeDetlService.queryDetail(empId));
     }
 
 }

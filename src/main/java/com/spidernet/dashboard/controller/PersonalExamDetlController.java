@@ -128,8 +128,7 @@ public class PersonalExamDetlController
 
         for (int i = 0; i < capabilityMap.getCapabilityMap().size(); i++)
         {
-            if (Constants.ONE == capabilityMap.getCapabilityMap().get(i)
-                    .getBlockType())
+            if (proCapability != null)
             {
                 for (int j = 0; j < capabilityMap.getCapabilityMap().get(i)
                         .getProCapabilityL().size(); j++)
@@ -145,7 +144,7 @@ public class PersonalExamDetlController
                     }
                 }
             }
-            else
+            else if (commonCapability != null)
             {
                 for (int j = 0; j < capabilityMap.getCapabilityMap().get(i)
                         .getcCapabilityL().size(); j++)

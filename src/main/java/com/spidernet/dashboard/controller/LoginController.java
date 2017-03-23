@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.spidernet.dashboard.entity.Employee;
 import com.spidernet.dashboard.entity.EmployeeDetl;
@@ -27,7 +26,7 @@ public class LoginController
 {
     @Resource
     EmployeeService userService;
-    
+
     @Resource
     EmployeeDetlService employeeDetlService;
 
@@ -78,7 +77,7 @@ public class LoginController
 
         Pattern patternEr = Pattern.compile(erPattern);
         Pattern patternHr = Pattern.compile(hrPattern);
-        new ModelAndView();
+
         Employee employeeTemp = null;
 
         if (patternEr.matcher(userName).matches())
@@ -97,26 +96,28 @@ public class LoginController
             employeeTemp = userService.accountValidByHrNumber(employee);
         }
 
-        /*      if (patternWechat.matcher(userName).matches())
-        {
-            // employee.setWechatOpenId(userName);
-        }
-*/
+        /*
+            if (patternWechat.matcher(userName).matches())
+            {
+                // employee.setWechatOpenId(userName);
+            }
+        */
+
         if (employeeTemp != null)
         {
             logger.info("Find the Employee correctly, enter the index page");
+
             request.getSession().setAttribute("employee", employeeTemp);
             String empId = employeeTemp.getEmployeeId();
             EmployeeDetl employeeDetl = employeeDetlService.queryDetail(empId);
             request.getSession().setAttribute("employeeDetl", employeeDetl);
-//            mv.setViewName("index");
-//            mv.addObject("employee", employeeTemp);
+
             return true;
         }
         else
         {
             logger.info("Can not find the Employee in the DB");
-//            mv.setViewName("login");
+
             return false;
         }
     }
@@ -127,6 +128,7 @@ public class LoginController
     {
         request.getSession().removeAttribute("employee");
         request.getSession().removeAttribute("SystemName");
+
         return "login";
     }
 }

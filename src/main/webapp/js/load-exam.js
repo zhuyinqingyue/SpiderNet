@@ -114,6 +114,7 @@ $("#examSubmitBtn").click(function(e){
 			if (data) {
 				$('#myModalExam').modal('hide');
 				$('#exam_' + capabilityId).html("<span class='label-success label label-default'>已报名</span>");
+				window.location.reload();
 			} else {
 				$("#myModalExam").find('.alert').hide();
 				$("#myModalExam").find('.alert-warning').html('注册失败，请联系管理员').show();

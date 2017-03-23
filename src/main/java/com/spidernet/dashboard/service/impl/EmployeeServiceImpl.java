@@ -30,20 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService
     }
 
     @Override
-    public Boolean accountValid(Employee employee)
-    {
-        if (userMapper.accountValid(employee) > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-    }
-
-    @Override
     public Employee fetchByErNumber(String erNumber)
     {
         Employee employee = userMapper.fetchByErNumber(erNumber);
@@ -56,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService
         Employee employee = userMapper.fetchByHrNumber(hrNumber);
         return employee;
     }
-    
+
     @Override
     public Boolean addEmployee(Employee employee)
     {

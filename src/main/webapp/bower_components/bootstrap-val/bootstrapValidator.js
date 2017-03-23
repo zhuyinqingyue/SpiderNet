@@ -1158,6 +1158,17 @@ if (typeof jQuery === 'undefined') {
                 });
                 this._onFieldValidated($field, validatorName);
             }
+            /**
+             * add select type.----fred
+             */
+            var f = this.getFieldElements(field);
+            if (f.length > 0) {
+                var type = f.attr('type');
+              
+                if( typeof(type)=="undefined"){
+                	 $icon.css('right', '30px');
+                }
+            }
 
             return this;
         },

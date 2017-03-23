@@ -2,6 +2,11 @@ package com.spidernet.util;
 
 import java.security.MessageDigest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.spidernet.dashboard.controller.EmployeeController;
+
 /**
  *
  * @author Ian
@@ -12,12 +17,15 @@ public class MD5Util
 {
     public final static String MD5(String s)
     {
+        Logger logger = LoggerFactory
+                .getLogger(EmployeeController.class);
+        
         char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                 'a', 'b', 'c', 'd', 'e', 'f' };
         try
         {
             byte[] strTemp = s.getBytes();
-            // Ê¹ÓÃMD5´´½¨MessageDigest¶ÔÏó
+            // Ê¹ï¿½ï¿½MD5ï¿½ï¿½ï¿½ï¿½MessageDigestï¿½ï¿½ï¿½ï¿½
             MessageDigest mdTemp = MessageDigest.getInstance("MD5");
             mdTemp.update(strTemp);
             byte[] md = mdTemp.digest();
@@ -27,7 +35,7 @@ public class MD5Util
             for (int i = 0; i < j; i++)
             {
                 byte b = md[i];
-                // ½«Ã»¸öÊý(int)b½øÐÐË«×Ö½Ú¼ÓÃÜ
+                // ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½(int)bï¿½ï¿½ï¿½ï¿½Ë«ï¿½Ö½Ú¼ï¿½ï¿½ï¿½
                 str[k++] = hexDigits[b >> 4 & 0xf];
                 str[k++] = hexDigits[b & 0xf];
             }
@@ -35,15 +43,15 @@ public class MD5Util
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            logger.error("[MD5Util] exception",e);
             return null;
         }
     }
 
-    // ²âÊÔ
+    // ï¿½ï¿½ï¿½ï¿½
     public static void main(String[] args)
     {
-        System.out.println("caidaoµÄMD5¼ÓÃÜºó£º\n" + MD5Util.MD5("123"));
+        System.out.println("caidaoï¿½ï¿½MD5ï¿½ï¿½ï¿½Üºï¿½\n" + MD5Util.MD5("123"));
         System.out.println("");
     }
 }
