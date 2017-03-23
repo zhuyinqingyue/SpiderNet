@@ -43,7 +43,7 @@ public class EmployeeServiceTest
         Employee employee = new Employee();
         String hrNumber = "123456";
         String password = "admin";
-        employee.setErNumber(hrNumber);
+        employee.setHrNumber(hrNumber);
         employee.setPassword(password);
 
         assertNotNull(employeeService.accountValidByHrNumber(employee));
