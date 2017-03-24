@@ -73,7 +73,9 @@ $(document).ready(function() {
                     },
                     regexp: {
                         regexp: /^([\u4E00-\u9FA5])*$/,
-                        message: '请输入中文'
+
+                        message: '请输入中文字符'
+
                     },
                     stringLength: {
                         max: 25,
