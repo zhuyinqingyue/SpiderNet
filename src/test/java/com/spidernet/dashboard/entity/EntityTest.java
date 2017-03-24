@@ -1,4 +1,4 @@
-package com.spidernet.dashboard.service;
+package com.spidernet.dashboard.entity;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
