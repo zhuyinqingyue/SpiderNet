@@ -73,7 +73,9 @@ $(document).ready(function() {
                     },
                     regexp: {
                         regexp: /^([\u4E00-\u9FA5])*$/,
-                        message: '请勿包含特殊字符'
+
+                        message: '请输入中文字符'
+
                     },
                     stringLength: {
                         max: 25,
@@ -89,7 +91,7 @@ $(document).ready(function() {
                     },
                     regexp: {
                         regexp: /^([a-zA-Z]|\s)*$/,
-                        message: '请勿包含特殊字符'
+                        message: '请输入英文字母'
                     },
                     stringLength: {
                         max: 50,
