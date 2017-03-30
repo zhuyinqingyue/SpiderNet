@@ -81,20 +81,21 @@ var path='<%=path%>';
 									<i class="glyphicon glyphicon-user"></i> 个人能力地图
 								</h2>
 							</div>
-							<div id="showEmp" class="box-content">
+							<div id="showEmp" class="box-content" style="overflow: auto;">
 							<input type="hidden" id="empId"  value="${sessionScope.employee.getEmployeeId()}"/>
 								<div class="alert alert-info">用户名：${sessionScope.employee.getName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目名称：${sessionScope.employeeDetl.getProjectName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;角色：${sessionScope.employeeDetl.getTypeName()}
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级别：${sessionScope.employeeDetl.getLevelName()} </div>
+								<div style="overflow: auto;">
 								<table id="personalMap"
 									class="table table-striped table-bordered">
 									<thead>
 										<tr>
 											<th></th>
 											<th>知识库</th>
-											<th>培训</th>
-											<th>注册状态</th>
-											<th>技能鉴定</th>
-											<th>鉴定状态</th>
+											<th nowrap>培训</th>
+											<th nowrap>注册状态</th>
+											<th nowrap>技能鉴定</th>
+											<th nowrap>鉴定状态</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -102,6 +103,7 @@ var path='<%=path%>';
 
 									</tbody>
 								</table>
+								</div>
 							</div>
 						</div>
 					</div>
