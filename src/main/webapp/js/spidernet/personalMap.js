@@ -83,7 +83,7 @@ $("#showEmp").show(function(){
             			else
             			{
             				htmlInner+="<tr>";
-            				htmlInner+= '<td>'+data_info.name+'</td>';
+            				htmlInner+= '<td>'+data_info.name+'</td><td>'+''+'</td>';
         					htmlInner+= '<td class="center"></td>';
         					htmlInner+= '<td class="center"></td>';
         					htmlInner+= '<td class="center"></td>';
