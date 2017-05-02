@@ -1,5 +1,7 @@
 package com.spidernet.dashboard.service;
 
+import java.util.List;
+
 import com.spidernet.dashboard.entity.Bu;
 
 /**
@@ -10,4 +12,5 @@ import com.spidernet.dashboard.entity.Bu;
 public interface BuService
 {
     Bu findBuName(String buId);
+    List<Bu> queryBu();
 }

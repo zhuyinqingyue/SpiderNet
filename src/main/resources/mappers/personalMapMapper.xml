@@ -42,9 +42,13 @@
 
 	<update id="updatePersonalMap" parameterType="com.spidernet.dashboard.entity.PersonalMap">
 		update t_personal_map SET
-		PRO_CAPABILITY_ID = #{proCapabilityId}, COMM_CAPABILITY_ID = #{commCapabilityId}, EMP_TYPE_ID = #{empTypeId},
-		EMP_LEVEL_ID = #{empLevelId}, EMPLOYEE_ID = #{employeeId}, BU_ID = #{buId},
-		PROJECT_ID = #{projectId}, DETAIL = #{detail}, STATUS = #{status},STATUSFLAG = #{statusFlag}
+		EMP_LEVEL_ID = #{empLevelId},EMP_TYPE_ID = #{empTypeId}, BU_ID = #{buId},
+		PROJECT_ID = #{projectId}, DETAIL = #{detail}
 		where PERSONAL_MAP_ID=#{personalMapId}
 	</update>
+	
+	<select id="findPersonalMapIdByEmpId" parameterType="String" resultType="String">
+	    select PERSONAL_MAP_ID AS personalMapId
+	    from t_personal_map where EMPLOYEE_ID = #{employeeId} and STATUSFLAG =1
+	</select>
 </mapper>
