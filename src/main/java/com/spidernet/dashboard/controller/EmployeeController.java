@@ -35,6 +35,13 @@ public class EmployeeController {
     {
         return "employee/register";
     }
+    
+    @RequestMapping("/update")
+    public String update(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/update";
+    }
 
     @RequestMapping("/queryEmpInfo")
     @ResponseBody
@@ -112,6 +119,18 @@ public class EmployeeController {
         }
         
         return resultString;
+    }
+    
+    @RequestMapping("/findEmpByEr")
+    @ResponseBody
+    public Employee findEmpByEr(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        String erNumber = request.getParameter("erNumber");
+        
+        Employee employee = userService.fetchByErNumber(erNumber);
+        
+        return employee;
     }
 
 

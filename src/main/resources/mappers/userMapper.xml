@@ -81,4 +81,8 @@
 	<select id="checkHrExists" parameterType="String" resultType="int">
 	    select count(0) from t_employee where HR_NUMBER = #{hrNumber}
 	</select>
+	
+	<update id="updEmployee" parameterType="com.spidernet.dashboard.entity.Employee">
+	    update t_employee set BU_ID = #{buId},PROJECT_ID = #{projectId},EMP_TYPE_ID = #{empTypeId},EMP_LEVEL_ID = #{empLevelId},NAME = #{name},ENAME =#{eName} where ER_NUMBER = #{erNumber} 
+	</update>
 </mapper>

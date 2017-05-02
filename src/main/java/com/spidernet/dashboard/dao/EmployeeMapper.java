@@ -12,4 +12,5 @@ public interface EmployeeMapper
     int addEmployee(Employee employee);
     int checkErExists(String erNumber);
     int checkHrExists(String hrNumber);
+    int updEmployee(Employee employee);
 }

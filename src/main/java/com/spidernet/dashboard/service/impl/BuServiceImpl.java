@@ -1,5 +1,7 @@
 package com.spidernet.dashboard.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +28,14 @@ public class BuServiceImpl implements BuService
         Bu bu = bumapper.findBuName(buId);
         
         return bu;
+    }
+
+    @Override
+    public List<Bu> queryBu()
+    {
+        List<Bu> listB = bumapper.queryBu();
+        
+        return listB;
     }
 
 }

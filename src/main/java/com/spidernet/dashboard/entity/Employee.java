@@ -103,6 +103,31 @@ public class Employee implements Serializable
     {
         this.wechatOpenId = wechatOpenId;
     }
+    public Employee()
+    {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    public Employee(String employeeId, String buId, String projectId,
+            String empTypeId, String empLevelId, String erNumber,
+            String hrNumber, String name, String eName, String password,
+            String wechatOpenId)
+    {
+        super();
+        this.employeeId = employeeId;
+        this.buId = buId;
+        this.projectId = projectId;
+        this.empTypeId = empTypeId;
+        this.empLevelId = empLevelId;
+        this.erNumber = erNumber;
+        this.hrNumber = hrNumber;
+        this.name = name;
+        this.eName = eName;
+        this.password = password;
+        this.wechatOpenId = wechatOpenId;
+    }
+    
+    
 
    
 }

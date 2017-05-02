@@ -11,4 +11,5 @@ public interface EmployeeService
     Boolean addEmployee(Employee employee);
     Boolean checkErExists(String erNumber);
     Boolean checkHrExists(String hrNumber);
+    Boolean updEmployee(Employee employee);
 }

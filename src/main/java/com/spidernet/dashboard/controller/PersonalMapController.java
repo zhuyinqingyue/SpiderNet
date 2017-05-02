@@ -57,7 +57,9 @@ public class PersonalMapController
 
         PersonalMap personalMap = new PersonalMap();
         personalMap = personalMapService.fetchByEmpId(employeeId);
-
+        if(null==personalMap){
+            return null;
+        }
         CapabilityMap cBBean = (CapabilityMap) XmlUtil.convertXmlStrToObject(CapabilityMap.class,
                 personalMap.getDetail());
 
