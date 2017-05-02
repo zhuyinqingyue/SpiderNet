@@ -75,4 +75,17 @@ public class EmployeeServiceImpl implements EmployeeService
             return true;
         }
     }
+
+    @Override
+    public Boolean updEmployee(Employee employee)
+    {
+        if (userMapper.updEmployee(employee) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

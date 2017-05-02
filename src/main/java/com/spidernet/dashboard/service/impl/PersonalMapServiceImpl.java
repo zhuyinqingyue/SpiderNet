@@ -37,9 +37,23 @@ public class PersonalMapServiceImpl implements PersonalMapService
     }
 
     @Override
-    public void updatePersonalMap(PersonalMap personalMap)
+    public Boolean updatePersonalMap(PersonalMap personalMap)
+    {
+        if (personalMapMapper.updatePersonalMap(personalMap) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    @Override
+    public String findPersonalMapIdByEmpId(String employeeId)
     {
         // TODO Auto-generated method stub
-        personalMapMapper.updatePersonalMap(personalMap);
+        String personalMapId = personalMapMapper.findPersonalMapIdByEmpId(employeeId);
+        return personalMapId;
     }
 }

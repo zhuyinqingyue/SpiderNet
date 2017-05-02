@@ -14,5 +14,9 @@
 	<select id="findBuName"  parameterType="String" resultType="com.spidernet.dashboard.entity.Bu">
 		select BU_ID as buId, NAME as buName, DESCRIPTION as description, SORT as sort,CONTACT_NUMBER as contactNumber,MANAGER_NAME as mangerName FROM t_bu WHERE BU_ID = #{buId}; 
 	</select>
+	
+	<select id="queryBu" resultMap="buMap">
+		select * FROM t_bu order by SORT asc; 
+	</select>
 
 </mapper>

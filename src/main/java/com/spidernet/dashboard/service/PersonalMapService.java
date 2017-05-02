@@ -9,5 +9,7 @@ public interface PersonalMapService
 
     PersonalMap fetchByEmpId(String employeeId);
 
-    void updatePersonalMap(PersonalMap personalMap);
+    Boolean updatePersonalMap(PersonalMap personalMap);
+    
+    String findPersonalMapIdByEmpId(String employeeId);
 }

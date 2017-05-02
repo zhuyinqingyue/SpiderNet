@@ -1,5 +1,7 @@
 package com.spidernet.dashboard.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +32,7 @@ public class BuController
     public Object queryAll(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        logger.info("debug------test----");
+        logger.debug("query bu's name begin");
 
         HttpSession session = request.getSession();
 
@@ -41,5 +43,17 @@ public class BuController
         Bu bu = buService.findBuName(buId);
         
         return bu;
+    }
+    
+    @RequestMapping("/queryBu")
+    @ResponseBody
+    public Object queryBu(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        logger.info("query bu begin");
+
+        List<Bu> listB = buService.queryBu();
+        
+        return listB;
     }
 }
