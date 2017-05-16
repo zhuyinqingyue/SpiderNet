@@ -40,7 +40,16 @@ public class EmployeeController {
     public String update(final HttpServletRequest request,
             final HttpServletResponse response)
     {
+        String erNum = request.getParameter("erNum");
+        request.setAttribute("erNum", erNum);
         return "employee/update";
+    }
+    
+    @RequestMapping("/update2")
+    public String update2(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/update2";
     }
 
     @RequestMapping("/queryEmpInfo")

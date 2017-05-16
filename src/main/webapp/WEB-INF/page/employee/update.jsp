@@ -96,10 +96,10 @@
 									<div class="alert alert-success" style="display: none;"></div>
 									
 									<div class="form-group">
-										<div class="group">
+										<%-- <div class="group">
 											<label class="col-sm-4 control-label">按ER编号查询</label>
 											<div class="col-sm-4">
-												<input type="text" class="form-control" name="search" id="search" />
+												<input type="hidden" class="form-control" name="search" id="search" value="${erNum}"/>
 											</div>
 										</div>
 										<div style="text-align:center;width=100%">
@@ -107,7 +107,8 @@
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
-									</div>
+									    </div> --%>
+									    <input type="hidden" name="search" id="search" name="search" value="${erNum}"/>
 									</div>
 									
 									
@@ -191,7 +192,6 @@
 												<select href="#" class="form-control " name="projectName"
 													data-bv-notempty data-bv-notempty-message="请选择项目"
 													id="projectName" data-bv-group=".group"
-													onchange="ViewCapability(this.options[this.options.selectedIndex].value);">
 													<option value="">-- 请选择项目 --</option>
 												</select>
 											</div>
