@@ -113,14 +113,19 @@ $(function(){
 	loadtype();
 	
 	loadBu();
+	
+	//loadEmpInfo();
 
 });
 
-$("#sub_search").click(function(){
+window.onload = function(){
+	loadEmpInfo();
+}
+
+//$("#sub_search").click(function(){
 	
-	
+function loadEmpInfo(){	
 	var erNumber = $("#search").val();
-	
 	$.ajax({
 		url:path+"/service/employee/findEmpByEr",
 		dataType:"json",
@@ -140,8 +145,8 @@ $("#sub_search").click(function(){
 			//$("#projectName").val(employee.projectId);
 		}
 	})
-	
-})
+}	
+//})
 
 
 function loadlevel(){
@@ -190,6 +195,7 @@ function loadProject(buId,projectId){
 		type:"post",
 		success:function(listP){
 			$("#projectName").find("option").remove(); 
+			$("#projectName").append("<option value=''>-- 请选择项目 --</option>");
 			for(var i = 0;i<listP.length;i++){
 				$("#projectName").append("<option value='"+listP[i].projectId+"'>"+listP[i].projectName+"</option>");
 			}
@@ -210,6 +216,7 @@ function loadBu(){
 		cache:false,
 		type:"post",
 		success:function(listB){
+			$("#bu").append("<option value=''>-- 请选择交付部 --</option>");
 			for(var i = 0;i<listB.length;i++){
 				$("#bu").append("<option value='"+listB[i].buId+"'>"+listB[i].buName+"</option>");
 			}
