@@ -19,10 +19,9 @@
 	</sql>
 	<select id="viewCCapability" parameterType="com.spidernet.dashboard.entity.CCapability"
 		resultType="com.spidernet.dashboard.entity.CCapability">
-
 		select
 		<include refid="Base_Column_List" />
-		 from t_common_capability where BLOCK_ID = #{blockId} and (#{buList} in (BU_LIST) or BU_LIST is null)  order by sort
+		 from t_common_capability where BLOCK_ID = #{blockId} and (#{buList} in (BU_LIST) or BU_LIST is null or BU_LIST = '')  order by sort
 	</select>
 
 	<select id="fetchCommonCapabilty" parameterType="String"
@@ -31,6 +30,24 @@
 		select
 		<include refid="Base_Column_List" />
 		 from t_common_capability where COMM_CAPABILITY_ID = #{capabilityId}
+	</select>
+	
+	<select id="queryCommonCapability" resultMap="cCapability">
+	    SELECT * FROM t_common_capability  ORDER BY BLOCK_ID ASC ,SORT ASC;
+	</select>
+	
+	<select id="getSortByBlockId" parameterType="String" resultType="int">
+	    select count(0) FROM t_common_capability WHERE BLOCK_ID = #{blockId}; 
+	</select>
+	
+	<insert id="addCommonCapability" parameterType="com.spidernet.dashboard.entity.CCapability">
+	    INSERT INTO t_common_capability (COMM_CAPABILITY_ID,BLOCK_ID,NAME,DESCRIPTION,SORT,URL,PARENT_ID,BU_LIST) 
+	    VALUES 
+	    (#{commCapabilityId},#{blockId},#{name},#{description},#{sort},#{url},#{parentId},#{buList})
+	</insert>
+	
+	<select id="queryCCapabilityListByBlockId" parameterType="String" resultMap="cCapability">
+	    SELECT * FROM t_common_capability WHERE BLOCK_ID = #{blockId} ORDER BY SORT ASC;
 	</select>
 
 </mapper>

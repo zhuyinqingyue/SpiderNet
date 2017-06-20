@@ -12,4 +12,10 @@ public interface ProCapabilityService
     ProCapability fetchProCapabilityByCapabilityId(String capabilityId);
 
     int updateProCapability(ProCapability proCapability) ;
+    
+    List<ProCapability> queryProCapability();
+    
+    int getSortByBlockId(String blockId);
+    
+    boolean addProCapability(ProCapability proCapability);
 }

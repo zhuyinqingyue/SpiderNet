@@ -96,18 +96,6 @@
 									<div class="alert alert-success" style="display: none;"></div>
 									
 									<div class="form-group">
-										<%-- <div class="group">
-											<label class="col-sm-4 control-label">按ER编号查询</label>
-											<div class="col-sm-4">
-												<input type="hidden" class="form-control" name="search" id="search" value="${erNum}"/>
-											</div>
-										</div>
-										<div style="text-align:center;width=100%">
-									    <input type="button" value="查&nbsp;&nbsp;询"
-										name="subscribe" id="sub_search" href="#"
-										class="button btn btn-primary" data-dismiss="modal"
-										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
-									    </div> --%>
 									    <input type="hidden" name="search" id="search" name="search" value="${erNum}"/>
 									</div>
 									

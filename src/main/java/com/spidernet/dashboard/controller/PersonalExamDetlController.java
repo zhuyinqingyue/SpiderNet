@@ -1,5 +1,7 @@
 package com.spidernet.dashboard.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,20 +14,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spidernet.dashboard.entity.CCapability;
 import com.spidernet.dashboard.entity.CapabilityMap;
 import com.spidernet.dashboard.entity.Employee;
+import com.spidernet.dashboard.entity.ExcelImport;
 import com.spidernet.dashboard.entity.PersonalExam;
 import com.spidernet.dashboard.entity.PersonalMap;
 import com.spidernet.dashboard.entity.ProCapability;
 import com.spidernet.dashboard.service.CCapabilityService;
 import com.spidernet.dashboard.service.CapabilityExamService;
+import com.spidernet.dashboard.service.EmployeeService;
 import com.spidernet.dashboard.service.PersonalExamService;
 import com.spidernet.dashboard.service.PersonalMapService;
 import com.spidernet.dashboard.service.ProCapabilityService;
 import com.spidernet.util.Constants;
+import com.spidernet.util.ExcelTool;
+import com.spidernet.util.Utils;
 import com.spidernet.util.XmlUtil;
 
 import net.sf.json.JSONArray;
@@ -49,6 +57,9 @@ public class PersonalExamDetlController
 
     @Resource
     PersonalMapService personalMapService;
+    
+    @Resource
+    private EmployeeService employeeService;
 
     private static Logger logger = LoggerFactory
             .getLogger(PersonalTrainningDetlController.class);
@@ -172,6 +183,103 @@ public class PersonalExamDetlController
 
         return addResultFlag;
 
+    }
+    
+    
+    @RequestMapping("/importScore")
+    public String importScore(final HttpServletRequest request,final HttpServletResponse response,
+            @RequestParam("inputFile") MultipartFile inputFile) throws IOException
+    {
+        String fileName = Utils.getUUID();
+        
+        String filePath = "D:/Excel/"+fileName+".xls";
+        
+        boolean resultFlag = true;
+        
+        if (!inputFile.isEmpty()) {  
+            File localFile = new File(filePath);  
+            try {  
+                inputFile.transferTo(localFile);  
+            } catch (IllegalStateException e) {
+                logger.error("[PersonalExamDetlController.importScore] exception",e);
+            } catch (IOException e) {  
+                logger.error("[PersonalExamDetlController.importScore] exception",e); 
+            }
+            
+            String examId = request.getParameter("examDate");
+            
+            List<ExcelImport> excelList = ExcelTool.getAllByExcel(filePath);
+            
+            List<ExcelImport> excelImportList = new ArrayList();
+            
+            for(int i = 0;i < excelList.size()-1;i++){
+                if(excelList.get(i).getEr().equals(excelList.get(i+1).getEr())){
+                    if(Double.parseDouble(excelList.get(i).getScore())>Double.parseDouble(excelList.get(i+1).getScore())){
+                        excelImportList.add(excelList.get(i));
+                    }else{
+                        excelImportList.add(excelList.get(i+1));
+                    }
+                    i++;
+                }else{
+                    excelImportList.add(excelList.get(i));
+                    if(i == excelList.size()-2){
+                        excelImportList.add(excelList.get(excelList.size()-1));
+                    }
+                }
+            }
+            
+            PersonalExam personalExam = new PersonalExam();
+            
+            personalExam.setExamId(examId);
+            
+            
+            
+            for(int i = 0;i < excelImportList.size();i++){
+                String employeeId = employeeService.fetchByErNumber(excelImportList.get(i).getEr()).getEmployeeId();
+                
+                personalExam.setEmployeeId(employeeId);
+                
+                if(Double.parseDouble(excelImportList.get(i).getScore()) >= Double.parseDouble(excelImportList.get(i).getPassingMark())){
+                    personalExam.setStatus("0");
+                }else{
+                    personalExam.setStatus("1");
+                }
+                
+                personalExam.setScore(excelImportList.get(i).getScore());
+                
+                resultFlag = personalExamService.updataScore(personalExam);
+                if(!resultFlag){
+                    break;
+                }
+            }   
+            
+            localFile.delete();
+        }else{
+            resultFlag = false;
+        }
+        
+        String resultState = null;
+        
+        if(resultFlag){
+            resultState = "1";
+            request.getSession().setAttribute("resultState", resultState);
+        }else{
+            resultState = "2";
+            request.getSession().setAttribute("resultState", resultState);
+        }
+        
+        
+        return "employee/scoreImport";
+    }
+    
+    
+    @RequestMapping("/updResultState")
+    @ResponseBody
+    public void updResultState(final HttpServletRequest request,final HttpServletResponse response)
+    {
+        String resultState = "0";
+        request.getSession().setAttribute("resultState", resultState);
+        System.out.println("resultState :"+request.getSession().getAttribute("resultState"));
     }
 
 }

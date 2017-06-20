@@ -44,4 +44,27 @@ public class ProCapabilityServiceImpl implements ProCapabilityService
 
         return result;
     }
+
+    @Override
+    public List<ProCapability> queryProCapability()
+    {
+        List<ProCapability> proCapabilityList =  proCapabilityMapper.queryProCapability();
+        return proCapabilityList;
+    }
+
+    @Override
+    public int getSortByBlockId(String blockId)
+    {
+        return proCapabilityMapper.getSortByBlockId(blockId) + 1;
+    }
+
+    @Override
+    public boolean addProCapability(ProCapability proCapability)
+    {
+        if(proCapabilityMapper.addProCapability(proCapability)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

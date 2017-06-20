@@ -114,7 +114,6 @@ $(document).ready(function() {
             		RegCapabilityMap(e.target);
             	}
             }
-
         });
 });
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.spidernet.dashboard.dao.CCapabilityInfoMapper">
+	<resultMap id="cCapabilityInfoMap" type="com.spidernet.dashboard.entity.CCapabilityInfo">
+		<id property="commonCapabilityId" column="COMM_CAPABILITY_ID" javaType="String" />
+		<result property="commonCapabilityName" column="NAME" javaType="String" />
+		<result property="blockName" column="NAME1" javaType="String" />
+	</resultMap>
+	
+	<select id="queryCommonCapabilityInfo" parameterType="com.spidernet.dashboard.entity.CCapabilityPageCondition"
+		resultMap="cCapabilityInfoMap">
+	    SELECT c.COMM_CAPABILITY_ID,c.`NAME`,b.`NAME` AS NAME1
+        FROM t_common_capability AS c
+        LEFT JOIN t_capability_block AS b
+        ON c.BLOCK_ID = b.BLOCK_ID
+        Where 1 = 1
+            <if test="blockId != null and blockId != ''">
+				AND c.BLOCK_ID = #{blockId}
+			</if>
+			<if test="cCapabilityName != null and cCapabilityName != ''">
+				AND c.`NAME` like CONCAT('%',#{cCapabilityName},'%')
+			</if>
+		LIMIT #{currentPage},10;
+	</select>
+	
+	<select id="countCommonCapabilityPage" parameterType="com.spidernet.dashboard.entity.CCapabilityPageCondition"
+		resultType="int">
+	    SELECT count(0)
+        FROM t_common_capability AS c
+        LEFT JOIN t_capability_block AS b
+        ON c.BLOCK_ID = b.BLOCK_ID
+        Where 1 = 1
+            <if test="blockId != null and blockId != ''">
+				AND c.BLOCK_ID = #{blockId}
+			</if>
+			<if test="cCapabilityName != null and cCapabilityName != ''">
+				AND c.`NAME` like CONCAT('%',#{cCapabilityName},'%')
+			</if>
+	</select>
+	
+
+</mapper>

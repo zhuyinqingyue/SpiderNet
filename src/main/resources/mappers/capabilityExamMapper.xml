@@ -33,4 +33,10 @@
 		tpe.EMPLOYEE_ID=#{employeeId} and tce.EXAM_ID =
 		tpe.EXAM_ID limit 1
 	</select>
+	
+	<insert id="addCapabilityExam" parameterType="com.spidernet.dashboard.entity.CapabilityExam">
+	    insert into t_capability_exam (EXAM_ID,CAPABILITY_ID)
+	    values
+	    (#{examId},#{capabilityId})
+	</insert>
 </mapper>

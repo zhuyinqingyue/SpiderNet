@@ -4,7 +4,7 @@ public class Exam
 {
     private String examId;
     private String buId;
-    private String projetId;
+    private String projectId;
     private String name;
     private String startTime;
     private String endTime;
@@ -32,11 +32,11 @@ public class Exam
     }
     public String getProjetId()
     {
-        return projetId;
+        return projectId;
     }
     public void setProjetId(String projetId)
     {
-        this.projetId = projetId;
+        this.projectId = projetId;
     }
     public String getName()
     {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spidernet.dashboard.dao.ExamInfoMapper">
+	<resultMap id="employeeInfoMap" type="com.spidernet.dashboard.entity.ExamInfo">
+		<id property="examId" column="EXAM_ID" javaType="String" />
+		<result property="examName" column="NAME" javaType="String" />
+		<result property="buName" column="NAME1" javaType="String" />
+		<result property="projectName" column="NAME2" javaType="String" />
+		<result property="startTime" column="START_TIME" javaType="String" />
+	</resultMap>
+
+	<select id="queryExamInfo" parameterType="com.spidernet.dashboard.entity.ExamPageCondition"
+		resultMap="employeeInfoMap">
+		SELECT e.EXAM_ID,e.NAME,b.`NAME` as NAME1,p.`NAME` as NAME2,e.START_TIME
+        FROM t_exam AS e
+        LEFT JOIN t_bu AS b
+        ON b.BU_ID = e.BU_ID
+        LEFT JOIN t_project AS p
+        ON p.PROJECT_ID = e.PROJECT_ID
+        WHERE 1 = 1
+        
+			<if test="buId != null and buId != ''">
+				AND b.BU_ID = #{buId}
+			</if>
+			<if test="projectId != null and projectId != ''">
+				AND p.PROJECT_ID = #{projectId}
+			</if>
+			<if test="examId != null and examId != ''">
+				AND e.EXAM_ID = #{examId}
+			</if>
+			<if test="examName != null and examName != ''">
+				AND e.NAME like CONCAT('%',#{examName},'%')
+			</if>
+		
+        LIMIT #{currentPage},10;
+	</select>
+	
+	<select id="countExamPage" parameterType="com.spidernet.dashboard.entity.ExamPageCondition"
+		resultType="int">
+		SELECT count(0)
+        FROM t_exam AS e
+        LEFT JOIN t_bu AS b
+        ON b.BU_ID = e.BU_ID
+        LEFT JOIN t_project AS p
+        ON p.PROJECT_ID = e.PROJECT_ID
+        WHERE 1 = 1
+        
+			<if test="buId != null and buId != ''">
+				AND b.BU_ID = #{buId}
+			</if>
+			<if test="projectId != null and projectId != ''">
+				AND p.PROJECT_ID = #{projectId}
+			</if>
+			<if test="examId != null and examId != ''">
+				AND e.EXAM_ID = #{examId}
+			</if>
+			<if test="examName != null and examName != ''">
+				AND e.NAME like CONCAT('%',#{examName},'%')
+			</if>
+		
+	</select>
+
+</mapper>
