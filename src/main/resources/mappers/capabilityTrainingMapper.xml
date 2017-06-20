@@ -33,5 +33,11 @@
 		tpt.EMPLOYEE_ID=#{employeeId} and tct.TRAINING_ID
 		= tpt.TRAINING_ID limit 1
 	</select>
+	
+	<insert id="addCapabilityTrainning" parameterType="com.spidernet.dashboard.entity.CapabilityTraining">
+	    INSERT INTO t_capability_training (TRAINING_ID,CAPABILITY_ID)
+        VALUES
+        (#{trainingId},#{capabilityId})
+	</insert>
 
 </mapper>

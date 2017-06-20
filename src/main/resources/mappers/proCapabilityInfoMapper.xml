@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.spidernet.dashboard.dao.ProCapabilityInfoMapper">
+	<resultMap id="proCapabilityInfoMap" type="com.spidernet.dashboard.entity.ProCapabilityInfo">
+		<id property="proCapabilityId" column="PRO_CAPABILITY_ID" javaType="String" />
+		<result property="proCapabilityName" column="CAPABILITY_NAME" javaType="String" />
+		<result property="blockName" column="BLOCK_NAME" javaType="String" />
+		<result property="buName" column="BU_NAME" javaType="String" />
+		<result property="projectName" column="PROJECT_NAME" javaType="String" />
+		<result property="typeName" column="TYPE_NAME" javaType="String" />
+		<result property="levelName" column="LEVEL_NAME" javaType="String" />
+	</resultMap>
+	
+	<select id="queryProCapabilityInfo" parameterType="com.spidernet.dashboard.entity.ProCapablityPageCondition"
+		resultMap="proCapabilityInfoMap">
+	    select pc.PRO_CAPABILITY_ID,pc.`NAME` AS CAPABILITY_NAME,cb.`NAME` AS BLOCK_NAME,b.`NAME` AS BU_NAME,p.`NAME` AS PROJECT_NAME,t.TYPE_NAME,l.LEVEL_NAME
+        FROM t_pro_capability_map AS pc
+        LEFT JOIN t_capability_block AS cb
+        ON cb.BLOCK_ID = pc.BLOCK_ID
+        LEFT JOIN t_bu AS b
+        ON pc.BU_ID = b.BU_ID
+        LEFT JOIN t_project AS p
+        ON p.PROJECT_ID = pc.PROJECT_ID
+        LEFT JOIN t_emp_type AS t
+        ON t.EMP_TYPE_ID = pc.EMP_TYPE_ID
+        LEFT JOIN t_emp_level AS l
+        ON pc.EMP_LEVEL_ID = l.EMP_LEVEL_ID
+        Where 1 = 1 
+            <if test="buId != null and buId != ''">
+				AND pc.BU_ID = #{buId}
+			</if>
+			<if test="projectId != null and projectId != ''">
+				AND p.PROJECT_ID = #{projectId}
+			</if>
+			<if test="typeId != null and typeId != ''">
+				AND t.EMP_TYPE_ID = #{typeId}
+			</if>
+			<if test="levelId != null and levelId != ''">
+				AND pc.EMP_LEVEL_ID = #{levelId}
+			</if>
+			<if test="blockId != null and blockId != ''">
+				AND pc.BLOCK_ID = #{blockId}
+			</if>
+			<if test="proCapabilityName != null and proCapabilityName != ''">
+				AND pc.NAME like CONCAT('%',#{proCapabilityName},'%')
+			</if>
+		LIMIT #{currentPage},10;
+	</select>
+	
+	<select id="countProCapabilityPage" parameterType="com.spidernet.dashboard.entity.ProCapablityPageCondition"
+		resultType="int">
+        Select count(0)
+        FROM t_pro_capability_map AS pc
+        LEFT JOIN t_capability_block AS cb
+        ON cb.BLOCK_ID = pc.BLOCK_ID
+        LEFT JOIN t_bu AS b
+        ON pc.BU_ID = b.BU_ID
+        LEFT JOIN t_project AS p
+        ON p.PROJECT_ID = pc.PROJECT_ID
+        LEFT JOIN t_emp_type AS t
+        ON t.EMP_TYPE_ID = pc.EMP_TYPE_ID
+        LEFT JOIN t_emp_level AS l
+        ON pc.EMP_LEVEL_ID = l.EMP_LEVEL_ID
+        Where 1 = 1
+            <if test="buId != null and buId != ''">
+				AND pc.BU_ID = #{buId}
+			</if>
+			<if test="projectId != null and projectId != ''">
+				AND p.PROJECT_ID = #{projectId}
+			</if>
+			<if test="typeId != null and typeId != ''">
+				AND t.EMP_TYPE_ID = #{typeId}
+			</if>
+			<if test="levelId != null and levelId != ''">
+				AND pc.EMP_LEVEL_ID = #{levelId}
+			</if>
+			<if test="blockId != null and blockId != ''">
+				AND pc.BLOCK_ID = #{blockId}
+			</if>
+			<if test="proCapabilityName != null and proCapabilityName != ''">
+				AND pc.NAME like CONCAT('%',#{proCapabilityName},'%')
+			</if>
+	</select>
+	
+
+</mapper>

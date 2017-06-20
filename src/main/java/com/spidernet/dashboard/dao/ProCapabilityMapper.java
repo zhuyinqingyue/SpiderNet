@@ -14,4 +14,10 @@ public interface ProCapabilityMapper
     ProCapability fetchProCapabilityByCapabilityId(String capabilityId);
 
     int updateProCapability(ProCapability proCapability);
+    
+    List<ProCapability> queryProCapability();
+    
+    int getSortByBlockId(String blockId);
+    
+    int addProCapability(ProCapability proCapability);
 }

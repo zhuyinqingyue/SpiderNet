@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.spidernet.dashboard.dao.CapabilityExamMapper;
+import com.spidernet.dashboard.entity.CapabilityExam;
 import com.spidernet.dashboard.service.CapabilityExamService;
 /**
  *
@@ -46,5 +47,15 @@ public class CapabilityExamServiceImpl implements CapabilityExamService
     {
         String capabilityExamStatus = capabilityExamMapper.capabilityExamStatus(capabilityId, employeeId);
         return capabilityExamStatus;
+    }
+
+    @Override
+    public Boolean addCapabilityExam(CapabilityExam capabilityExam)
+    {
+        if(capabilityExamMapper.addCapabilityExam(capabilityExam)>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.spidernet.dashboard.dao.CapabilityTrainingMapper;
+import com.spidernet.dashboard.entity.CapabilityTraining;
 import com.spidernet.dashboard.service.CapabilityTrainingService;
 /**
  *
@@ -45,5 +46,18 @@ public class CapabilityTrainingServiceImpl implements CapabilityTrainingService
     {
         String capabilityTrainingStatus = capabilityTrainingMapper.capabilityTrainingStatus(capabilityId, employeeId);
         return capabilityTrainingStatus;
+    }
+
+    @Override
+    public boolean addCapabilityTrainning(CapabilityTraining capabilityTraining)
+    {
+        if (capabilityTrainingMapper.addCapabilityTrainning(capabilityTraining) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

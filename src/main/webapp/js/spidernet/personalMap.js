@@ -62,11 +62,11 @@ $("#showEmp").show(function(){
         						{
             						if (data_info.proCapabilityL[j].status == "0")
         							{
-            							htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-success label label-default">Sucess</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-success label label-default">已通过</span></td>';
         							}
             						if (data_info.proCapabilityL[j].status == "1")
         							{
-            							htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-default label label-danger">Fail</span></td>';
+            							htmlInner+= '<td class="center" id="exam_'+data_info.proCapabilityL[j].proCapabilityId+'"><span class="label-default label label-danger">未通过</span></td>';
         							}
             						if (data_info.proCapabilityL[j].status == "2")
         							{

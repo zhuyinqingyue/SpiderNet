@@ -8,4 +8,5 @@ public interface PersonalExamService
 {
     Boolean addPersonalExam(List<PersonalExam> personalExamList);
     Boolean checkPersonalExamExists(PersonalExam personalExam);
+    boolean updataScore(PersonalExam personalExam);
 }
