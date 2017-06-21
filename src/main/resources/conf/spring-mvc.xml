@@ -66,5 +66,10 @@
 		<property name="prefix" value="/WEB-INF/page/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-
+	
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000"/>
+        <property name="maxInMemorySize" value="10240" />
+    </bean>
 </beans>

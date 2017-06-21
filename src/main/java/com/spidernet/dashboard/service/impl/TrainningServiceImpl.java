@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spidernet.dashboard.dao.TrainningMapper;
 import com.spidernet.dashboard.entity.Trainning;
+import com.spidernet.dashboard.entity.TrainningPageCondition;
 import com.spidernet.dashboard.service.TrainningService;
 
 @Service
@@ -26,6 +27,30 @@ public class TrainningServiceImpl implements TrainningService
 
         trainningList = trainningMapper.fetchAllTrainning(capabilityId, employeeId);
         return trainningList;
+    }
+
+    @Override
+    public boolean addTraining(Trainning trainning)
+    {
+        if(trainningMapper.addTraining(trainning)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public List<Trainning> queryTrainingInfo(
+            TrainningPageCondition trainningPageCondition)
+    {
+        List<Trainning> trainningList = trainningMapper.queryTrainingInfo(trainningPageCondition);
+        return trainningList;
+    }
+
+    @Override
+    public int countTrainingPage(TrainningPageCondition trainningPageCondition)
+    {
+        return trainningMapper.countTrainingPage(trainningPageCondition)/10 + 1;
     }
 
 }

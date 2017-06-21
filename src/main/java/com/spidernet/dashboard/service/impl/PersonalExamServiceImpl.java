@@ -37,4 +37,14 @@ public class PersonalExamServiceImpl implements PersonalExamService
         }
     }
 
+    @Override
+    public boolean updataScore(PersonalExam personalExam)
+    {
+        if(personalExamMapper.updataScore(personalExam) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

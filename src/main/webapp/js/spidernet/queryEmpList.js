@@ -23,12 +23,6 @@ function loadEmpList(pageState){
 
 	var pageState = pageState;
 	
-	//var url = path+"/service/employee/update.html";
-	
-	//var currentPage = window.sessionStorage.getItem('pageCondition.currentPage');
-	//var currentPage = $.session.get('pageCondition').currentPage;
-	//var id = '<%=session["UserName"] %>';
-	//var id = '<%=session.getAttribute("pageCondition")%>';
 	$.ajax({
 		url:path+"/service/employeeInfo/employeeInfoList",
 		dataType:"json",
@@ -123,7 +117,7 @@ function loadProject(buId,projectId){
 	})
 }
 
-
+ 
 function loadBu(){
 	
 	$.ajax({

@@ -25,5 +25,24 @@
 		NOW() &lt; e.START_TIME and
 		e.EXAM_ID not in (select EXAM_ID FROM t_personal_exam where EMPLOYEE_ID=#{employeeId});
 	</select>
+	
+	<select id="queryExamName" resultType="com.spidernet.dashboard.entity.Exam">
+	    select EXAM_ID as examId,NAME as name from t_exam;
+	</select>
+	
+	<select id="queryExamDate" parameterType="String" resultType="com.spidernet.dashboard.entity.Exam">
+	    select EXAM_ID as examId,START_TIME as startTime from t_exam where NAME = (SELECT NAME from t_exam WHERE EXAM_ID = #{employeeId});
+	</select>
+	
+	<insert id="addExam" parameterType="com.spidernet.dashboard.entity.Exam">
+	    insert into t_exam (EXAM_ID,BU_ID,PROJECT_ID,NAME,START_TIME,END_TIME,DESCRIPTION,EXAM_TIME,VALID_PERIOD,STATUS,KNOWLEDGE_LIST)
+	    values
+	    (#{examId},#{buId},#{projectId},#{name},#{startTime},#{endTime},#{description},#{examTime},#{validPeriod},#{status},#{knowledgeList})
+	</insert>
+	
+	<select id="queryExamById" parameterType="String" resultType="com.spidernet.dashboard.entity.Exam">
+	    select * from t_exam WHERE EXAM_ID = #{examId}
+	</select>
+	
 
 </mapper>

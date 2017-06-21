@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.spidernet.dashboard.dao.BlockMapper">
+	<resultMap id="blockMap" type="com.spidernet.dashboard.entity.Block">
+		<id property="blockId" column="BLOCK_ID" javaType="String"/>
+		<result property="blockName" column="NAME" javaType="String"/>
+		<result property="description" column="DESCRIPTION" javaType="String"/>
+		<result property="sort" column="SORT" javaType="String"/>
+		<result property="blockType" column="BLOCKTYPE" javaType="String"/>
+	</resultMap>
+	
+	<select id="queryBlockList" resultMap="blockMap">
+	    SELECT * FROM t_capability_block order by SORT asc;
+	</select>
+</mapper>

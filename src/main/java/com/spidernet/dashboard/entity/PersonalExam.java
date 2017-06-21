@@ -14,6 +14,8 @@ public class PersonalExam
     private String registerTime;
     
     private String updateTime;
+    
+    private String score;
 
     public String getExamId()
     {
@@ -75,10 +77,33 @@ public class PersonalExam
         this.updateTime = updateTime;
     }
 
+    public String getScore()
+    {
+        return score;
+    }
+
+    public void setScore(String score)
+    {
+        this.score = score;
+    }
+
     public PersonalExam()
     {
         super();
         // TODO Auto-generated constructor stub
+    }
+
+    public PersonalExam(String examId, String employeeId, String personalExam,
+            String status, String registerTime, String updateTime, String score)
+    {
+        super();
+        this.examId = examId;
+        this.employeeId = employeeId;
+        this.personalExam = personalExam;
+        this.status = status;
+        this.registerTime = registerTime;
+        this.updateTime = updateTime;
+        this.score = score;
     }
 
     @Override
@@ -87,8 +112,9 @@ public class PersonalExam
         return "PersonalExam [examId=" + examId + ", employeeId=" + employeeId
                 + ", personalExam=" + personalExam + ", status=" + status
                 + ", registerTime=" + registerTime + ", updateTime="
-                + updateTime + "]";
+                + updateTime + ", score=" + score + "]";
     }
+
     
     
 

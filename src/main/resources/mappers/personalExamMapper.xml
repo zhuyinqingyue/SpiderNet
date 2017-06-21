@@ -11,6 +11,7 @@
 		<result property="registerTime" column="RIGISTER_TIME"
 			javaType="String" />
 		<result property="updateTime" column="UPDATE_TIME" javaType="String" />
+		<result property="score" column="SCORE" javaType="String" />
 	</resultMap>
 
 	<insert id="addPersonalExam" parameterType="java.util.List">
@@ -25,4 +26,9 @@
 	<select id="checkPersonalExamExists" parameterType="com.spidernet.dashboard.entity.PersonalExam" resultType="int">
 	    select count(0) from t_personal_exam where EXAM_ID = #{examId} and EMPLOYEE_ID = #{employeeId}
 	</select>
+	
+	<update id="updataScore" parameterType="com.spidernet.dashboard.entity.PersonalExam">
+	    update t_personal_exam set STATUS = #{status},SCORE = #{score} where EXAM_ID = #{examId} and EMPLOYEE_ID = #{employeeId}
+	</update>
+
 </mapper>

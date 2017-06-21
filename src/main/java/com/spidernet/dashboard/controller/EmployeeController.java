@@ -51,6 +51,35 @@ public class EmployeeController {
     {
         return "employee/update2";
     }
+    
+    
+    @RequestMapping("/scoreImport")
+    public String scoreImport(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/scoreImport";
+    }
+    
+    @RequestMapping("/capabilityMap")
+    public String capabilityMap(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/capabilityMap";
+    }
+    
+    @RequestMapping("/exam")
+    public String exam(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/exam";
+    }
+    
+    @RequestMapping("/training")
+    public String training(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/training";
+    }
 
     @RequestMapping("/queryEmpInfo")
     @ResponseBody

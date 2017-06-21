@@ -131,7 +131,6 @@ function RegCapabilityMap(obj)
         	var $form = $(obj);
         	if (data)
     		{
-        		
         		$form.find('.alert').html('用户'+name+'信息修改成功').show();
         		$("#sub_bt").prop("disabled", true);
         		//alert("注册成功!");

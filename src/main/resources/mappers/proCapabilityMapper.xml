@@ -47,4 +47,18 @@
 		URL = #{url}, EMP_TYPE_ID = #{empTypeId}
 		where PRO_CAPABILITY_ID=#{proCapabilityId}
 	</update>
+	
+	<select id="queryProCapability" resultMap="proCapability">
+	    SELECT * FROM t_pro_capability_map  ORDER BY BLOCK_ID ASC ,SORT ASC;
+	</select>
+	
+	<select id="getSortByBlockId" parameterType="String" resultType="int">
+	    select count(0) FROM t_pro_capability_map WHERE BLOCK_ID = #{blockId}
+	</select>
+	
+	<insert id="addProCapability" parameterType="com.spidernet.dashboard.entity.ProCapability">
+	    INSERT INTO t_pro_capability_map (PRO_CAPABILITY_ID,BLOCK_ID,BU_ID,PROJECT_ID,EMP_LEVEL_ID,NAME,DESCRIPTION,SORT,URL,EMP_TYPE_ID) 
+	    VALUES 
+	    (#{proCapabilityId},#{blockId},#{buId},#{projectId},#{empLevelId},#{name},#{description},#{sort},#{url},#{empTypeId})
+	</insert>
 </mapper>
