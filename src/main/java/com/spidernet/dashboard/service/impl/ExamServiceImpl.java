@@ -50,4 +50,11 @@ public class ExamServiceImpl implements ExamService
             return false;
         }
     }
+
+    @Override
+    public Exam queryExamById(String examId)
+    {
+        Exam exam = examMapper.queryExamById(examId);
+        return exam;
+    }
 }
