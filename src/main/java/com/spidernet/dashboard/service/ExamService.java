@@ -12,4 +12,5 @@ public interface ExamService
     List<Exam> queryExamName();
     List<Exam> queryExamDate(String examId);
     Boolean addExam(Exam exam); 
+    Exam queryExamById(String examId);
 }
