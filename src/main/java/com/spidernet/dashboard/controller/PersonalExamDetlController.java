@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spidernet.dashboard.entity.CCapability;
 import com.spidernet.dashboard.entity.CapabilityMap;
 import com.spidernet.dashboard.entity.Employee;
+import com.spidernet.dashboard.entity.Exam;
 import com.spidernet.dashboard.entity.ExcelImport;
 import com.spidernet.dashboard.entity.PersonalExam;
 import com.spidernet.dashboard.entity.PersonalMap;
@@ -28,6 +29,7 @@ import com.spidernet.dashboard.entity.ProCapability;
 import com.spidernet.dashboard.service.CCapabilityService;
 import com.spidernet.dashboard.service.CapabilityExamService;
 import com.spidernet.dashboard.service.EmployeeService;
+import com.spidernet.dashboard.service.ExamService;
 import com.spidernet.dashboard.service.PersonalExamService;
 import com.spidernet.dashboard.service.PersonalMapService;
 import com.spidernet.dashboard.service.ProCapabilityService;
@@ -47,19 +49,22 @@ public class PersonalExamDetlController
     PersonalExamService personalExamService;
 
     @Resource
-    CapabilityExamService capabilityExamService;
+    private CapabilityExamService capabilityExamService;
 
     @Resource
-    CCapabilityService ccapabilityService;
+    private CCapabilityService ccapabilityService;
 
     @Resource
-    ProCapabilityService proCapabilityService;
+    private ProCapabilityService proCapabilityService;
 
     @Resource
-    PersonalMapService personalMapService;
+    private PersonalMapService personalMapService;
     
     @Resource
     private EmployeeService employeeService;
+    
+    @Resource
+    private ExamService examService;
 
     private static Logger logger = LoggerFactory
             .getLogger(PersonalTrainningDetlController.class);
@@ -192,7 +197,9 @@ public class PersonalExamDetlController
     {
         String fileName = Utils.getUUID();
         
-        String filePath = "E:/Excel/"+fileName+".xls";
+        String filePath = Constants.PATH+""+fileName+".xls";
+        
+        String examId = request.getParameter("examDate");
         
         boolean resultFlag = true;
         
@@ -205,8 +212,6 @@ public class PersonalExamDetlController
             } catch (IOException e) {  
                 logger.error("[PersonalExamDetlController.importScore] exception",e); 
             }
-            
-            String examId = request.getParameter("examDate");
             
             List<ExcelImport> excelList = ExcelTool.getAllByExcel(filePath);
             
@@ -232,24 +237,54 @@ public class PersonalExamDetlController
             
             personalExam.setExamId(examId);
             
+            Exam exam = examService.queryExamById(examId);
             
+            boolean personalExamExist = false;
             
             for(int i = 0;i < excelImportList.size();i++){
                 String employeeId = employeeService.fetchByErNumber(excelImportList.get(i).getEr()).getEmployeeId();
                 
                 personalExam.setEmployeeId(employeeId);
                 
-                if(Double.parseDouble(excelImportList.get(i).getScore()) >= Double.parseDouble(excelImportList.get(i).getPassingMark())){
-                    personalExam.setStatus("0");
+                personalExamExist = personalExamService.checkPersonalExamExists(personalExam);
+                
+                if (personalExamExist){
+
+                    if (Double.parseDouble(excelImportList.get(i).getScore()) >= Double.parseDouble(excelImportList.get(i).getPassingMark())){
+                        personalExam.setStatus("0");
+                    }else{
+                        personalExam.setStatus("1");
+                    }
+
+                    personalExam.setScore(excelImportList.get(i).getScore());
+
+                    resultFlag = personalExamService.updataScore(personalExam);
+                    
+                    if (!resultFlag){
+                        break;
+                    }
                 }else{
-                    personalExam.setStatus("1");
-                }
-                
-                personalExam.setScore(excelImportList.get(i).getScore());
-                
-                resultFlag = personalExamService.updataScore(personalExam);
-                if(!resultFlag){
-                    break;
+                    
+                    personalExam.setPersonalExam(exam.getName());
+                    
+                    if (Double.parseDouble(excelImportList.get(i).getScore()) >= Double.parseDouble(excelImportList.get(i).getPassingMark())){
+                        personalExam.setStatus("0");
+                    }else{
+                        personalExam.setStatus("1");
+                    }
+                    
+                    personalExam.setRegisterTime(exam.getStartTime());
+                    
+                    personalExam.setUpdateTime(exam.getStartTime());
+                    
+                    personalExam.setScore(excelImportList.get(i).getScore());
+                    
+                    resultFlag = personalExamService.addPersonalExam0(personalExam);
+                    
+                    if (!resultFlag){
+                        break;
+                    }
+                    
                 }
             }   
             
@@ -267,7 +302,6 @@ public class PersonalExamDetlController
             resultState = "2";
             request.getSession().setAttribute("resultState", resultState);
         }
-        
         
         return "employee/scoreImport";
     }

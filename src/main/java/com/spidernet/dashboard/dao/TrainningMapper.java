@@ -13,6 +13,8 @@ public interface TrainningMapper
     int addTraining(Trainning trainning);
     List<Trainning> queryTrainingInfo(TrainningPageCondition trainningPageCondition);
     int countTrainingPage(TrainningPageCondition trainningPageCondition);
-    
+    List<Trainning> queryTrainingByName(String trainingName);
+    List<Trainning> queryTrainingName();
+    Trainning queryTrainingById(String trainingId);
 }
 

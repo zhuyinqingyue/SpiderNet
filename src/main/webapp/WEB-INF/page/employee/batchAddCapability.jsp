@@ -44,8 +44,6 @@
 <link href='<%=path%>/css/jquery.iphone.toggle.css' rel='stylesheet'>
 <link href='<%=path%>/css/uploadify.css' rel='stylesheet'>
 <link href='<%=path%>/css/animate.min.css' rel='stylesheet'>
-<link href='<%=path%>/css/bootstrap-select.css' rel='stylesheet'>
-<link href='<%=path%>/css/bootstrap-select.min.css' rel='stylesheet'>
 <link
 	href='<%=path%>/bower_components/bootstrap-val/bootstrapValidator.css'
 	rel='stylesheet'>
@@ -92,6 +90,7 @@
 									<input type="hidden" name="buId" id="buId" value="${sessionScope.employee.buId}" />
 									
 									
+									
 									<div class="form-group">
 										<div class="group">
 											<label class="col-lg-2 control-label">交付部</label>
@@ -116,111 +115,36 @@
 											</div>
 										</div>
 									</div>
-
-
-									<div class="center">
-										<label class="radio-inline"> <input type="radio"
-											name="checkRadio" id="trainingRadio" value="option1"
-											checked="checked"> 培训
-										</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label
-											class="radio-inline"> <input type="radio"
-											name="checkRadio" id="examRadio" value="option2">
-											考试
-										</label>
-									</div>
-									</br>
-
-
-									<div class="form-group" id="trainingBox">
-										<div class="group">
-											<label class="col-lg-2 control-label">培训名称</label>
-											<div class="col-lg-4">
-												<select id="TrainingName" class="selectpicker" 
-													data-live-search="true">
-												</select>
-											</div>
-										</div>
-
-										<div class="group">
-											<label class="col-lg-2 control-label">培训时间</label>
-											<div class="col-lg-3">
-												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择培训时间"
-													id="TrainingDate" data-bv-group=".group">
-													<option value="">-- 请选择培训时间 --</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									
-									
-									<div class="form-group" id="examBox">
-										<div class="group">
-											<label class="col-lg-2 control-label">考试名称</label>
-											<div class="col-lg-4">
-												<select id="examName" class="selectpicker" 
-													data-live-search="true">
-												</select>
-											</div>
-										</div>
-
-										<div class="group">
-											<label class="col-lg-2 control-label">考试时间</label>
-											<div class="col-lg-3">
-												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择考试时间"
-													id="examDate" data-bv-group=".group">
-													<option value="">-- 请选择考试时间 --</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									
 									
 									<div class="form-group">
-										<div class="group">
-											<label class="col-sm-4 control-label">按ER编号查询</label>
-											<div class="col-sm-4">
-												<input type="text" class="form-control" name="er" id="er" />
-											</div>
+										<div style="text-align: center;width:50%;float:left">
+											<input type="button" value="能力地图添加" name="subscribe"
+												id="sub_upd" href="#" class="button btn btn-primary"
+												data-dismiss="modal"
+												style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin: auto;"
+												onclick="ViewCapability();">
 										</div>
-									</div>
-									
-									
-									<div class="form-group">
-									    <div style="text-align:center;width:50%;float:left">
+										<div style="text-align:center;width=100%">
 									    <input type="button" value="查&nbsp;&nbsp;询"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadEmpList()"
 										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
-									    </div>
-									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="导&nbsp;&nbsp;出"
-										name="subscribe" id="sub_export" href="#"
-										class="button btn btn-primary" data-dismiss="modal"
-										onclick="exportExcel()"
-										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
-									    </div>
 									</div>
-									    
-									<div >
-									    <a href="" id="exceltHref" style="display:none;">导出</a>
 									</div>
-									
 									
 									<div>
 									<table id="EmployeeList"
 										class="table table-striped table-bordered">
 										<thead>
 											<tr>
+											    <th>操作</th>
 												<th>Er</th>
 												<th>Hr</th>
 												<th>中文名</th>
 												<th>英文名</th>
 												<th>交付部</th>
 												<th>项目</th>
-												<th>操作</th>
 											</tr>
 										</thead>
 									</table>
@@ -249,9 +173,52 @@
 		</div>
 		<!--/fluid-row-->
 		<hr>
-<form action=""  id="editForm"  method="post" target="_blank">
-<input id="erNum" name="erNum" type="hidden"/>
-</form>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="box-header well" data-original-title="">
+						<h2>
+							<i class="glyphicon glyphicon-user"></i> 能力地图
+						</h2>
+
+						<div class="box-icon">
+							<a href="#" class="btn btn-round btn-default  btn-minimize "><i
+								class="glyphicon glyphicon-chevron-up"></i></a> <a
+								class="btn btn-round btn-default" href="#" data-dismiss="modal">
+								<i class="glyphicon glyphicon-remove"></i>
+							</a>
+							<!-- <a href="#"
+								class="btn btn-close btn-round btn-default" data-dismiss="modal"><i
+								class="glyphicon glyphicon-remove"></i></a> -->
+						</div>
+					</div>
+					<div id="capabilityMapAll" class="box-content">
+						<table id="capabilityMap"
+							class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th style="width: 20%;">领域</th>
+									<th>区块</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+						<div class="center">
+							<a class="btn btn-success" href="#" onClick="batchAddCapability()"> <i
+								class="glyphicon glyphicon-ok icon-white" ></i> 确定
+							</a> <a class="btn btn-info" href="#" data-dismiss="modal"> <i
+								class="glyphicon glyphicon-remove icon-white"></i> 取消
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/span-->
+		</div>
 
 		<c:import url="/service/manage/footer" />
 
@@ -298,12 +265,9 @@
 	<script src="<%=path%>/js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="<%=path %>/js/charisma.js"></script>
-	<!-- jquery session -->
-	<script src="<%=path%>/js/spidernet/jquery.session.js"></script>
 
 	<!-- default loading -->
-	<script type="text/javascript" src="<%=path %>/js/spidernet/queryEmpList.js"></script>
-	<script type="text/javascript" src="<%=path %>/js/bootstrap-select.js"></script>
-	<script type="text/javascript" src="<%=path %>/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="<%=path %>/js/spidernet/batchAddCapability.js"></script>
+
 </body>
 </html>

@@ -23,6 +23,12 @@
 		</foreach>
 	</insert>
 	
+	<insert id="addPersonalExam0" parameterType="com.spidernet.dashboard.entity.PersonalExam">
+	    insert into t_personal_exam (EXAM_ID,EMPLOYEE_ID,PERSONAL_EXAM,STATUS,RIGISTER_TIME,UPDATE_TIME,SCORE)
+		values
+		(#{examId},#{employeeId},#{personalExam},#{status},#{registerTime},#{updateTime},#{score})
+	</insert>
+	
 	<select id="checkPersonalExamExists" parameterType="com.spidernet.dashboard.entity.PersonalExam" resultType="int">
 	    select count(0) from t_personal_exam where EXAM_ID = #{examId} and EMPLOYEE_ID = #{employeeId}
 	</select>

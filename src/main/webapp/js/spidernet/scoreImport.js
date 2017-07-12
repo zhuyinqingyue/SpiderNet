@@ -56,40 +56,40 @@ function showResultState(){
 	}
 }
 
-
 function loadExamName(){
 	$.ajax({
-		url:path+"/service/exam/examNameList",
+		url:path+'/service/exam/queryExamName',
 		dataType:"json",
 		async:true,
-		//data:"",
 		cache:false,
 		type:"post",
-		success:function(examNameList){
-			for(var i = 0;i<examNameList.length;i++){
-				$("#examName").append("<option value='"+examNameList[i].examId+"'>"+examNameList[i].name+"</option>");
+		success:function(examList){
+			$("#examName").append("<option>--请选择考试名称--</option>");
+			for(var i = 0;i<examList.length;i++){
+				$("#examName").append("<option>"+examList[i].name+"</option>");
 			}
+			$('#examName').selectpicker({
+		        'selectedText': 'cat'
+		    });
 		}
 	})
 }
-
-
-function loadExamDate(examId){
+$("#examName").change(function(){
+	var examName = $('#examName').val();
 	$.ajax({
-		url:path+"/service/exam/examDateList",
+		url:path+'/service/exam/queryExamByName',
 		dataType:"json",
 		async:true,
-		data:{'examId':examId},
+		data:{"examName":examName},
 		cache:false,
 		type:"post",
-		success:function(examNameList){
-			$("#examDate").find("option").remove();
-			$("#examDate").append("<option>-- 请选择考试时间 --</option>");
-			for(var i = 0;i<examNameList.length;i++){
-				$("#examDate").append("<option value='"+examNameList[i].examId+"'>"+examNameList[i].startTime+"</option>");
+		success:function(examList){
+			$("#examDate").find("option").remove(); 
+			$("#examDate").append("<option value=''>-- 请选择考试时间 --</option>");
+			for(var i = 0;i<examList.length;i++){
+				$("#examDate").append("<option value='"+examList[i].examId+"'>"+examList[i].startTime+"</option>");
 			}
 		}
 	})
-}
-
+})
 

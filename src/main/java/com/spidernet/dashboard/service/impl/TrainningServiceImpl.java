@@ -53,4 +53,26 @@ public class TrainningServiceImpl implements TrainningService
         return trainningMapper.countTrainingPage(trainningPageCondition)/10 + 1;
     }
 
+    @Override
+    public List<Trainning> queryTrainingByName(String trainingName)
+    {
+        List<Trainning> trainingList = trainningMapper.queryTrainingByName(trainingName);
+        return trainingList;
+    }
+
+    @Override
+    public List<Trainning> queryTrainingName()
+    {
+        List<Trainning> trainingList = trainningMapper.queryTrainingName();
+
+        return trainingList;
+    }
+
+    @Override
+    public Trainning queryTrainingById(String trainingId)
+    {
+        Trainning trainning = trainningMapper.queryTrainingById(trainingId);
+        return trainning;
+    }
+
 }

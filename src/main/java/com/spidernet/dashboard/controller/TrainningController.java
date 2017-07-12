@@ -146,5 +146,26 @@ public class TrainningController
         return (resultFlag && resultFlags);
     }
     
+    @RequestMapping("/queryTrainingByName")
+    @ResponseBody
+    public Object queryTrainingByName(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        String trainingName = request.getParameter("trainingName");
+        
+        List<Trainning> trainingList = trainningService.queryTrainingByName(trainingName);
+        
+        return trainingList;
+    }
+    
+    @RequestMapping("/queryTrainingName")
+    @ResponseBody
+    public Object queryTrainingName(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        List<Trainning> trainingList = trainningService.queryTrainingName();
+        
+        return trainingList;
+    }
 
 }

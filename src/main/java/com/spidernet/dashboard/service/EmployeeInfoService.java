@@ -12,4 +12,5 @@ public interface EmployeeInfoService
     
     int countPage(PageCondition pageCondition);
 
+    List<EmployeeInfo> queryEmpList(String trainingId);
 }
