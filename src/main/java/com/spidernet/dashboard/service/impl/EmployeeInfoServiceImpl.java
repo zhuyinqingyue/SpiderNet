@@ -36,4 +36,11 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService
         return employeeInfoMapper.countPage(pageCondition)/10 + 1;
     }
 
+    @Override
+    public List<EmployeeInfo> queryEmpList(String trainingId)
+    {
+        List<EmployeeInfo> listE = employeeInfoMapper.queryEmpList(trainingId);
+        return listE;
+    }
+
 }

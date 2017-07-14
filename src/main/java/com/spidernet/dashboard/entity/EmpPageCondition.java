@@ -2,12 +2,15 @@ package com.spidernet.dashboard.entity;
 
 public class EmpPageCondition extends PageCondition
 {
-    
     private String er;
     
     private String buId;
     
     private String projectId;
+    
+    private String examId;
+    
+    private String trainingId;
 
     public String getEr()
     {
@@ -38,7 +41,26 @@ public class EmpPageCondition extends PageCondition
     {
         this.projectId = projectId;
     }
-    
-    
 
+    public String getExamId()
+    {
+        return examId;
+    }
+
+    public void setExamId(String examId)
+    {
+        this.examId = examId;
+    }
+
+    public String getTrainingId()
+    {
+        return trainingId;
+    }
+
+    public void setTrainingId(String trainingId)
+    {
+        this.trainingId = trainingId;
+    }
+    
+    
 }

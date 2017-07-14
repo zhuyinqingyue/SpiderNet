@@ -128,7 +128,7 @@
 													<th>培训时间</th>
 													<th>培训地点</th>
 													<th>讲师</th>
-													<th>操作</th>
+													<!-- <th>操作</th> -->
 												</tr>
 											</thead>
 										</table>

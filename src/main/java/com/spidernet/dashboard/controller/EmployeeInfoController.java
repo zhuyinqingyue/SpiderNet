@@ -1,5 +1,12 @@
 package com.spidernet.dashboard.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +23,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spidernet.dashboard.entity.EmpPageCondition;
 import com.spidernet.dashboard.entity.EmployeeInfo;
+import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.service.EmployeeInfoService;
+import com.spidernet.dashboard.service.ExamService;
+import com.spidernet.dashboard.service.TrainningService;
+import com.spidernet.util.Constants;
+import com.spidernet.util.Utils;
+
+import jxl.Workbook;
+import jxl.format.Alignment;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
 @Controller
 @RequestMapping("/employeeInfo")
@@ -24,7 +43,14 @@ public class EmployeeInfoController
 {
     
     @Resource
-    EmployeeInfoService employeeInfoService;
+    private EmployeeInfoService employeeInfoService;
+    
+    @Resource
+    private ExamService examService;
+    
+    @Resource
+    private TrainningService trainingService;
+    
     
     private static Logger logger = LoggerFactory
             .getLogger(EmployeeInfoController.class);
@@ -41,6 +67,10 @@ public class EmployeeInfoController
         
         String projectId = request.getParameter("projectId");
         
+        String examId = request.getParameter("examId");
+        
+        String trainingId = request.getParameter("trainingId");
+        
         String pageState = request.getParameter("pageState");
         
         String currentPage = null;
@@ -53,6 +83,8 @@ public class EmployeeInfoController
             currentPage = "0";
             pageCondition.setBuId(buId);
             pageCondition.setProjectId(projectId);
+            pageCondition.setExamId(examId);
+            pageCondition.setTrainingId(trainingId);
             pageCondition.setEr(er);
             pageCondition.setCurrentPage(currentPage);
             countPage = employeeInfoService.countPage(pageCondition);
@@ -85,6 +117,140 @@ public class EmployeeInfoController
         result.put("data", listE);
         result.put("pageInfo", request.getSession().getAttribute("pageCondition"));
         return result;
+    }
+    
+    @RequestMapping("/exportExcel")
+    public HttpServletResponse exportExcel(HttpServletRequest request,
+             HttpServletResponse response)
+    {
+        try {
+               EmpPageCondition pageCondition = (EmpPageCondition) request.getSession().getAttribute("pageCondition");
+            
+               String trainingId = pageCondition.getTrainingId();
+               
+               String fileName = "";
+               
+               Trainning training = null;
+               
+               if(trainingId != null && !trainingId.equals("")){
+                   training = trainingService.queryTrainingById(trainingId);
+                   
+                   fileName = Constants.PATH+""+Utils.getUUID()+".xls";
+               }
+               
+               WritableWorkbook wwb = null;
+            
+               // 创建可写入的Excel工作簿
+               
+               File file=new File(fileName);
+               if (!file.exists()) {
+                   file.createNewFile();
+               }
+               //以fileName为文件名来创建一个Workbook
+               wwb = Workbook.createWorkbook(file);
+
+               // 创建工作表
+               WritableSheet ws = wwb.createSheet("Shee 1", 0);
+               
+               //查询数据库中所有的数据
+               List<EmployeeInfo> listE= employeeInfoService.queryEmpList(trainingId);
+               
+               //第一行培训名称
+               WritableCellFormat headerFormat = new WritableCellFormat();
+               headerFormat.setAlignment(Alignment.CENTRE);
+               ws.mergeCells(0, 0, 7, 0);
+               Label labelTraningName = new Label(0, 0, training.getTime().substring(0,10)+""+training.getCourseName()+"培训", headerFormat);
+               ws.addCell(labelTraningName);
+               
+               //第二行培训讲师
+               ws.mergeCells(0, 1, 1, 1);
+               ws.mergeCells(2, 1, 7, 1);
+               Label labelTeacher = new Label(0, 1, "培训讲师");
+               ws.addCell(labelTeacher);
+               Label labelTeacherName = new Label(2, 1, training.getTeacher());
+               ws.addCell(labelTeacherName);
+               
+               //第三行培训时间
+               ws.mergeCells(0, 2, 1, 2);
+               ws.mergeCells(2, 2, 7, 2);
+               Label labelTrainingTime = new Label(0, 2, "培训时间");
+               ws.addCell(labelTrainingTime);
+               Label labelTime = new Label(2, 2, training.getTime());
+               ws.addCell(labelTime);
+               
+               //第四行培训地点
+               ws.mergeCells(0, 3, 1, 3);
+               ws.mergeCells(2, 3, 7, 3);
+               Label labelTrainingLocation = new Label(0, 3, "培训地点");
+               ws.addCell(labelTrainingLocation);
+               Label labelLocation = new Label(2, 3, training.getLocation());
+               ws.addCell(labelLocation);
+               
+               //要插入到的Excel表格的行号，默认从0开始
+               Label labelEr= new Label(0, 4, "Er");//表示第
+               Label labelHr= new Label(1, 4, "Hr");
+               Label labelName= new Label(2, 4, "中文名");
+               Label labelEName= new Label(3, 4, "英文名");
+               Label labelBu= new Label(4, 4, "交付部");
+               Label labelProject= new Label(5, 4, "项目");
+               
+               ws.addCell(labelEr);
+               ws.addCell(labelHr);
+               ws.addCell(labelName);
+               ws.addCell(labelEName);
+               ws.addCell(labelBu);
+               ws.addCell(labelProject);
+               for (int i = 4; i < listE.size(); i++) {
+                   Label labelEr_i= new Label(0, i+1, listE.get(i).getEr()+"");
+                   Label labelHr_i= new Label(1, i+1, listE.get(i).getHr());
+                   Label labelName_i= new Label(2, i+1, listE.get(i).getName());
+                   Label labelEName_i= new Label(3, i+1, listE.get(i).geteName()+"");
+                   Label labelBu_i= new Label(4, i+1, listE.get(i).getBuName());
+                   Label labelProject_i= new Label(5, i+1, listE.get(i).getProjectName()+"");
+                   ws.addCell(labelEr_i);
+                   ws.addCell(labelHr_i);
+                   ws.addCell(labelName_i);
+                   ws.addCell(labelEName_i);
+                   ws.addCell(labelBu_i);
+                   ws.addCell(labelProject_i);
+               }
+             
+              //写进文档
+               wwb.write();
+              // 关闭Excel工作簿对象
+               wwb.close();
+               
+               String filename = training.getTime().substring(0,10)+""+training.getCourseName()+".xls";
+
+               // 以流的形式下载文件。
+               InputStream fis = new BufferedInputStream(new FileInputStream(fileName));
+               byte[] buffer = new byte[fis.available()];
+               fis.read(buffer);
+               fis.close();
+               // 清空response
+               response.reset();
+               // 设置response的Header
+               response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename,"UTF-8"));
+               //response.setContentType("application/octet-stream");
+               response.setContentType("application/vnd.ms-excel");
+               response.addHeader("Content-Length", "" + file.length());
+               OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
+               
+               toClient.write(buffer);
+               toClient.flush();
+               toClient.close();
+               
+               
+               
+              file.delete();
+             
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
+        
+        
+        return response;
     }
     
 }

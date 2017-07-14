@@ -22,6 +22,7 @@ import com.spidernet.dashboard.entity.PersonalTrainning;
 import com.spidernet.dashboard.entity.ProCapability;
 import com.spidernet.dashboard.service.CCapabilityService;
 import com.spidernet.dashboard.service.CapabilityTrainingService;
+import com.spidernet.dashboard.service.EmployeeService;
 import com.spidernet.dashboard.service.PersonalMapService;
 import com.spidernet.dashboard.service.PersonalTrainningService;
 import com.spidernet.dashboard.service.ProCapabilityService;
@@ -35,19 +36,22 @@ import net.sf.json.JSONArray;
 public class PersonalTrainningDetlController
 {
     @Resource
-    PersonalTrainningService personalTrainningService;
+    private PersonalTrainningService personalTrainningService;
 
     @Resource
-    CapabilityTrainingService capabilityTrainingService;
+    private CapabilityTrainingService capabilityTrainingService;
 
     @Resource
-    CCapabilityService ccapabilityService;
+    private CCapabilityService ccapabilityService;
 
     @Resource
-    ProCapabilityService proCapabilityService;
+    private ProCapabilityService proCapabilityService;
 
     @Resource
-    PersonalMapService personalMapService;
+    private PersonalMapService personalMapService;
+    
+    @Resource
+    private EmployeeService employeeService;
 
     private static Logger logger = LoggerFactory
             .getLogger(PersonalTrainningDetlController.class);
@@ -161,6 +165,43 @@ public class PersonalTrainningDetlController
 
         return addResultFlag;
 
+    }
+    
+    
+    @RequestMapping("/batchAddTraining")
+    @ResponseBody
+    public Boolean batchAddTraining(final HttpServletRequest request,
+            final HttpServletResponse response,final String[] empArray)
+    {
+        List<PersonalTrainning> personalTrainningList = new ArrayList<PersonalTrainning>();
+
+        PersonalTrainning personalTrainning = null;
+        
+        String employeeId = "";
+        
+        String trainingId = request.getParameter("trainingId");
+        
+        for(int i = 0; i < empArray.length; i++){
+            
+            employeeId = employeeService.fetchByErNumber(empArray[i]).getEmployeeId();
+            
+            personalTrainning = new PersonalTrainning();
+
+            personalTrainning.setEmployeeId(employeeId);
+            personalTrainning.setTrainningId(trainingId);
+            personalTrainning.setStatus(Constants.TRAINNING_STATUS_REGISTED);
+            
+            if (personalTrainningService.checkPersonalTrainningExists(personalTrainning))
+            {
+                continue;
+            }
+            
+            personalTrainningList.add(personalTrainning);
+        }
+        
+        boolean addResultFlag = personalTrainningService.addPersonalTrainning(personalTrainningList);
+        
+        return addResultFlag;
     }
 
 }

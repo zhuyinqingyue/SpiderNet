@@ -45,14 +45,14 @@ function loadTrainningList(pageState){
 				var td5 = $("<td>"
 						+ result.data[i].teacher
 						+ "</td>");
-				var td6 = $("<td><a class='btn btn-info' href='javascript:void(0);'> <i class='glyphicon glyphicon-edit icon-white'></i> Edit</a></td>");
+				//var td6 = $("<td><a class='btn btn-info' href='javascript:void(0);'> <i class='glyphicon glyphicon-edit icon-white'></i> Edit</a></td>");
 				//var td7 = $("<td><a href='javascript:void(0);'  onclick=getEr('"+result.data[i].er+"')>Edit</a></td>");
 				/*td1.appendTo(tr);*/
 				td2.appendTo(tr);
 				td3.appendTo(tr);
 				td4.appendTo(tr);
 				td5.appendTo(tr);
-				td6.appendTo(tr);
+				//td6.appendTo(tr);
 				
 			}
 			$("#trainningList").append("</tbdoy>");

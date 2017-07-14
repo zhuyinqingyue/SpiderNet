@@ -149,7 +149,7 @@
 												<!-- <th>编号</th> -->
 												<th>名称</th>
 												<th>模块</th>
-												<th>操作</th>
+												<!-- <th>操作</th> -->
 											</tr>
 										</thead>
 									</table>
@@ -264,7 +264,7 @@
 												<th>项目</th>
 												<th>角色</th>
 												<th>级别</th>
-												<th>操作</th>
+												<!-- <th>操作</th> -->
 											</tr>
 										</thead>
 									</table>

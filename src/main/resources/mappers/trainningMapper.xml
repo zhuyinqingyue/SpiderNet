@@ -44,5 +44,17 @@
 		ORDER BY TIME ASC
 		LIMIT #{currentPage},10;
 	</select>
+	
+	<select id="queryTrainingByName" parameterType="String" resultMap="trainningMap">
+	    select * FROM t_training WHERE COURSE_NAME = #{trainingName} ORDER BY TIME DESC
+	</select>
+	
+	<select id="queryTrainingName" resultMap="trainningMap">
+	    SELECT DISTINCT COURSE_NAME as courseName FROM t_training ORDER BY COURSE_NAME ASC
+	</select>
+	
+	<select id="queryTrainingById" parameterType="String" resultType="com.spidernet.dashboard.entity.Trainning">
+	    SELECT TRAINING_ID as trainningId,COURSE_NAME as courseName,TIME as time,LOCATION as location,TEACHER as teacher,URL as url,STATUS as status FROM t_training WHERE TRAINING_ID = #{trainningId}
+	</select>
 
 </mapper>

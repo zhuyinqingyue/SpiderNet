@@ -47,4 +47,14 @@ public class PersonalExamServiceImpl implements PersonalExamService
         }
     }
 
+    @Override
+    public boolean addPersonalExam0(PersonalExam personalExam)
+    {
+        if(personalExamMapper.addPersonalExam0(personalExam) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

@@ -86,11 +86,9 @@
 								<form id="empForm" method="post" class="form-horizontal"
 									style="width: 100%" action="target.php">
 									
-									
 									<input type="hidden" name="privilegeState" id="privilegeState" value="${sessionScope.employee.hrNumber eq '123456'}" />
 									
 									<input type="hidden" name="buId" id="buId" value="${sessionScope.employee.buId}" />
-									
 									
 									<div class="form-group">
 										<div class="group">
@@ -118,20 +116,8 @@
 									</div>
 
 
-									<div class="center">
-										<label class="radio-inline"> <input type="radio"
-											name="checkRadio" id="trainingRadio" value="option1"
-											checked="checked"> 培训
-										</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label
-											class="radio-inline"> <input type="radio"
-											name="checkRadio" id="examRadio" value="option2">
-											考试
-										</label>
-									</div>
-									</br>
 
-
-									<div class="form-group" id="trainingBox">
+									<div class="form-group">
 										<div class="group">
 											<label class="col-lg-2 control-label">培训名称</label>
 											<div class="col-lg-4">
@@ -152,75 +138,39 @@
 											</div>
 										</div>
 									</div>
-									
-									
-									<div class="form-group" id="examBox">
-										<div class="group">
-											<label class="col-lg-2 control-label">考试名称</label>
-											<div class="col-lg-4">
-												<select id="examName" class="selectpicker" 
-													data-live-search="true">
-												</select>
-											</div>
-										</div>
 
-										<div class="group">
-											<label class="col-lg-2 control-label">考试时间</label>
-											<div class="col-lg-3">
-												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择考试时间"
-													id="examDate" data-bv-group=".group">
-													<option value="">-- 请选择考试时间 --</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									
-									
+
+
 									<div class="form-group">
-										<div class="group">
-											<label class="col-sm-4 control-label">按ER编号查询</label>
-											<div class="col-sm-4">
-												<input type="text" class="form-control" name="er" id="er" />
-											</div>
-										</div>
-									</div>
-									
-									
-									<div class="form-group">
-									    <div style="text-align:center;width:50%;float:left">
+										<div style="text-align:center;width:50%;float:left">
 									    <input type="button" value="查&nbsp;&nbsp;询"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadEmpList()"
 										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
 									    </div>
+									
 									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="导&nbsp;&nbsp;出"
-										name="subscribe" id="sub_export" href="#"
+									    <input type="button" value="添&nbsp;&nbsp;加"
+										name="subscribe" id="sub_add" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
-										onclick="exportExcel()"
+										onclick="batchAddTraining()"
 										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
 									    </div>
 									</div>
-									    
-									<div >
-									    <a href="" id="exceltHref" style="display:none;">导出</a>
-									</div>
-									
 									
 									<div>
 									<table id="EmployeeList"
 										class="table table-striped table-bordered">
 										<thead>
 											<tr>
+											    <th>操作</th>
 												<th>Er</th>
 												<th>Hr</th>
 												<th>中文名</th>
 												<th>英文名</th>
 												<th>交付部</th>
 												<th>项目</th>
-												<th>操作</th>
 											</tr>
 										</thead>
 									</table>
@@ -302,8 +252,9 @@
 	<script src="<%=path%>/js/spidernet/jquery.session.js"></script>
 
 	<!-- default loading -->
-	<script type="text/javascript" src="<%=path %>/js/spidernet/queryEmpList.js"></script>
+	<script type="text/javascript" src="<%=path %>/js/spidernet/batchAddTraining.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/bootstrap-select.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/bootstrap-select.min.js"></script>
+
 </body>
 </html>

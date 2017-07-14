@@ -104,11 +104,11 @@ function loadCommonCapabilityList(pageState){
 				var td3 = $("<td>"
 						+ result.data[i].commonCapabilityName
 						+ "</td>");
-				var td4 = $("<td><a class='btn btn-info' href='javascript:void(0);'> <i class='glyphicon glyphicon-edit icon-white'></i> Edit</a></td>");
+				//var td4 = $("<td><a class='btn btn-info' href='javascript:void(0);'> <i class='glyphicon glyphicon-edit icon-white'></i> Edit</a></td>");
 				/*td1.appendTo(tr);*/
 				td2.appendTo(tr);
 				td3.appendTo(tr);
-				td4.appendTo(tr);
+				//td4.appendTo(tr);
 				
 			}
 			$("#commonCapabilityList").append("</tbdoy>");
@@ -179,7 +179,7 @@ function loadProCapabilityList(pageState){
 				var td7 = $("<td>"
 						+ result.data[i].levelName
 						+ "</td>");
-				var td8 = $("<td><a class='btn btn-info' href='javascript:void(0);'> <i class='glyphicon glyphicon-edit icon-white'></i> Edit</a></td>");
+				//var td8 = $("<td><a class='btn btn-info' href='javascript:void(0);'> <i class='glyphicon glyphicon-edit icon-white'></i> Edit</a></td>");
 				/*td1.appendTo(tr);*/
 				td2.appendTo(tr);
 				td3.appendTo(tr);
@@ -187,7 +187,7 @@ function loadProCapabilityList(pageState){
 				td5.appendTo(tr);
 				td6.appendTo(tr);
 				td7.appendTo(tr);
-				td8.appendTo(tr);
+				//td8.appendTo(tr);
 			}
 			$("#proCapabilityList").append("</tbdoy>");
 			//alert(window.location.href);

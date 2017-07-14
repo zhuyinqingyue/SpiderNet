@@ -85,7 +85,7 @@
 								<form id="examForm" method="post" class="form-horizontal"
 									style="width: 100%" action="target.php">
 									
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<div class="group">
 											<label class="col-lg-2 control-label">交付部</label>
 											<div class="col-lg-3">
@@ -108,7 +108,7 @@
 												</select>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									
 									<div class="form-group">
 										<div class="group">
@@ -148,7 +148,7 @@
 												<th>交付部</th>
 												<th>项目</th>
 												<th>开考时间</th>
-												<th>操作</th>
+												<!-- <th>操作</th> -->
 											</tr>
 										</thead>
 									</table>
@@ -208,8 +208,8 @@
 						
 						<form id="examBoxForm" method="post" class="form-horizontal">
 						
-						</br>
-						<div class="form-group">
+						
+						<!-- <div class="form-group">
 							<div class="group">
 								<label class="col-lg-2 control-label">交付部</label>
 								<div class="col-lg-4">
@@ -230,7 +230,7 @@
 								</div>
 							</div>
 						</div>
-
+ -->
 						</br></br>
 						<div class="form-group">
 							<div class="group">
@@ -275,7 +275,7 @@
 							</div>
 
 						</div>
-						</br></br>
+						</br>
 						
 						
 						<div class="form-group">
@@ -285,12 +285,12 @@
 									<input type="text" class="form-control" name="examTime" id="examTime"/>
 								</div>
 							</div>
-							<div class="group">
+							<!-- <div class="group">
 								<label class="col-sm-2 control-label">有效期</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="validPeriod" id="validPeriod"/>
 								</div>
-							</div>
+							</div> -->
 						</div>
 						</br></br> 
 						
