@@ -27,6 +27,7 @@
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/register.html"><i class="glyphicon glyphicon-user"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;新员工注册</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/update2.html"><i class="glyphicon glyphicon-edit"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;员工信息修改</span></a></li>
+                                <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddCapability.html"><i class="glyphicon glyphicon-hdd"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;批量添加能力</span></a></li>
                             </ul>
                         </li>      
                         <li><a class="ajax-link" href="<%=path %>/service/employee/scoreImport.html"><i class="glyphicon glyphicon-download-alt"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;成绩录入</span></a>
@@ -34,9 +35,12 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-th"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;能力维护</span></a>
                             <ul class="nav nav-pills nav-stacked">
+                            <c:if test="${sessionScope.employee.hrNumber eq '123456'}">
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/capabilityMap.html"><i class="glyphicon glyphicon-picture"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;能力地图</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/exam.html"><i class="glyphicon glyphicon-pencil"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;考试</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/training.html"><i class="glyphicon glyphicon-book"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;培训</span></a></li>
+                            </c:if>
+                                <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddTraining.html"><i class="glyphicon glyphicon-share"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;批量添加培训</span></a></li>
                             </ul>
                         </li>
                         </li>

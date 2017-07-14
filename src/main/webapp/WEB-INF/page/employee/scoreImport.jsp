@@ -44,6 +44,8 @@
 <link href='<%=path%>/css/jquery.iphone.toggle.css' rel='stylesheet'>
 <link href='<%=path%>/css/uploadify.css' rel='stylesheet'>
 <link href='<%=path%>/css/animate.min.css' rel='stylesheet'>
+<link href='<%=path%>/css/bootstrap-select.css' rel='stylesheet'>
+<link href='<%=path%>/css/bootstrap-select.min.css' rel='stylesheet'>
 <link
 	href='<%=path%>/bower_components/bootstrap-val/bootstrapValidator.css'
 	rel='stylesheet'>
@@ -96,25 +98,24 @@
 
 									<div class="form-group">
 										<div class="group">
-										<label class="col-lg-2 control-label">考试名称</label>
-										<div class="col-lg-3">
-											<select class="form-control" name="examName" data-bv-notempty
-												data-bv-notempty-message="请选择考试名称" id="examName" data-bv-group=".group"
-												onchange="loadExamDate(this.options[this.options.selectedIndex].value);">
-												<option value="">-- 请选择考试名称 --</option>
-											</select>
-										</div>
+											<label class="col-lg-2 control-label">考试名称</label>
+											<div class="col-lg-4">
+												<select id="examName" class="selectpicker" 
+												    data-bv-notempty data-bv-notempty-message="请选择考试时间"
+													data-live-search="true">
+												</select>
+											</div>
 										</div>
 
 										<div class="group">
-										<label class="col-lg-3 control-label">考试时间</label>
-										<div class="col-lg-3">
-											<select class="form-control" name="examDate"
-												data-bv-notempty data-bv-notempty-message="请选择考试时间"
-												id="examDate" data-bv-group=".group">
-												<option value="">-- 请选择考试时间 --</option>
-											</select>
-										</div>
+											<label class="col-lg-2 control-label">考试时间</label>
+											<div class="col-lg-3">
+												<select href="#" class="form-control " name="examDate"
+													data-bv-notempty data-bv-notempty-message="请选择考试时间"
+													id="examDate" data-bv-group=".group">
+													<option value="">-- 请选择考试时间 --</option>
+												</select>
+											</div>
 										</div>
 									</div>
 									
@@ -196,9 +197,9 @@
 	<script src="<%=path%>/js/charisma.js"></script>
 
 	<!-- default loading -->
-	<script type="text/javascript"
-		src="<%=path %>/js/spidernet/scoreImport.js"></script>
-		
+	<script type="text/javascript" src="<%=path %>/js/spidernet/scoreImport.js"></script>
+	<script type="text/javascript" src="<%=path %>/js/bootstrap-select.js"></script>
+	<script type="text/javascript" src="<%=path %>/js/bootstrap-select.min.js"></script>		
 
 </body>
 </html>

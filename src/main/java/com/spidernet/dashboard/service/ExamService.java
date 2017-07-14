@@ -8,9 +8,8 @@ import com.spidernet.dashboard.entity.ExamCapability;
 public interface ExamService
 {
     List<ExamCapability> fetchAllExam(String capabilityId, String employeeId);
-    
-    List<Exam> queryExamName();
-    List<Exam> queryExamDate(String examId);
+    List<Exam> queryExamByName(String examName);
     Boolean addExam(Exam exam); 
     Exam queryExamById(String examId);
+    List<Exam> queryExamName();
 }

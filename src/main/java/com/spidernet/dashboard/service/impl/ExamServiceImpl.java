@@ -27,19 +27,6 @@ public class ExamServiceImpl implements ExamService
         return examList;
     }
 
-    @Override
-    public List<Exam> queryExamName()
-    {
-        List<Exam> examNameList = examMapper.queryExamName();
-        return examNameList;
-    }
-
-    @Override
-    public List<Exam> queryExamDate(String examId)
-    {
-        List<Exam> examDateList = examMapper.queryExamDate(examId);
-        return examDateList;
-    }
 
     @Override
     public Boolean addExam(Exam exam)
@@ -56,5 +43,21 @@ public class ExamServiceImpl implements ExamService
     {
         Exam exam = examMapper.queryExamById(examId);
         return exam;
+    }
+
+
+    @Override
+    public List<Exam> queryExamByName(String examName)
+    {
+        List<Exam> examList = examMapper.queryExamByName(examName);
+        return examList;
+    }
+
+
+    @Override
+    public List<Exam> queryExamName()
+    {
+        List<Exam> examList = examMapper.queryExamName();
+        return examList;
     }
 }

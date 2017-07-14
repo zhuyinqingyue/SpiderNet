@@ -9,4 +9,5 @@ public interface PersonalExamMapper
     int addPersonalExam(List<PersonalExam> personalExamList);
     int checkPersonalExamExists(PersonalExam personalExam);
     int updataScore(PersonalExam personalExam);
+    int addPersonalExam0(PersonalExam personalExam);
 }

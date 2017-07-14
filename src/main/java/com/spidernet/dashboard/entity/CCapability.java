@@ -147,5 +147,25 @@ public class CCapability
     {
         this.trainingStatus = trainingStatus;
     }
+    
+    public int hashCode(){
+
+        return this.name.hashCode() + this.commCapabilityId.hashCode() + this.blockId.hashCode();
+
+    }
+    
+    public boolean equals(Object obj) {
+        if(obj == this){
+            return true;
+        }
+        
+        if(!(obj instanceof CCapability)){
+            return false;
+        }
+        
+        CCapability c = (CCapability)obj;
+        
+        return c.commCapabilityId.equals(commCapabilityId) && c.name.equals(name) && c.blockId.equals(blockId);
+    }
 
 }

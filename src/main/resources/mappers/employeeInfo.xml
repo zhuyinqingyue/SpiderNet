@@ -19,6 +19,14 @@
         ON e.BU_ID = b.BU_ID
         LEFT JOIN t_project AS p
         ON e.PROJECT_ID = p.PROJECT_ID
+        <if test="examId != null and examId != ''">
+        LEFT JOIN t_personal_exam AS pe
+        ON pe.EMPLOYEE_ID = e.EMPLOYEE_ID
+        </if>
+        <if test="trainingId != null and trainingId != ''">
+        LEFT JOIN t_personal_training AS pt
+        ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID 
+        </if>
         WHERE 1 = 1
         
 			<if test="buId != null and buId != ''">
@@ -27,11 +35,31 @@
 			<if test="projectId != null and projectId != ''">
 				AND p.PROJECT_ID = #{projectId}
 			</if>
+			<if test="examId != null and examId != ''">
+				AND pe.EXAM_ID = #{examId}
+			</if>
+			<if test="trainingId != null and trainingId != ''">
+				AND pt.TRAINING_ID = #{trainingId}
+			</if>
 			<if test="er != null and er != ''">
 				AND e.ER_NUMBER = #{er}
 			</if>
 		
         LIMIT #{currentPage},10;
+	</select>
+	
+	
+	<select id="queryEmpList" parameterType="String"
+		resultMap="employeeInfoMap">
+		select e.ER_NUMBER,e.HR_NUMBER,e.`NAME`,e.ENAME ,b.`NAME` as NAME1,p.`NAME` as NAME2
+        from t_employee AS e
+        LEFT JOIN t_bu AS b 
+        ON e.BU_ID = b.BU_ID
+        LEFT JOIN t_project AS p
+        ON e.PROJECT_ID = p.PROJECT_ID
+        LEFT JOIN t_personal_training AS pt
+        ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID 
+        WHERE  pt.TRAINING_ID = #{trainingId}
 	</select>
 	
 	
@@ -43,6 +71,14 @@
         ON e.BU_ID = b.BU_ID
         LEFT JOIN t_project AS p
         ON e.PROJECT_ID = p.PROJECT_ID
+        <if test="examId != null and examId != ''">
+        LEFT JOIN t_personal_exam AS pe
+        ON pe.EMPLOYEE_ID = e.EMPLOYEE_ID
+        </if>
+        <if test="trainingId != null and trainingId != ''">
+        LEFT JOIN t_personal_training AS pt
+        ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID 
+        </if>
         WHERE 1 = 1
         
 			<if test="buId != null and buId != ''">
@@ -50,6 +86,12 @@
 			</if>
 			<if test="projectId != null and projectId != ''">
 				AND p.PROJECT_ID = #{projectId}
+			</if>
+			<if test="examId != null and examId != ''">
+				AND pe.EXAM_ID = #{examId}
+			</if>
+			<if test="trainingId != null and trainingId != ''">
+				AND pt.TRAINING_ID = #{trainingId}
 			</if>
 			<if test="er != null and er != ''">
 				AND e.ER_NUMBER = #{er}

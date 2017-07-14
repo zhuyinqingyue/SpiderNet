@@ -80,6 +80,20 @@ public class EmployeeController {
     {
         return "employee/training";
     }
+    
+    @RequestMapping("/batchAddCapability")
+    public String batchAddCapability(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/batchAddCapability";
+    }
+    
+    @RequestMapping("/batchAddTraining")
+    public String batchAddTraining(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        return "employee/batchAddTraining";
+    }
 
     @RequestMapping("/queryEmpInfo")
     @ResponseBody

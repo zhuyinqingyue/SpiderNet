@@ -12,4 +12,6 @@ public interface EmployeeInfoMapper
     
     int countPage(PageCondition pageCondition);
 
+    List<EmployeeInfo> queryEmpList(String trainingId);
+
 }

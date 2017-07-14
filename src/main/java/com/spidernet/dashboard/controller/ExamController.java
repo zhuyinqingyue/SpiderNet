@@ -1,8 +1,6 @@
 package com.spidernet.dashboard.controller;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -49,33 +47,27 @@ public class ExamController
     }
     
     
-    @RequestMapping("/examNameList")
+    @RequestMapping("/queryExamByName")
     @ResponseBody
-    public Object examNameList(final HttpServletRequest request,
+    public Object queryExamByName(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        List<Exam> examName = examService.queryExamName();
+        String examName = request.getParameter("examName");
         
-        Set<Exam> examNameList = new LinkedHashSet();
+        List<Exam> examList = examService.queryExamByName(examName);
         
-        for(Exam list :examName){
-            examNameList.add(list);
-        }
-        
-        return examNameList;
+        return examList;
     }
     
     
-    @RequestMapping("/examDateList")
+    @RequestMapping("/queryExamName")
     @ResponseBody
-    public Object examDateList(final HttpServletRequest request,
+    public Object queryExamName(final HttpServletRequest request,
             final HttpServletResponse response)
     {
-        String examId = request.getParameter("examId");
+        List<Exam> examList = examService.queryExamName();
         
-        List<Exam> examDateList = examService.queryExamDate(examId);
-        
-        return examDateList;
+        return examList;
     }
     
     @RequestMapping("/addExam")

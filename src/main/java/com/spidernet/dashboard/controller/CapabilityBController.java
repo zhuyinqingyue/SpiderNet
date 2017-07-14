@@ -90,6 +90,36 @@ public class CapabilityBController
 
         return capabilityMap;
     }
+    
+    
+    @RequestMapping("/viewComCapability")
+    @ResponseBody
+    public CapabilityMap viewComCapability(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+        logger.debug("---------viewCapabilityB is begin!----------");
+
+        CapabilityMap capabilityMap = new CapabilityMap();
+        String buId = request.getParameter("buId");
+        List<CCapability> cCapabilityL = null;
+        List<ProCapability> proCapabilityL = null;
+        List<CapabilityB> capabilityBL = capabilityBService.viewCapabilityB();
+        for (int i = 0; i < capabilityBL.size(); i++)
+        {
+            CapabilityB block = capabilityBL.get(i);
+           
+            if (Constants.TWO == capabilityBL.get(i).getBlockType())
+            {
+                cCapabilityL = cCapabilityService.viewCCapability(
+                        capabilityBL.get(i).getBlockId(), buId);
+                block.setcCapabilityL(cCapabilityL);
+            }
+            capabilityMap.getCapabilityMap().add(block);
+        }
+
+        return capabilityMap;
+    }
+    
 
     @RequestMapping("/regCapability")
     @ResponseBody

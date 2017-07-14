@@ -1,7 +1,6 @@
-
+var empArray = new Array();
 
 $(function(){
-
 	loadEmpList();
 	
 	loadBu();
@@ -10,13 +9,7 @@ $(function(){
 	
 	loadTrainingName();
 	
-	loadExamName();
-	
-	$("#examBox").hide();
-	
-	$("#sub_export").attr("disabled","disabled");
 });
-
 
 function checkPrivilege(){
 	
@@ -30,86 +23,8 @@ function checkPrivilege(){
 		$("#bu").val(buId);
 		$("#bu").attr("disabled","disabled");
 	}
+	
 }
-
-$('#trainingRadio').click(function(){
-	$("#examBox").hide();
-	$("#trainingBox").show();
-	$("#TrainingDate").val('');
-	//resetSelect();
-	//$("#TrainingName+div :button").text("--请选择培训名称--");
-	//$("#sub_export").removeAttr("disabled");
-	$("#sub_export").attr("disabled","disabled");
-})
-
-$('#examRadio').click(function(){
-	$("#trainingBox").hide();
-	$("#examBox").show();
-	$("#examDate").val('');
-	//resetSelect();
-	//$("#examName+div :button").text("--请选择培训名称--");sub_export
-	$("#sub_export").attr("disabled","disabled");
-})
-
-
-function resetSelect(){
-	var liArray = $("li").filter(".selected");
-
-	for(var i=0; i<liArray.length; i++){
-		if(liArray.eq(i).text().indexOf("请选择") == -1){
-			liArray.eq(i).removeClass("selected")
-		}
-	}
-}
-
-
-function exportExcel(){
-	var url = path+'/service/employeeInfo/exportExcel';
-	$("#exceltHref").attr("href",url);
-	//$("#exceltHref").click();
-	document.getElementById("exceltHref").click();
-}
-
-
-
-function loadExamName(){
-	$.ajax({
-		url:path+'/service/exam/queryExamName',
-		dataType:"json",
-		async:true,
-		cache:false,
-		type:"post",
-		success:function(examList){
-			$("#examName").append("<option>--请选择考试名称--</option>");
-			for(var i = 0;i<examList.length;i++){
-				$("#examName").append("<option>"+examList[i].name+"</option>");
-			}
-			$('#examName').selectpicker({
-		        'selectedText': 'cat'
-		    });
-		}
-	})
-}
-$("#examName").change(function(){
-	var examName = $('#examName').val();
-	$.ajax({
-		url:path+'/service/exam/queryExamByName',
-		dataType:"json",
-		async:true,
-		data:{"examName":examName},
-		cache:false,
-		type:"post",
-		success:function(examList){
-			$("#examDate").find("option").remove(); 
-			$("#examDate").append("<option value=''>-- 请选择考试时间 --</option>");
-			for(var i = 0;i<examList.length;i++){
-				$("#examDate").append("<option value='"+examList[i].examId+"'>"+examList[i].startTime+"</option>");
-			}
-		}
-	})
-})
-
-
 
 
 function loadTrainingName(){
@@ -149,25 +64,61 @@ $("#TrainingName").change(function(){
 	})
 })
 
+function addEmployee(){
+	var er = "";
+	for(var i=0; i<10; i++){
+		er = $("#td"+i+"").text();
+		
+		if($("#checkbox"+i+"").is(':checked') && $.inArray(er, empArray) == -1){
+			empArray.push(er);
+		}
+		
+		if(!$("#checkbox"+i+"").is(':checked') && $.inArray(er, empArray) != -1){
+			empArray.splice(jQuery.inArray(er,empArray),1); 
+		}
+	}
+}
 
-$("#TrainingDate").change(function(){
+
+function showSelected(){
+	var er = "";
+	for(var i=0; i<10; i++){
+		er = $("#td"+i+"").text();
+		
+		if($.inArray(er, empArray) != -1){
+			
+			$("#checkbox"+i+"").attr("checked",'true');
+		}
+	}
+}
+
+
+function batchAddTraining(){
+	addEmployee();
 	
-	$("#sub_export").attr("disabled","disabled");
+	var trainingId = $('#TrainingDate').val();
 	
-})
+	$.ajax({
+		url:path+'/service/trainning/batchAddTraining',
+		data: {'trainingId':trainingId,'empArray':empArray},
+		async:true,
+		cache:false,
+		traditional: true,
+		type:"post",
+		success:function(){
+			 location.reload(); 
+		}
+	})
+}
 
 
 function loadEmpList(pageState){
 	
+	addEmployee();
+	
 	var buId = $("#bu").val();
 
 	var projectId = $("#project").val();
-
-	var er = $("#er").val();
-	
-	var trainingId = $('#TrainingDate').val();
-	
-	var examId = $('#examDate').val();
 
 	var pageState = pageState;
 	
@@ -175,7 +126,7 @@ function loadEmpList(pageState){
 		url:path+"/service/employeeInfo/employeeInfoList",
 		dataType:"json",
 		async:true,
-		data:{"buId":buId,"projectId":projectId,"er":er,"pageState":pageState,"trainingId":trainingId,"examId":examId},
+		data:{"buId":buId,"projectId":projectId,"pageState":pageState},
 		cache:false,
 		type:"post",
 		success:function(result){
@@ -188,27 +139,27 @@ function loadEmpList(pageState){
 				var tr = $("<tr></tr>");
 				tr.appendTo(tbody);
 
-				var td1 = $("<td id='tx1'>"
+				var td1 = $("<td><input type='checkbox' id='checkbox"+i+"'></td>");
+				
+				var td2 = $("<td id='td"+i+"'>"
 						+ result.data[i].er
 						+ "</td>");
 
-				var td2 = $("<td>"
+				var td3 = $("<td>"
 						+ result.data[i].hr
 						+ "</td>");
-				var td3 = $("<td>"
+				var td4 = $("<td>"
 						+ result.data[i].name
 						+ "</td>");
-				var td4 = $("<td>"
+				var td5 = $("<td>"
 						+ result.data[i].eName
 						+ "</td>");
-				var td5 = $("<td>"
+				var td6 = $("<td>"
 						+ result.data[i].buName
 						+ "</td>");
-				var td6 = $("<td>"
+				var td7 = $("<td>"
 						+ result.data[i].projectName
 						+ "</td>");
-				var td7 = $("<td><a class='btn btn-info' href='javascript:void(0);'  onclick=getEr('"+result.data[i].er+"')> <i class='glyphicon glyphicon-edit icon-white'></i> 编辑</a></td>");
-				//var td7 = $("<td><a href='javascript:void(0);'  onclick=getEr('"+result.data[i].er+"')>Edit</a></td>");
 				td1.appendTo(tr);
 				td2.appendTo(tr);
 				td3.appendTo(tr);
@@ -233,18 +184,12 @@ function loadEmpList(pageState){
 				$("#previousPage").removeAttr("onclick");
 			}
 			
-			if(result.data.length>0 && trainingId != null && trainingId != ""){
-				$("#sub_export").removeAttr("disabled");
-			}
+			showSelected();
 		}
 	})
 }
 
-function getEr(er){
-	$("#editForm").attr("action",path+"/service/employee/update.html");
-	$("#erNum").val(er);
-	$("#editForm").submit();
-}
+
 
 function loadProject(buId,projectId){
 	var buId = buId;

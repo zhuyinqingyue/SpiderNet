@@ -26,12 +26,12 @@
 		e.EXAM_ID not in (select EXAM_ID FROM t_personal_exam where EMPLOYEE_ID=#{employeeId});
 	</select>
 	
-	<select id="queryExamName" resultType="com.spidernet.dashboard.entity.Exam">
-	    select EXAM_ID as examId,NAME as name from t_exam;
+	<select id="queryExamByName" parameterType="String" resultMap="examMap">
+	    select * from t_exam where NAME = #{name} ORDER BY START_TIME DESC;
 	</select>
 	
-	<select id="queryExamDate" parameterType="String" resultType="com.spidernet.dashboard.entity.Exam">
-	    select EXAM_ID as examId,START_TIME as startTime from t_exam where NAME = (SELECT NAME from t_exam WHERE EXAM_ID = #{employeeId});
+	<select id="queryExamName" resultMap="examMap">
+	    select DISTINCT NAME as name from t_exam ORDER BY NAME ASC;
 	</select>
 	
 	<insert id="addExam" parameterType="com.spidernet.dashboard.entity.Exam">
