@@ -11,7 +11,7 @@
 </head>
 <body>
    <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">©2017-2017 中软国际汇丰业务线能力中心</p>
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">©2017-2017 Chinasoft HSBC Capacity Center中软国际汇丰业务线能力中心</p>
 
         <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by : SpiderNet </p>
     </footer>

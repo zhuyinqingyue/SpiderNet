@@ -77,7 +77,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-edit"></i> 员工信息修改
+									<i class="glyphicon glyphicon-edit"></i> Employee’s Information Modification
 								</h2>
 							</div>
 							<div class="box-content">
@@ -94,24 +94,24 @@
 									
 									<div class="form-group">
 										<div class="group">
-											<label class="col-lg-2 control-label">交付部</label>
+											<label class="col-lg-2 control-label">Delivery Department</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="bu"
-													data-bv-notempty data-bv-notempty-message="请选择交付部"
+													data-bv-notempty data-bv-notempty-message="Please select delivery department."
 													id="bu" data-bv-group=".group"
 													onchange="loadProject(this.options[this.options.selectedIndex].value);"
-													<option value="">-- 请选择交付部 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
 										
 										<div class="group">
-											<label class="col-lg-3 control-label">项目</label>
+											<label class="col-lg-3 control-label">Project</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择项目"
+													data-bv-notempty data-bv-notempty-message="Please select project."
 													id="project" data-bv-group=".group"
-													<option value="">-- 请选择项目 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -121,11 +121,11 @@
 									<div class="center">
 										<label class="radio-inline"> <input type="radio"
 											name="checkRadio" id="trainingRadio" value="option1"
-											checked="checked"> 培训
+											checked="checked"> Trainning
 										</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label
 											class="radio-inline"> <input type="radio"
 											name="checkRadio" id="examRadio" value="option2">
-											考试
+											Examination
 										</label>
 									</div>
 									</br>
@@ -133,7 +133,7 @@
 
 									<div class="form-group" id="trainingBox">
 										<div class="group">
-											<label class="col-lg-2 control-label">培训名称</label>
+											<label class="col-lg-2 control-label">Trainning Name</label>
 											<div class="col-lg-4">
 												<select id="TrainingName" class="selectpicker" 
 													data-live-search="true">
@@ -142,12 +142,12 @@
 										</div>
 
 										<div class="group">
-											<label class="col-lg-2 control-label">培训时间</label>
+											<label class="col-lg-2 control-label">Trainning Time</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择培训时间"
+													data-bv-notempty data-bv-notempty-message="Please select trainning time."
 													id="TrainingDate" data-bv-group=".group">
-													<option value="">-- 请选择培训时间 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -156,7 +156,7 @@
 									
 									<div class="form-group" id="examBox">
 										<div class="group">
-											<label class="col-lg-2 control-label">考试名称</label>
+											<label class="col-lg-2 control-label">Examination Name</label>
 											<div class="col-lg-4">
 												<select id="examName" class="selectpicker" 
 													data-live-search="true">
@@ -165,12 +165,12 @@
 										</div>
 
 										<div class="group">
-											<label class="col-lg-2 control-label">考试时间</label>
+											<label class="col-lg-2 control-label">Examination Time</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择考试时间"
+													data-bv-notempty data-bv-notempty-message="Please select examination time."
 													id="examDate" data-bv-group=".group">
-													<option value="">-- 请选择考试时间 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -179,7 +179,7 @@
 									
 									<div class="form-group">
 										<div class="group">
-											<label class="col-sm-4 control-label">按ER编号查询</label>
+											<label class="col-sm-4 control-label">ER</label>
 											<div class="col-sm-4">
 												<input type="text" class="form-control" name="er" id="er" />
 											</div>
@@ -189,14 +189,14 @@
 									
 									<div class="form-group">
 									    <div style="text-align:center;width:50%;float:left">
-									    <input type="button" value="查&nbsp;&nbsp;询"
+									    <input type="button" value="&nbsp;Search&nbsp;"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadEmpList()"
 										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
 									    </div>
 									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="导&nbsp;&nbsp;出"
+									    <input type="button" value="&nbsp;Export&nbsp;"
 										name="subscribe" id="sub_export" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="exportExcel()"
@@ -205,7 +205,7 @@
 									</div>
 									    
 									<div >
-									    <a href="" id="exceltHref" style="display:none;">导出</a>
+									    <a href="" id="exceltHref" style="display:none;">Export</a>
 									</div>
 									
 									
@@ -216,24 +216,24 @@
 											<tr>
 												<th>Er</th>
 												<th>Hr</th>
-												<th>中文名</th>
-												<th>英文名</th>
-												<th>交付部</th>
-												<th>项目</th>
-												<th>操作</th>
+												<th>Chinese Name</th>
+												<th>English Name</th>
+												<th>Delivery Department</th>
+												<th>Project</th>
+												<th>Operation</th>
 											</tr>
 										</thead>
 									</table>
 									</div>
 									<div>
 										<ul class="pagination pagination-centered">
-											<li><a href="#" id="fristPage" onclick="loadEmpList('frist')">首页</a></li>
-											<li><a href="#" id="previousPage" onclick="loadEmpList('previous')">上一页</a></li>
-											<li><a href="#" id="nextPage" onclick="loadEmpList('next')">下一页</a></li>
-											<li><a href="#" id="lastPage" onclick="loadEmpList('last')">末页</a></li>
+											<li><a href="#" id="fristPage" onclick="loadEmpList('frist')">Home Page</a></li>
+											<li><a href="#" id="previousPage" onclick="loadEmpList('previous')">Previous Page</a></li>
+											<li><a href="#" id="nextPage" onclick="loadEmpList('next')">Next Page</a></li>
+											<li><a href="#" id="lastPage" onclick="loadEmpList('last')">Last Page</a></li>
 										</ul>
 										<br>
-										共<span id="pageCount"></span>页   第<span id="currentPage"></span>页
+										Total<span id="pageCount"></span>Pages at<span id="currentPage"></span>Page
 									</div>
 
 								</form>

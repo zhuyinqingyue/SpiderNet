@@ -83,7 +83,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-book"></i> 培训
+									<i class="glyphicon glyphicon-book"></i> Trainning
 								</h2>
 							</div>
 							<div class="box-content">
@@ -93,7 +93,7 @@
 									
 									<div class="form-group">
 									<div class="group">
-										<label class="col-sm-4 control-label">培训名称</label>
+										<label class="col-sm-4 control-label">Name</label>
 										<div class="col-sm-4">
 											<input type="text" class="form-control" name="trainningName" id="trainningName" />
 										</div>
@@ -102,7 +102,7 @@
 								    
 								    <div class="form-group">
 									    <div style="text-align:center;width:50%;float:left">
-									    <input type="button" value="查&nbsp;&nbsp;询"
+									    <input type="button" value="&nbsp;Search&nbsp;"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadTrainningList()"
@@ -110,7 +110,7 @@
 									    </div>
 									    
 									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="添&nbsp;&nbsp;加"
+									    <input type="button" value="&nbsp;Add&nbsp;"
 										name="subscribe" id="sub_add" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="addTrainning()"
@@ -124,10 +124,10 @@
 											<thead>
 												<tr>
 													<!-- <th>编号</th> -->
-													<th>名称</th>
-													<th>培训时间</th>
-													<th>培训地点</th>
-													<th>讲师</th>
+													<th>Name</th>
+													<th>DateTime</th>
+													<th>Address</th>
+													<th>Trainer</th>
 													<!-- <th>操作</th> -->
 												</tr>
 											</thead>
@@ -136,16 +136,16 @@
 									<div>
 										<ul class="pagination pagination-centered">
 											<li><a href="#" id="fristPage"
-												onclick="loadTrainningList('frist')">首页</a></li>
+												onclick="loadTrainningList('frist')">Home Page</a></li>
 											<li><a href="#" id="previousPage"
-												onclick="loadTrainningList('previous')">上一页</a></li>
+												onclick="loadTrainningList('previous')">Previous Page</a></li>
 											<li><a href="#" id="nextPage"
-												onclick="loadTrainningList('next')">下一页</a></li>
+												onclick="loadTrainningList('next')">Next Page</a></li>
 											<li><a href="#" id="lastPage"
-												onclick="loadTrainningList('last')">末页</a></li>
+												onclick="loadTrainningList('last')">Last Page</a></li>
 										</ul>
-										<br> 共<span id="pageCount"></span>页 第<span
-											id="currentPage"></span>页
+										<br> Total<span id="pageCount"></span>Pages at<span
+											id="currentPage"></span>Page
 									</div>
 								</form>
 								
@@ -170,7 +170,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> 考试信息
+							<i class="glyphicon glyphicon-user"></i> Examination Information
 						</h2>
 
 						<div class="box-icon">
@@ -192,13 +192,13 @@
 						
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">培训名称</label>
+								<label class="col-sm-2 control-label">Trainning Name</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="trainningName2" id="trainningName2"/>
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-sm-2 control-label">培训时间</label>
+								<label class="col-sm-2 control-label">Tranning Time</label>
 								<div class="col-md-4">
 									<div class="input-group date form_datetime col-sm-12"
 										data-link-field="dt_set_order_time_input">
@@ -214,13 +214,13 @@
 						</br></br>
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">地点</label>
+								<label class="col-sm-2 control-label">Address</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="location" id="location"/>
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-sm-2 control-label">讲师</label>
+								<label class="col-sm-2 control-label">Trainer</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="teacher" id="teacher"/>
 								</div>
@@ -244,31 +244,31 @@
 						<label class="radio-inline"> <input type="radio"
 							name="skillRadio" id="commonCapability" value="option1"
 							 checked="checked">
-							公共技能点
+							Public Skill
 						</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label class="radio-inline"> <input type="radio"
 							name="skillRadio" id="proCapability" value="option2">
-							私有技能点
+							Private Skill
 						</label>
 						</div>
 						</br>
 						
 							<div >
-								<label class="col-lg-2 control-label">技能点</label>
+								<label class="col-lg-2 control-label">Skills</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control " name="skillPoints"
-										data-bv-notempty data-bv-notempty-message="请选技能点" id="skillPoints"
+										data-bv-notempty data-bv-notempty-message="Please select skill." id="skillPoints"
 										data-bv-group=".group">
-										<option value="">-- 请选择技能点 --</option></select>
+										<option value="">-- Please Select --</option></select>
 								</div>
 							</div>
 
 						</br></br></br>
 						<div class="center">
 							<a class="btn btn-success" href="#" onClick="saveTrainning()"> 
-							<i class="glyphicon glyphicon-ok icon-white" ></i> 确定</a> 
+							<i class="glyphicon glyphicon-ok icon-white" ></i> Confirm</a> 
 							<a class="btn btn-info" href="#" data-dismiss="modal"> 
-							<i class="glyphicon glyphicon-remove icon-white"></i> 取消</a>
+							<i class="glyphicon glyphicon-remove icon-white"></i> Cancel</a>
 						</div>
 					</div>
 				</div>

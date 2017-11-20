@@ -78,24 +78,24 @@ var path='<%=path%>';
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-user"></i> 个人能力地图
+									<i class="glyphicon glyphicon-user"></i> Personal Ability Map
 								</h2>
 							</div>
 							<div id="showEmp" class="box-content" style="overflow: auto;">
 							<input type="hidden" id="empId"  value="${sessionScope.employee.getEmployeeId()}"/>
-								<div class="alert alert-info">用户名：${sessionScope.employee.getName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目名称：${sessionScope.employeeDetl.getProjectName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;角色：${sessionScope.employeeDetl.getTypeName()}
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级别：${sessionScope.employeeDetl.getLevelName()} </div>
+								<div class="alert alert-info">User Name：${sessionScope.employee.getName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Project Name：${sessionScope.employeeDetl.getProjectName()}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Role：${sessionScope.employeeDetl.getTypeName()}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level：${sessionScope.employeeDetl.getLevelName()} </div>
 								<div style="overflow: auto;">
 								<table id="personalMap"
 									class="table table-striped table-bordered">
 									<thead>
 										<tr>
 											<th></th>
-											<th>知识库</th>
-											<th nowrap>培训</th>
-											<th nowrap>注册状态</th>
-											<th nowrap>技能鉴定</th>
-											<th nowrap>鉴定状态</th>
+											<th>Knowledge Base</th>
+											<th nowrap>Trainning</th>
+											<th nowrap>Registration Status</th>
+											<th nowrap>Skills Appraisal</th>
+											<th nowrap>Identification Status</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -128,7 +128,7 @@ var path='<%=path%>';
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">培训课程</h4>
+						<h4 class="modal-title" id="myModalLabel">Trainning Course</h4>
 					</div>
 					<div class="modal-body">
 						<div class="box">
@@ -141,12 +141,12 @@ var path='<%=path%>';
 										<thead>
 											<tr>
 												<th></th>
-												<th>课程名称</th>
-												<th>课程日期</th>
-												<th>地点</th>
-												<th>培训讲师</th>
-												<th>课程资料</th>
-												<th>状态</th>
+												<th>Course Name</th>
+												<th>Date</th>
+												<th>Address</th>
+												<th>Trainer</th>
+												<th>Course Materials</th>
+												<th>Status</th>
 											</tr>
 										</thead>
 									</table>
@@ -161,7 +161,7 @@ var path='<%=path%>';
 
 							<div style="text-align: right;"
 								class="col-md-4 col-md-offset-4 pull-right">
-								<button type="button" class="btn btn-primary" id="trainningSubmitBtn">提交</button>
+								<button type="button" class="btn btn-primary" id="trainningSubmitBtn">Submit</button>
 							</div>
 						</div>
 					</div>
@@ -181,7 +181,7 @@ var path='<%=path%>';
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabelExam">我的考试</h4>
+						<h4 class="modal-title" id="myModalLabelExam">My Examination</h4>
 					</div>
 					<div class="modal-body">
 						<div class="box">
@@ -195,14 +195,14 @@ var path='<%=path%>';
 											<tr>
 												<th></th>
 
-												<th>交付部门</th>
-												<th>项目名称</th>
-												<th>考试名称</th>
-												<th>开始时间</th>
-												<th>结束时间</th>
-												<th>考试时间</th>
-												<th>有效期限</th>
-												<th>状态</th>
+												<th>Delivery Department</th>
+												<th>Project Name</th>
+												<th>Examination Name</th>
+												<th>Start Time</th>
+												<th>End Time</th>
+												<th>Examination Date</th>
+												<th>Valid Days</th>
+												<th>Status</th>
 											</tr>
 										</thead>
 									</table>
@@ -217,7 +217,7 @@ var path='<%=path%>';
 
 							<div style="text-align: right;"
 								class="col-md-4 col-md-offset-4 pull-right">
-								<button type="button" class="btn btn-primary" id="examSubmitBtn">提交</button>
+								<button type="button" class="btn btn-primary" id="examSubmitBtn">Submit</button>
 							</div>
 						</div>
 					</div>

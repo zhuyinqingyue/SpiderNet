@@ -75,7 +75,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-edit"></i> 员工信息修改
+									<i class="glyphicon glyphicon-edit"></i> Employee’s Information Modification
 								</h2>
 							</div>
 							<div class="box-content">
@@ -93,24 +93,24 @@
 									
 									<div class="form-group">
 										<div class="group">
-											<label class="col-lg-2 control-label">交付部</label>
+											<label class="col-lg-2 control-label">Delivery Department</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="bu"
-													data-bv-notempty data-bv-notempty-message="请选择交付部"
+													data-bv-notempty data-bv-notempty-message="Please select delivery department."
 													id="bu" data-bv-group=".group"
 													onchange="loadProject(this.options[this.options.selectedIndex].value);"
-													<option value="">-- 请选择交付部 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
 										
 										<div class="group">
-											<label class="col-lg-3 control-label">项目</label>
+											<label class="col-lg-3 control-label">Project</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择项目"
+													data-bv-notempty data-bv-notempty-message="Please select project."
 													id="project" data-bv-group=".group"
-													<option value="">-- 请选择项目 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -118,14 +118,14 @@
 									
 									<div class="form-group">
 										<div style="text-align: center;width:50%;float:left">
-											<input type="button" value="能力地图添加" name="subscribe"
+											<input type="button" value="Add Capability Map" name="subscribe"
 												id="sub_upd" href="#" class="button btn btn-primary"
 												data-dismiss="modal"
 												style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin: auto;"
 												onclick="ViewCapability();">
 										</div>
 										<div style="text-align:center;width=100%">
-									    <input type="button" value="查&nbsp;&nbsp;询"
+									    <input type="button" value="&nbsp;Search&nbsp;"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadEmpList()"
@@ -138,26 +138,26 @@
 										class="table table-striped table-bordered">
 										<thead>
 											<tr>
-											    <th>操作</th>
+											    <th>Operation</th>
 												<th>Er</th>
 												<th>Hr</th>
-												<th>中文名</th>
-												<th>英文名</th>
-												<th>交付部</th>
-												<th>项目</th>
+												<th>Chinese Name</th>
+												<th>English Name</th>
+												<th>Delivery Department</th>
+												<th>Project</th>
 											</tr>
 										</thead>
 									</table>
 									</div>
 									<div>
 										<ul class="pagination pagination-centered">
-											<li><a href="#" id="fristPage" onclick="loadEmpList('frist')">首页</a></li>
-											<li><a href="#" id="previousPage" onclick="loadEmpList('previous')">上一页</a></li>
-											<li><a href="#" id="nextPage" onclick="loadEmpList('next')">下一页</a></li>
-											<li><a href="#" id="lastPage" onclick="loadEmpList('last')">末页</a></li>
+											<li><a href="#" id="fristPage" onclick="loadEmpList('frist')">Home Page</a></li>
+											<li><a href="#" id="previousPage" onclick="loadEmpList('previous')">Previous Page</a></li>
+											<li><a href="#" id="nextPage" onclick="loadEmpList('next')">Next Page</a></li>
+											<li><a href="#" id="lastPage" onclick="loadEmpList('last')">Last Page</a></li>
 										</ul>
 										<br>
-										共<span id="pageCount"></span>页   第<span id="currentPage"></span>页
+										Total<span id="pageCount"></span>Pages at<span id="currentPage"></span>Page
 									</div>
 
 								</form>
@@ -181,7 +181,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> 能力地图
+							<i class="glyphicon glyphicon-user"></i> Capability Map
 						</h2>
 
 						<div class="box-icon">
@@ -200,8 +200,8 @@
 							class="table table-striped table-bordered">
 							<thead>
 								<tr>
-									<th style="width: 20%;">领域</th>
-									<th>区块</th>
+									<th style="width: 20%;">Domain</th>
+									<th>Block</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -209,9 +209,9 @@
 						</table>
 						<div class="center">
 							<a class="btn btn-success" href="#" onClick="batchAddCapability()"> <i
-								class="glyphicon glyphicon-ok icon-white" ></i> 确定
+								class="glyphicon glyphicon-ok icon-white" ></i> Confirm
 							</a> <a class="btn btn-info" href="#" data-dismiss="modal"> <i
-								class="glyphicon glyphicon-remove icon-white"></i> 取消
+								class="glyphicon glyphicon-remove icon-white"></i> Cancel
 							</a>
 						</div>
 					</div>
