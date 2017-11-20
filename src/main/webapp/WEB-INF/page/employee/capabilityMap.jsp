@@ -83,7 +83,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-picture"></i> 能力地图
+									<i class="glyphicon glyphicon-picture"></i> Capability Map
 								</h2>
 							</div>
 							<div class="box-content">
@@ -92,11 +92,11 @@
 								<div class="center">
 									<label class="radio-inline"> <input type="radio"
 										name="skillRadio" id="commonCapability" value="option1"
-										checked="checked"> 公共技能点
+										checked="checked"> Public Skills
 									</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label
 										class="radio-inline"> <input type="radio"
 										name="skillRadio" id="proCapability" value="option2">
-										私有技能点
+										Private Skills
 									</label>
 								</div>
 								<br/>
@@ -107,17 +107,17 @@
 									
 									<div class="form-group">
 									<div class="group">
-										<label class="col-lg-2 control-label">模块</label>
+										<label class="col-lg-2 control-label">Module</label>
 										<div class="col-lg-3">
 											<select class="form-control capabilityBlock" name="cBlock" data-bv-notempty
-												data-bv-notempty-message="请选择模块" id="cBlock" data-bv-group=".group">
-												<option value="">-- 请选择模块 --</option>
+												data-bv-notempty-message="Please select module." id="cBlock" data-bv-group=".group">
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 									</div>
 									
 									<div class="group">
-										<label class="col-sm-2 control-label">能力名称</label>
+										<label class="col-sm-2 control-label">Capability Name</label>
 										<div class="col-sm-3">
 											<input type="text" class="form-control" name="cCapabilityName" id="cCapabilityName" />
 										</div>
@@ -126,14 +126,14 @@
 								    
 								    <div class="form-group">
 									    <div style="text-align:center;width:50%;float:left">
-									    <input type="button" value="查&nbsp;&nbsp;询"
+									    <input type="button" value="&nbsp;Search&nbsp;"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadCommonCapabilityList()"
 										style="background-color: #D5D5D5; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
 									    </div>
 									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="添&nbsp;&nbsp;加"
+									    <input type="button" value="&nbsp;Add&nbsp;"
 										name="subscribe" id="sub_add" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="addCommonCapability()"
@@ -147,8 +147,8 @@
 										<thead>
 											<tr>
 												<!-- <th>编号</th> -->
-												<th>名称</th>
-												<th>模块</th>
+												<th>Name</th>
+												<th>Module</th>
 												<!-- <th>操作</th> -->
 											</tr>
 										</thead>
@@ -156,13 +156,13 @@
 									</div>
 									<div>
 										<ul class="pagination pagination-centered">
-											<li><a href="#" id="cFristPage" onclick="loadCommonCapabilityList('frist')">首页</a></li>
-											<li><a href="#" id="cPreviousPage" onclick="loadCommonCapabilityList('previous')">上一页</a></li>
-											<li><a href="#" id="cNextPage" onclick="loadCommonCapabilityList('next')">下一页</a></li>
-											<li><a href="#" id="cLastPage" onclick="loadCommonCapabilityList('last')">末页</a></li>
+											<li><a href="#" id="cFristPage" onclick="loadCommonCapabilityList('frist')">Home Page</a></li>
+											<li><a href="#" id="cPreviousPage" onclick="loadCommonCapabilityList('previous')">Previous Page</a></li>
+											<li><a href="#" id="cNextPage" onclick="loadCommonCapabilityList('next')">Next Page</a></li>
+											<li><a href="#" id="cLastPage" onclick="loadCommonCapabilityList('last')">Last Page</a></li>
 										</ul>
 										<br>
-										共<span id="cPageCount"></span>页   第<span id="cCurrentPage"></span>页
+										Total<span id="cPageCount"></span>Pages at<span id="cCurrentPage"></span>Page
 									</div>
 									
 									
@@ -175,21 +175,21 @@
 									
 									<div class="form-group">
 									<div class="group">
-										<label class="col-lg-2 control-label">交付部</label>
+										<label class="col-lg-2 control-label">Delivery Department</label>
 										<div class="col-lg-3">
 											<select class="form-control proCapabilityBu" name="pBu" data-bv-notempty
-												data-bv-notempty-message="请选择交付部" id="pBu" data-bv-group=".group"
+												data-bv-notempty-message="Please select delivery department." id="pBu" data-bv-group=".group"
 												onchange="loadProject(this.options[this.options.selectedIndex].value);">
-												<option value="">-- 请选择交付部 --</option>
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 									</div>
 									<div class="group">
-										<label class="col-lg-2 control-label">项目</label>
+										<label class="col-lg-2 control-label">Project</label>
 										<div class="col-lg-3">
 											<select class="form-control" name="pProject" data-bv-notempty
-												data-bv-notempty-message="请选择项目" id="pProject" data-bv-group=".group">
-												<option value="">-- 请选择项目 --</option>
+												data-bv-notempty-message="Please select project." id="pProject" data-bv-group=".group">
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 									</div>
@@ -197,20 +197,20 @@
 								    
 								    <div class="form-group">
 									<div class="group">
-										<label class="col-lg-2 control-label">角色</label>
+										<label class="col-lg-2 control-label">Role</label>
 										<div class="col-lg-3">
 											<select class="form-control proCapabilityType" name="pType" data-bv-notempty
-												data-bv-notempty-message="请选择角色" id="pType" data-bv-group=".group">
-												<option value="">-- 请选择角色 --</option>
+												data-bv-notempty-message="Please select role." id="pType" data-bv-group=".group">
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 									</div>
 									<div class="group">
-										<label class="col-lg-2 control-label">级别</label>
+										<label class="col-lg-2 control-label">Level</label>
 										<div class="col-lg-3">
 											<select class="form-control proCapabilityLevel" name="pLevel" data-bv-notempty
-												data-bv-notempty-message="请选择级别" id="pLevel" data-bv-group=".group">
-												<option value="">-- 请选择级别 --</option>
+												data-bv-notempty-message="Please select level." id="pLevel" data-bv-group=".group">
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 									</div>
@@ -218,16 +218,16 @@
 								    
 								    <div class="form-group">
 									<div class="group">
-										<label class="col-lg-2 control-label">模块</label>
+										<label class="col-lg-2 control-label">Module</label>
 										<div class="col-lg-3">
 											<select class="form-control capabilityBlock" name="pBlock" data-bv-notempty
-												data-bv-notempty-message="请选择模块" id="pBlock" data-bv-group=".group">
-												<option value="">-- 请选择模块 --</option>
+												data-bv-notempty-message="Please select module." id="pBlock" data-bv-group=".group">
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 									</div>
 									<div class="group">
-										<label class="col-sm-2 control-label">能力名称</label>
+										<label class="col-sm-2 control-label">Capability Name</label>
 										<div class="col-sm-3">
 											<input type="text" class="form-control" name="pCapabilityName" id="pCapabilityName" />
 										</div>
@@ -236,7 +236,7 @@
 								    
 								    <div class="form-group">
 									    <div style="text-align:center;width:50%;float:left">
-									    <input type="button" value="查&nbsp;&nbsp;询"
+									    <input type="button" value="&nbsp;Search&nbsp;"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadProCapabilityList()"
@@ -244,7 +244,7 @@
 									    </div>
 									    
 									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="添&nbsp;&nbsp;加"
+									    <input type="button" value="&nbsp;Add&nbsp;"
 										name="subscribe" id="sub_add" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="addProCapability()"
@@ -258,12 +258,12 @@
 										<thead>
 											<tr>
 												<!-- <th>编号</th> -->
-												<th>名称</th>
-												<th>模块</th>
-												<th>交付部</th>
-												<th>项目</th>
-												<th>角色</th>
-												<th>级别</th>
+												<th>Name</th>
+												<th>Module</th>
+												<th>Delivery Department</th>
+												<th>Project</th>
+												<th>Role</th>
+												<th>Level</th>
 												<!-- <th>操作</th> -->
 											</tr>
 										</thead>
@@ -271,13 +271,13 @@
 									</div>
 									<div>
 										<ul class="pagination pagination-centered">
-											<li><a href="#" id="pFristPage" onclick="loadProCapabilityList('frist')">首页</a></li>
-											<li><a href="#" id="pPreviousPage" onclick="loadProCapabilityList('previous')">上一页</a></li>
-											<li><a href="#" id="pNextPage" onclick="loadProCapabilityList('next')">下一页</a></li>
-											<li><a href="#" id="pLastPage" onclick="loadProCapabilityList('last')">末页</a></li>
+											<li><a href="#" id="pFristPage" onclick="loadProCapabilityList('frist')">Home Page</a></li>
+											<li><a href="#" id="pPreviousPage" onclick="loadProCapabilityList('previous')">Previous Page</a></li>
+											<li><a href="#" id="pNextPage" onclick="loadProCapabilityList('next')">Next Page</a></li>
+											<li><a href="#" id="pLastPage" onclick="loadProCapabilityList('last')">Last Page</a></li>
 										</ul>
 										<br>
-										共<span id="pPageCount"></span>页   第<span id="pCurrentPage"></span>页
+										Total<span id="pPageCount"></span>Pages at<span id="pCurrentPage"></span>Page
 									</div>
 									
 									
@@ -304,7 +304,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> 私有能力
+							<i class="glyphicon glyphicon-user"></i>Private Capability
 						</h2>
 
 						<div class="box-icon">
@@ -324,14 +324,14 @@
 						
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">能力名称</label>
+								<label class="col-sm-2 control-label">Capability Name</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="pCapabilityName2"
 										id="pCapabilityName2" />
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-sm-2 control-label">能力描述</label>
+								<label class="col-sm-2 control-label">Capability Description</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="pDescribe"
 										id="pDescribe" />
@@ -343,23 +343,23 @@
 
 						<div class="form-group">
 							<div class="group">
-								<label class="col-lg-2 control-label">交付部</label>
+								<label class="col-lg-2 control-label">Delivery Department</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control proCapabilityBu" name="pBu2"
-										data-bv-notempty data-bv-notempty-message="请选择交付部"
+										data-bv-notempty data-bv-notempty-message="Please select delivery department."
 										id="pBu2" data-bv-group=".group"
 										onchange="loadProProject2(this.options[this.options.selectedIndex].value);">
-										<option value="">-- 请选择交付部 --</option>
+										<option value="">-- Please Select --</option>
 									</select>
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-lg-2 control-label">项目</label>
+								<label class="col-lg-2 control-label">Project</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control " name="pProject2"
-										data-bv-notempty data-bv-notempty-message="请选择项目"
+										data-bv-notempty data-bv-notempty-message="Please select project."
 										id="pProject2" data-bv-group=".group">
-										<option value="">-- 请选择项目 --</option>
+										<option value="">-Please Select --</option>
 									</select>
 								</div>
 							</div>
@@ -369,22 +369,22 @@
 						
 						<div class="form-group">
 							<div class="group">
-								<label class="col-lg-2 control-label">角色</label>
+								<label class="col-lg-2 control-label">Role</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control proCapabilityType" name="pType2"
-										data-bv-notempty data-bv-notempty-message="请选择角色"
+										data-bv-notempty data-bv-notempty-message="Please select role."
 										id="pType2" data-bv-group=".group">
-										<option value="">-- 请选择角色 --</option>
+										<option value="">-- Please Select --</option>
 									</select>
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-lg-2 control-label">级别</label>
+								<label class="col-lg-2 control-label">Level</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control proCapabilityLevel" name="pLevel2"
-										data-bv-notempty data-bv-notempty-message="请选择级别"
+										data-bv-notempty data-bv-notempty-message="Please select level."
 										id="pLevel2" data-bv-group=".group">
-										<option value="">-- 请选择级别 --</option>
+										<option value="">-- Please Select --</option>
 									</select>
 								</div>
 							</div>
@@ -394,12 +394,12 @@
 						
 						<div class="form-group">
 							<div class="group">
-								<label class="col-lg-2 control-label">模块</label>
+								<label class="col-lg-2 control-label">Module</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control capabilityBlock" name="pBlock2"
-										data-bv-notempty data-bv-notempty-message="请选择模块"
+										data-bv-notempty data-bv-notempty-message="Please select module."
 										id="pBlock2" data-bv-group=".group"
-										<option value="">-- 请选择模块 --</option>
+										<option value="">-- Please Select --</option>
 									</select>
 								</div>
 							</div>
@@ -422,9 +422,9 @@
 						</br></br></br>
 						<div class="center">
 							<a class="btn btn-success" href="#" onClick="savePCapability()">
-								<i class="glyphicon glyphicon-ok icon-white"></i> 确定
+								<i class="glyphicon glyphicon-ok icon-white"></i> Confirm
 							</a> <a class="btn btn-info" href="#" data-dismiss="modal"> <i
-								class="glyphicon glyphicon-remove icon-white"></i> 取消
+								class="glyphicon glyphicon-remove icon-white"></i> Cancel
 							</a>
 						</div>
 					</div>
@@ -442,7 +442,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> 公有能力
+							<i class="glyphicon glyphicon-user"></i> Private Capability
 						</h2>
 
 						<div class="box-icon">
@@ -461,14 +461,14 @@
 						<div id="failureAlert2" class="alert alert-warning" style="display: none;"></div>
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">能力名称</label>
+								<label class="col-sm-2 control-label">Capability Name</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="cCapabilityName2"
 										id="cCapabilityName2" />
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-sm-2 control-label">能力描述</label>
+								<label class="col-sm-2 control-label">Capability Description</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="cDescribe"
 										id="cDescribe" />
@@ -480,23 +480,23 @@
 
 						<div class="form-group">
 							<div class="group">
-								<label class="col-lg-2 control-label">模块</label>
+								<label class="col-lg-2 control-label">Module</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control capabilityBlock" name="cBlock2"
-										data-bv-notempty data-bv-notempty-message="请选择模块"
+										data-bv-notempty data-bv-notempty-message="Please select module."
 										id="cBlock2" data-bv-group=".group"
 										onchange="loadParentCapability(this.options[this.options.selectedIndex].value);">
-										<option value="">-- 请选择模块 --</option>
+										<option value="">-- Please Select --</option>
 									</select>
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-lg-2 control-label">前置能力</label>
+								<label class="col-lg-2 control-label">Previous Capability</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control" name="parentCapability"
-										data-bv-notempty data-bv-notempty-message="请选择前置能力"
+										data-bv-notempty data-bv-notempty-message="Please select previous capability."
 										id="parentCapability" data-bv-group=".group">
-										<option value="">-- 请选择前置能力 --</option>
+										<option value="">-- Please Select --</option>
 									</select>
 								</div>
 							</div>
@@ -506,7 +506,7 @@
 						
 						<div class="form-group">
 							<div class="group">
-								<label class="col-lg-2 control-label">交付部列表</label>
+								<label class="col-lg-2 control-label">Delivery Department List</label>
 								<div class="col-lg-4">
 								<select
 									id="buList" class="selectpicker" multiple
@@ -533,9 +533,9 @@
 						</br></br></br>
 						<div class="center">
 							<a class="btn btn-success" href="#" onClick="saveCCapability()">
-								<i class="glyphicon glyphicon-ok icon-white"></i> 确定
+								<i class="glyphicon glyphicon-ok icon-white"></i> Confirm
 							</a> <a class="btn btn-info" href="#" data-dismiss="modal"> <i
-								class="glyphicon glyphicon-remove icon-white"></i> 取消
+								class="glyphicon glyphicon-remove icon-white"></i> Cancel
 							</a>
 						</div>
 					</div>

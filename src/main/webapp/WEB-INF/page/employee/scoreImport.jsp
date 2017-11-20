@@ -83,7 +83,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-tasks"></i> 成绩录入
+									<i class="glyphicon glyphicon-tasks"></i> Score Import
 								</h2>
 							</div>
 							<div class="box-content">
@@ -98,22 +98,22 @@
 
 									<div class="form-group">
 										<div class="group">
-											<label class="col-lg-2 control-label">考试名称</label>
+											<label class="col-lg-2 control-label">Examination Name</label>
 											<div class="col-lg-4">
 												<select id="examName" class="selectpicker" 
-												    data-bv-notempty data-bv-notempty-message="请选择考试时间"
+												    data-bv-notempty data-bv-notempty-message="Please select examination name."
 													data-live-search="true">
 												</select>
 											</div>
 										</div>
 
 										<div class="group">
-											<label class="col-lg-2 control-label">考试时间</label>
+											<label class="col-lg-2 control-label">Examination Date</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="examDate"
-													data-bv-notempty data-bv-notempty-message="请选择考试时间"
+													data-bv-notempty data-bv-notempty-message="Please select examination date."
 													id="examDate" data-bv-group=".group">
-													<option value="">-- 请选择考试时间 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -130,7 +130,7 @@
 									</div>
 
 									<div style="text-align: center;width=100%">
-										<input type="submit" value="录&nbsp;&nbsp;入" name="subscribe"
+										<input type="submit" value="&nbsp;Import&nbsp;" name="subscribe"
 											id="sub_bt" href="#" class="button btn btn-primary"
 											data-dismiss="modal"
 											style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin: auto;">

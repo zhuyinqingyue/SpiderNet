@@ -81,7 +81,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-edit"></i> 新员工注册
+									<i class="glyphicon glyphicon-edit"></i> Registration of New Employees
 								</h2>
 
 
@@ -114,14 +114,14 @@
 									<br />
 									<div class="form-group">
 										<div class="group">
-											<label class="col-sm-2 control-label">中文名</label>
+											<label class="col-sm-2 control-label">Chinese Name</label>
 											<div class="col-sm-4">
 												<input type="text" class="form-control" name="name"
 													id="name" />
 											</div>
 										</div>
 										<div class="group">
-											<label class="col-sm-2 control-label">英文名</label>
+											<label class="col-sm-2 control-label">English Name</label>
 											<div class="col-sm-4">
 												<input type="text" class="form-control" name="eName"
 													id="ename" />
@@ -132,22 +132,22 @@
 
 									<div class="form-group">
 										<div class="group">
-										<label class="col-lg-2 control-label">角色</label>
+										<label class="col-lg-2 control-label">Role</label>
 										<div class="col-lg-3">
 											<select class="form-control" name="emp_type" data-bv-notempty
-												data-bv-notempty-message="请选择角色" id="emp_type" data-bv-group=".group">
-												<option value="">-- 请选择角色 --</option>
+												data-bv-notempty-message="Please select one role." id="emp_type" data-bv-group=".group">
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 										</div>
 
 										<div class="group">
-										<label class="col-lg-3 control-label">级别</label>
+										<label class="col-lg-3 control-label">Level</label>
 										<div class="col-lg-3">
 											<select class="form-control" name="emp_level"
-												data-bv-notempty data-bv-notempty-message="请选择级别"
+												data-bv-notempty data-bv-notempty-message="Please select one level."
 												id="emp_level" data-bv-group=".group">
-												<option value="">-- 请选择级别 --</option>
+												<option value="">-- Please Select --</option>
 											</select>
 										</div>
 										</div>
@@ -156,19 +156,19 @@
 
 									<div class="form-group">
 										<div class="group">
-											<label class="col-lg-2 control-label">项目</label>
+											<label class="col-lg-2 control-label">Project</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="projectName"
-													data-bv-notempty data-bv-notempty-message="请选择项目"
+													data-bv-notempty data-bv-notempty-message="Please select one project."
 													id="projectName" data-bv-group=".group"
 													onchange="ViewCapability(this.options[this.options.selectedIndex].value);">
-													<option value="">-- 请选择项目 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
 
 										<div class="group">
-											<label class="col-sm-3 control-label">交付部</label>
+											<label class="col-sm-3 control-label">Delivery DepartMent</label>
 											<div class="col-sm-4">
 												<input type="text" class="form-control" name="firstName"
 													id="deliverDepartment" disabled="disabled" data-bv-group=".group"/>
@@ -178,7 +178,7 @@
 									<br /> 
 									
 									<div style="text-align:center;width=100%">
-									<input type="submit" value="注&nbsp;&nbsp;册"
+									<input type="submit" value="&nbsp;Register&nbsp;"
 										name="subscribe" id="sub_bt" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										style="background-color: #aaa; border: 0 none; border-radius: 4px; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 15px; font-weight: bold; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0; text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: 100px; margin:auto ;">
@@ -213,7 +213,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> 能力地图
+							<i class="glyphicon glyphicon-user"></i> Capability Map
 						</h2>
 
 						<div class="box-icon">
@@ -232,8 +232,8 @@
 							class="table table-striped table-bordered">
 							<thead>
 								<tr>
-									<th style="width: 20%;">领域</th>
-									<th>区块</th>
+									<th style="width: 20%;">Domain</th>
+									<th>Block</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -241,9 +241,9 @@
 						</table>
 						<div class="center">
 							<a class="btn btn-success" href="#" onClick="SaveCapabilityMap()"> <i
-								class="glyphicon glyphicon-ok icon-white" ></i> 确定
+								class="glyphicon glyphicon-ok icon-white" ></i> Confirm
 							</a> <a class="btn btn-info" href="#" data-dismiss="modal"> <i
-								class="glyphicon glyphicon-remove icon-white"></i> 取消
+								class="glyphicon glyphicon-remove icon-white"></i> Cancel
 							</a>
 						</div>
 					</div>

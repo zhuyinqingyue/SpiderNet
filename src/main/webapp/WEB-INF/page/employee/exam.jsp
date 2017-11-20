@@ -77,7 +77,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-pencil"></i> 考试
+									<i class="glyphicon glyphicon-pencil"></i> Examination
 								</h2>
 							</div>
 							<div class="box-content">
@@ -112,7 +112,7 @@
 									
 									<div class="form-group">
 										<div class="group">
-											<label class="col-sm-5 control-label">考试名称</label>
+											<label class="col-sm-5 control-label">Examination Name</label>
 											<div class="col-sm-3">
 												<input type="text" class="form-control" name="examName" id="examName" />
 											</div>
@@ -122,7 +122,7 @@
 									
 									<div class="form-group">
 									    <div style="text-align:center;width:50%;float:left">
-									    <input type="button" value="查&nbsp;&nbsp;询"
+									    <input type="button" value="&nbsp;Search&nbsp;"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadExamList()"
@@ -130,7 +130,7 @@
 									    </div>
 									    
 									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="添&nbsp;&nbsp;加"
+									    <input type="button" value="&nbsp;Add&nbsp;"
 										name="subscribe" id="sub_add" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="addExam()"
@@ -144,10 +144,10 @@
 										<thead>
 											<tr>
 												<!-- <th>编号</th> -->
-												<th>名称</th>
-												<th>交付部</th>
-												<th>项目</th>
-												<th>开考时间</th>
+												<th>Name</th>
+												<th>Delivery Department</th>
+												<th>Project</th>
+												<th>Start Time</th>
 												<!-- <th>操作</th> -->
 											</tr>
 										</thead>
@@ -155,13 +155,13 @@
 									</div>
 									<div>
 										<ul class="pagination pagination-centered">
-											<li><a href="#" id="fristPage" onclick="loadExamList('frist')">首页</a></li>
-											<li><a href="#" id="previousPage" onclick="loadExamList('previous')">上一页</a></li>
-											<li><a href="#" id="nextPage" onclick="loadExamList('next')">下一页</a></li>
-											<li><a href="#" id="lastPage" onclick="loadExamList('last')">末页</a></li>
+											<li><a href="#" id="fristPage" onclick="loadExamList('frist')">Home Page</a></li>
+											<li><a href="#" id="previousPage" onclick="loadExamList('previous')">Previous Page</a></li>
+											<li><a href="#" id="nextPage" onclick="loadExamList('next')">Next Page</a></li>
+											<li><a href="#" id="lastPage" onclick="loadExamList('last')">Last Page</a></li>
 										</ul>
 										<br>
-										共<span id="pageCount"></span>页   第<span id="currentPage"></span>页
+										Total<span id="pageCount"></span>Pages at<span id="currentPage"></span>Page
 									</div>
 
 								</form>
@@ -188,7 +188,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> 考试信息
+							<i class="glyphicon glyphicon-user"></i> Examination Information
 						</h2>
 
 						<div class="box-icon">
@@ -234,13 +234,13 @@
 						</br></br>
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">考试名称</label>
+								<label class="col-sm-2 control-label">Name</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="examName2" id="examName2"/>
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-sm-2 control-label">描述</label>
+								<label class="col-sm-2 control-label">Description</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="description" id="description"/>
 								</div>
@@ -250,7 +250,7 @@
 						</br></br>
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">开始时间</label>
+								<label class="col-sm-2 control-label">Start Time</label>
 								<div class="col-md-4">
 									<div class="input-group date form_datetime col-sm-12"
 										data-link-field="dt_set_order_time_input">
@@ -262,7 +262,7 @@
 								</div>
 							</div>
 							<div class="group">
-								<label class="col-sm-2 control-label">结束时间</label>
+								<label class="col-sm-2 control-label">End Time</label>
 								<div class="col-md-4">
 									<div class="input-group date form_datetime col-sm-12"
 										data-link-field="dt_set_order_time_input">
@@ -280,7 +280,7 @@
 						
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">考试时间</label>
+								<label class="col-sm-2 control-label">Start Date</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="examTime" id="examTime"/>
 								</div>
@@ -300,22 +300,22 @@
 						<label class="radio-inline"> <input type="radio"
 							name="skillRadio" id="commonCapability" value="option1"
 							 checked="checked">
-							公共技能点
+							Public Skills
 						</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label class="radio-inline"> <input type="radio"
 							name="skillRadio" id="proCapability" value="option2">
-							私有技能点
+							Private Skills
 						</label>
 						</div>
 						</br>
 						
 							<div >
-								<label class="col-lg-2 control-label">技能点</label>
+								<label class="col-lg-2 control-label">Skills</label>
 								<div class="col-lg-4">
 									<select href="#" class="form-control " name="skillPoints"
-										data-bv-notempty data-bv-notempty-message="请选技能点" id="skillPoints"
+										data-bv-notempty data-bv-notempty-message="Please select skills." id="skillPoints"
 										data-bv-group=".group">
-										<option value="">-- 请选择技能点 --</option></select>
+										<option value="">-- Please Select --</option></select>
 								</div>
 							</div>
 						
@@ -323,11 +323,11 @@
 						</br></br></br>
 						<div class="center">
 							<a class="btn btn-success" href="#" onClick="saveExam()"> 
-							<i class="glyphicon glyphicon-ok icon-white" ></i> 确定</a>
+							<i class="glyphicon glyphicon-ok icon-white" ></i> Confirm</a>
 							<!-- <input type="submit" value="确&nbsp;&nbsp;定" name="subscribe" id="sub_bt" 
 							href="#" class="button btn btn-primary" data-dismiss="modal">  -->
 							<a class="btn btn-info" href="#" data-dismiss="modal"> 
-							<i class="glyphicon glyphicon-remove icon-white"></i> 取&nbsp;&nbsp;消</a>
+							<i class="glyphicon glyphicon-remove icon-white"></i> &nbsp;Cancel&nbsp;</a>
 						</div>
 						
 						</form>
