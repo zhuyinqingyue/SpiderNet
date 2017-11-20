@@ -77,7 +77,7 @@
 						<div class="box-inner">
 							<div class="box-header well" data-original-title="">
 								<h2>
-									<i class="glyphicon glyphicon-edit"></i> 员工信息修改
+									<i class="glyphicon glyphicon-edit"></i> Employee’s Information Modification
 								</h2>
 							</div>
 							<div class="box-content">
@@ -92,24 +92,24 @@
 									
 									<div class="form-group">
 										<div class="group">
-											<label class="col-lg-2 control-label">交付部</label>
+											<label class="col-lg-2 control-label">Delivery Department</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="bu"
-													data-bv-notempty data-bv-notempty-message="请选择交付部"
+													data-bv-notempty data-bv-notempty-message="Please select delivery department."
 													id="bu" data-bv-group=".group"
 													onchange="loadProject(this.options[this.options.selectedIndex].value);"
-													<option value="">-- 请选择交付部 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
 										
 										<div class="group">
-											<label class="col-lg-3 control-label">项目</label>
+											<label class="col-lg-3 control-label">Project</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择项目"
+													data-bv-notempty data-bv-notempty-message="Please select project."
 													id="project" data-bv-group=".group"
-													<option value="">-- 请选择项目 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -119,7 +119,7 @@
 
 									<div class="form-group">
 										<div class="group">
-											<label class="col-lg-2 control-label">培训名称</label>
+											<label class="col-lg-2 control-label">Trainning Name</label>
 											<div class="col-lg-4">
 												<select id="TrainingName" class="selectpicker" 
 													data-live-search="true">
@@ -128,12 +128,12 @@
 										</div>
 
 										<div class="group">
-											<label class="col-lg-2 control-label">培训时间</label>
+											<label class="col-lg-2 control-label">Trainning Time</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="project"
-													data-bv-notempty data-bv-notempty-message="请选择培训时间"
+													data-bv-notempty data-bv-notempty-message="Please select trainning time."
 													id="TrainingDate" data-bv-group=".group">
-													<option value="">-- 请选择培训时间 --</option>
+													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -143,7 +143,7 @@
 
 									<div class="form-group">
 										<div style="text-align:center;width:50%;float:left">
-									    <input type="button" value="查&nbsp;&nbsp;询"
+									    <input type="button" value="&nbsp;Search&nbsp;"
 										name="subscribe" id="sub_search" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="loadEmpList()"
@@ -151,7 +151,7 @@
 									    </div>
 									
 									    <div style="text-align:center;width:50%;float:right">
-									    <input type="button" value="添&nbsp;&nbsp;加"
+									    <input type="button" value="&nbsp;Add&nbsp;"
 										name="subscribe" id="sub_add" href="#"
 										class="button btn btn-primary" data-dismiss="modal"
 										onclick="batchAddTraining()"
@@ -164,26 +164,26 @@
 										class="table table-striped table-bordered">
 										<thead>
 											<tr>
-											    <th>操作</th>
+											    <th>Operation</th>
 												<th>Er</th>
 												<th>Hr</th>
-												<th>中文名</th>
-												<th>英文名</th>
-												<th>交付部</th>
-												<th>项目</th>
+												<th>Chinese Name</th>
+												<th>English Name</th>
+												<th>Delivery Department</th>
+												<th>Project</th>
 											</tr>
 										</thead>
 									</table>
 									</div>
 									<div>
 										<ul class="pagination pagination-centered">
-											<li><a href="#" id="fristPage" onclick="loadEmpList('frist')">首页</a></li>
-											<li><a href="#" id="previousPage" onclick="loadEmpList('previous')">上一页</a></li>
-											<li><a href="#" id="nextPage" onclick="loadEmpList('next')">下一页</a></li>
-											<li><a href="#" id="lastPage" onclick="loadEmpList('last')">末页</a></li>
+											<li><a href="#" id="fristPage" onclick="loadEmpList('frist')">Home Page</a></li>
+											<li><a href="#" id="previousPage" onclick="loadEmpList('previous')">Previous Page</a></li>
+											<li><a href="#" id="nextPage" onclick="loadEmpList('next')">Next Page</a></li>
+											<li><a href="#" id="lastPage" onclick="loadEmpList('last')">Last Page</a></li>
 										</ul>
 										<br>
-										共<span id="pageCount"></span>页   第<span id="currentPage"></span>页
+										Total<span id="pageCount"></span>Pages at<span id="currentPage"></span>Page
 									</div>
 
 								</form>
