@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spidernet.dashboard.entity.CCapability;
 import com.spidernet.dashboard.entity.CapabilityMap;
+import com.spidernet.dashboard.entity.Employee;
 import com.spidernet.dashboard.entity.ExamCapability;
 import com.spidernet.dashboard.entity.PersonalMap;
 import com.spidernet.dashboard.entity.Trainning;
@@ -76,6 +77,9 @@ public class PersonalMapController
                 personalMap.getDetail());
 
         String capabilityId = "";
+        
+        String projectId = ((Employee)request.getSession().getAttribute("employee")).getProjectId();
+        String buId = ((Employee)request.getSession().getAttribute("employee")).getBuId();
 
         for (int i=0;i<cBBean.getCapabilityMap().size();i++)
         {
@@ -87,7 +91,7 @@ public class PersonalMapController
                     Boolean capabilityTraining = false;
                     capabilityId = cBBean.getCapabilityMap().get(i).getProCapabilityL().get(j).getProCapabilityId();
                     List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
-                    List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
+                    List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId,projectId,buId);
                     
                     String capabilityTrainingStatus = capabilityTrainingService.capabilityTrainingStatus(capabilityId, employeeId);
                     String capabilityExamStatus = capabilityExamService.capabilityExamStatus(capabilityId, employeeId);
@@ -125,7 +129,7 @@ public class PersonalMapController
                     Boolean capabilityTraining = false;
                     capabilityId = cBBean.getCapabilityMap().get(i).getcCapabilityL().get(j).getCommCapabilityId();
                     List<Trainning> trainningList = trainningService.fetchAllTrainning(capabilityId, employeeId);
-                    List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
+                    List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId,projectId,buId);
                     
                     String capabilityTrainingStatus = capabilityTrainingService.capabilityTrainingStatus(capabilityId, employeeId);
                     String capabilityExamStatus = capabilityExamService.capabilityExamStatus(capabilityId, employeeId);

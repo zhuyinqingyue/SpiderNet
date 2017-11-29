@@ -320,7 +320,15 @@ function loadBlock(){
 			$(".capabilityBlock").find("option").remove();
 			$(".capabilityBlock").append("<option value=''>-- 请选择模块 --</option>");
 			for(var i = 0;i<blockList.length;i++){
-				$(".capabilityBlock").append("<option value='"+blockList[i].blockId+"'>"+blockList[i].blockName+"</option>");
+				if(blockList[i].blockType == '1'){
+					//私有技能
+					$("#pBlock").append("<option value='"+blockList[i].blockId+"'>"+blockList[i].blockName+"</option>");
+					$("#pBlock2").append("<option value='"+blockList[i].blockId+"'>"+blockList[i].blockName+"</option>");
+				}else if(blockList[i].blockType == '2'){
+					//公共技能
+					$("#cBlock").append("<option value='"+blockList[i].blockId+"'>"+blockList[i].blockName+"</option>");
+					$("#cBlock2").append("<option value='"+blockList[i].blockId+"'>"+blockList[i].blockName+"</option>");
+				}
 			}
 		}
 })}

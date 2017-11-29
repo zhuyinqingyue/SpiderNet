@@ -19,10 +19,10 @@ public class ExamServiceImpl implements ExamService
     private ExamMapper examMapper;
 
     @Override
-    public List<ExamCapability> fetchAllExam(String capabilityId, String employeeId)
+    public List<ExamCapability> fetchAllExam(String capabilityId, String employeeId, String projectId, String buId)
     {
         List<ExamCapability> examList = new ArrayList<ExamCapability>();
-        examList = examMapper.fetchAllExam(capabilityId, employeeId);
+        examList = examMapper.fetchAllExam(capabilityId, employeeId,projectId,buId);
 
         return examList;
     }

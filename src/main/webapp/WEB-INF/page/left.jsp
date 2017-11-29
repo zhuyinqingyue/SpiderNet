@@ -27,19 +27,20 @@
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/register.html"><i class="glyphicon glyphicon-user"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Regist</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/update2.html"><i class="glyphicon glyphicon-edit"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Modify</span></a></li>
-                                <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddCapability.html"><i class="glyphicon glyphicon-hdd"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Batch Add Ability</span></a></li>
+                                
                             </ul>
                         </li>      
                         <li><a class="ajax-link" href="<%=path %>/service/employee/scoreImport.html"><i class="glyphicon glyphicon-download-alt"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Score Import</span></a>
                         </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-th"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Ability Maintenance</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-th"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Capacity Maintenance</span></a>
                             <ul class="nav nav-pills nav-stacked">
                             <c:if test="${sessionScope.employee.hrNumber eq '123456'}">
-                                <li><a class="ajax-link" href="<%=path %>/service/employee/capabilityMap.html"><i class="glyphicon glyphicon-picture"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Ability Map</span></a></li>
+                                <li><a class="ajax-link" href="<%=path %>/service/employee/capabilityMap.html"><i class="glyphicon glyphicon-picture"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Capacity Map</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/exam.html"><i class="glyphicon glyphicon-pencil"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Examination</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/training.html"><i class="glyphicon glyphicon-book"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Trainning</span></a></li>
                             </c:if>
+                                <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddCapability.html"><i class="glyphicon glyphicon-hdd"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Batch Add Capacity</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddTraining.html"><i class="glyphicon glyphicon-share"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Batch Add Trainning</span></a></li>
                             </ul>
                         </li>

@@ -9,7 +9,8 @@ import com.spidernet.dashboard.entity.ExamCapability;
 
 public interface ExamMapper
 {
-    List<ExamCapability> fetchAllExam(@Param("capabilityId")String capabilityId, @Param("employeeId")String employeeId);
+    List<ExamCapability> fetchAllExam(@Param("capabilityId")String capabilityId, @Param("employeeId")String employeeId, @Param("projectId")String projectId, @Param("buId")String buId);
+    //List<ExamCapability> fetchAllExam(Map<String, Object> params);
     List<Exam> queryExamByName(String examName);
     int addExam(Exam exam);
     Exam queryExamById(String examId);

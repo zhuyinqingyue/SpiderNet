@@ -56,7 +56,7 @@ function resetSelect(){
 	var liArray = $("li").filter(".selected");
 
 	for(var i=0; i<liArray.length; i++){
-		if(liArray.eq(i).text().indexOf("请选择") == -1){
+		if(liArray.eq(i).text().indexOf("Please Select") == -1){
 			liArray.eq(i).removeClass("selected")
 		}
 	}
@@ -80,7 +80,7 @@ function loadExamName(){
 		cache:false,
 		type:"post",
 		success:function(examList){
-			$("#examName").append("<option>--请选择考试名称--</option>");
+			$("#examName").append("<option>-- Please Select --</option>");
 			for(var i = 0;i<examList.length;i++){
 				$("#examName").append("<option>"+examList[i].name+"</option>");
 			}
@@ -101,7 +101,7 @@ $("#examName").change(function(){
 		type:"post",
 		success:function(examList){
 			$("#examDate").find("option").remove(); 
-			$("#examDate").append("<option value=''>-- 请选择考试时间 --</option>");
+			$("#examDate").append("<option value=''>-- Please Select --</option>");
 			for(var i = 0;i<examList.length;i++){
 				$("#examDate").append("<option value='"+examList[i].examId+"'>"+examList[i].startTime+"</option>");
 			}
@@ -120,7 +120,7 @@ function loadTrainingName(){
 		cache:false,
 		type:"post",
 		success:function(trainingList){
-			$("#TrainingName").append("<option>--请选择培训名称--</option>");
+			$("#TrainingName").append("<option>-- Please Select --</option>");
 			for(var i = 0;i<trainingList.length;i++){
 				$("#TrainingName").append("<option>"+trainingList[i].courseName+"</option>");
 			}
@@ -141,7 +141,7 @@ $("#TrainingName").change(function(){
 		type:"post",
 		success:function(trainingList){
 			$("#TrainingDate").find("option").remove(); 
-			$("#TrainingDate").append("<option value=''>-- 请选择培训时间 --</option>");
+			$("#TrainingDate").append("<option value=''>-- Please Select --</option>");
 			for(var i = 0;i<trainingList.length;i++){
 				$("#TrainingDate").append("<option value='"+trainingList[i].trainningId+"'>"+trainingList[i].time+"</option>");
 			}
@@ -258,7 +258,7 @@ function loadProject(buId,projectId){
 		success:function(listP){
 			
 			$("#project").find("option").remove(); 
-			$("#project").append("<option value=''>-- 请选择项目 --</option>");
+			$("#project").append("<option value=''>-- Please Select --</option>");
 			for(var i = 0;i<listP.length;i++){
 				$("#project").append("<option value='"+listP[i].projectId+"'>"+listP[i].projectName+"</option>");
 			}
@@ -279,7 +279,7 @@ function loadBu(){
 		cache:false,
 		type:"post",
 		success:function(listB){
-			$("#bu").append("<option value=''>-- 请选择交付部 --</option>");
+			$("#bu").append("<option value=''>-- Please Select --</option>");
 			for(var i = 0;i<listB.length;i++){
 				$("#bu").append("<option value='"+listB[i].buId+"'>"+listB[i].buName+"</option>");
 			}

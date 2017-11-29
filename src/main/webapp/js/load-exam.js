@@ -54,9 +54,9 @@ $("a[id='myExam']").click(
 						var td7 = $("<td>"
 								+ examList[i].examTime + "Min"
 								+ "</td>");
-						var td8 = $("<td>"
+						/*var td8 = $("<td>"
 								+ examList[i].validPeriod + "Day"
-								+ "</td>");
+								+ "</td>");*/
 
 						if (examList[i].status == 0) {
 							status = "报名中";
@@ -72,7 +72,7 @@ $("a[id='myExam']").click(
 						td5.appendTo(tr);
 						td6.appendTo(tr);
 						td7.appendTo(tr);
-						td8.appendTo(tr);
+						//td8.appendTo(tr);
 						td9.appendTo(tr);
 					}
 					$("#examListTable").append("</tbdoy>");

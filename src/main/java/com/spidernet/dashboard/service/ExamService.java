@@ -7,7 +7,7 @@ import com.spidernet.dashboard.entity.ExamCapability;
 
 public interface ExamService
 {
-    List<ExamCapability> fetchAllExam(String capabilityId, String employeeId);
+    List<ExamCapability> fetchAllExam(String capabilityId, String employeeId, String projectId, String buId);
     List<Exam> queryExamByName(String examName);
     Boolean addExam(Exam exam); 
     Exam queryExamById(String examId);

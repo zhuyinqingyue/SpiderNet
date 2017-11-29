@@ -33,7 +33,7 @@ public class ExamServiceTest
         List<ExamCapability> examList = new ArrayList<ExamCapability>();
         String capabilityId = "8c5cbd091caf49c09832b8f31df5ac36";
         String employeeId = "9a5069a636f04df194c4998a4167d87e";
-        examList = examService.fetchAllExam(capabilityId, employeeId);
+        examList = examService.fetchAllExam(capabilityId, employeeId, employeeId, employeeId);
 
         assertNotNull(examList);
     }
