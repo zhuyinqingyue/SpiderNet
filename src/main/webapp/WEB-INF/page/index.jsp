@@ -201,7 +201,7 @@ var path='<%=path%>';
 												<th>Start Time</th>
 												<th>End Time</th>
 												<th>Examination Date</th>
-												<th>Valid Days</th>
+												<!-- <th>Valid Days</th> -->
 												<th>Status</th>
 											</tr>
 										</thead>

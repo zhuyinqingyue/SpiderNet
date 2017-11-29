@@ -170,7 +170,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> Examination Information
+							<i class="glyphicon glyphicon-user"></i> Trainning Information
 						</h2>
 
 						<div class="box-icon">

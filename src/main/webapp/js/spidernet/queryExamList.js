@@ -146,12 +146,21 @@ function loadExamList(pageState){
 				var td2 = $("<td>"
 						+ result.data[i].examName
 						+ "</td>");
-				var td3 = $("<td>"
-						+ result.data[i].buName
-						+ "</td>");
-				var td4 = $("<td>"
-						+ result.data[i].projectName
-						+ "</td>");
+				if(result.data[i].buName == null){
+					var td3 = $("<td></td>");
+				}else{
+					var td3 = $("<td>"
+							+ result.data[i].buName
+							+ "</td>");
+				}
+				if(result.data[i].projectName == null){
+					var td4 = $("<td></td>");
+				}else{
+					var td4 = $("<td>"
+							+ result.data[i].projectName
+							+ "</td>");
+				}
+				
 				var td5 = $("<td>"
 						+ result.data[i].startTime
 						+ "</td>");
@@ -343,7 +352,7 @@ function saveExam(){
 		url:path+'/service/exam/addExam',
 		dataType:"json",
 		async:true,
-		data:{"buId":buId,"projectId":projectId,"examName":examName,"description":description,"startTime":startTime,"endTime":endTime,"examTime":examTime,"validPeriod":validPeriod,"skillPoints":skillPoints},
+		data:{"buId":buId,"projectId":projectId,"examName":examName,"description":description,"startTime":startTime,"endTime":endTime,"examTime":examTime,/*"validPeriod":validPeriod,*/"skillPoints":skillPoints},
 		cache:false,
 		type:"post",
 		success:function(resultFlag){
@@ -356,7 +365,7 @@ function saveExam(){
 					$('#startTime1').val("");
 					$('#endTime1').val("");
 					$('#examTime').val("");
-					$('#validPeriod').val("");
+					//$('#validPeriod').val("");
 					$('#myModal').modal('hide');
 			    }, 2000);
 			}else{

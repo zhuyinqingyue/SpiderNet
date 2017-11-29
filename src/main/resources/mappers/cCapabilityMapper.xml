@@ -21,7 +21,7 @@
 		resultType="com.spidernet.dashboard.entity.CCapability">
 		select
 		<include refid="Base_Column_List" />
-		 from t_common_capability where BLOCK_ID = #{blockId} and (#{buList} in (BU_LIST) or BU_LIST is null or BU_LIST = '')  order by sort
+		 from t_common_capability where BLOCK_ID = #{blockId} and (BU_LIST like CONCAT('%',#{buList},'%') or BU_LIST is null or BU_LIST = '')  order by sort
 	</select>
 
 	<select id="fetchCommonCapabilty" parameterType="String"

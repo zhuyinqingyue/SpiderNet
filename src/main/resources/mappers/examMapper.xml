@@ -17,13 +17,21 @@
 	</resultMap>
 
 	<select id="fetchAllExam" parameterType="String" resultType="com.spidernet.dashboard.entity.ExamCapability">
-		select e.EXAM_ID as examId, b.NAME as buName, p.NAME as projectName, e.Name as examName, DATE_FORMAT(e.START_TIME,'%Y-%m-%d %H:%i') as startTime,
+		<!-- select e.EXAM_ID as examId, b.NAME as buName, p.NAME as projectName, e.Name as examName, DATE_FORMAT(e.START_TIME,'%Y-%m-%d %H:%i') as startTime,
 		DATE_FORMAT(e.END_TIME,'%Y-%m-%d %H:%i') as endTime, e.EXAM_TIME as examTime, e.VALID_PERIOD as validPeriod, e.STATUS
 		from t_exam as e, t_bu as b, t_project as p where e.EXAM_ID in (select EXAM_ID FROM
 		t_capability_exam where CAPABILITY_ID =
 		#{capabilityId}) and e.BU_ID=b.BU_ID and e.PROJECT_ID=p.PROJECT_ID and
 		NOW() &lt; e.START_TIME and
-		e.EXAM_ID not in (select EXAM_ID FROM t_personal_exam where EMPLOYEE_ID=#{employeeId});
+		e.EXAM_ID not in (select EXAM_ID FROM t_personal_exam where EMPLOYEE_ID=#{employeeId}); -->
+		SELECT e.EXAM_ID AS examId,b. NAME AS buName,p. NAME AS projectName,e. NAME AS examName,DATE_FORMAT(e.START_TIME,'%Y-%m-%d %H:%i') AS startTime,
+	    DATE_FORMAT(e.END_TIME,'%Y-%m-%d %H:%i') AS endTime,e.EXAM_TIME AS examTime,e.VALID_PERIOD AS validPeriod,e. STATUS
+        FROM t_exam AS e,t_bu AS b,t_project AS p
+        WHERE e.EXAM_ID IN (SELECT EXAM_ID FROM t_capability_exam WHERE CAPABILITY_ID = #{capabilityId})
+        AND NOW() &lt; e.START_TIME
+        AND p.PROJECT_ID = #{projectId}
+        AND b.BU_ID = #{buId}
+        AND e.EXAM_ID NOT IN (SELECT EXAM_ID FROM t_personal_exam WHERE EMPLOYEE_ID = #{employeeId});
 	</select>
 	
 	<select id="queryExamByName" parameterType="String" resultMap="examMap">
@@ -35,9 +43,9 @@
 	</select>
 	
 	<insert id="addExam" parameterType="com.spidernet.dashboard.entity.Exam">
-	    insert into t_exam (EXAM_ID,BU_ID,PROJECT_ID,NAME,START_TIME,END_TIME,DESCRIPTION,EXAM_TIME,VALID_PERIOD,STATUS,KNOWLEDGE_LIST)
+	    insert into t_exam (EXAM_ID,BU_ID,PROJECT_ID,NAME,START_TIME,END_TIME,DESCRIPTION,EXAM_TIME,<!-- VALID_PERIOD, -->STATUS,KNOWLEDGE_LIST)
 	    values
-	    (#{examId},#{buId},#{projectId},#{name},#{startTime},#{endTime},#{description},#{examTime},#{validPeriod},#{status},#{knowledgeList})
+	    (#{examId},#{buId},#{projectId},#{name},#{startTime},#{endTime},#{description},#{examTime},<!-- #{validPeriod}, -->#{status},#{knowledgeList})
 	</insert>
 	
 	<select id="queryExamById" parameterType="String" resultType="com.spidernet.dashboard.entity.Exam">

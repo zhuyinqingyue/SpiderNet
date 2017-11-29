@@ -200,13 +200,13 @@ public class EmployeeInfoController
                ws.addCell(labelEName);
                ws.addCell(labelBu);
                ws.addCell(labelProject);
-               for (int i = 4; i < listE.size(); i++) {
-                   Label labelEr_i= new Label(0, i+1, listE.get(i).getEr()+"");
-                   Label labelHr_i= new Label(1, i+1, listE.get(i).getHr());
-                   Label labelName_i= new Label(2, i+1, listE.get(i).getName());
-                   Label labelEName_i= new Label(3, i+1, listE.get(i).geteName()+"");
-                   Label labelBu_i= new Label(4, i+1, listE.get(i).getBuName());
-                   Label labelProject_i= new Label(5, i+1, listE.get(i).getProjectName()+"");
+               for (int i = 4 ,j = 0; j < listE.size(); i++,j++) {
+                   Label labelEr_i= new Label(0, i+1, listE.get(j).getEr()+"");
+                   Label labelHr_i= new Label(1, i+1, listE.get(j).getHr());
+                   Label labelName_i= new Label(2, i+1, listE.get(j).getName());
+                   Label labelEName_i= new Label(3, i+1, listE.get(j).geteName()+"");
+                   Label labelBu_i= new Label(4, i+1, listE.get(j).getBuName());
+                   Label labelProject_i= new Label(5, i+1, listE.get(j).getProjectName()+"");
                    ws.addCell(labelEr_i);
                    ws.addCell(labelHr_i);
                    ws.addCell(labelName_i);

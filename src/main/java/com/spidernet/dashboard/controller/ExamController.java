@@ -40,8 +40,10 @@ public class ExamController
     {
         String capabilityId = request.getParameter("capabilityId");
         String employeeId = ((Employee)request.getSession().getAttribute("employee")).getEmployeeId();
+        String projectId = ((Employee)request.getSession().getAttribute("employee")).getProjectId();
+        String buId = ((Employee)request.getSession().getAttribute("employee")).getBuId();
 
-        List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId);
+        List<ExamCapability> examList = examService.fetchAllExam(capabilityId, employeeId,projectId,buId);
 
         return examList;
     }
@@ -83,7 +85,7 @@ public class ExamController
         String endTime = request.getParameter("endTime");
         String description = request.getParameter("description");
         String examTime = request.getParameter("examTime");
-        int validPeriod = Integer.parseInt(request.getParameter("validPeriod"));
+        //int validPeriod = Integer.parseInt(request.getParameter("validPeriod"));
         String skillPoints = request.getParameter("skillPoints");
         String status = "0";
         
@@ -97,7 +99,7 @@ public class ExamController
         exam.setEndTime(endTime);
         exam.setDescription(description);
         exam.setExamTime(examTime);
-        exam.setValidPeriod(validPeriod);
+        //exam.setValidPeriod(validPeriod);
         exam.setStatus(status);
         
         CapabilityExam capabilityExam = new CapabilityExam();
