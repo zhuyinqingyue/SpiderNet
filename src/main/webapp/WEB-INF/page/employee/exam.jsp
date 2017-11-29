@@ -280,7 +280,7 @@
 						
 						<div class="form-group">
 							<div class="group">
-								<label class="col-sm-2 control-label">Start Date</label>
+								<label class="col-sm-2 control-label">Exam Duration</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="examTime" id="examTime"/>
 								</div>

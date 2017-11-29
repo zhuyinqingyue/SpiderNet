@@ -10,7 +10,7 @@ public interface Constants
     public final static int ZERO = 0;
     public final static String TRAINNING_STATUS_REGISTED = "0";
     public final static String EXAM_STATUS_REGISTED = "2";
-    public final static String PATH = "E:/Excel/";
+    public final static String PATH = "D:/Excel/";
 
 
 }

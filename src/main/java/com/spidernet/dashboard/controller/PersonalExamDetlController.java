@@ -121,6 +121,7 @@ public class PersonalExamDetlController
                             .get("endTime").toString());
             personalExam.setStatus(
                     Constants.EXAM_STATUS_REGISTED);
+            personalExam.setScore("");
 
             if(personalExamService.checkPersonalExamExists(personalExam)){
                 return false;

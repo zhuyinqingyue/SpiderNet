@@ -19,7 +19,7 @@
 		values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{item.examId,jdbcType=VARCHAR},#{item.employeeId,jdbcType=VARCHAR},#{item.personalExam,jdbcType=VARCHAR},#{item.status,jdbcType=VARCHAR},#{item.registerTime,jdbcType=VARCHAR},#{item.updateTime,jdbcType=VARCHAR})
+			(#{item.examId,jdbcType=VARCHAR},#{item.employeeId,jdbcType=VARCHAR},#{item.personalExam,jdbcType=VARCHAR},#{item.status,jdbcType=VARCHAR},#{item.registerTime,jdbcType=VARCHAR},#{item.updateTime,jdbcType=VARCHAR},#{item.score,jdbcType=VARCHAR})
 		</foreach>
 	</insert>
 	

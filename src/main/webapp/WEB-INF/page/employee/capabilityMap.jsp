@@ -442,7 +442,7 @@
 				<div class="modal-content">
 					<div class="box-header well" data-original-title="">
 						<h2>
-							<i class="glyphicon glyphicon-user"></i> Private Capability
+							<i class="glyphicon glyphicon-user"></i> Public Capability
 						</h2>
 
 						<div class="box-icon">
