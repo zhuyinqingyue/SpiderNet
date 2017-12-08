@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
   	<meta charset="utf-8">
-    <title>SpiderNet</title>
+    <title>E-learning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
     <meta name="author" content="Muhammad Usman">
@@ -59,7 +59,7 @@
         <div style="min-width:319px" class="col-md-12 center login-header login-header" >
         		 
         		 		 <div style="min-width:319px" class="login-header-img">
-        		 		 		<img src="<%=path %>/img/img-logo1.png" /><!--<span> SpiderNet1111111111111111111</span>-->
+        		 		 		<img src="<%=path %>/img/img-logo2.png" /><!--<span> SpiderNet1111111111111111111</span>-->
         		 		</div>
         		 	
         </div>
@@ -72,7 +72,7 @@
         <div style="min-width: 320px;" class="well col-md-5 center login-box new-login-box">
     
             <div class="alert alert-info new-login-box-header" id="loginAlert">
-                Welcome to SpiderNet
+                Welcome to E-learning
             </div>
             <form id="loginForm" class="form-horizontal" method="post">
                 <fieldset>
