@@ -104,7 +104,7 @@
                 <form id="scoreForm" method="post" class="form-horizontal"
 									style="width: 100%" enctype ="multipart/form-data">
 				<div class="group">
-							<label class="col-sm-2 control-label" style="width:100px;">Point Title</label>
+							<label class="col-sm-2 control-label" style="width:80px;">Title</label>
 							<div class="col-sm-3">
 								<input type="text" class="form-control" name="s_pointTitle" id="s_pointTitle" />
 							</div>
@@ -136,7 +136,7 @@
 				</form>
 				</div>
                 <div>
-                    <table id="knowledgePointList" class="table table-striped table-bordered" data-show-refresh="true">
+                    <table id="knowledgePointList" class="table table-bordered" data-show-refresh="true">
                         <thead>
                         <tr>
                             <th>Title</th>

@@ -29,6 +29,7 @@ function loadKnowlegedPointList(pageState){
 				if (i == 0){
 					id = result.data[i].knowledgePointId;
 					title = result.data[i].pointTitle;
+					tr.addClass('bgRed');
 				}
 				var td1 = $("<td style='display:none'>"
 						+ result.data[i].knowledgePointId
@@ -67,18 +68,12 @@ function loadKnowlegedPointList(pageState){
 						+" <span class='"+classname+"'>"+status+"</span>"
 						+"</td>");
 				
-				var td7 = $('<td> <a class="btn btn-success" style="height: 25px; width: 55px;  padding-top: 5px; padding-left: 8px; font-size: 11px;" href="#" onclick="queryDetail(this)"><i class="glyphicon glyphicon-zoom-in icon-white">View</i></a> <a class="btn btn-info" href="#" style="height: 25px; width: 55px;  padding-top: 5px; padding-left: 8px; font-size: 11px;" onclick="addKnowledgePoint(1, this)"><i class="glyphicon glyphicon-edit icon-white">Edit</i></a></td>');
+				var td7 = $('<td><a class="btn btn-info" href="#" style="height: 25px; width: 55px;  padding-top: 5px; padding-left: 8px; font-size: 11px;" onclick="addKnowledgePoint(1, this)"><i class="glyphicon glyphicon-edit icon-white">Edit</i></a></td>');
 				td1.appendTo(tr);
 				td2.appendTo(tr);
 				td3.appendTo(tr);
 				td6.appendTo(tr);
 				td7.appendTo(tr);
-//				tr.click(function(){
-//					var pid = $(tr).find("td:first").text();
-					//alert(pid);
-//					queryItemDetailByPid(pid);
-//					$('#pointDetail').attr('parentid', pid);
-//				});
 			}
 			
 			$("#knowledgePointList").append("</tbdoy>");
@@ -101,8 +96,16 @@ function loadKnowlegedPointList(pageState){
 			queryItemDetailByPid(id);
 			$('#pointDetail').attr('parentid', id);
 			$("#knowledgePointList tr").bind("click",function(){
-				$(this).children().toggleClass("bgRed");
+				
 				var pid = $(this).find("td:first").text();
+				
+				$(this).addClass('bgRed');
+				var curr = $(this);
+				$("#knowledgePointList").find("tr").each(function(i, tar){
+					if (pid != $(tar).find("td:first").text()){
+						$(tar).removeClass('bgRed');
+					}
+				});
 				queryItemDetailByPid(pid);
 				$('#pointDetail').attr('parentid', pid);
 			});
