@@ -74,5 +74,11 @@ public class TrainningServiceImpl implements TrainningService
         Trainning trainning = trainningMapper.queryTrainingById(trainingId);
         return trainning;
     }
+    
+    public List<String> queryEmpAllTrainingNames(String currentPage) {
+		// TODO Auto-generated method stub
+	List<String> trainingName=trainningMapper.queryPersonTrainingNames(currentPage);
+	return trainingName;
+}
 
 }

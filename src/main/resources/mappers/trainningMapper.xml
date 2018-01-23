@@ -56,5 +56,12 @@
 	<select id="queryTrainingById" parameterType="String" resultType="com.spidernet.dashboard.entity.Trainning">
 	    SELECT TRAINING_ID as trainningId,COURSE_NAME as courseName,TIME as time,LOCATION as location,TEACHER as teacher,URL as url,STATUS as status FROM t_training WHERE TRAINING_ID = #{trainningId}
 	</select>
+	
+	<select id="queryPersonTrainingNames" parameterType="String" resultType="String">
+	    select GROUP_CONCAT(distinct COURSE_NAME) as trainingName from t_employee as a, 
+	     t_training as b, t_personal_training as c where
+	     a.EMPLOYEE_ID=c.EMPLOYEE_ID and c.TRAINING_ID=b.TRAINING_ID group by a.EMPLOYEE_ID
+	     LIMIT #{currentPage},10;
+	</select>
 
 </mapper>

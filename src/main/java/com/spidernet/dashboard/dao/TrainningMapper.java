@@ -16,5 +16,6 @@ public interface TrainningMapper
     List<Trainning> queryTrainingByName(String trainingName);
     List<Trainning> queryTrainingName();
     Trainning queryTrainingById(String trainingId);
+    List<String> queryPersonTrainingNames(String currentPage);
 }
 

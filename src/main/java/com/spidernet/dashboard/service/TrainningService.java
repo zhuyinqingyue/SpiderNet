@@ -14,4 +14,5 @@ public interface TrainningService
     List<Trainning> queryTrainingByName(String trainingName);
     List<Trainning> queryTrainingName();
     Trainning queryTrainingById(String trainingId);
+    List<String> queryEmpAllTrainingNames(String currentPage);
 }

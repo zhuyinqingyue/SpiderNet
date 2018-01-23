@@ -5,7 +5,7 @@
 	<resultMap id="personalTrainningMap"
 		type="com.spidernet.dashboard.entity.PersonalTrainning">
 		<id property="trainningId" column="TRAINNING_ID" javaType="String" />
-		<result property="employeeId" column="EMPLOYEE_ID" javaType="String" />
+		<id property="employeeId" column="EMPLOYEE_ID" javaType="String" />
 		<result property="status" column="STATUS" javaType="String" />
 	</resultMap>
 

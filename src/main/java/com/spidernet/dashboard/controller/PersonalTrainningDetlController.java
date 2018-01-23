@@ -26,6 +26,7 @@ import com.spidernet.dashboard.service.EmployeeService;
 import com.spidernet.dashboard.service.PersonalMapService;
 import com.spidernet.dashboard.service.PersonalTrainningService;
 import com.spidernet.dashboard.service.ProCapabilityService;
+import com.spidernet.dashboard.service.TrainningService;
 import com.spidernet.util.Constants;
 import com.spidernet.util.XmlUtil;
 
@@ -52,6 +53,9 @@ public class PersonalTrainningDetlController
     
     @Resource
     private EmployeeService employeeService;
+    
+    @Resource
+    TrainningService trainningService;
 
     private static Logger logger = LoggerFactory
             .getLogger(PersonalTrainningDetlController.class);
@@ -179,7 +183,9 @@ public class PersonalTrainningDetlController
         
         String employeeId = "";
         
-        String trainingId = request.getParameter("trainingId");
+        String trainingName = request.getParameter("trainingName");
+        
+        String trainingId = trainningService.queryTrainingByName(trainingName).get(0).getTrainningId();
         
         for(int i = 0; i < empArray.length; i++){
             

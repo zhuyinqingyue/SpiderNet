@@ -58,7 +58,7 @@ $("#TrainingName").change(function(){
 			$("#TrainingDate").find("option").remove(); 
 			$("#TrainingDate").append("<option value=''>-- 请选择培训时间 --</option>");
 			for(var i = 0;i<trainingList.length;i++){
-				$("#TrainingDate").append("<option value='"+trainingList[i].trainningId+"'>"+trainingList[i].time+"</option>");
+				$("#TrainingDate").append("<option >"+trainingList[i].time+"</option>");
 			}
 		}
 	})
@@ -96,11 +96,11 @@ function showSelected(){
 function batchAddTraining(){
 	addEmployee();
 	
-	var trainingId = $('#TrainingDate').val();
+	var trainingName = $('#TrainingName').val();
 	
 	$.ajax({
 		url:path+'/service/trainning/batchAddTraining',
-		data: {'trainingId':trainingId,'empArray':empArray},
+		data: {'empArray':empArray,'trainingName':trainingName},
 		async:true,
 		cache:false,
 		traditional: true,
@@ -119,6 +119,8 @@ function loadEmpList(pageState){
 	var buId = $("#bu").val();
 
 	var projectId = $("#project").val();
+	
+	var trainingName = $("#TrainingName").val();
 
 	var pageState = pageState;
 	
@@ -126,7 +128,7 @@ function loadEmpList(pageState){
 		url:path+"/service/employeeInfo/employeeInfoList",
 		dataType:"json",
 		async:true,
-		data:{"buId":buId,"projectId":projectId,"pageState":pageState},
+		data:{"buId":buId,"projectId":projectId,"pageState":pageState,"trainingName":trainingName},
 		cache:false,
 		type:"post",
 		success:function(result){
@@ -160,6 +162,9 @@ function loadEmpList(pageState){
 				var td7 = $("<td>"
 						+ result.data[i].projectName
 						+ "</td>");
+				var td8 = $("<td>"
+						+ result.trainingNames[i]
+						+ "</td>");
 				td1.appendTo(tr);
 				td2.appendTo(tr);
 				td3.appendTo(tr);
@@ -167,6 +172,7 @@ function loadEmpList(pageState){
 				td5.appendTo(tr);
 				td6.appendTo(tr);
 				td7.appendTo(tr);
+				td8.appendTo(tr);
 			}
 			$("#EmployeeList").append("</tbdoy>");
 			//alert(window.location.href);
