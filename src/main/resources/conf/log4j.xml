@@ -24,8 +24,8 @@
     <!-- test -->
 	<root>
 		<priority value="debug" />
-		<!-- <appender-ref ref="CONSOLE" /> -->
-		<appender-ref ref="FILE" />
+		<appender-ref ref="CONSOLE" />
+<!-- 		<appender-ref ref="FILE" /> -->
 	</root>
 	<category name="org.springframework">
 		<priority value="error" />
