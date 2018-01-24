@@ -73,7 +73,7 @@
 			</if>
 	</select>
 	
-	<select id="queryKnowledgePointByPid" parameterType="String" resultMap="knowledgePointMap">
+	<select id="queryKnowledgePointByPid" parameterType="com.spidernet.dashboard.entity.KnowledgePoint" resultMap="knowledgePointMap">
 		SELECT
 			t_knowledge_point.KNOWLEDGE_POINT_ID,
 			t_knowledge_point.POINT_TITLE,
@@ -90,6 +90,11 @@
 			t_knowledge_point
 		WHERE
 			t_knowledge_point.PID =  #{pid} 
+			
+			<if test="status != -1">
+				AND t_knowledge_point.STATUS = #{status}
+			</if>
+			
 			ORDER BY t_knowledge_point.SORT
 	</select>
 	
