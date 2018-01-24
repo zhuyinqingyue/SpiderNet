@@ -128,7 +128,6 @@ function saveRule(){
 	var name = $("#name").val();
 	var sort = $("#sort").val();
 	var remark = $("#remark").val();
-	alert(id);
 	if(id == null || id == ""){
 		$.ajax({
 			url:path+'/service/rule/addRule',
