@@ -126,6 +126,9 @@ function loadKnowlegedPointList(pageState){
 						$(tar).removeClass('bgRed');
 					}
 				});
+				
+				var title = curr.find("td:eq(1)").text();
+				$("#detail_title").html(title+'&nbsp;>&nbsp;');
 				queryItemDetailByPid(pid);
 				$('#pointDetail').attr('parentid', pid);
 			});
@@ -135,6 +138,8 @@ function loadKnowlegedPointList(pageState){
 
 
 function queryItemDetailByPid(id){
+	
+	
 	$.ajax({
 		url:path+'/service/knowledge/getKnowledgePointByPid?pid='+id,
 		dataType:"json",
