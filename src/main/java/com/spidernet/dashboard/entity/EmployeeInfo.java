@@ -9,6 +9,7 @@ public class EmployeeInfo
     private String eName;
     private String buName;
     private String projectName;
+    private String trainingName;
     
     
     public String getEr()
@@ -59,8 +60,15 @@ public class EmployeeInfo
     {
         this.projectName = projectName;
     }
-    public EmployeeInfo(String er, String hr, String name, String eName,
-            String buName, String projectName)
+    
+    public String getTrainingName() {
+		return trainingName;
+	}
+	public void setTrainingName(String trainingName) {
+		this.trainingName = trainingName;
+	}
+	public EmployeeInfo(String er, String hr, String name, String eName,
+            String buName, String projectName,String trainingName)
     {
         super();
         this.er = er;
@@ -69,6 +77,7 @@ public class EmployeeInfo
         this.eName = eName;
         this.buName = buName;
         this.projectName = projectName;
+        this.trainingName = trainingName;
     }
     public EmployeeInfo()
     {

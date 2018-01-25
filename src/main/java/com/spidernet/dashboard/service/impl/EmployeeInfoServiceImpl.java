@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.spidernet.dashboard.dao.EmployeeInfoMapper;
 import com.spidernet.dashboard.entity.EmployeeInfo;
 import com.spidernet.dashboard.entity.PageCondition;
+import com.spidernet.dashboard.entity.TrainingInfo;
 import com.spidernet.dashboard.service.EmployeeInfoService;
 
 /**
@@ -29,7 +30,7 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService
         List<EmployeeInfo> listE = employeeInfoMapper.queryEmpInfo(pageCondition);
         return listE;
     }
-
+    
     @Override
     public int countPage(PageCondition pageCondition)
     {
@@ -42,5 +43,25 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService
         List<EmployeeInfo> listE = employeeInfoMapper.queryEmpList(trainingId);
         return listE;
     }
+    
+    @Override
+    public List<TrainingInfo> queryEmpTrainingInfo(String erId)
+    {
+        List<TrainingInfo> listE = employeeInfoMapper.queryEmpTrainingInfo(erId);
+        return listE;
+    }
+    
+    public int updateEmpTrainingInfo(String ername, String trname) 
+    {
+    	int result=employeeInfoMapper.updateEmpTrainingInfo(ername, trname);
+        return result ;
+    }
+
+	public int deleteEmpTrainingInfo(String ername, String trname) 
+	{
+
+		int result= employeeInfoMapper.deleteEmpTrainingInfo(ername, trname);
+        return result;
+	}
 
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spidernet.dashboard.dao.TrainPlanMapper">
+	<resultMap id="trainPlanMap" type="com.spidernet.dashboard.entity.TrainPlan">
+		<id property="allocationPlanId" column="allocation_plan_ID" javaType="int" />
+		<result property="parentTrainingName" column="parent_training_name" javaType="String" />
+		<result property="childTrainName" column="child_training_Name" javaType="String" />
+		<result property="trainTime" column="training_time" javaType="String" />
+		<result property="trainRoom" column="training_room" javaType="String" />
+		<result property="participants" column="participants_number" javaType="int" />
+		<result property="active" column="active" javaType="String" />
+		<result property="TrainCourseId" column="training_cource_id" javaType="String" />
+	</resultMap>
+
+
+	<select id="queryTrainPlanByTrainCourseId" parameterType="String" resultMap="trainPlanMap">
+	    select * FROM t_allocation_plan WHERE training_cource_id = #{TrainCourseId} and active = 'Y' ORDER BY training_time DESC
+	</select>
+	
+	<select id="queryParentName" parameterType="String" resultType="String">
+	    select POINT_TITLE FROM t_knowledge_point WHERE KNOWLEDGE_POINT_ID = #{parentId} 
+	</select>
+	
+	<select id="queryChildName" parameterType="String" resultType="String">
+	    select POINT_TITLE FROM t_knowledge_point WHERE KNOWLEDGE_POINT_ID = #{childId} 
+	</select>
+
+	<insert id="addTrainPlan"  parameterType="com.spidernet.dashboard.entity.TrainPlan">
+		insert into t_allocation_plan(parent_training_name,child_training_name,training_time,
+		training_room,participants_number,active,training_cource_id)
+		VALUES
+		(#{parentTrainingName},#{childTrainName},#{trainTime},#{trainRoom},#{participants},#{active},#{TrainCourseId})
+	</insert>
+
+	<update id="updateTrainPlanByParentTrainName"  parameterType="com.spidernet.dashboard.entity.TrainPlan">
+			UPDATE t_allocation_plan
+			set
+			  child_training_name = #{childTrainName},parent_training_name = #{parentTrainingName},
+			  training_cource_id = #{TrainCourseId},
+			  training_time = #{trainTime},training_room = #{trainRoom},participants_number = #{participants},
+			  active = #{active}
+
+			WHERE allocation_plan_ID = #{allocationPlanId} and active = 'Y'
+  	</update>
+
+	<select id="queryTrainPlanByAllocationPlanId" parameterType="String" resultMap="trainPlanMap">
+		select * FROM t_allocation_plan WHERE allocation_plan_ID = #{allocationPlanId} and active = 'Y' ORDER BY training_time DESC
+	</select>
+
+	<update id="deleteByAllocationPlanId"  parameterType="com.spidernet.dashboard.entity.TrainPlan">
+		UPDATE t_allocation_plan
+		set
+		active = 'N'
+		WHERE allocation_plan_ID = #{allocationPlanId} and active = 'Y'
+	</update>
+
+
+
+</mapper>
