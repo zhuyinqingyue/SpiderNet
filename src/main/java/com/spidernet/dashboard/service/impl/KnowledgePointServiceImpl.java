@@ -19,9 +19,9 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
 	private KnowledgePointMapper knowledgePointMapper;
 
 	@Override
-	public List<KnowledgePoint> queryKnowledgePointByPid(String pid) {
+	public List<KnowledgePoint> queryKnowledgePointByPid(KnowledgePoint knowledgePoint) {
 		
-		return knowledgePointMapper.queryKnowledgePointByPid(pid);
+		return knowledgePointMapper.queryKnowledgePointByPid(knowledgePoint);
 	}
 
 	@Override

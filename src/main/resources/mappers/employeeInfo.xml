@@ -13,90 +13,99 @@
 
 	<select id="queryEmpInfo" parameterType="com.spidernet.dashboard.entity.EmpPageCondition"
 		resultMap="employeeInfoMap">
-		select e.ER_NUMBER,e.HR_NUMBER,e.`NAME`,e.ENAME ,b.`NAME` as NAME1,p.`NAME` as NAME2
-        from t_employee AS e
-        LEFT JOIN t_bu AS b 
-        ON e.BU_ID = b.BU_ID
-        LEFT JOIN t_project AS p
-        ON e.PROJECT_ID = p.PROJECT_ID
-        <if test="examId != null and examId != ''">
-        LEFT JOIN t_personal_exam AS pe
-        ON pe.EMPLOYEE_ID = e.EMPLOYEE_ID
-        </if>
-        <if test="trainingId != null and trainingId != ''">
-        LEFT JOIN t_personal_training AS pt
-        ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID 
-        </if>
-        WHERE 1 = 1
-        
-			<if test="buId != null and buId != ''">
-				AND b.BU_ID = #{buId}
-			</if>
-			<if test="projectId != null and projectId != ''">
-				AND p.PROJECT_ID = #{projectId}
-			</if>
-			<if test="examId != null and examId != ''">
-				AND pe.EXAM_ID = #{examId}
-			</if>
-			<if test="trainingId != null and trainingId != ''">
-				AND pt.TRAINING_ID = #{trainingId}
-			</if>
-			<if test="er != null and er != ''">
-				AND e.ER_NUMBER = #{er}
-			</if>
-		
-        LIMIT #{currentPage},10;
+		select e.ER_NUMBER,e.HR_NUMBER,e.`NAME`,e.ENAME ,b.`NAME` as
+		NAME1,p.`NAME` as NAME2
+		from t_employee AS e
+		LEFT JOIN t_bu AS b
+		ON e.BU_ID = b.BU_ID
+		LEFT JOIN t_project AS p
+		ON e.PROJECT_ID = p.PROJECT_ID
+		<if test="examId != null and examId != ''">
+			LEFT JOIN t_personal_exam AS pe
+			ON pe.EMPLOYEE_ID = e.EMPLOYEE_ID
+		</if>
+		<if test="trainingId != null and trainingId != ''">
+			LEFT JOIN t_personal_training AS pt
+			ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID
+		</if>
+		WHERE 1 = 1 
+
+		<if test="buId != null and buId != ''">
+			AND b.BU_ID = #{buId}
+		</if>
+		<if test="projectId != null and projectId != ''">
+			AND p.PROJECT_ID = #{projectId}
+		</if>
+		<if test="examId != null and examId != ''">
+			AND pe.EXAM_ID = #{examId}
+		</if>
+		<if test="trainingId != null and trainingId != ''">
+			AND pt.TRAINING_ID = #{trainingId}
+		</if>
+		<if test="er != null and er != ''">
+			AND e.ER_NUMBER = #{er}
+		</if>
+
+		LIMIT #{currentPage},10;
 	</select>
-	
-	
-	<select id="queryEmpList" parameterType="String"
-		resultMap="employeeInfoMap">
-		select e.ER_NUMBER,e.HR_NUMBER,e.`NAME`,e.ENAME ,b.`NAME` as NAME1,p.`NAME` as NAME2
-        from t_employee AS e
-        LEFT JOIN t_bu AS b 
-        ON e.BU_ID = b.BU_ID
-        LEFT JOIN t_project AS p
-        ON e.PROJECT_ID = p.PROJECT_ID
-        LEFT JOIN t_personal_training AS pt
-        ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID 
-        WHERE  pt.TRAINING_ID = #{trainingId}
+
+
+	<select id="queryEmpList" parameterType="String" resultMap="employeeInfoMap">
+		select e.ER_NUMBER,e.HR_NUMBER,e.`NAME`,e.ENAME ,b.`NAME` as
+		NAME1,p.`NAME` as NAME2
+		from t_employee AS e
+		LEFT JOIN t_bu AS b
+		ON e.BU_ID = b.BU_ID
+		LEFT JOIN t_project AS p
+		ON e.PROJECT_ID = p.PROJECT_ID
+		LEFT JOIN t_personal_training AS pt
+		ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID
+		WHERE pt.TRAINING_ID = #{trainingId}
 	</select>
-	
-	
+
+
 	<select id="countPage" parameterType="com.spidernet.dashboard.entity.EmpPageCondition"
 		resultType="int">
 		select count(0)
-        from t_employee AS e
-        LEFT JOIN t_bu AS b 
-        ON e.BU_ID = b.BU_ID
-        LEFT JOIN t_project AS p
-        ON e.PROJECT_ID = p.PROJECT_ID
-        <if test="examId != null and examId != ''">
-        LEFT JOIN t_personal_exam AS pe
-        ON pe.EMPLOYEE_ID = e.EMPLOYEE_ID
-        </if>
-        <if test="trainingId != null and trainingId != ''">
-        LEFT JOIN t_personal_training AS pt
-        ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID 
-        </if>
-        WHERE 1 = 1
-        
-			<if test="buId != null and buId != ''">
-				AND b.BU_ID = #{buId}
-			</if>
-			<if test="projectId != null and projectId != ''">
-				AND p.PROJECT_ID = #{projectId}
-			</if>
-			<if test="examId != null and examId != ''">
-				AND pe.EXAM_ID = #{examId}
-			</if>
-			<if test="trainingId != null and trainingId != ''">
-				AND pt.TRAINING_ID = #{trainingId}
-			</if>
-			<if test="er != null and er != ''">
-				AND e.ER_NUMBER = #{er}
-			</if>
-		
+		from t_employee AS e
+		LEFT JOIN t_bu AS b
+		ON e.BU_ID = b.BU_ID
+		LEFT JOIN t_project AS p
+		ON e.PROJECT_ID = p.PROJECT_ID
+		<if test="examId != null and examId != ''">
+			LEFT JOIN t_personal_exam AS pe
+			ON pe.EMPLOYEE_ID = e.EMPLOYEE_ID
+		</if>
+		<if test="trainingId != null and trainingId != ''">
+			LEFT JOIN t_personal_training AS pt
+			ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID
+		</if>
+		WHERE 1 = 1
+
+		<if test="buId != null and buId != ''">
+			AND b.BU_ID = #{buId}
+		</if>
+		<if test="projectId != null and projectId != ''">
+			AND p.PROJECT_ID = #{projectId}
+		</if>
+		<if test="examId != null and examId != ''">
+			AND pe.EXAM_ID = #{examId}
+		</if>
+		<if test="trainingId != null and trainingId != ''">
+			AND pt.TRAINING_ID = #{trainingId}
+		</if>
+		<if test="er != null and er != ''">
+			AND e.ER_NUMBER = #{er}
+		</if>
+
 	</select>
 
+	<select id="queryEmpTrainingInfo" parameterType="com.spidernet.dashboard.entity.TrainingInfo"
+		resultMap="employeeInfoMap">
+		select b.`course_name` as NAME1,c.er_number,c.hr_number,c.name from
+		(select training_id from t_personal_training a where a.status = 0 and a.employee_id =
+		(select a.EMPLOYEE_ID from t_employee a where a.er_number = #{erId}))
+		a left join t_training b on a.training_id = b.training_id left join
+		t_employee c on c.er_number = #{erId};
+	</select>
 </mapper>

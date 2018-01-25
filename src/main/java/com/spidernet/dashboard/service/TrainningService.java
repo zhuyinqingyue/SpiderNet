@@ -2,6 +2,7 @@ package com.spidernet.dashboard.service;
 
 import java.util.List;
 
+import com.spidernet.dashboard.entity.EmpPageCondition;
 import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.entity.TrainningPageCondition;
 
@@ -14,4 +15,5 @@ public interface TrainningService
     List<Trainning> queryTrainingByName(String trainingName);
     List<Trainning> queryTrainingName();
     Trainning queryTrainingById(String trainingId);
+    List<String> queryEmpAllTrainingNames(EmpPageCondition empPageCondition);
 }

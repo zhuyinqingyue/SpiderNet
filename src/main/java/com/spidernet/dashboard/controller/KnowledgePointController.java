@@ -39,7 +39,11 @@ public class KnowledgePointController {
 	  public Object getKnowledgePointByPid(final HttpServletRequest request,
 			  final HttpServletResponse response){
 		  String pid = request.getParameter("pid")==null?"0":request.getParameter("pid");
-		  List<KnowledgePoint> list = knowledgePointService.queryKnowledgePointByPid(pid);
+		  int status = request.getParameter("status")==null?-1:Integer.parseInt(request.getParameter("status"));
+		  KnowledgePoint point = new KnowledgePoint();
+		  point.setPid(pid);
+		  point.setStatus(status);
+		  List<KnowledgePoint> list = knowledgePointService.queryKnowledgePointByPid(point);
 		  return list;
 	  }
 	  
