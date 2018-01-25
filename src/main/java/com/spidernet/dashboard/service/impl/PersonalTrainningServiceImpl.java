@@ -40,4 +40,18 @@ public class PersonalTrainningServiceImpl implements PersonalTrainningService
             return false;
         }
     }
+    
+    public int updateEmpTrainingInfo(String ername, String trname) 
+    {
+    	int result=personalTrainningMapper.updateEmpTrainingInfo(ername, trname);
+        return result ;
+    }
+
+	public int deleteEmpTrainingInfo(String ername, String trname) 
+	{
+
+		int result= personalTrainningMapper.deleteEmpTrainingInfo(ername, trname);
+        return result;
+	}
+
 }
