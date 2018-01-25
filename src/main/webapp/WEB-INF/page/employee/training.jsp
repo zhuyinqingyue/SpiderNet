@@ -185,10 +185,10 @@
                                     <thead>
                                     <tr>
                                         <th>knowledge point</th>
-                                        <th>子知识点</th>
-                                        <th>日期</th>
-                                        <th>会议室</th>
-                                        <th>参与人员</th>
+                                        <th>Child Knowledge</th>
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                        <th>participants</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -347,7 +347,7 @@
                     <div id="addfailureAlert" class="alert alert-warning" style="display: none;"></div>
 
                     <div>
-                        <label class="col-lg-2 control-label">知识点</label>
+                        <label class="col-lg-2 control-label">Knowledge</label>
                         <div class="col-lg-4">
                             <select href="#" class="form-control " name="knowledgePoints"
                                     data-bv-notempty data-bv-notempty-message="Please select knowledge Points."
@@ -356,7 +356,7 @@
                                 <option value="">-- Please Select --</option>
                             </select>
                         </div>
-                        <label class="col-lg-2 control-label">子知识点</label>
+                        <label class="col-lg-2 control-label">SubTopic</label>
                         <div class="col-lg-4">
                             <select href="#" class="form-control " name="childknowledgePoints"
                                     data-bv-notempty data-bv-notempty-message="Please select Child Knowledge Points."
@@ -442,7 +442,7 @@
                     <div id="updatefailureAlert" class="alert alert-warning" style="display: none;"></div>
 
                     <div>
-                        <label class="col-lg-2 control-label">知识点</label>
+                        <label class="col-lg-2 control-label">KnowLedge</label>
                         <div class="col-lg-4">
                             <select href="#" class="form-control " name="updatenowledgePoint"
                                     data-bv-notempty data-bv-notempty-message="Please select skill."
@@ -451,7 +451,7 @@
                                 <option value="">-- Please Select --</option>
                             </select>
                         </div>
-                        <label class="col-lg-2 control-label">子知识点</label>
+                        <label class="col-lg-2 control-label">SubTopic</label>
                         <div class="col-lg-4">
                             <select href="#" class="form-control " name="updateChildKnowledge"
                                     data-bv-notempty data-bv-notempty-message="Please select skill."
