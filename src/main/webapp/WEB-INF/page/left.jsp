@@ -41,6 +41,7 @@
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/capabilityMap.html"><i class="glyphicon glyphicon-picture"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Capacity Map</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/exam.html"><i class="glyphicon glyphicon-pencil"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Examination</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/training.html"><i class="glyphicon glyphicon-book"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Trainning</span></a></li>
+                                <li><a class="ajax-link" href="<%=path %>/service/rule/rule.html"><i class="glyphicon glyphicon-book"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Rule</span></a></li><!-- Lulu -->
                             </c:if>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddCapability.html"><i class="glyphicon glyphicon-hdd"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Batch Add Capacity</span></a></li>
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddTraining.html"><i class="glyphicon glyphicon-share"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Batch Add Trainning</span></a></li>

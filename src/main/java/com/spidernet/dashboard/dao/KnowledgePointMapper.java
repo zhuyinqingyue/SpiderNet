@@ -8,7 +8,7 @@ import com.spidernet.dashboard.entity.PageCondition;
 
 public interface KnowledgePointMapper {
 
-	    List<KnowledgePoint> queryKnowledgePointByPid(String pid);
+	    List<KnowledgePoint> queryKnowledgePointByPid(KnowledgePoint knowledgePoint);
 	    List<KnowledgePoint> queryKnowledgePoints(KnowledgePointCondition condition);
 	    int addKnowledgePoint(KnowledgePoint knowledgePoint);
 	    int updateKnowledgePoint(KnowledgePoint knowledgePoint);
