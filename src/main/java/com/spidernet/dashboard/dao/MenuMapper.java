@@ -9,7 +9,7 @@ public interface MenuMapper {
 
 	List<Menu> queryMenuList();
 
-	int getSortByParentId(String parentId);
+	String getSortByParentId(int parentId);
 
 	int addMenu(Menu menu);
 
@@ -17,9 +17,9 @@ public interface MenuMapper {
 	
 	int deleteMenu(Menu menu);
 
-	Menu getMenuById(String id);
+	Menu getMenuById(int id);
 
-	String getNameById(String id);
+	String getNameById(int id);
 
 	int getMaxId();
 

@@ -7,7 +7,7 @@
 		<result property="name" column="NAME" javaType="String" />
 		<result property="url" column="URL" javaType="String" />
 		<result property="sort" column="SORT" javaType="int" />
-		<result property="parentId" column="PARENT_ID" javaType="String" />
+		<result property="parentId" column="PARENT_ID" javaType="int" />
 		<result property="remark" column="REMARK" javaType="String" />
 		<result property="picUrl" column="PIC_URL" javaType="String" />
 		<result property="valid" column="VALID" javaType="String" />
@@ -17,16 +17,16 @@
 		select * from t_menu where valid='Y' order by SORT asc;
 	</select>
 	
-	<select id="getMenuById" parameterType="String" resultMap="menuMap">
+	<select id="getMenuById" parameterType="int" resultMap="menuMap">
 		select * from t_menu where valid='Y' and ID = #{id};
 	</select>
 	
-	<select id="getNameById" parameterType="String" resultType="String">
+	<select id="getNameById" parameterType="int" resultType="String">
 	    SELECT name FROM T_MENU WHERE ID = #{id} and valid='Y'
 	</select>
 	
 	
-	<select id="getSortByParentId" parameterType="String" resultType="int">
+	<select id="getSortByParentId" parameterType="int" resultType="String">
 	    SELECT max(sort) FROM T_MENU WHERE PARENT_ID = #{parentId} and valid='Y'
 	</select>
 	
