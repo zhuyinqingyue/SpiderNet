@@ -22,8 +22,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spidernet.dashboard.entity.CCapability;
+import com.spidernet.dashboard.entity.CapabilityB;
+import com.spidernet.dashboard.entity.CapabilityMap;
 import com.spidernet.dashboard.entity.EmpPageCondition;
 import com.spidernet.dashboard.entity.EmployeeInfo;
+import com.spidernet.dashboard.entity.ProCapability;
+import com.spidernet.dashboard.entity.TrainingInfo;
+import com.spidernet.dashboard.entity.TrainingInfoPageCondition;
 import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.service.EmployeeInfoService;
 import com.spidernet.dashboard.service.ExamService;
@@ -129,7 +135,7 @@ public class EmployeeInfoController {
 			result.put("trainingNames", trainingNames);
 			result.put("pageInfo", request.getSession().getAttribute("pageCondition"));
 		} else {
-			trainingNames = trainingService.queryEmpAllTrainingNames(currentPage);
+			trainingNames = trainingService.queryEmpAllTrainingNames((EmpPageCondition) request.getSession().getAttribute("pageCondition"));
 			result.put("data", listE);
 			result.put("trainingNames", trainingNames);
 			result.put("pageInfo", request.getSession().getAttribute("pageCondition"));
@@ -261,11 +267,24 @@ public class EmployeeInfoController {
 			file.delete();
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return response;
 	}
+	
+	@RequestMapping("/viewTrainings")
+    @ResponseBody
+    public Object viewTrainings(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
 
+		String erId =  request.getParameter("erId");
+
+		List<TrainingInfo> listE = employeeInfoService
+				.queryEmpTrainingInfo(erId);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("data", listE);
+		return result;
+    }
 }

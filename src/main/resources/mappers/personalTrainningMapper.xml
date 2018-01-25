@@ -21,4 +21,17 @@
 	<select id="checkPersonalTrainningExists" parameterType="com.spidernet.dashboard.entity.PersonalTrainning" resultType="int">
 	    select count(0) from t_personal_training where TRAINING_ID = #{trainningId} and EMPLOYEE_ID = #{employeeId}
 	</select>
+	<update id="updateEmpTrainingInfo" parameterType="String">
+	   update t_personal_training set status="1" where employee_id in (select employee_id from t_employee where er_number = #{arg0}) and 
+		training_id in (select training_id from t_training  where course_name = #{arg1})
+	</update>
+	
+	<delete id="deleteEmpTrainingInfo" parameterType="String">
+		
+		delete from t_personal_training  where employee_id in (select employee_id from t_employee where er_number = #{arg0}) and 
+		training_id in (select training_id from t_training  where course_name = #{arg1})
+		
+		
+	</delete>
+	
 </mapper>

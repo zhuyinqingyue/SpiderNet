@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.spidernet.dashboard.entity.EmpPageCondition;
 import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.entity.TrainningPageCondition;
 
@@ -16,6 +17,6 @@ public interface TrainningMapper
     List<Trainning> queryTrainingByName(String trainingName);
     List<Trainning> queryTrainingName();
     Trainning queryTrainingById(String trainingId);
-    List<String> queryPersonTrainingNames(String currentPage);
+    List<String> queryPersonTrainingNames(EmpPageCondition empPageCondition);
 }
 

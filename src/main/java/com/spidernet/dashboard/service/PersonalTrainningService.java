@@ -8,4 +8,7 @@ public interface PersonalTrainningService
 {
     Boolean addPersonalTrainning(List<PersonalTrainning> personalTrainning);
     Boolean checkPersonalTrainningExists(PersonalTrainning personalTrainning);
+    int deleteEmpTrainingInfo(String ername, String trname);
+
+	int updateEmpTrainingInfo(String ername, String trname);
 }

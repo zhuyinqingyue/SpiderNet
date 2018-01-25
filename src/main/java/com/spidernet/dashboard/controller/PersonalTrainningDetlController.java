@@ -1,7 +1,9 @@
 package com.spidernet.dashboard.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -209,5 +211,35 @@ public class PersonalTrainningDetlController
         
         return addResultFlag;
     }
+    
+    @RequestMapping("/trainingOperation")
+    @ResponseBody
+    public Object trainingOperation(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+
+		String ername = request.getParameter("ername");
+		String trname = request.getParameter("trname");
+		String type=request.getParameter("type");
+	
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		if("1".equals(type)) {
+			int result1=personalTrainningService
+					.updateEmpTrainingInfo(ername, trname);
+					
+					
+		Integer resultFlag = Integer.valueOf(result1);
+				result.put("result", resultFlag);
+		}else {
+		
+			Integer resultFlag = Integer.valueOf(personalTrainningService
+			.deleteEmpTrainingInfo(ername, trname));
+			result.put("result", resultFlag);
+			
+		}
+		
+		return result;
+    }
+   
 
 }

@@ -57,11 +57,32 @@
 	    SELECT TRAINING_ID as trainningId,COURSE_NAME as courseName,TIME as time,LOCATION as location,TEACHER as teacher,URL as url,STATUS as status FROM t_training WHERE TRAINING_ID = #{trainningId}
 	</select>
 	
-	<select id="queryPersonTrainingNames" parameterType="String" resultType="String">
-	    select GROUP_CONCAT(distinct COURSE_NAME) as trainingName from t_employee as a, 
-	     t_training as b, t_personal_training as c where
-	     a.EMPLOYEE_ID=c.EMPLOYEE_ID and c.TRAINING_ID=b.TRAINING_ID group by a.EMPLOYEE_ID
-	     LIMIT #{currentPage},10;
+	<select id="queryPersonTrainingNames" parameterType="com.spidernet.dashboard.entity.EmpPageCondition" resultType="String">
+	    select group_concat(a.course_name) as training_name 
+	    from t_employee b 
+	    left join (select a.employee_id, a.training_id, b.course_name ,a.status from t_personal_training a, t_training b where b.training_id = a.training_id) a  
+	    on a.employee_id=b.employee_id 
+	    left join t_bu c 
+	    on c.bu_id=b.bu_id 
+	    left join t_project d 
+	    on d.project_id=b.project_id 
+	    WHERE 1 = 1 and a.status = 0 
+
+		<if test="buId != null and buId != ''">
+			AND c.BU_ID = #{buId}
+		</if>
+		<if test="projectId != null and projectId != ''">
+			AND d.PROJECT_ID = #{projectId}
+		</if>
+		<if test="trainingId != null and trainingId != ''">
+			AND a.TRAINING_ID = #{trainingId}
+		</if>
+		<if test="er != null and er != ''">
+			AND e.ER_NUMBER = #{er}
+		</if>
+	    
+	    group by b.employee_id
+	    LIMIT #{currentPage},10;
 	</select>
 
 </mapper>

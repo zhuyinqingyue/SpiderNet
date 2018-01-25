@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.spidernet.dashboard.dao.TrainningMapper;
+import com.spidernet.dashboard.entity.EmpPageCondition;
 import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.entity.TrainningPageCondition;
 import com.spidernet.dashboard.service.TrainningService;
@@ -75,9 +76,9 @@ public class TrainningServiceImpl implements TrainningService
         return trainning;
     }
     
-    public List<String> queryEmpAllTrainingNames(String currentPage) {
+    public List<String> queryEmpAllTrainingNames(EmpPageCondition empPageCondition) {
 		// TODO Auto-generated method stub
-	List<String> trainingName=trainningMapper.queryPersonTrainingNames(currentPage);
+	List<String> trainingName=trainningMapper.queryPersonTrainingNames(empPageCondition);
 	return trainingName;
 }
 
