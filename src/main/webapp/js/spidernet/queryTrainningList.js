@@ -245,7 +245,7 @@ function detailTrainningplan(CourceId) {
                 var td5 = $("<td>"
                     + result[i].participants
                     + "</td>");
-                var td6 = $("<td> <a class='btn btn-info btn-xs' href='javascript:void(0);' onclick=updateDetailTrainningplanMode('" + result[i].allocationPlanId + "')>Edit</a>"
+                var td6 = $("<td> <a class='btn btn-info btn-xs' href='javascript:void(0);' onclick=updateDetailTrainningplanMode('" + result[i].allocationPlanId +"','"+result[i].parentId+"','"+result[i].childId+ "')>Edit</a>"
                                  + "&nbsp&nbsp&nbsp"
                                + "<a class='btn btn-danger btn-xs' href='javascript:void(0);' onclick=deletedTrainningdetailPlan('" + result[i].allocationPlanId + "','" + result[i].TrainCourseId + "')>Deleted</a>"
                           +"</td>");
@@ -397,10 +397,7 @@ function loadupdateKnowledgePoint() {
     })
 }
 
-function loadupdateChildKnowledgePoint() {
-
-    $("#updateChildKnowledge").empty();
-    var KnowledgePointByPid = $(this).val();
+function loadupdateChildKnowledgePoint(KnowledgePointByPid) {
 
 
     $.ajax({
@@ -430,14 +427,20 @@ function loadupdateChildKnowledgePoint() {
 
 $("#updatenowledgePoint").change(function(){
 
-    loadupdateChildKnowledgePoint();
+    $("#updateChildKnowledge").empty();
+    var KnowledgePointByPid = $(this).val();
+
+    loadupdateChildKnowledgePoint(KnowledgePointByPid);
+
 });
 
 
 
-function updateDetailTrainningplanMode(id) {
+function updateDetailTrainningplanMode(id,childId) {
+
 
     loadupdateKnowledgePoint();
+    loadupdateChildKnowledgePoint(childId);
 
     queryTrainPlanByAllocationId(id);
 
