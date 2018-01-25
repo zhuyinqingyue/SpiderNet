@@ -47,6 +47,11 @@
                                 <li><a class="ajax-link" href="<%=path %>/service/employee/batchAddTraining.html"><i class="glyphicon glyphicon-share"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Batch Add Trainning</span></a></li>
                             </ul>
                         </li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i><span>&nbsp;&nbsp;System Deployment</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+	                            <li><a class="ajax-link" href="<%=path %>/service/menuInfo/menuManagement.html"><i class="glyphicon glyphicon-book"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Menu Show</span></a></li>
+                           	</ul>
                         </li>
                         </c:if>
                         
@@ -56,5 +61,3 @@
         </div>
 </body>
 </html>
-
-
