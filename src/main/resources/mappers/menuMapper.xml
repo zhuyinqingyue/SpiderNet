@@ -31,7 +31,7 @@
 	</select>
 	
 	<select id="getMaxId"  resultType="int">
-	    SELECT max(id)+1 FROM T_MENU WHERE valid='Y'
+	    SELECT max(id)+1 FROM T_MENU
 	</select>
 	
 	<insert id="addMenu" parameterType="com.spidernet.dashboard.entity.Menu">
