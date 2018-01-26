@@ -9,7 +9,7 @@ public class Menu {
     
     private int sort;
     
-    private String parentId;
+    private int parentId;
     
     private String parentName;
     
@@ -44,11 +44,12 @@ public class Menu {
 		this.sort = sort;
 	}
 
-	public String getParentId() {
+	
+	public int getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(String parentId) {
+	public void setParentId(int parentId) {
 		this.parentId = parentId;
 	}
 

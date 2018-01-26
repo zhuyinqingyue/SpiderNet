@@ -8,7 +8,7 @@ public interface MenuService {
 	
 	List<Menu> queryMenuList();
 
-	int getSortByParentId(String parentId);
+	int getSortByParentId(int parentId);
 
 	boolean addMenu(Menu menu);
 
@@ -16,9 +16,9 @@ public interface MenuService {
 
 	boolean deleteMenu(Menu menu);
 
-	Menu getMenuById(String id);
+	Menu getMenuById(int id);
 
-	String getNameById(String id);
+	String getNameById(int id);
 
 	int getMaxId();
 }

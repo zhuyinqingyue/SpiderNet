@@ -24,8 +24,13 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public int getSortByParentId(String parentId) {
-		return menuMapper.getSortByParentId(parentId) + 1;
+	public int getSortByParentId(int parentId) {
+		String sortStr  = menuMapper.getSortByParentId(parentId);
+		int sort = 0;
+		if(sortStr != null){
+			sort = Integer.parseInt(sortStr);;
+		} 
+		return sort + 1;
 	}
 
 	@Override
@@ -68,12 +73,12 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public Menu getMenuById(String id) {
+	public Menu getMenuById(int id) {
 		return menuMapper.getMenuById(id);
 	}
 
 	@Override
-	public String getNameById(String id) {
+	public String getNameById(int id) {
 		return menuMapper.getNameById(id);
 	}
 
