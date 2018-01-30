@@ -7,6 +7,7 @@ package com.spidernet.dashboard.service;
 import java.util.List;
 
 import com.spidernet.dashboard.entity.Rule;
+import com.spidernet.dashboard.entity.RuleMenu;
 import com.spidernet.dashboard.entity.RulePageCondition;
 
 
@@ -20,5 +21,9 @@ public interface RuleService
     Rule queryRuleById(String id);
     Boolean editRule(Rule rule);
     Boolean deleteRule(Rule rule);
-    Boolean checkNameExists(String name);
+    Boolean checkNameExists(String name);    
+    int accountRuleMenu(String ruleId);
+    Boolean deleteRuleMenu(RuleMenu ruleMenu);
+    Boolean addRuleMenu(RuleMenu ruleMenu);
+    List<RuleMenu> queryRuleMenu(String ruleId);
 }
