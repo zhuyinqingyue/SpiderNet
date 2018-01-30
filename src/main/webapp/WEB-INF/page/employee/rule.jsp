@@ -88,8 +88,8 @@
 							</div>
 							<div class="box-content">
 
-								<form id="trainingForm" method="post" class="form-horizontal"
-									style="width: 100%" action="target.php">
+								<form id="searchForm" method="post" class="form-horizontal"
+									style="width: 100%">
 									
 									<div class="form-group">
 									<div class="group">
@@ -172,7 +172,7 @@
 						<div class="box-icon">
 							<a href="#" class="btn btn-round btn-default  btn-minimize "><i
 								class="glyphicon glyphicon-chevron-up"></i></a> <a
-								class="btn btn-round btn-default" href="#" data-dismiss="modal">
+								class="btn btn-round btn-default" href="#" data-dismiss="modal" onClick="cancelRule()">
 								<i class="glyphicon glyphicon-remove"></i>
 							</a>
 						</div>
@@ -214,9 +214,8 @@
 						</br>
 						
 						<div class="center">
-							<a class="btn btn-success" href="#" onClick="saveRule()"> 
-							<i class="glyphicon glyphicon-ok icon-white" ></i> Confirm</a> 
-							<a class="btn btn-info" href="#" data-dismiss="modal"> 
+							<button type="submit" id="submitBtn" class="btn btn-success">Confirm</button>
+							<a class="btn btn-info" href="#" data-dismiss="modal" onClick="cancelRule()"> 
 							<i class="glyphicon glyphicon-remove icon-white"></i> Cancel</a>
 						</div>
 					</form>

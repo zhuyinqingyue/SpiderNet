@@ -3,7 +3,7 @@ $(function(){
 	
 });
 
-$(document).ready(function() {
+$(document).ready(function() {	
     $('#ruleForm').bootstrapValidator({
 		message: 'This value is not valid',
 
@@ -14,6 +14,7 @@ $(document).ready(function() {
         },
         fields: {
         	name: {
+        		group: '.group',
 				validators: {
                     notEmpty: {
                         message: 'Please input Name.'
@@ -38,12 +39,13 @@ $(document).ready(function() {
             },
 
             sort: {
+            	group: '.group',
                 validators: {
                     notEmpty: {
                         message: 'Please input Sort.'
                     },
                     regexp: {
-                        regexp: /^[1-9]\d*$/,
+                        regexp: /^[0-9]\d*$/,
                         message: 'Please enter the number.'
                     },
                     stringLength: {
@@ -55,14 +57,13 @@ $(document).ready(function() {
             }
         }
     }) .on('success.form.bv', function(e) {
-    	// Prevent submit form
-        e.preventDefault();
+    	 e.preventDefault();
 
-        var $form     = $(e.target);
-            validator = $form.data('bootstrapValidator');
-        if(validator){
-        	saveRule(e.target);
-        }                   
+         var $form     = $(e.target);
+             validator = $form.data('bootstrapValidator');
+         if(validator){
+        	 saveRule();
+         }                
     }) ;
 });
 
@@ -96,7 +97,8 @@ function loadRuleList(pageState){
 						+ result.data[i].remark
 						+ "</td>");
 				var td3 = $("<td><a class='btn btn-info' href='javascript:void(0);'  onclick=edit('"+result.data[i].id+"')> <i class='glyphicon glyphicon-edit icon-white'></i> Edit</a>" +
-						        "&nbsp<a class='btn btn-info' href='javascript:void(0);'  onclick=deleteRule('"+result.data[i].id+"')> <i class='glyphicon glyphicon-delete icon-white'></i> Delete</a></td>");
+						        "&nbsp<a class='btn btn-info' href='javascript:void(0);'  onclick=deleteRule('"+result.data[i].id+"')> <i class='glyphicon glyphicon-delete icon-white'></i> Delete</a>"+
+						        "&nbsp<a class='btn btn-info' href='javascript:void(0);'  onclick=ruleMenu('"+result.data[i].id+"')> <i class='glyphicon glyphicon-ruleMenu icon-white'></i> RuleMenu</a></td>");
 				td1.appendTo(tr);
 				td2.appendTo(tr);
 				td3.appendTo(tr);
@@ -128,7 +130,8 @@ function saveRule(){
 	var name = $("#name").val();
 	var sort = $("#sort").val();
 	var remark = $("#remark").val();
-	if(id == null || id == ""){
+	if(id == null || id == "")
+	{
 		$.ajax({
 			url:path+'/service/rule/addRule',
 			dataType:"json",
@@ -140,10 +143,7 @@ function saveRule(){
 				if(resultFlag){
 					$("#successAlert").html('Add success!').show();
 					setTimeout(function () {
-					    $("#successAlert").hide();
-					    $("#name").val("");
-						$("#sort").val("");
-						$("#remark").val("");
+						cancelRule();
 						$('#myModal').modal('hide');
 				    }, 2000);
 					loadRuleList();
@@ -151,9 +151,10 @@ function saveRule(){
 					$("#failureAlert").html('Add failure!').show();
 				}
 			}
-		})		
+		})
 	}
-	else{
+	else
+	{
 		$.ajax({
 			url:path+'/service/rule/editRule',
 			dataType:"json",
@@ -165,11 +166,7 @@ function saveRule(){
 				if(resultFlag){
 					$("#successAlert").html('Edit success!').show();
 					setTimeout(function () {
-					    $("#successAlert").hide();
-					    $("#id").val("");
-					    $("#name").val("");
-						$("#sort").val("");
-						$("#remark").val("");
+						cancelRule();
 						$('#myModal').modal('hide');
 				    }, 2000);
 					loadRuleList();
@@ -177,12 +174,11 @@ function saveRule(){
 					$("#failureAlert").html('Edit failure!').show();
 				}
 			}
-		})	
+		})
 	}
-		
-	
-		
+								
 }
+
 
 function getRuleById(id){
 $.ajax({
@@ -205,6 +201,7 @@ function edit(id){
 	getRuleById(id);
 	$('#myModal').modal('show');	
 }
+
 function deleteRule(id){
 		if(confirm("Confirm delete?")){
 			$.ajax({
@@ -225,6 +222,16 @@ function deleteRule(id){
 			})
 			
 		}
+}
+
+function cancelRule(){	
+	$("#successAlert").html("").hide();
+	$("#failureAlert").html("").hide();
+	$("#id").val("");
+        $("#name").val("");
+	$("#sort").val("");
+	$("#remark").val("");
+	$('#ruleForm').data('bootstrapValidator').resetForm(true);
 }
 
 
