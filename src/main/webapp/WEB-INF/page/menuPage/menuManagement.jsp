@@ -46,6 +46,10 @@
 <link href='<%=path%>/css/animate.min.css' rel='stylesheet'>
 <link href='<%=path%>/css/bootstrap-select.css' rel='stylesheet'>
 <link href='<%=path%>/css/bootstrap-select.min.css' rel='stylesheet'>
+
+
+<link href="<%=path%>/css/icon-picker.css" rel="stylesheet" />
+ 
 <link
 	href='<%=path%>/bower_components/bootstrap-val/bootstrapValidator.css'
 	rel='stylesheet'>
@@ -137,26 +141,29 @@
 					    <input type="hidden" class="form-control" name="remark" id="b_remark" />
 					    <input type="hidden" class="form-control" name="sort" id="sort" />
 					</div>
+					<div class="box-content alerts" id="alertInfo">
+		            </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Node Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="String">
+                        <label  for="exampleInputEmail1"><h4>Node Name</h4></label>
+                        <input type="text" class="form-control" id="name"  placeholder="Please Input Information!" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">ParentNode Name</label>
-                        <input type="text" class="form-control" id="pName" placeholder="String">
+                        <label  for="exampleInputPassword1"><h4>ParentNode Name</h4></label>
+                        <input type="text" class="form-control" id="pName"  />
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Picture Code</label>
-                        <input type="text" class="form-control" id="picUrl" placeholder="String">
+                        <label  for="exampleInputPassword1"><h4>Picture Code</h4></label>
+                        <input type="text" class="form-control" id="picUrl"  />
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Node URL</label>
-                        <input type="text" class="form-control" id="menuUrl" placeholder="String">
+                        <label  for="exampleInputPassword1"><h4>Node URL</h4></label>
+                        <input type="text" class="form-control" id="menuUrl" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Node Remark</label>
-                        <textarea class="autogrow" id="remark" placeholder="String"></textarea>
+                        <label  for="exampleInputPassword1"><h4>Node Remark</h4></label>
+                        <textarea class="form-control" id="remark" placeholder="Please Input some menu remark !" ></textarea>
                     </div>
+                    
                     <!-- <div class="form-group">
                         <label for="exampleInputFile">File input</label>
                         <input type="file" id="exampleInputFile">
@@ -170,8 +177,8 @@
                     </div> -->
                     
                     <a class="btn btn-success" href="#" id="add">
-	                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-	                Add
+		                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+		                Add
 		            </a>
 		            <a class="btn btn-info" href="#" id = "update">
 		                <i class="glyphicon glyphicon-edit icon-white" ></i>
@@ -243,6 +250,8 @@
 	<script src="<%=path%>/js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="<%=path%>/js/charisma.js"></script>
+	
+	<script src="<%=path%>/js/iconPicker.js"></script>
 
 	<!-- default loading -->
 	<script type="text/javascript" src="<%=path %>/js/spidernet/scoreImport.js"></script>

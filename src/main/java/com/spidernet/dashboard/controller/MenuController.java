@@ -46,9 +46,9 @@ public class MenuController {
     public Menu getMenuById(final HttpServletRequest request,
             final HttpServletResponse response){
     	
-    	String id = request.getParameter("id");
+    	int id = Integer.parseInt(request.getParameter("id"));
 		Menu menu = menuService.getMenuById(id);
-		String pId = menu.getParentId();
+		int pId = menu.getParentId();
 		String pName = getNameById(pId);
 		menu.setParentName(pName);
 		
@@ -101,7 +101,7 @@ public class MenuController {
     	
     	int id = menuService.getMaxId();
     	String name = request.getParameter("name");
-    	String parentId = request.getParameter("parentId");
+    	int parentId = Integer.parseInt(request.getParameter("id"));
         String picUrl = request.getParameter("picUrl");
         String remark = request.getParameter("remark");
         int sort = menuService.getSortByParentId(parentId);
@@ -146,7 +146,7 @@ public class MenuController {
        return list;  
    } 
 	
-	private String getNameById(String id) {
+	private String getNameById(int id) {
 		return menuService.getNameById(id);
 	}  
      		 
