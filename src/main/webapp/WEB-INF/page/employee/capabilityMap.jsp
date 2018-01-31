@@ -398,7 +398,7 @@
 								<div class="col-lg-4">
 									<select href="#" class="form-control capabilityBlock" name="pBlock2"
 										data-bv-notempty data-bv-notempty-message="Please select module."
-										id="pBlock2" data-bv-group=".group"
+										id="pBlock2" data-bv-group=".group">
 										<option value="">-- Please Select --</option>
 									</select>
 								</div>

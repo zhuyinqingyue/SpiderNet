@@ -168,7 +168,7 @@
 												<select href="#" class="form-control " name="bu"
 													data-bv-notempty data-bv-notempty-message="Please select delivery department."
 													id="bu" data-bv-group=".group"
-													onchange="loadProject(this.options[this.options.selectedIndex].value);"
+													onchange="loadProject(this.options[this.options.selectedIndex].value);">
 													<option value="">-- Please Select --</option>
 												</select>
 											</div>
@@ -179,7 +179,7 @@
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="projectName"
 													data-bv-notempty data-bv-notempty-message="Please select project."
-													id="projectName" data-bv-group=".group"
+													id="projectName" data-bv-group=".group">
 													<option value="">-- Please Select --</option>
 												</select>
 											</div>

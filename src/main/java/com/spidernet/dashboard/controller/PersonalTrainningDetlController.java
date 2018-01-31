@@ -1,7 +1,9 @@
 package com.spidernet.dashboard.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,7 @@ import com.spidernet.dashboard.service.EmployeeService;
 import com.spidernet.dashboard.service.PersonalMapService;
 import com.spidernet.dashboard.service.PersonalTrainningService;
 import com.spidernet.dashboard.service.ProCapabilityService;
+import com.spidernet.dashboard.service.TrainningService;
 import com.spidernet.util.Constants;
 import com.spidernet.util.XmlUtil;
 
@@ -52,6 +55,9 @@ public class PersonalTrainningDetlController
     
     @Resource
     private EmployeeService employeeService;
+    
+    @Resource
+    TrainningService trainningService;
 
     private static Logger logger = LoggerFactory
             .getLogger(PersonalTrainningDetlController.class);
@@ -179,7 +185,9 @@ public class PersonalTrainningDetlController
         
         String employeeId = "";
         
-        String trainingId = request.getParameter("trainingId");
+        String trainingName = request.getParameter("trainingName");
+        
+        String trainingId = trainningService.queryTrainingByName(trainingName).get(0).getTrainningId();
         
         for(int i = 0; i < empArray.length; i++){
             
@@ -203,5 +211,35 @@ public class PersonalTrainningDetlController
         
         return addResultFlag;
     }
+    
+    @RequestMapping("/trainingOperation")
+    @ResponseBody
+    public Object trainingOperation(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+
+		String ername = request.getParameter("ername");
+		String trname = request.getParameter("trname");
+		String type=request.getParameter("type");
+	
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		if("1".equals(type)) {
+			int result1=personalTrainningService
+					.updateEmpTrainingInfo(ername, trname);
+					
+					
+		Integer resultFlag = Integer.valueOf(result1);
+				result.put("result", resultFlag);
+		}else {
+		
+			Integer resultFlag = Integer.valueOf(personalTrainningService
+			.deleteEmpTrainingInfo(ername, trname));
+			result.put("result", resultFlag);
+			
+		}
+		
+		return result;
+    }
+   
 
 }
