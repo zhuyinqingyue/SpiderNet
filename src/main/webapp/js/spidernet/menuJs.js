@@ -21,7 +21,7 @@ var setting = {
 };
 
 var addNumber = 0;
-
+var doType = "";
 $(document).ready(function(){
 	$("#picUrl").iconPicker();
 	$.ajax({
@@ -93,6 +93,9 @@ $(document).ready(function(){
 	
 	
 	$("#add").click(function(){
+		if(doType == ""){
+			doType = "add";
+		}
 		var valuePre = preCheck('add');
 		if(valuePre){
 			if(addNumber==0){
@@ -110,6 +113,9 @@ $(document).ready(function(){
 	
 
 	$("#update").click(function(){
+		if(doType == ""){
+			doType = "upd";
+		}
 		var valuePre = preCheck('upd');
 		if(valuePre){
 			var id = $("#id").val();
@@ -155,6 +161,9 @@ $(document).ready(function(){
 	});
 	
 	$("#delete").click(function(){
+		if(doType == ""){
+			doType = "del";
+		}
 		var valuePre = preCheck('del');
 		if(valuePre){
 			var id = $("#id").val();
@@ -195,7 +204,15 @@ $(document).ready(function(){
 		var preCheckValue = true;
 		var alertInfo = "";
 		var id = $("#id").val();
-		if(id==''){
+		var name = $("#name").val();
+		var url = $("#menuUrl").val();
+		var picUrl = $("#picUrl").val();
+		var remark = $("#remark").val();
+		if(doType != type){
+			preCheckValue = false;
+			alertInfo = " Please finish current operation or refersh page and try again! "
+		}
+		else if(id==''){
 			preCheckValue = false;
 			alertInfo = " Please click on the tree menu on the left first and try it again! "
 		}
@@ -204,26 +221,37 @@ $(document).ready(function(){
 			alertInfo = " Please click on the tree menu on the left first and try it again! "
 		}
 		else if(type!='del'){
-			var name = $("#name").val();
 			if(name == ''){
 				$("#name").parent().addClass("has-error");
 				$("#name").attr('placeholder','Input cannot be null !');
 				alertInfo = " Please input the correct information ."
 					preCheckValue = false;
 			}
-			var url = $("#menuUrl").val();
 			if(url == ''){
 				$("#menuUrl").parent().addClass("has-error");
 				$("#menuUrl").attr('placeholder','Input cannot be null !');
 				alertInfo = " Please input the correct information ."
 					preCheckValue = false;
 			}
-			var picUrl = $("#picUrl").val();
 			if(picUrl == ''){
 				$("#picUrl").parent().addClass("has-error");
 				$("#picUrl").attr('placeholder','Input cannot be null !');
 				alertInfo = " Please input the correct information ."
 					preCheckValue = false;
+			}
+			
+		}
+		if(type == 'upd' && preCheckValue == true){
+			var b_name = $("#b_name").val();
+			var b_url = $("#b_menuUrl").val();
+			var b_picUrl = $("#b_picUrl").val();
+			var b_remark = $("#b_remark").val();
+			var originData = name+"|"+url+"|"+picUrl+"|"+remark;
+			var updateData = b_name+"|"+b_url+"|"+b_picUrl+"|"+b_remark;
+			
+			if(originData == updateData){
+				preCheckValue = false;
+				alertInfo = " Nothing had modified ! please check the input again!"
 			}
 		}
 		
@@ -257,6 +285,7 @@ function cleanStyle(){
 	$("#name").parent().removeClass("has-error");
 	$("#menuUrl").parent().removeClass("has-error");
 	$("#picUrl").parent().removeClass("has-error");
+	doType = "";
 }
 
 function zTreeOnClick(event, treeId, treeNode) {
@@ -276,6 +305,11 @@ function zTreeOnClick(event, treeId, treeNode) {
 			$("#remark").val(menu.remark);
 			$("#picUrl").val(menu.picUrl);
 			$("#pName").val(menu.parentName);
+			
+			$("#b_name").val(menu.name);
+			$("#b_menuUrl").val(menu.url);
+			$("#b_remark").val(menu.remark);
+			$("#b_picUrl").val(menu.picUrl);
 			cleanStyle();
 		}
 	});

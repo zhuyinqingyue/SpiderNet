@@ -63,6 +63,7 @@
            and rule.id = rule_menu.rule_id
            and rule_menu.menu_id = menu.id
            and emp.EMPLOYEE_ID = #{empId}
+           and  valid='Y'
            ORDER BY menu.sort
-	</select>
+    </select>
 </mapper>
