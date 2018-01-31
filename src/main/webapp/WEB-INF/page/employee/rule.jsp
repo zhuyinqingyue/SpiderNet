@@ -66,11 +66,6 @@
 
 <link rel="stylesheet" href="<%=path %>/bower_components/zTree/style/bootstrapStyle.css" type="text/css">
 
-<script type="text/javascript" src="<%=path %>/bower_components/zTree/js/jquery.ztree.core-3.5.js"></script>
-<script type="text/javascript" src="<%=path %>/bower_components/zTree/js/jquery.ztree.excheck-3.5.js"></script>
-<script type="text/javascript" src="<%=path %>/bower_components/zTree/js/jquery.ztree.exedit-3.5.js"></script>
-
-
 </head>
 
 <body>
@@ -250,6 +245,8 @@
 					
 	            <div class="box-content">
 	            <form id="ruleMenuForm" class="form-horizontal" method="post">
+	                <div id="successMenuAlert" class="alert alert-success" style="display: none;"></div>
+		        <div id="failureMenuAlert" class="alert alert-warning" style="display: none;"></div>
 	                <input type="hidden" name="ruleId" id="ruleId" />
 	                <input type="hidden" name="menuIds" id="menuIds" />
 	                <ul id="treeDemo" class="ztree"></ul>
@@ -316,6 +313,10 @@
 	<script type="text/javascript" src="<%=path %>/js/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	
+	<script type="text/javascript" src="<%=path %>/bower_components/zTree/js/jquery.ztree.core-3.5.js"></script>
+	<script type="text/javascript" src="<%=path %>/bower_components/zTree/js/jquery.ztree.excheck-3.5.js"></script>
+	<script type="text/javascript" src="<%=path %>/bower_components/zTree/js/jquery.ztree.exedit-3.5.js"></script>
 
 </body>
 </html>
