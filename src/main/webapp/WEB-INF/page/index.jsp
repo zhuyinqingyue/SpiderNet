@@ -273,7 +273,7 @@ var path='<%=path%>';
 	<script src="<%=path %>/js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="<%=path %>/js/charisma.js"></script>
-
+	
 <%-- 	<c:if test="${sessionScope.employee.empTypeId  != 'a6b8fd9eb5e547da907c7a004810d022' }">
  --%>		<script type="text/javascript" src="<%=path %>/js/spidernet/personalMap.js"></script>
 		<script type="text/javascript" src="<%=path %>/js/load-trainning.js"></script>
