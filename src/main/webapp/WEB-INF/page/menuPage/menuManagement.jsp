@@ -127,14 +127,14 @@
 	            <div class="box-content">
 	                <form role="form">
 	                <div class="form-group">
-					    <input type="hidden" class="form-control" name="id" id="id" />
-					    <input type="hidden" class="form-control" name="name"  id="b_name"/>
-					    <input type="hidden" class="form-control" name="parentId" id="parentId" />
-					    <input type="hidden" class="form-control" name="pName" id="b_pName" />
-					    <input type="hidden" class="form-control" name="picUrl" id="picId" />
-					    <input type="hidden" class="form-control" name="menuUrl" id="b_menuUrl" />
-					    <input type="hidden" class="form-control" name="remark" id="b_remark" />
-					    <input type="hidden" class="form-control" name="sort" id="sort" />
+					    <input type="hidden" class="form-control"  id="id" />
+					    <input type="hidden" class="form-control"  id="b_name"/>
+					    <input type="hidden" class="form-control"  id="parentId" />
+					    <input type="hidden" class="form-control"  id="b_pName" />
+					    <input type="hidden" class="form-control"  id="b_picUrl" />
+					    <input type="hidden" class="form-control"  id="b_menuUrl" />
+					    <input type="hidden" class="form-control"  id="b_remark" />
+					    <input type="hidden" class="form-control"  id="sort" />
 					</div>
 					 <div class="box-content alerts" id="alertInfo">
 		            </div>
