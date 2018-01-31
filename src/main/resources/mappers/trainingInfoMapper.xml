@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spidernet.dashboard.dao.TrainingInfoMapper">
+	<resultMap id="trainingInfoMap" type="com.spidernet.dashboard.entity.TrainingInfo">
+		<result property="er" column="ER_NUMBER" javaType="String" />
+		<result property="hr" column="HR_NUMBER" javaType="String" />
+		<result property="name" column="NAME" javaType="String" />
+		<result property="eName" column="ENAME" javaType="String" />
+		<result property="buName" column="NAME1" javaType="String" />
+		<result property="projectName" column="NAME2" javaType="String" />
+		<result property="trainingName" column="NAME3" javaType="String" />
+	</resultMap>
+
+	<select id="queryAllEmpTrainingInfoList" parameterType="com.spidernet.dashboard.entity.EmpPageCondition"
+		resultMap="trainingInfoMap">
+		select b.ER_NUMBER,b.HR_NUMBER,b.`NAME`,b.ENAME ,c.`NAME` as
+		NAME1,d.`NAME` as NAME2, group_concat(distinct a.course_name) as NAME3 
+	    from t_employee b 
+	    left join (select a.employee_id, a.training_id, b.course_name from t_personal_training a, t_training b where b.training_id = a.training_id) a  
+	    on a.employee_id=b.employee_id 
+	    left join t_bu c 
+	    on c.bu_id=b.bu_id 
+	    left join t_project d 
+	    on d.project_id=b.project_id 
+	    WHERE 1 = 1   
+
+		<if test="buId != null and buId != ''">
+			AND c.BU_ID = #{buId}
+		</if>
+		<if test="projectId != null and projectId != ''">
+			AND d.PROJECT_ID = #{projectId}
+		</if>
+		<if test="trainingId != null and trainingId != ''">
+			AND a.TRAINING_ID = #{trainingId}
+		</if>
+	    
+	    group by b.employee_id
+	    LIMIT #{currentPage},10;
+	</select>
+
+	<select id="countPage" parameterType="com.spidernet.dashboard.entity.EmpPageCondition"
+		resultType="int">
+		select count(0)
+		from t_employee AS e
+		LEFT JOIN t_bu AS b
+		ON e.BU_ID = b.BU_ID
+		LEFT JOIN t_project AS p
+		ON e.PROJECT_ID = p.PROJECT_ID
+		<if test="trainingId != null and trainingId != ''">
+			LEFT JOIN t_personal_training AS pt
+			ON pt.EMPLOYEE_ID = e.EMPLOYEE_ID and pt.status=1 
+		</if>
+		WHERE 1 = 1
+		<if test="trainingId != null and trainingId != ''">
+			AND pt.TRAINING_ID = #{trainingId}
+		</if>
+		
+	</select>
+
+	
+	<select id="querySpecificTrainingPassedPersonList" parameterType="com.spidernet.dashboard.entity.EmpPageCondition" resultMap="trainingInfoMap">
+     select aaa.er_number,aaa.hr_number ,aaa.name,aaa.ename,d.name as NAME1,e.name as NAME2,aaa.course_name as NAME3 from 
+     (select c.er_number,c.hr_number,c.name,c.ename,c.bu_id,c.project_id,b.course_name,aa.training_id from
+     (select a.TRAINING_ID,a.EMPLOYEE_ID from t_personal_training a where a.status = 1) aa 
+     left join t_training b on aa.training_id = b.training_id 
+     left join t_employee c on aa.employee_id = c.employee_id) aaa 
+     left join t_bu d on aaa.bu_id=d.bu_id left join t_project e on aaa.project_id=e.project_id 
+     where aaa.training_id = #{trainingId}
+     LIMIT #{currentPage},10; 
+  </select>
+  
+   <select id="querySpecificTrainingAllPersonList" parameterType="com.spidernet.dashboard.entity.EmpPageCondition" resultMap="trainingInfoMap">
+     select aaa.er_number,aaa.hr_number ,aaa.name,aaa.ename,d.name as NAME1,e.name as NAME2,aaa.course_name as NAME3 from 
+     (select c.er_number,c.hr_number,c.name,c.ename,c.bu_id,c.project_id,b.course_name,aa.training_id from
+     (select a.TRAINING_ID,a.EMPLOYEE_ID from t_personal_training a) aa 
+     left join t_training b on aa.training_id = b.training_id 
+     left join t_employee c on aa.employee_id = c.employee_id) aaa 
+     left join t_bu d on aaa.bu_id=d.bu_id left join t_project e on aaa.project_id=e.project_id 
+     where aaa.training_id = #{trainingId}
+     LIMIT #{currentPage},10; 
+  </select>
+  
+  <select id="queryAllEmpPassedTrainingInfoList" parameterType="com.spidernet.dashboard.entity.EmpPageCondition"
+		resultMap="trainingInfoMap">
+		select b.ER_NUMBER,b.HR_NUMBER,b.`NAME`,b.ENAME ,c.`NAME` as
+		NAME1,d.`NAME` as NAME2, group_concat(distinct a.course_name) as NAME3 
+	    from t_employee b 
+	    left join (select a.employee_id, a.training_id, b.course_name from t_personal_training a, t_training b where b.training_id = a.training_id and a.status=1) a  
+	    on a.employee_id=b.employee_id 
+	    left join t_bu c 
+	    on c.bu_id=b.bu_id 
+	    left join t_project d 
+	    on d.project_id=b.project_id 
+	    WHERE 1 = 1   
+
+		<if test="buId != null and buId != ''">
+			AND c.BU_ID = #{buId}
+		</if>
+		<if test="projectId != null and projectId != ''">
+			AND d.PROJECT_ID = #{projectId}
+		</if>
+		<if test="trainingId != null and trainingId != ''">
+			AND a.TRAINING_ID = #{trainingId}
+		</if>
+	    
+	    group by b.employee_id
+	    LIMIT #{currentPage},10;
+	</select>
+  
+</mapper>

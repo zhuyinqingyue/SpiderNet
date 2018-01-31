@@ -35,7 +35,7 @@ function loadTrainingName(){
 		cache:false,
 		type:"post",
 		success:function(trainingList){
-			$("#TrainingName").append("<option>--请选择培训名称--</option>");
+			$("#TrainingName").append("<option>-- please select training Name --</option>");
 			for(var i = 0;i<trainingList.length;i++){
 				$("#TrainingName").append("<option>"+trainingList[i].courseName+"</option>");
 			}
@@ -56,7 +56,7 @@ $("#TrainingName").change(function(){
 		type:"post",
 		success:function(trainingList){
 			$("#TrainingDate").find("option").remove(); 
-			$("#TrainingDate").append("<option value=''>-- 请选择培训时间 --</option>");
+			$("#TrainingDate").append("<option value=''>-- please select training date --</option>");
 			for(var i = 0;i<trainingList.length;i++){
 				$("#TrainingDate").append("<option >"+trainingList[i].time+"</option>");
 			}
@@ -64,34 +64,82 @@ $("#TrainingName").change(function(){
 	})
 })
 
+
+//function addEmployee(){
+//	var er = "";
+//	for(var i=0; i<10; i++){
+//		er = $("#td"+i+"").text();
+//		
+//		if($("#checkbox"+i+"").is(':checked') && $.inArray(er, empArray) == -1){
+//			empArray.push(er);
+//		}
+//		
+//		if(!$("#checkbox"+i+"").is(':checked') && $.inArray(er, empArray) != -1){
+//			empArray.splice(jQuery.inArray(er,empArray),1); 
+//		}
+//	}
+//}
+
+
 function addEmployee(){
-	var er = "";
-	for(var i=0; i<10; i++){
+	var option =document.all("checkbox");
+	if (option!=null){
+	for(var i=0; i<10; i++){   
 		er = $("#td"+i+"").text();
-		
-		if($("#checkbox"+i+"").is(':checked') && $.inArray(er, empArray) == -1){
+		if(option[i].checked==true && $.inArray(er, empArray) == -1){
 			empArray.push(er);
 		}
 		
-		if(!$("#checkbox"+i+"").is(':checked') && $.inArray(er, empArray) != -1){
+		if(option[i].checked!=true && $.inArray(er, empArray) != -1){
 			empArray.splice(jQuery.inArray(er,empArray),1); 
 		}
 	}
+  }
 }
+	
 
 
-function showSelected(){
-	var er = "";
-	for(var i=0; i<10; i++){
-		er = $("#td"+i+"").text();
-		
-		if($.inArray(er, empArray) != -1){
-			
-			$("#checkbox"+i+"").attr("checked",'true');
-		}
-	}
-}
 
+//function showSelected(){
+//	var er = "";
+//	for(var i=0; i<10; i++){
+//		er = $("#td"+i+"").text();
+//		
+//		if($.inArray(er, empArray) != -1){
+//			
+//			$("#checkbox"+i+"").attr("checked",'true');
+//		}
+//	}
+//}
+
+//function selectAll(obj){
+//	if(obj.checked==true){
+//	  for(var i=0; i<10; i++){
+//			$("#checkbox"+i+"").attr("checked",'true');
+//		}
+//	  i=0;
+//	}
+//	if(obj.checked==false){
+//		for(var i=0; i<10; i++){
+//			$("#checkbox"+i+"").attr("checked",'false');
+//			}
+//		i=0;
+//	}
+//}
+	
+
+function checkBoxSelect(obj, element){
+    var option=document.all(element);
+	  if (option.length==undefined)
+	  {
+		  document.getElementById(element).checked=obj.checked;
+	  }else{
+       for (var x=0;x<option.length;x++ ){
+           option[x].checked=obj.checked;
+		  }
+	  
+	  }
+ }
 
 function batchAddTraining(){
 	addEmployee();
@@ -141,7 +189,10 @@ function loadEmpList(pageState){
 				var tr = $("<tr></tr>");
 				tr.appendTo(tbody);
 
-				var td1 = $("<td><input type='checkbox' id='checkbox"+i+"'></td>");
+//				var td1 = $("<td><input type='checkbox' id='checkbox"+i+"'></td>");
+				
+				var td1=$("<td><input type='checkbox' id='checkbox'></td>");
+				
 				
 				var td2 = $("<td id='td"+i+"'>"
 						+ result.data[i].er
@@ -192,7 +243,7 @@ function loadEmpList(pageState){
 				$("#previousPage").removeAttr("onclick");
 			}
 			
-			showSelected();
+//			showSelected();
 		}
 	})
 }
@@ -211,7 +262,7 @@ function loadProject(buId,projectId){
 		success:function(listP){
 			
 			$("#project").find("option").remove(); 
-			$("#project").append("<option value=''>-- 请选择项目 --</option>");
+			$("#project").append("<option value=''>-- please select project name --</option>");
 			for(var i = 0;i<listP.length;i++){
 				$("#project").append("<option value='"+listP[i].projectId+"'>"+listP[i].projectName+"</option>");
 			}
@@ -232,7 +283,7 @@ function loadBu(){
 		cache:false,
 		type:"post",
 		success:function(listB){
-			$("#bu").append("<option value=''>-- 请选择交付部 --</option>");
+			$("#bu").append("<option value=''>-- please select delivery apartment --</option>");
 			for(var i = 0;i<listB.length;i++){
 				$("#bu").append("<option value='"+listB[i].buId+"'>"+listB[i].buName+"</option>");
 			}

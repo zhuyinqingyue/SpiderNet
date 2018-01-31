@@ -33,6 +33,7 @@ import com.spidernet.dashboard.entity.TrainingInfoPageCondition;
 import com.spidernet.dashboard.entity.Trainning;
 import com.spidernet.dashboard.service.EmployeeInfoService;
 import com.spidernet.dashboard.service.ExamService;
+import com.spidernet.dashboard.service.TrainingInfoService;
 import com.spidernet.dashboard.service.TrainningService;
 import com.spidernet.util.Constants;
 import com.spidernet.util.Utils;
@@ -50,6 +51,9 @@ public class EmployeeInfoController {
 
 	@Resource
 	private EmployeeInfoService employeeInfoService;
+	
+	@Resource
+	private TrainingInfoService trainingInfoService;
 
 	@Resource
 	private ExamService examService;
@@ -84,7 +88,7 @@ public class EmployeeInfoController {
 		EmpPageCondition pageCondition = new EmpPageCondition();
 
 		String trainingId = "";
-		if (!"".equals(trainingName) && !trainingName.contains("-")) {
+		if (!"".equals(trainingName) && !trainingName.contains("--")) {
 			trainingId = trainningService.queryTrainingByName(trainingName).get(0).getTrainningId();
 		}
 		
@@ -127,7 +131,7 @@ public class EmployeeInfoController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		List<String> trainingNames = new ArrayList<String>();
 
-		if (!"".equals(trainingName) && !trainingName.contains("-")) {
+		if (!"".equals(trainingName) && !trainingName.contains("--")) {
 			for (int i = 0; i < listE.size(); i++) {
 				trainingNames.add(trainingName);
 			}
@@ -138,6 +142,77 @@ public class EmployeeInfoController {
 			trainingNames = trainingService.queryEmpAllTrainingNames((EmpPageCondition) request.getSession().getAttribute("pageCondition"));
 			result.put("data", listE);
 			result.put("trainingNames", trainingNames);
+			result.put("pageInfo", request.getSession().getAttribute("pageCondition"));
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping("/trainingPassedList")
+	@ResponseBody
+	public Object trainingPassedList(final HttpServletRequest request, final HttpServletResponse response) {
+		
+		String pageState = request.getParameter("pageState");
+
+		String trainingName = request.getParameter("trainingName");
+
+		String currentPage = null;
+
+		int countPage = 0;
+
+		EmpPageCondition pageCondition = new EmpPageCondition();
+
+		String trainingId = "";
+		if (!"".equals(trainingName) && !trainingName.contains("--")) {
+			trainingId = trainningService.queryTrainingByName(trainingName).get(0).getTrainningId();
+		}
+		
+		pageCondition.setTrainingId(trainingId);
+
+		if ("".equals(pageState) || pageState == null) {
+			currentPage = "0";
+			pageCondition.setCurrentPage(currentPage);
+			countPage = trainingInfoService.countPage(pageCondition);
+			pageCondition.setPageCount(countPage + "");
+			request.getSession().setAttribute("pageCondition", pageCondition);
+		} else if ("frist".equals(pageState)) {
+			currentPage = "0";
+			pageCondition = (EmpPageCondition) request.getSession().getAttribute("pageCondition");
+			pageCondition.setCurrentPage(currentPage);
+			request.getSession().setAttribute("pageCondition", pageCondition);
+		} else if ("next".equals(pageState)) {
+			pageCondition = (EmpPageCondition) request.getSession().getAttribute("pageCondition");
+			currentPage = Integer.parseInt(pageCondition.getCurrentPage()) + 10 + "";
+			pageCondition.setCurrentPage(currentPage);
+			request.getSession().setAttribute("pageCondition", pageCondition);
+		} else if ("previous".equals(pageState)) {
+			pageCondition = (EmpPageCondition) request.getSession().getAttribute("pageCondition");
+			currentPage = Integer.parseInt(pageCondition.getCurrentPage()) - 10 + "";
+			pageCondition.setCurrentPage(currentPage);
+			request.getSession().setAttribute("pageCondition", pageCondition);
+		} else if ("last".equals(pageState)) {
+			pageCondition = (EmpPageCondition) request.getSession().getAttribute("pageCondition");
+			currentPage = (Integer.parseInt(pageCondition.getPageCount()) - 1) * 10 + "";
+			pageCondition.setCurrentPage(currentPage);
+			request.getSession().setAttribute("pageCondition", pageCondition);
+		}
+
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		if (!"".equals(trainingName) && !trainingName.contains("--")) {
+			
+			List<TrainingInfo> listE=trainingInfoService
+					.querySpecificTrainingPassedPersonList((EmpPageCondition) request.getSession().getAttribute("pageCondition"));
+			
+			result.put("data", listE);
+			result.put("pageInfo", request.getSession().getAttribute("pageCondition"));
+		} else {
+			
+			List<TrainingInfo> listE=trainingInfoService
+					.queryAllEmpPassedTrainingInfoList((EmpPageCondition) request.getSession().getAttribute("pageCondition"));
+			
+			result.put("data", listE);
 			result.put("pageInfo", request.getSession().getAttribute("pageCondition"));
 		}
 
