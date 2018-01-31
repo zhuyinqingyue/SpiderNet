@@ -247,8 +247,7 @@ var setting = {
 	        onCheck:onCheck  
 	    } 
 	};
-
-function getMenu(){
+function getMenu(id){
 	$.ajax({
 		url : path+"/service/menuInfo/showMenu",
 		type : "post",
@@ -258,21 +257,22 @@ function getMenu(){
 		timeout : 20000,
 		success : function(jsonData) {
 			$.fn.zTree.init($("#treeDemo"), setting, jsonData);	
-			
 			var pid= $("#menuIds").val();
 			if(pid != "" ||pid != null){
 				var zTreeObj = $.fn.zTree.getZTreeObj("treeDemo")  
 			    var zTree = zTreeObj.getCheckedNodes(false);  
 			    for (var i = 0; i < zTree.length; i++) {  
 			        if (pid.indexOf(";" + zTree[i].id + ";") != -1) {  
-			            zTreeObj.expandNode(zTree[i], true);
-			            zTreeObj.checkNode(zTree[i], true);                   
+			                    zTreeObj.expandNode(zTree[i], true);
+			                    zTreeObj.checkNode(zTree[i], true);                   
 			        }  
 			    }  
 			   onCheck();
 			}			
 		}
-	});	
+	});
+	
+	
 }
 
 function getCheckNodes(id){	
@@ -301,7 +301,7 @@ function ruleMenu(id){
 	$('#menuModal').modal('show');
 	$("#ruleId").val(id);
 	getCheckNodes(id)
-	getMenu();	
+	getMenu(id);	
 }
 
 function onCheck(e,treeId,treeNode){
@@ -325,20 +325,18 @@ $("#ruleMenuBtn").click(function(){
 		data:{"ruleId":ruleId,"menuIds":menuIds},
 		cache:false,
 		type:"post",
+		timeout : 20000,
 		success:function(resultFlag){
 			if(resultFlag){
-				$("#successMenuAlert").html('Add menu success!').show();
-				setTimeout(function () {
-					cancelRuleMenu();
-					$('#menuModal').modal('hide');
-			    }, 2000);
+				cancelRuleMenu();
+				alert("Add menu success!");
 				loadRuleList();
 			}else{
-				$("#failureMenuAlert").html('Add menu failure!').show();
+				alert("Add menu failure!");				
 			}
 		}
 	});
-});
+})
 
 function cancelRuleMenu(){
 	$("#ruleId").val("");

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-4.2.xsd
+            http://www.springframework.org/schema/mvc 
+            http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-4.2.xsd
+			http://www.springframework.org/schema/task  
+			http://www.springframework.org/schema/task/spring-task-4.2.xsd"> 
+
+    <context:component-scan base-package="com.spidernet.schedule"/>  
+    
+    <bean id="employeeScheduleBean" class="com.spidernet.schedule.EmployeeSchedule">
+    	<property name="employeeUrl" value="http://117.78.38.89:80/Pmo/service/syncEmployInfo"/>
+    	<property name="operatorcode" value="1"></property>
+    	<property name="syncusername" value="2e402cdadfac4f3fb849874542a7d22c"></property>
+    	<property name="syncuserpwd" value="4e92cba7630948e6a5d7926c11399bfa"></property>
+    	<property name="systemId" value="SPN62e3261f04895ac588acc37ca4fcf"></property>
+    </bean>
+  
+    <bean id="employeeSchedule" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+        <property name="targetObject" ref="employeeScheduleBean"></property>   
+        <property name="targetMethod" value="handle"></property>   
+    </bean>
+    
+    <bean id="employee_jobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">   
+        <property name="jobDetail" ref="employeeSchedule"></property>   
+        <property name="cronExpression">   
+            <value>0 0/30 * * * ?</value>   
+        </property>   
+    </bean>  
+    
+    
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">    
+       <property name="jobDetail">    
+           <ref bean="employeeSchedule"/>    
+       </property>    
+       <property name="startDelay">    
+           <value>10000</value>    
+       </property>    
+       <property name="repeatInterval">    
+           <value>0</value>    
+      </property>    
+      <property name="repeatCount">    
+           <value>0</value>    
+      </property>    
+    </bean>  
+  
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">   
+        <property name="triggers">  
+           <list>
+           		<ref bean="employee_jobTrigger"/>
+           		<ref bean="simpleTrigger" />  
+           </list>   
+        </property>   
+    </bean>  
+    
+</beans>
