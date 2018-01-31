@@ -88,7 +88,7 @@ public class EmployeeInfoController {
 		EmpPageCondition pageCondition = new EmpPageCondition();
 
 		String trainingId = "";
-		if (!"".equals(trainingName) && !trainingName.contains("-")) {
+		if (!"".equals(trainingName) && !trainingName.contains("--")) {
 			trainingId = trainningService.queryTrainingByName(trainingName).get(0).getTrainningId();
 		}
 		
