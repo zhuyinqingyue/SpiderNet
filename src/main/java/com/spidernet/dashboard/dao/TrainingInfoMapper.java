@@ -20,4 +20,10 @@ public interface TrainingInfoMapper
 
 	int countPage(EmpPageCondition pageCondition);
 
+	List<TrainingInfo> queryEmpPassedTrainingsDetailInfo(String erId);
+
+	List<TrainingInfo> queryEmpUncompletedTrainingsDetailInfo(String erId);
+
+	List<TrainingInfo> queryEmpPassedTrainingsDetailInfoByManyConditions(String erId, String trainingName);
+
 }
