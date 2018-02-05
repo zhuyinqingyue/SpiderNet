@@ -79,7 +79,7 @@ public class EmployeeInfoController {
 
 		String pageState = request.getParameter("pageState");
 
-		String trainingName = request.getParameter("trainingName");
+		String trainingName = request.getParameter("trainingName")==null?"": request.getParameter("trainingName");
 
 		String currentPage = null;
 
@@ -366,6 +366,32 @@ public class EmployeeInfoController {
 		return result;
     }
 	
+
+	@RequestMapping("/configRule")
+    @ResponseBody
+	public Object configRule(final HttpServletRequest request,
+            final HttpServletResponse response){
+		boolean result = false;
+		String er = request.getParameter("er");
+		String ruleid = request.getParameter("rule");
+		if (employeeInfoService.configRule(er, ruleid) == 1){
+			result = true;
+		}
+		return result;
+	}
+	
+	@RequestMapping("/getRule")
+	@ResponseBody
+	public Object getRule(final HttpServletRequest request,
+            final HttpServletResponse response){
+		String er = request.getParameter("er");
+		String ruls = employeeInfoService.queryRuleByEr(er);
+		Map<String, String> data = new HashMap<String, String>();
+		data.put("rule", ruls);
+		return data;
+	}
+	
+
 	@RequestMapping("/viewEmpPassedTrainingsDetailInfo")
     @ResponseBody
     public Object viewEmpPassedTrainingsDetailInfo(final HttpServletRequest request,

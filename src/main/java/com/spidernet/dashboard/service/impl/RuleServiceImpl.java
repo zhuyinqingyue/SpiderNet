@@ -115,6 +115,12 @@ public class RuleServiceImpl implements RuleService
     }
 
 	@Override
+	public List<Rule> queryRuleInfoAll() {
+		// TODO Auto-generated method stub
+		return ruleMapper.queryRuleInfoAll();
+	}
+	
+	@Override
 	public int accountRuleMenu(String ruleId) {
 		return ruleMenuMapper.accountRuleMenu(ruleId);
 		
