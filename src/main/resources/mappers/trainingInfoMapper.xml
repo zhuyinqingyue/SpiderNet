@@ -10,6 +10,8 @@
 		<result property="buName" column="NAME1" javaType="String" />
 		<result property="projectName" column="NAME2" javaType="String" />
 		<result property="trainingName" column="NAME3" javaType="String" />
+		<result property="knowledgePoint" column="NAME4" javaType="String" />
+		<result property="subKnowledgePoint" column="NAME5" javaType="String" />
 	</resultMap>
 
 	<select id="queryAllEmpTrainingInfoList" parameterType="com.spidernet.dashboard.entity.EmpPageCondition"
@@ -55,7 +57,9 @@
 		<if test="trainingId != null and trainingId != ''">
 			AND pt.TRAINING_ID = #{trainingId}
 		</if>
-		
+		<if test="buId != null and buId != ''">
+			AND b.BU_ID = #{buId}
+		</if>	
 	</select>
 
 	
@@ -66,7 +70,13 @@
      left join t_training b on aa.training_id = b.training_id 
      left join t_employee c on aa.employee_id = c.employee_id) aaa 
      left join t_bu d on aaa.bu_id=d.bu_id left join t_project e on aaa.project_id=e.project_id 
-     where aaa.training_id = #{trainingId}
+     where 1=1 
+        <if test="trainingId != null and trainingId != ''">
+			AND aaa.training_id = #{trainingId}
+		</if>
+		<if test="buId != null and buId != ''">
+			AND d.BU_ID = #{buId}
+		</if>
      LIMIT #{currentPage},10; 
   </select>
   
@@ -97,9 +107,6 @@
 		<if test="buId != null and buId != ''">
 			AND c.BU_ID = #{buId}
 		</if>
-		<if test="projectId != null and projectId != ''">
-			AND d.PROJECT_ID = #{projectId}
-		</if>
 		<if test="trainingId != null and trainingId != ''">
 			AND a.TRAINING_ID = #{trainingId}
 		</if>
@@ -107,5 +114,40 @@
 	    group by b.employee_id
 	    LIMIT #{currentPage},10;
 	</select>
-  
+	
+	<select id="queryEmpPassedTrainingsDetailInfo" parameterType="String"
+		resultMap="trainingInfoMap">
+		select c.er_number,c.name, c.ename,d.name as NAME1, b.course_name as NAME3, b.knowledge_point as NAME4, b.sub_topic as NAME5  from
+		(select training_id from t_personal_training a where a.status = 1 and a.employee_id =
+		(select a.EMPLOYEE_ID from t_employee a where a.er_number = #{erId}))
+		a left join t_training b on a.training_id = b.training_id left join
+		t_employee c on c.er_number = #{erId} 
+		left join t_bu d
+		on d.bu_Id=c.bu_Id
+	</select>
+	
+	<select id="queryEmpPassedTrainingsDetailInfoByManyConditions" parameterType="String"
+		resultMap="trainingInfoMap">
+		select e.er_number,e.name, e.ename, b.name as NAME1, t.course_name as NAME3, t.knowledge_point as NAME4, t.sub_topic as NAME5 from
+		t_employee as e, t_bu as b, t_personal_training as pt, t_training as t where e.employee_id = pt.employee_id and e.bu_id=b.bu_id and t.training_id=pt.training_id and  
+		e.er_number = #{arg0} and t.course_name=#{arg1} and pt.status=1
+	</select>
+	
+	<select id="queryEmpUncompletedTrainingsDetailInfo" parameterType="String"
+		resultMap="trainingInfoMap">
+		select c.er_number,c.name, c.ename,d.name as NAME1, b.course_name as NAME3, b.knowledge_point as NAME4, b.sub_topic as NAME5  from
+		(select training_id from t_personal_training a where a.status = 0 and a.employee_id =
+		(select a.EMPLOYEE_ID from t_employee a where a.er_number = #{erId}))
+		a left join t_training b on a.training_id = b.training_id left join
+		t_employee c on c.er_number = #{erId} 
+		left join t_bu d
+		on d.bu_Id=c.bu_Id
+	</select>
+	
+	<select id="queryEmpUncompletedTrainingsDetailInfoByManyConditions" parameterType="String"
+		resultMap="trainingInfoMap">
+		select e.er_number,e.name, e.ename, b.name as NAME1, t.course_name as NAME3, t.knowledge_point as NAME4, t.sub_topic as NAME5 from
+		t_employee as e, t_bu as b, t_personal_training as pt, t_training as t where e.employee_id = pt.employee_id and e.bu_id=b.bu_id and t.training_id=pt.training_id and  
+		e.er_number = #{arg0} and t.course_name=#{arg1} and pt.status=0
+	</select>
 </mapper>

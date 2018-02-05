@@ -18,6 +18,12 @@ public interface TrainingInfoService
 	List<TrainingInfo> querySpecificTrainingAllPersonList(EmpPageCondition empPageCondition);
 
 	int countPage(EmpPageCondition pageCondition);
+
+	List<TrainingInfo> queryEmpPassedTrainingsDetailInfo(String erId);
+	
+	List<TrainingInfo> queryEmpPassedTrainingsDetailInfoByManyConditions(String erId, String trainingName);
+
+	List<TrainingInfo> queryEmpUncompletedTrainingsDetailInfo(String erId);
        
 
 }

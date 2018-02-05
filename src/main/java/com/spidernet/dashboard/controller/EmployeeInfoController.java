@@ -155,6 +155,8 @@ public class EmployeeInfoController {
 		String pageState = request.getParameter("pageState");
 
 		String trainingName = request.getParameter("trainingName");
+		
+		String buId = request.getParameter("buId");
 
 		String currentPage = null;
 
@@ -168,6 +170,7 @@ public class EmployeeInfoController {
 		}
 		
 		pageCondition.setTrainingId(trainingId);
+		pageCondition.setBuId(buId);
 
 		if ("".equals(pageState) || pageState == null) {
 			currentPage = "0";
@@ -356,13 +359,14 @@ public class EmployeeInfoController {
 
 		String erId =  request.getParameter("erId");
 
-		List<TrainingInfo> listE = employeeInfoService
-				.queryEmpTrainingInfo(erId);
+		List<TrainingInfo> listE = trainingInfoService
+				.queryEmpUncompletedTrainingsDetailInfo(erId);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("data", listE);
 		return result;
     }
 	
+
 	@RequestMapping("/configRule")
     @ResponseBody
 	public Object configRule(final HttpServletRequest request,
@@ -387,4 +391,23 @@ public class EmployeeInfoController {
 		return data;
 	}
 	
+
+	@RequestMapping("/viewEmpPassedTrainingsDetailInfo")
+    @ResponseBody
+    public Object viewEmpPassedTrainingsDetailInfo(final HttpServletRequest request,
+            final HttpServletResponse response)
+    {
+
+		String erId =  request.getParameter("erId");
+		String trainingName=request.getParameter("trName");
+		Map<String, Object> result = new HashMap<String, Object>();
+		if (trainingName.contains(",")) {
+		    List<TrainingInfo> listE = trainingInfoService.queryEmpPassedTrainingsDetailInfo(erId);
+		    result.put("data", listE);
+		}else {
+			 List<TrainingInfo> listE = trainingInfoService.queryEmpPassedTrainingsDetailInfoByManyConditions(erId,trainingName);
+			result.put("data", listE);
+		}		
+		return result;
+    }
 }

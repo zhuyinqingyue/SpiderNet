@@ -55,5 +55,26 @@ public class TrainingInfoServiceImpl implements TrainingInfoService
 		// TODO Auto-generated method stub
 		 return trainingInfoMapper.countPage(pageCondition)/10 + 1;
 	}
+
+	@Override
+	public List<TrainingInfo> queryEmpPassedTrainingsDetailInfo(String erId) {
+		// TODO Auto-generated method stub
+		List<TrainingInfo> listE=trainingInfoMapper.queryEmpPassedTrainingsDetailInfo(erId);
+		return listE;
+	}
+
+	@Override
+	public List<TrainingInfo> queryEmpUncompletedTrainingsDetailInfo(String erId) {
+		// TODO Auto-generated method stub
+		List<TrainingInfo> listE=trainingInfoMapper.queryEmpUncompletedTrainingsDetailInfo(erId);
+		return listE;
+	}
+
+	@Override
+	public List<TrainingInfo> queryEmpPassedTrainingsDetailInfoByManyConditions(String erId, String trainingName) {
+		// TODO Auto-generated method stub
+		List<TrainingInfo> listE=trainingInfoMapper.queryEmpPassedTrainingsDetailInfoByManyConditions(erId,trainingName);
+		return listE;
+	}
     
 }
