@@ -87,4 +87,16 @@
 	    LIMIT #{currentPage},10;
 	</select>
 
+	<update id="updateTraining"  parameterType="com.spidernet.dashboard.entity.Trainning">
+		UPDATE t_training
+		set
+		COURSE_NAME=#{courseName},
+		TIME=#{time},
+		LOCATION=#{location},
+		TEACHER=#{teacher},
+		URL=#{url},
+		KNOWLEDGE_POINT=#{knowledgePoint}
+		WHERE TRAINING_ID = #{trainningId}
+	</update>
+
 </mapper>

@@ -177,5 +177,36 @@ public class TrainningController
         return training;
     }
 
+    @RequestMapping("/updateTrainingById")
+    @ResponseBody
+    public Object updateTrainingById(final HttpServletRequest request,
+                                    final HttpServletResponse response)
+    {
+        String trainningId = request.getParameter("trainningId");
+        String trainningName = request.getParameter("trainningName");
+        String trainningTime = request.getParameter("trainningTime");
+        String location = request.getParameter("location");
+        String teacher = request.getParameter("teacher");
+        String trainningURL = request.getParameter("trainningURL");
+        String status = "0";
+        String knowledgePoint = request.getParameter("knowledgePoint");
+
+        Trainning trainning = new Trainning();
+
+        trainning.setTrainningId(trainningId);
+        trainning.setCourseName(trainningName);
+        trainning.setLocation(location);
+        trainning.setTime(trainningTime);
+        trainning.setTeacher(teacher);
+        trainning.setUrl(trainningURL);
+        trainning.setStatus(status);
+        trainning.setKnowledgePoint(knowledgePoint);
+
+
+        boolean resultFlag = trainningService.updateTraining(trainning);
+
+        return (resultFlag);
+    }
+
 
 }
