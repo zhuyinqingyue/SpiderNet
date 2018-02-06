@@ -16,4 +16,5 @@ public interface TrainningService
     List<Trainning> queryTrainingName();
     Trainning queryTrainingById(String trainingId);
     List<String> queryEmpAllTrainingNames(EmpPageCondition empPageCondition);
+    boolean updateTraining(Trainning trainning);
 }

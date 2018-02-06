@@ -82,4 +82,13 @@ public class TrainningServiceImpl implements TrainningService
 	return trainingName;
 }
 
+    @Override
+    public boolean updateTraining(Trainning trainning) {
+        if(trainningMapper.updateTraining(trainning)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

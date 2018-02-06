@@ -1,22 +1,19 @@
 package com.spidernet.dashboard.controller;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.alibaba.fastjson.JSON;
+import com.spidernet.dashboard.entity.*;
+import com.spidernet.dashboard.service.TrainningService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spidernet.dashboard.entity.Employee;
-import com.spidernet.dashboard.entity.KnowledgePoint;
-import com.spidernet.dashboard.entity.KnowledgePointCondition;
 import com.spidernet.dashboard.service.KnowledgePointService;
 import com.spidernet.util.Utils;
 
@@ -26,6 +23,9 @@ public class KnowledgePointController {
 
 	  @Resource
 	  KnowledgePointService knowledgePointService;
+
+	  @Resource
+	  TrainningService trainningService;
 	 
 	  @RequestMapping("/knowledgePoint")
 	  public String scoreImport(final HttpServletRequest request,
@@ -160,4 +160,74 @@ public class KnowledgePointController {
 	        }
 	        return result;
 	    }
+
+		@RequestMapping("/getKnowledgePointByJson")
+		@ResponseBody
+		public Object getKnowledgePointByJson(HttpServletRequest request,
+											  HttpServletResponse response){
+
+			String trainningId = request.getParameter("traningId");
+
+	  	    List<NodeDTO> nodeDTOSList = new ArrayList<NodeDTO>();
+
+			KnowledgePoint point = new KnowledgePoint();
+			point.setPid("0");
+			point.setStatus(0);
+			List<KnowledgePoint> list = knowledgePointService.queryKnowledgePointByPid(point);
+
+			String[] knowledgePointList =null;
+
+			Trainning training = trainningService.queryTrainingById(trainningId);
+			if(!("".equals(trainningId)||training ==null)){
+			String test= training.getKnowledgePoint();
+			knowledgePointList= test.substring(0,test.length()-1).split(",");
+			}
+			for (int i=0; i<list.size();i++) {
+
+				NodeDTO nodeDTO = new NodeDTO();
+
+				KnowledgePoint childPoint = new KnowledgePoint();
+				childPoint.setPid(list.get(i).getKnowledgePointId());
+				childPoint.setStatus(0);
+				List<KnowledgePoint> childKnowledgePointlist = knowledgePointService.queryKnowledgePointByPid(childPoint);
+
+				List<NodeDTO> childNodeDTOList= new ArrayList<NodeDTO>();
+
+				for (int j= 0;j<childKnowledgePointlist.size();j++) {
+
+					NodeDTO childNodeDTO = new NodeDTO();
+					childNodeDTO.setKnowledgePoint(childKnowledgePointlist.get(j).getKnowledgePointId());
+					childNodeDTO.setText(childKnowledgePointlist.get(j).getPointTitle());
+
+					if(knowledgePointList !=null){
+
+						for (String knowledgePoint:knowledgePointList){
+							if(knowledgePoint.equals(childKnowledgePointlist.get(j).getKnowledgePointId())){
+								Map map = new HashMap();
+								map.put("checked", true);
+								childNodeDTO.setState(map);
+							}
+						}
+					}
+
+					childNodeDTOList.add(childNodeDTO);
+				}
+
+				nodeDTO.setKnowledgePoint(list.get(i).getKnowledgePointId());
+				nodeDTO.setText(list.get(i).getPointTitle());
+				nodeDTO.setNodes(childNodeDTOList);
+				if(knowledgePointList !=null){
+					for (String knowledgePoint:knowledgePointList){
+						if(knowledgePoint.equals(list.get(i).getKnowledgePointId())){
+							Map<String, Object> map2 = new HashMap<String, Object>();
+							map2.put("checked", true);
+							nodeDTO.setState(map2);
+						}
+					}
+				}
+				nodeDTOSList.add(nodeDTO);
+			}
+			String result = JSON.toJSONString(nodeDTOSList,true);
+			return result;
+		}
 }

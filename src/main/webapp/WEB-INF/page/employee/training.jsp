@@ -12,31 +12,18 @@
     <meta charset="utf-8">
     <title>E-learning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-          content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
     <meta name="author" content="Muhammad Usman">
 
     <!-- The styles -->
     <link href="<%=path%>/css/bootstrap-cerulean.min.css" rel="stylesheet">
-
     <link href="<%=path%>/css/charisma-app.css" rel="stylesheet">
-    <link
-            href='<%=path%>/bower_components/fullcalendar/dist/fullcalendar.css'
-            rel='stylesheet'>
-    <link
-            href='<%=path%>/bower_components/fullcalendar/dist/fullcalendar.print.css'
-            rel='stylesheet' media='print'>
-    <link href='<%=path%>/bower_components/chosen/chosen.min.css'
-          rel='stylesheet'>
-    <link href='<%=path%>/bower_components/colorbox/example3/colorbox.css'
-          rel='stylesheet'>
-    <link
-            href='<%=path%>/bower_components/responsive-tables/responsive-tables.css'
-            rel='stylesheet'>
-    <link
-            href='<%=path%>/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css'
-            rel='stylesheet'>
-
+    <link href='<%=path%>/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='<%=path%>/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='<%=path%>/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='<%=path%>/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='<%=path%>/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='<%=path%>/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
     <link href='<%=path%>/css/jquery.noty.css' rel='stylesheet'>
     <link href='<%=path%>/css/noty_theme_default.css' rel='stylesheet'>
     <link href='<%=path%>/css/elfinder.min.css' rel='stylesheet'>
@@ -46,13 +33,9 @@
     <link href='<%=path%>/css/animate.min.css' rel='stylesheet'>
     <link href='<%=path%>/css/bootstrap-datetimepicker.css' rel='stylesheet'>
     <link href='<%=path%>/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
-    <link
-            href='<%=path%>/bower_components/bootstrap-val/bootstrapValidator.css'
-            rel='stylesheet'>
+    <link href='<%=path%>/bower_components/bootstrap-val/bootstrapValidator.css' rel='stylesheet'>
 
-    <script type="text/javascript">
-        var path = "<%=path%>";
-    </script>
+    <script type="text/javascript">var path = "<%=path%>";</script>
     <!-- jQuery -->
     <script src="<%=path%>/bower_components/jquery/jquery.min.js"></script>
 
@@ -243,6 +226,7 @@
                             <label class="col-sm-2 control-label">Trainning Name</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="updatetrainningName2" id="updatetrainningName2"/>
+                                <input  type="hidden" name="updatetrainningid2" id="updatetrainningid2"/>
                             </div>
                         </div>
                         <div class="group">
@@ -291,22 +275,9 @@
 
                     <div>
                         <label class="col-lg-2 control-label">Knowledge</label>
-                        <div class="col-lg-4">
-                            <select href="#" class="form-control " name="updateKnowledgePoint"
-                                    data-bv-notempty data-bv-notempty-message="Please select knowledge Points."
-                                    id="updateKnowledgePoint"
-                                    data-bv-group=".group">
-                                <option value="">-- Please Select --</option>
-                            </select>
-                        </div>
-                        <label class="col-lg-2 control-label">SubTopic</label>
-                        <div class="col-lg-4">
-                            <select href="#" class="form-control " name="updateChildKnowledgePoints"
-                                    data-bv-notempty data-bv-notempty-message="Please select Child Knowledge Points."
-                                    id="updateChildKnowledgePoints"
-                                    data-bv-group=".group">
-                                <option value="">-- Please Select --</option>
-                            </select>
+                        <div class="col-sm-10">
+                            <div id="update-treeview-Knowledge" class=""></div>
+                            <input type="hidden" name="updateKnowledgePointList" id="updateKnowledgePointList"/>
                         </div>
                     </div>
 
@@ -404,22 +375,9 @@
 
                     <div>
                         <label class="col-lg-2 control-label">Knowledge</label>
-                        <div class="col-lg-4">
-                            <select href="#" class="form-control " name="KnowledgePoint"
-                                    data-bv-notempty data-bv-notempty-message="Please select knowledge Points."
-                                    id="KnowledgePoint"
-                                    data-bv-group=".group">
-                                <option value="">-- Please Select --</option>
-                            </select>
-                        </div>
-                        <label class="col-lg-2 control-label">SubTopic</label>
-                        <div class="col-lg-4">
-                            <select href="#" class="form-control " name="ChildKnowledgePoints"
-                                    data-bv-notempty data-bv-notempty-message="Please select Child Knowledge Points."
-                                    id="ChildKnowledgePoints"
-                                    data-bv-group=".group">
-                                <option value="">-- Please Select --</option>
-                            </select>
+                        <div class="col-sm-10">
+                            <div id="treeview-Knowledge" style="height: 400px;overflow-y :scroll;"></div>
+                            <input type="hidden" name="knowledgePointList" id="knowledgePointList"/>
                         </div>
                     </div>
 
@@ -608,10 +566,9 @@
                                     <input class="form-control" id="updateDetailtrainningTimeStart" name="updateDetailtrainningTimeStart"
                                            type="text"
                                            disabled="disabled"
-                                    > <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-th"></。></span> <input type="hidden"
-                                                                                             id="updateDetailtrainningTime1"
-                                                                                             name="trainningTime1"/>
+                                    > <span class="input-group-addon"/>
+                                    <span class="glyphicon glyphicon-th"></span>
+                                    <input type="hidden" id="updateDetailtrainningTime1" name="trainningTime1"/>
                                 </div>
                             </div>
                         </div>
@@ -716,5 +673,7 @@
 <script type="text/javascript" src="<%=path %>/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="<%=path %>/js/bootstrap-datetimepicker.zh-CN.js"></script>
 
+<script type="text/javascript" src="<%=path %>/js/bootstrap-treeview.js"></script>
+<script type="text/javascript" src="<%=path %>/js/bootstrap-treeview.min.js"></script>
 </body>
 </html>
