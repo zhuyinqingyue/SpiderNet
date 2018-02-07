@@ -40,7 +40,14 @@ function loadTrainningList(pageState) {
                     var td3 = $("<td>" + result.data[i].time + "</td>");
                     var td4 = $("<td>" + result.data[i].location + "</td>");
                     var td5 = $("<td>" + result.data[i].teacher + "</td>");
-                    var td6 = $("<td><a class='btn btn-primary btn-sm' href='javascript:void(0);' onclick=updateTrainningMode('"+result.data[i].trainningId+"','"+result.data[i].knowledgePoint+"')>Edit</a></td>");
+                    var td6 = $("<td>" + result.data[i].knowledgePoint + "</td>");
+                    var td7 = $("<td>" + result.data[i].subTopic + "</td>");
+                    var td8 = $("<td><a class='btn btn-primary btn-sm' href='javascript:void(0);' onclick=updateTrainningMode('"+result.data[i].trainningId+"','"+result.data[i].knowledgePoint+"')>Edit</a>"
+                    		+ "&nbsp&nbsp&nbsp"
+                            + "<a class='btn btn-primary btn-sm' href='javascript:void(0);' onclick=deletedTrainningdetail('"
+                            + result.data[i].trainningId
+                            + "')>Deleted</a>"
+                            + "</td>");
                     // var td6 = $("<td><a class='btn btn-info'
                     // href='javascript:void(0);'> <i class='glyphicon
                     // glyphicon-edit icon-white'></i> Edit</a></td>");
@@ -52,6 +59,8 @@ function loadTrainningList(pageState) {
                     td4.appendTo(tr);
                     td5.appendTo(tr);
                     td6.appendTo(tr);
+                    td7.appendTo(tr);
+                    td8.appendTo(tr);
 
                 }
                 $("#trainningList").append("</tbdoy>");
@@ -763,4 +772,24 @@ function updateTrainning() {
             }
         }
     })
+}
+
+function deletedTrainningdetail(id) {
+
+//  var parentTrainingId = $('#parentTrainingName').val();
+
+  $.ajax({
+      url : path + '/service/trainning/deleteTrainingId',
+      dataType : "json",
+      async : true,
+      data : {
+          "traningId" : id
+      },
+      cache : false,
+      type : "post",
+      success : function(resultFlag) {
+      }
+  })
+
+  loadTrainningList(pageState);
 }

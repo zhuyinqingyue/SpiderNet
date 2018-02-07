@@ -17,4 +17,5 @@ public interface TrainningService
     Trainning queryTrainingById(String trainingId);
     List<String> queryEmpAllTrainingNames(EmpPageCondition empPageCondition);
     boolean updateTraining(Trainning trainning);
+    boolean deleteTrainingById(String trainningId);
 }
