@@ -109,7 +109,6 @@
 													data-bv-notempty-message="Please select delivery department."
 													id="bu" data-bv-group=".group"
 													onchange="loadProject(this.options[this.options.selectedIndex].value);">
-													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -121,7 +120,6 @@
 													data-bv-notempty
 													data-bv-notempty-message="Please select project."
 													id="project" data-bv-group=".group">
-													<option value="">-- Please Select --</option>
 												</select>
 											</div>
 										</div>
@@ -131,7 +129,7 @@
 
 									<div class="form-group">
 										<div class="group">
-											<label class="col-lg-2 control-label">Trainning Name</label>
+											<label class="col-lg-2 control-label">Training Name</label>
 											<div class="col-lg-4">
 												<select id="TrainingName" class="selectpicker"
 													data-live-search="true">
@@ -140,13 +138,13 @@
 										</div>
 
 										<div class="group">
-											<label class="col-lg-2 control-label">Trainning Time</label>
+											<label class="col-lg-2 control-label">Training Time</label>
 											<div class="col-lg-3">
 												<select href="#" class="form-control " name="project"
 													data-bv-notempty
 													data-bv-notempty-message="Please select trainning time."
 													id="TrainingDate" data-bv-group=".group">
-													<option value="">-- Please Select --</option>
+													<option>-- please select training time -- </option>
 												</select>
 											</div>
 										</div>
@@ -176,14 +174,14 @@
 											class="table table-striped table-bordered">
 											<thead>
 												<tr>
-													<th>Operation</th>
+													<th><input type ="checkbox" id="all" onclick="checkBoxSelect(this, 'checkbox')"></th>
 													<th>Er</th>
 													<th>Hr</th>
 													<th>Chinese Name</th>
 													<th>English Name</th>
 													<th>Delivery Department</th>
 													<th>Project</th>
-													<th>TrainingName</th>
+													<th>Training Name</th>
 													<th>Actions</th>
 												</tr>
 											</thead>
@@ -247,7 +245,7 @@
 								<th>Er</th>
 								<th>Hr</th>
 								<th>Chinese Name</th>
-								<th>TrainingName</th>
+								<th>Uncompleted Training Name</th>
 								<th colspan="2">Actions</th>
 							</tr>
 						</thead>

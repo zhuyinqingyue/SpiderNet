@@ -26,4 +26,5 @@ public interface RuleService
     Boolean deleteRuleMenu(RuleMenu ruleMenu);
     Boolean addRuleMenu(RuleMenu ruleMenu);
     List<RuleMenu> queryRuleMenu(String ruleId);
+    public List<Rule> queryRuleInfoAll();
 }

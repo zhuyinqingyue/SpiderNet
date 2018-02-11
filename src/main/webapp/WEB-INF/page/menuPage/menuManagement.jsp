@@ -92,7 +92,7 @@
 	    <div class="box col-md-6">
 	        <div class="box-inner">
 	            <div class="box-header well" data-original-title="">
-	                <h2><i class="glyphicon glyphicon-list"></i> Menu Show</h2>
+	                <h2><i class="glyphicon glyphicon-list"></i> Menu List</h2>
 	
 	                <div class="box-icon">
 	                    <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -113,7 +113,7 @@
 	    <div class="box col-md-6">
 	        <div class="box-inner">
 	            <div class="box-header well" data-original-title="">
-	                <h2><i class="glyphicon glyphicon-list"></i> Menu Operation</h2>
+	                <h2><i class="glyphicon glyphicon-list"></i> Menu Maintain</h2>
 	
 	                <div class="box-icon">
 	                    <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -127,49 +127,37 @@
 	            <div class="box-content">
 	                <form role="form">
 	                <div class="form-group">
-					    <input type="hidden" class="form-control" name="id" id="id" />
-					    <input type="hidden" class="form-control" name="name"  id="b_name"/>
-					    <input type="hidden" class="form-control" name="parentId" id="parentId" />
-					    <input type="hidden" class="form-control" name="pName" id="b_pName" />
-					    <input type="hidden" class="form-control" name="picUrl" id="picId" />
-					    <input type="hidden" class="form-control" name="menuUrl" id="b_menuUrl" />
-					    <input type="hidden" class="form-control" name="remark" id="b_remark" />
-					    <input type="hidden" class="form-control" name="sort" id="sort" />
+					    <input type="hidden" class="form-control"  id="id" />
+					    <input type="hidden" class="form-control"  id="b_name"/>
+					    <input type="hidden" class="form-control"  id="parentId" />
+					    <input type="hidden" class="form-control"  id="b_pName" />
+					    <input type="hidden" class="form-control"  id="b_picUrl" />
+					    <input type="hidden" class="form-control"  id="b_menuUrl" />
+					    <input type="hidden" class="form-control"  id="b_remark" />
+					    <input type="hidden" class="form-control"  id="sort" />
 					</div>
 					 <div class="box-content alerts" id="alertInfo">
 		            </div>
                     <div class="form-group">
-                        <label  for="exampleInputEmail1"><h4>Node Name</h4></label>
-                        <input type="text" class="form-control" id="name"  placeholder="Please Input Information!" />
+                        <label  for="exampleInputEmail1"><h4> Menu Name</h4></label>
+                        <input type="text" class="form-control" id="name"  placeholder="Please Input Menu Name !" />
                     </div>
                     <div class="form-group">
-                        <label  for="exampleInputPassword1"><h4>ParentNode Name</h4></label>
+                        <label  for="exampleInputPassword1"><h4> ParentMenu Name</h4></label>
                         <input type="text" class="form-control" id="pName"  />
                     </div>
                     <div class="form-group">
-                        <label  for="exampleInputPassword1"><h4>Picture Code</h4></label>
+                        <label  for="exampleInputPassword1"><h4> Icon </h4></label>
                         <input type="text" class="form-control" id="picUrl"  />
                     </div>
                     <div class="form-group">
-                        <label  for="exampleInputPassword1"><h4>Node URL</h4></label>
+                        <label  for="exampleInputPassword1"><h4> Action URL </h4></label>
                         <input type="text" class="form-control" id="menuUrl" />
                     </div>
                     <div class="form-group">
-                        <label  for="exampleInputPassword1"><h4>Node Remark</h4></label>
+                        <label  for="exampleInputPassword1"><h4> Remark </h4></label>
                         <textarea class="form-control" id="remark" placeholder="Please Input some menu remark !" ></textarea>
                     </div>
-                    
-                    <!-- <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
-
-                        <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                    </div> -->
                     
                     <a class="btn btn-success" href="#" id="add">
 		                <i class="glyphicon glyphicon-zoom-in icon-white"></i>

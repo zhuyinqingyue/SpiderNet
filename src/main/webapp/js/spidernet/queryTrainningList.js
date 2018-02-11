@@ -40,7 +40,14 @@ function loadTrainningList(pageState) {
                     var td3 = $("<td>" + result.data[i].time + "</td>");
                     var td4 = $("<td>" + result.data[i].location + "</td>");
                     var td5 = $("<td>" + result.data[i].teacher + "</td>");
-                    var td6 = $("<td><a class='btn btn-primary btn-sm' href='javascript:void(0);' onclick=updateTrainningMode('"+result.data[i].trainningId+"','"+result.data[i].knowledgePoint+"')>Edit</a></td>");
+                    var td6 = $("<td>" + result.data[i].knowledgePoint + "</td>");
+                    var td7 = $("<td>" + result.data[i].subTopic + "</td>");
+                    var td8 = $("<td><a class='btn btn-primary btn-sm' href='javascript:void(0);' onclick=updateTrainningMode('"+result.data[i].trainningId+"','"+result.data[i].knowledgePoint+"')>Edit</a>"
+                    		+ "&nbsp&nbsp&nbsp"
+                            + "<a class='btn btn-primary btn-sm' href='javascript:void(0);' onclick=deletedTrainningdetail('"
+                            + result.data[i].trainningId
+                            + "')>Deleted</a>"
+                            + "</td>");
                     // var td6 = $("<td><a class='btn btn-info'
                     // href='javascript:void(0);'> <i class='glyphicon
                     // glyphicon-edit icon-white'></i> Edit</a></td>");
@@ -52,6 +59,8 @@ function loadTrainningList(pageState) {
                     td4.appendTo(tr);
                     td5.appendTo(tr);
                     td6.appendTo(tr);
+                    td7.appendTo(tr);
+                    td8.appendTo(tr);
 
                 }
                 $("#trainningList").append("</tbdoy>");
@@ -148,17 +157,25 @@ function loadProCapability() {
 
 function addTrainning() {
 
-    loadKnowledgePoint();
-
-    $("#KnowledgePoint").find("option").remove();
-    $("#KnowledgePoint").append("<option value=''>-- Please Select --</option>");
-    for (var i = 0; i < globalKnowledgePointList.length; i++) {
-        $("#KnowledgePoint").append(
-            "<option value='" + globalKnowledgePointList[i].knowledgePointId + "'" +
-            ">"
-            + globalKnowledgePointList[i].pointTitle
-            + "</option>");
-    }
+    loadTreeView("");
+    var result =globalTreeView;
+    $('#treeview-Knowledge').treeview({
+        data: result,
+        showCheckbox: true,
+        highlightSelected: false,
+        emptyIcon: '',
+        multiSelect: true,
+        onNodeChecked: function (event,node) {
+            var str = $("#knowledgePointList").val();
+            if (str.length > 0) {
+                $("#knowledgePointList").val(str + node.knowledgePoint + ',');
+            } else {
+                $("#knowledgePointList").val(node.knowledgePoint + ',');
+            }
+        }
+    }).treeview('collapseAll', {
+        silent : false
+    });
     var item = $('input[name="skillRadio"]:checked').val();
 
     if (item == 'option1') {
@@ -178,8 +195,8 @@ function saveTrainning() {
     var location = $("#location").val();
     var teacher = $("#teacher").val();
     var trainningURL = $("#trainningURL").val();
-    var knowledgePoint = $("#KnowledgePoint").val();
-    var childKnowledgePoints = $("#ChildKnowledgePoints").val();
+    var knowledgePoint = $("#knowledgePointList").val();
+    /*var childKnowledgePoints = $("#ChildKnowledgePoints").val();*/
 
     $.ajax({
         url : path + '/service/trainning/addTrainning',
@@ -191,8 +208,8 @@ function saveTrainning() {
             "location" : location,
             "teacher" : teacher,
             "trainningURL" : trainningURL,
-            "knowledgePoint" : knowledgePoint,
-            "childKnowledgePoints" : childKnowledgePoints
+            "knowledgePoint" : knowledgePoint/*,*/
+            /*"childKnowledgePoints" : childKnowledgePoints*/
         },
         cache : false,
         type : "post",
@@ -250,6 +267,7 @@ function loadTrainingMessage() {
 
 var globalKnowledgePointList;
 var globalChildKnowledgePointList;
+var globalTreeView;
 
 function loadKnowledgePoint() {
     $.ajax({
@@ -284,6 +302,24 @@ function loadChildKnowledgePoint(KnowledgePointByPid) {
         },
         error : function() {
             alert("请求失败")
+        }
+    });
+}
+
+function loadTreeView(traningId) {
+    $.ajax({
+        type: "Post",
+        url: path + '/service/knowledge/getKnowledgePointByJson',
+        data : {
+            "traningId" : traningId,
+        },
+        async : false,
+        dataType: "json",
+        success: function (result) {
+            globalTreeView=result;
+        },
+        error: function () {
+            alert("树形结构加载失败！")
         }
     });
 }
@@ -486,85 +522,6 @@ function queryTrainPlanByAllocationId(id) {
     })
 }
 
-
-//有可能没有用
-/*function loadupdateKnowledgePoint() {
-    $.ajax({
-        url : path + '/service/knowledge/getKnowledgePointByPid',
-        dataType : "json",
-        async : true,
-        data : {
-            "pid" : "0",
-            "status" : "0",
-        },
-        cache : false,
-        type : "post",
-        success : function(knowledgePointList) {
-            $("#updatenowledgePoint").find("option").remove();
-            $("#updatenowledgePoint").append(
-                "<option value=''>-- Please Select --</option>");
-            for (var i = 0; i < knowledgePointList.length; i++) {
-                $("#updatenowledgePoint").append(
-                    "<option value='"
-                    + knowledgePointList[i].knowledgePointId + "'>"
-                    + knowledgePointList[i].pointTitle
-                    + "</option>");
-                $("#updateKnowledgePoint").append(
-                    "<option value='"
-                    + knowledgePointList[i].knowledgePointId + "'>"
-                    + knowledgePointList[i].pointTitle
-                    + "</option>");
-            }
-        }
-    })
-}*/
-
-/*$("#updatenowledgePoint").change(function() {
-
-    $("#updateChildKnowledge").empty();
-    var KnowledgePointByPid = $(this).val();
-
-    loadupdateChildKnowledgePoint(KnowledgePointByPid);
-
-});*/
-
-
-//有可能没用
-/*function loadupdateChildKnowledgePoint(KnowledgePointByPid) {
-
-    $.ajax({
-        url : path + '/service/knowledge/getKnowledgePointByPid',
-        dataType : "json",
-        async : true,
-        data : {
-            "pid" : KnowledgePointByPid,
-            "status" : "0",
-        },
-        cache : false,
-        type : "post",
-        success : function(knowledgePointList) {
-            $("#updateChildKnowledge").find("option").remove();
-            $("#updateChildKnowledge").append(
-                "<option value=''>-- Please Select --</option>");
-            for (var i = 0; i < knowledgePointList.length; i++) {
-                $("#updateChildKnowledge").append(
-                    "<option value='"
-                    + knowledgePointList[i].knowledgePointId + "'>"
-                    + knowledgePointList[i].pointTitle
-                    + "</option>");
-                $("#updateChildKnowledgePoints").append(
-                    "<option value='"
-                    + knowledgePointList[i].knowledgePointId + "'>"
-                    + knowledgePointList[i].pointTitle
-                    + "</option>");
-            }
-        },
-        error : function() {
-            alert("请求失败")
-        }
-    });
-}*/
-
 function updateTrainningdetailPlan() {
 
     var trainingCourceId = $("#parentTrainingName").val();
@@ -575,8 +532,6 @@ function updateTrainningdetailPlan() {
     var updatelocation = $("#updatelocation").val();
     var updateparticipants = $("#updateparticipants").val();
     var updateAllocationPlanId = $("#updateAllocationPlanId").val();
-
-    validatesForm();
     
     $.ajax({
         url : path + '/service/TrainingPlan/updateTrainPlan',
@@ -639,9 +594,11 @@ function deletedTrainningdetailPlan(id) {
 
 function updateTrainningMode(id,knowledgePoint) {
 
-    loadKnowledgePoint();
+    globalTreeView=null;
+    loadTreeView(id);
+/*    loadKnowledgePoint();
 
-    loadChildKnowledgePoint(knowledgePoint);
+    loadChildKnowledgePoint(knowledgePoint);*/
     queryTrainById(id);
 
     $('#traningEditMode').modal('show');
@@ -660,74 +617,27 @@ function queryTrainById(id) {
         cache : false,
         type : "post",
         success : function(result) {
+            $("#updatetrainningid2").val(result.trainningId);
             $("#updatetrainningName2").val(result.courseName);
             $("#updatetrainningTime").val(result.time);
             $("#udatelocation").val(result.location);
             $("#updateteacher").val(result.teacher);
             $("#updatetrainningURL").val(result.url);
 
-            $("#updateKnowledgePoint").find("option").remove();
-            $("#updateKnowledgePoint").append("<option value=''>-- Please Select --</option>");
-            for (var i = 0; i < globalKnowledgePointList.length; i++) {
-                $("#updateKnowledgePoint").append(
-                    "<option value='" + globalKnowledgePointList[i].knowledgePointId + "'" +
-                    ">"
-                    + globalKnowledgePointList[i].pointTitle
-                    + "</option>");
-                if(globalKnowledgePointList[i].knowledgePointId == result.knowledgePoint){
-                    $($("#updateKnowledgePoint").find('option')[i+1]).attr('selected',true)
-                }
-            }
+            var result =globalTreeView;
+            $('#update-treeview-Knowledge').treeview({
+                data: result,
+                showCheckbox: true,
+                highlightSelected: false,
+                emptyIcon: '',
+                multiSelect: true,
+            }).treeview('collapseAll', {
+                silent : false
+            });
 
-            $("#updateChildKnowledgePoints").find("option").remove();
-            $("#updateChildKnowledgePoints").append("<option value=''>-- Please Select --</option>");
-            for (var i = 0; i < globalChildKnowledgePointList.length; i++) {
-                $("#updateChildKnowledgePoints").append(
-                    "<option value='" + globalChildKnowledgePointList[i].knowledgePointId + "'" +
-                    ">"
-                    + globalChildKnowledgePointList[i].pointTitle
-                    + "</option>");
-                if(globalChildKnowledgePointList[i].knowledgePointId == result.subTopic){
-                    $($("#updateChildKnowledgePoints").find('option')[i+1]).attr('selected',true)
-                }
-            }
         }
     })
 }
-
-/*
-$("#KnowledgePoint").change(
-        function() {
-            $("#ChildKnowledgePoints").empty();
-            var KnowledgePointByPid = $(this).val();
-            $.ajax({
-                    url : path
-                    + '/service/knowledge/getKnowledgePointByPid',
-                    dataType : "json",
-                    async : true,
-                    data : {
-                        "pid" : KnowledgePointByPid,
-                        "status" : "0",
-                    },
-                    cache : false,
-                    type : "post",
-                    success : function(knowledgePointList) {
-
-                        $("#ChildKnowledgePoints").find("option").remove();
-                        $("#ChildKnowledgePoints").append(
-                                "<option value=''>-- Please Select --</option>");
-                        for (var i = 0; i < knowledgePointList.length; i++) {
-                            $("#ChildKnowledgePoints").append(
-                                    "<option value='" + knowledgePointList[i].knowledgePointId + "'>"
-                                    + knowledgePointList[i].pointTitle
-                                    + "</option>");
-                        }
-                    },
-                    error : function() {
-                        alert("请求失败")
-                    }
-                });
-        });*/
 
 $("#KnowledgePoint").change(
     function() {
@@ -810,3 +720,76 @@ $(document).ready(function() {
 
     }) ;
 });
+
+
+function updateTrainning() {
+
+    var trainningId = $("#updatetrainningid2").val();
+    var trainningName = $("#updatetrainningName2").val();
+    var trainningTime = $("#updatetrainningTime").val();
+    var location = $("#udatelocation").val();
+    var teacher = $("#updateteacher").val();
+    var trainningURL = $("#updatetrainningURL").val();
+    var knowledgePoint = $('#update-treeview-Knowledge').treeview('getChecked');
+
+    var knowledgePointList="";
+
+
+    for (var i=0;i<knowledgePoint.length;i++){
+        knowledgePointList=knowledgePoint[i].knowledgePoint+','+knowledgePointList
+    }
+
+    $.ajax({
+        url : path + '/service/trainning/updateTrainingById',
+        dataType : "json",
+        async : true,
+        data : {
+            "trainningId" : trainningId,
+            "trainningName" : trainningName,
+            "trainningTime" : trainningTime,
+            "location" : location,
+            "teacher" : teacher,
+            "trainningURL" : trainningURL,
+            "knowledgePoint" : knowledgePointList
+        },
+        cache : false,
+        type : "post",
+        success : function(resultFlag) {
+            if (resultFlag) {
+                $("#successAlert").html('添加成功').show();
+                setTimeout(function() {
+                    $("#updateListsuccessAlert").hide();
+                    $("#updatetrainningName2").val("");
+                    $("#updatetrainningTime").val("");
+                    $("#udatelocation").val("");
+                    $("#updateteacher").val("");
+                    $("#updatetrainningURL").val("");
+                    $("#update-treeview-Knowledge").val();
+                    $('#traningEditMode').modal('hide');
+                }, 2000);
+            } else {
+                $("#updateListfailureAlert").html('添加失败').show();
+            }
+        }
+    })
+}
+
+function deletedTrainningdetail(id) {
+
+//  var parentTrainingId = $('#parentTrainingName').val();
+
+  $.ajax({
+      url : path + '/service/trainning/deleteTrainingId',
+      dataType : "json",
+      async : true,
+      data : {
+          "traningId" : id
+      },
+      cache : false,
+      type : "post",
+      success : function(resultFlag) {
+      }
+  })
+
+  loadTrainningList(pageState);
+}
