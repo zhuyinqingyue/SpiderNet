@@ -19,5 +19,7 @@ public interface TrainningMapper
     Trainning queryTrainingById(String trainingId);
     List<String> queryPersonTrainingNames(EmpPageCondition empPageCondition);
     int updateTraining(Trainning trainning);
+    int deleteTrainingById(String trainningId);
+    String queryKnowedgePointEntity (String pointId);
 }
 

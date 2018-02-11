@@ -29,7 +29,7 @@
 	
 	<select id="queryTrainingInfo" parameterType="com.spidernet.dashboard.entity.TrainningPageCondition"
 		resultMap="trainningMap">
-	    select * FROM t_training where 1 = 1
+	    select * FROM t_training where 1 = 1 and status = '0'
 	    <if test="trainningName != null and trainningName != ''">
 				AND COURSE_NAME like CONCAT('%',#{trainningName},'%')
 		</if>
@@ -98,5 +98,21 @@
 		KNOWLEDGE_POINT=#{knowledgePoint}
 		WHERE TRAINING_ID = #{trainningId}
 	</update>
+
+	<update id="deleteTrainingById" parameterType="String" >
+			UPDATE T_TRAINING
+			set
+			  STATUS = '1'
+
+			WHERE TRAINING_ID = #{trainningId} and STATUS = '0' 
+	
+	</update>
+	
+	<select id="queryKnowedgePointEntity" parameterType="String" resultType="String">
+	
+		select point_title from t_knowledge_point 
+		where knowledge_point_id = #{pointId} and status = '0'
+		
+	</select>
 
 </mapper>

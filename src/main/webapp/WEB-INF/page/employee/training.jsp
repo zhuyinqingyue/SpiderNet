@@ -112,7 +112,7 @@
                                     </div>
                                 </div>
 
-                                <div>
+                                <div style = "word-break: break-all;white-space: normal;">
                                     <table id="trainningList"
                                            class="table table-bordered">
                                         <thead>
@@ -122,6 +122,8 @@
                                             <th>DateTime</th>
                                             <th>Address</th>
                                             <th>Trainer</th>
+                                            <th width="20%">knowledgePoint</th>
+                                            <th width="20%">SubTopic</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
